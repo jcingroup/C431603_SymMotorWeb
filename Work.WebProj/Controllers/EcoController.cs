@@ -3,11 +3,12 @@ using DotWeb.Controller;
 
 namespace DotWeb.Controllers
 {
-    public class IndexController : WebUserController
+    public class EcoController : WebUserController
     {
         public ActionResult Index()
         {
-            return View("Index");
+            return View("Eco");
         }
+
     }
 }

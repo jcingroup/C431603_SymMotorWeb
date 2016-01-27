@@ -3,11 +3,11 @@ using DotWeb.Controller;
 
 namespace DotWeb.Controllers
 {
-    public class IndexController : WebUserController
+    public class AboutUsController : WebUserController
     {
         public ActionResult Index()
         {
-            return View("Index");
+            return View("AboutUs");
         }
     }
 }
