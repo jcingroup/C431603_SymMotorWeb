@@ -772,7 +772,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 萬客摩共享經濟平台 的當地語系化字串。
+        ///   查詢類似 順益汽車股份有限公司 SHUNG YE MOTORS CO. 的當地語系化字串。
         /// </summary>
         internal static string System_FrontName {
             get {
@@ -781,7 +781,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 1K萬客摩 管理系統 的當地語系化字串。
+        ///   查詢類似 順益汽車官方網站 管理系統 的當地語系化字串。
         /// </summary>
         internal static string System_Name {
             get {
