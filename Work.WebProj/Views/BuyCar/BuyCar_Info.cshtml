@@ -1,153 +1,59 @@
 ﻿@{
-    ViewBag.Title = "首頁";
-    ViewBag.BodyClass = "index";
+    ViewBag.Title = "購車服務";
+    ViewBag.BodyClass = "BuyCar p3";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-@section css {
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+@section Scripts {
+<script>
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 150) {
+            $('#sidebar').addClass('fixed');
+            $('#content').addClass('fixed');
+        } else {
+            $('#sidebar').removeClass('fixed');
+            $('#content').removeClass('fixed');
+        }
+    });
+</script>
 }
 
-@section Scripts {
-    <script src="~/Content/js/swiper/swiper.min.js"></script>
-    <script>
-        var swiper = new Swiper('#banner', {
-            autoplay: 2500,
-            autoplayDisableOnInteraction: false,
-            loop: true,
-            speed: 500
-        });
-        var swiper2 = new Swiper('#marquee', {
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            slidesPerView: 8,
-            autoplay: 1000,
-            autoplayDisableOnInteraction: false,
-            loop: true,
-            spaceBetween: 10
-        });
-        $('.tab-switcher a').click(function (event) {
-            $('.prolist').hide();
-            $($.attr(this, 'href')).fadeIn();
-            $(this).addClass('current');
-            $('.tab-switcher a').not(this).removeClass('current');
-            event.preventDefault();
-        });
-    </script>
-}
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+<aside id="sidebar">
+    <h2 class="sr-only">子選單</h2>
+    <ul class="submenu">
+        <li><a href="~/BuyCar/List">購車優惠</a></li>
+        <li><a href="~/BuyCar#location">全台營業據點</a></li>
+        <li><a href="~/BuyCar/Info">新車購買指南</a></li>
+        <li><a href="~/BuyCar/Info">服務達人</a></li>
+        <li><a href="~/FAQ/Form">預約賞車</a></li>
+    </ul>
+</aside><!-- sidebar //-->
 
 <div class="wrap">
-    <div id="banner" class="swiper-container">
-        <ul class="swiper-wrapper">
-        </ul>
-    </div>
+
+    <section id="content">
+        <h2 class="h1">新車購買指南</h2>
+        <article class="editor">
+            <p>您想買車嗎？當有購車需求的時候，您會考慮些甚麼呢？是廠牌？是進口或國產？是車子的用途？還是貸款金額及乘數？您的這些問題，順益汽車都為您想到囉！所以，特別為您規劃了新車購買指南，透過以下幾個步驟，為您介紹購車前的基本常識，並為您進行分析，希望能對您有所幫助，買到一台適合您的車唷！</p>
+            <h1>STEP I：選車</h1>
+            <p>選車，是購車時的第一個步驟，通常需要考慮以下幾點： </p>
+            <h2>車子的主要用途：</h2>
+            <p>您購置這部車的用途，主要是做上班使用，或是假日休閒時使用？<br>若僅只於上下班交通需求，可考慮購置排氣量較小的都會用車；若要兼顧假日休閒使用的話，可考慮購置RV車或是旅行車。<br>而家中是否有嬰幼童？是否需接送小孩？是否有行動不便的長輩？若有上述需求，可以考慮較具空間效能的RV車款，以滿足放置安全座椅、及方便長輩上下車的需求。 </p>
+            <h2>使用者是誰：</h2>
+            <p>不同使用者，可能會有不同的需求，例如說，車子的顏色、車身大小、車子的駕駛難易度(自、手排，迴轉半徑大小)等等；可考量使用者之需求，購置合適的車款。 </p>
+            <h2>車子預計使用幾年：</h2>
+            <p>若打算長期使用，直至報廢，可選擇外型較為成熟穩重耐看之車款；若未來換車的頻率較高，則可考慮購買折價幅度較低的車款。 </p>
+            <h2>價位高低：</h2>
+            <p>一般而言，進口車款的單價普遍較國產車款高；而相同排氣量，不同廠牌的車款，價格亦有所差異；因此，可檢視您的經濟能力，選擇一部適合您的車款。 </p>
+            <h2>停車問題：</h2>
+            <p>住家是否有停車位，車位為固定式或機械車位，都需加以考量。例如若為機械式車位，則需考量到車身高的休旅車款不易停放的問題。 </p>
+            <h2>節能省油：</h2>
+            <p>受到國際金融風暴影響，景氣仍未回春，對消費者而言，各項花費自是能省則省。所以，為節省駕駛車輛的交通費用，車輛是否節能省油，自然成為現今駕駛人最關心的話題，也是現今車主購車時最重要的考慮因素之一。而有環保署所頒發之節能標章的車款，就是購買省油節能車款的最好選擇。 </p>
+            <h2>排氣量：</h2>
+            <p>排氣量高低除與稅金息息相關外，通常排氣量較高之車款，亦相對較為耗油。 </p>
+        </article>
+    </section><!-- content //-->
+    
 </div>
-
-<section class="products">
-
-    <h2 class="hidden">熱門商品/新上架商品/銷售排行榜/商品快速查詢</h2>
-    <ul class="tab-switcher">
-        <li><a class="current" href="#tab1">新上架商品</a></li>
-        <li><a href="#tab2">熱門商品</a></li>
-        <li><a href="#tab3">銷售排行榜</a></li>
-        <li><a href="#tab4">商品快速查詢</a></li>
-    </ul>
-
-    <section id="tab1" class="prolist tab-content">
-        <h3 class="hidden">新上架商品</h3>
-        <article class="pro">
-            <h4 class="title">【限時下殺】Dowai 10.1吋四核無線影音輸出平板電腦</h4>
-            <a href="~/Products/content">
-                <i><img src="~/Content/images/Index/pro4.jpg" alt=""></i>
-            </a>
-            <strong class="sale">NT$ 1,580</strong>
-            <del>NT$2,280</del>
-            <em>-30%</em>
-            <ul class="label">
-                <li><span class="kv">10KV</span></li>
-                <li><span class="new">New</span></li>
-            </ul>
-        </article>
-    </section>
-
-    <section id="tab2" class="prolist tab-content">
-        <h3 class="hidden">熱門商品</h3>
-        <article class="pro">
-            <h4 class="title">【限時下殺】Dowai 10.1吋四核無線影音輸出平板電腦</h4>
-            <a href="~/Products/content">
-                <i><img src="~/Content/images/Index/pro4.jpg" alt=""></i>
-            </a>
-            <strong class="sale">NT$ 1,580</strong>
-            <del>NT$2,280</del>
-            <em>-30%</em>
-            <ul class="label">
-                <li><span class="kv">10KV</span></li>
-                <li><span class="new">New</span></li>
-            </ul>
-        </article>
-    </section>
-
-    <section id="tab3" class="prolist tab-content">
-        <h3 class="hidden">銷售排行榜</h3>
-        <article class="pro">
-            <h4 class="title">【限時下殺】Dowai 10.1吋四核無線影音輸出平板電腦</h4>
-            <a href="~/Products/content">
-                <i><img src="~/Content/images/Index/pro4.jpg" alt=""></i>
-            </a>
-            <strong class="sale">NT$ 1,580</strong>
-            <del>NT$2,280</del>
-            <em>-30%</em>
-            <ul class="label">
-                <li><span class="kv">10KV</span></li>
-                <li><span class="new">New</span></li>
-            </ul>
-        </article>
-    </section>
-
-    <section id="tab4" class="prolist tab-content">
-        <h3 class="hidden">商品快速查詢</h3>
-        <div id="search_content"></div>
-    </section>
-
-</section>
-
-<section class="sell-info">
-    <div class="wrap">
-        <h2 class="hidden">購買資訊</h2>
-        <ul class="list-unstyled row">
-            <li class="col-4"><a href="~/QA/#qa-1"><i class="icon-pay"></i>加入會員<em>JOIN US</em></a></li>
-            <li class="col-4"><a href="~/QA/#qa-2"><i class="icon-cart"></i>購物須知<em>HOW TO BUY</em></a></li>
-            <li class="col-4"><a href="~/QA/#qa-3"><i class="icon-business"></i>招商專區<em>BUSINESS</em></a></li>
-        </ul>
-    </div>
-</section>
-
-<section class="news">
-    <h2 class="title">Latest News</h2>
-    <div class="row">
-        <article class="col-6">
-            <figure class="pic">
-                <img src="~/Content/images/Index/index-news.png" alt="">
-            </figure>
-            <h3 class="title">
-                <em>2015/10/1</em>
-                10月新會員首購禮！購物滿500送200購物滿500送200
-            </h3>
-            <p>廚具家電、美食精選、居家百貨、親子/外出運動、女裝鞋包、美妝保養、名牌飾品、潮流男裝、特殺電器街等等，等您來選購！</p>
-            @* 節錄前60個字 *@
-            <a href="" class="btn">Read more</a>
-        </article>
-    </div>
-</section>
-
-<section class="brand">
-    <h2 class="hidden">品牌總覽</h2>
-    <div class="wrap">
-        <div id="marquee" class="swiper-container">
-            <ol class="swiper-wrapper list-unstyled">
-            </ol>
-            <a class="prev swiper-button-prev" href=""></a>
-            <a class="next swiper-button-next" href=""></a>
-        </div>
-    </div>
-</section>

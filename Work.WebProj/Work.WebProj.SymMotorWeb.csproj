@@ -351,7 +351,18 @@
     <Content Include="Content\images\bgHeader2.jpg" />
     <Content Include="Content\images\bgLine.png" />
     <Content Include="Content\images\bgLine2.png" />
+    <Content Include="Content\images\BuyCar\banner1-thumb.jpg" />
+    <Content Include="Content\images\BuyCar\banner1.jpg" />
+    <Content Include="Content\images\BuyCar\banner2-thumb.jpg" />
+    <Content Include="Content\images\BuyCar\banner2.jpg" />
+    <Content Include="Content\images\iconSelect.jpg" />
+    <Content Include="Content\images\Index\banner1.jpg" />
+    <Content Include="Content\images\Index\banner2.jpg" />
     <Content Include="Content\images\Index\bgSeries.jpg" />
+    <Content Include="Content\images\Index\car1.png" />
+    <Content Include="Content\images\Index\car2.png" />
+    <Content Include="Content\images\Index\car3.png" />
+    <Content Include="Content\images\Index\car4.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\menuActive.png" />
     <Content Include="Content\images\no-pic.gif" />
@@ -409,8 +420,6 @@
     <Content Include="Content\sass\helper\_variables.scss" />
     <None Include="Content\sass\index.scss" />
     <Content Include="Content\sass\layout\_grid.scss" />
-    <None Include="Content\sass\layout\_layout.scss" />
-    <Content Include="Content\sass\layout\_sysLayout.scss" />
     <Content Include="Content\sass\module\_alert.scss" />
     <Content Include="Content\sass\module\_animation.scss" />
     <Content Include="Content\sass\module\_breadcrumb.scss" />

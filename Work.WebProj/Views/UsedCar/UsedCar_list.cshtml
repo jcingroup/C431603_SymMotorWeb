@@ -1,153 +1,231 @@
 ﻿@{
-    ViewBag.Title = "首頁";
-    ViewBag.BodyClass = "index";
+    ViewBag.Title = "認證中古車";
+    ViewBag.BodyClass = "UsedCar";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-
-@section css {
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
-}
-
 @section Scripts {
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        var swiper = new Swiper('#banner', {
-            autoplay: 2500,
-            autoplayDisableOnInteraction: false,
-            loop: true,
-            speed: 500
-        });
-        var swiper2 = new Swiper('#marquee', {
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            slidesPerView: 8,
-            autoplay: 1000,
-            autoplayDisableOnInteraction: false,
-            loop: true,
-            spaceBetween: 10
-        });
-        $('.tab-switcher a').click(function (event) {
-            $('.prolist').hide();
-            $($.attr(this, 'href')).fadeIn();
-            $(this).addClass('current');
-            $('.tab-switcher a').not(this).removeClass('current');
-            event.preventDefault();
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 150) {
+                $('#sidebar').addClass('fixed');
+                $('#content').addClass('fixed');
+            } else {
+                $('#sidebar').removeClass('fixed');
+                $('#content').removeClass('fixed');
+            }
         });
     </script>
 }
 
 <div class="wrap">
-    <div id="banner" class="swiper-container">
-        <ul class="swiper-wrapper">
-        </ul>
-    </div>
-</div>
 
-<section class="products">
+<h1 class="h1">@ViewBag.Title</h1>
 
-    <h2 class="hidden">熱門商品/新上架商品/銷售排行榜/商品快速查詢</h2>
-    <ul class="tab-switcher">
-        <li><a class="current" href="#tab1">新上架商品</a></li>
-        <li><a href="#tab2">熱門商品</a></li>
-        <li><a href="#tab3">銷售排行榜</a></li>
-        <li><a href="#tab4">商品快速查詢</a></li>
+<aside id="sidebar">
+    <h2 class="sr-only">子選單</h2>
+    <ul class="submenu">
+        <li><a href="~/UsedCar">中古車首頁</a></li>
+        <li><a href="~/UsedCar/Form">協助找車</a></li>
+        <li><a href="~/UsedCar/History">個人標購狀況</a></li>
+        <li><a href="#">登出</a></li>
     </ul>
+</aside><!-- sidebar //-->
 
-    <section id="tab1" class="prolist tab-content">
-        <h3 class="hidden">新上架商品</h3>
-        <article class="pro">
-            <h4 class="title">【限時下殺】Dowai 10.1吋四核無線影音輸出平板電腦</h4>
-            <a href="~/Products/content">
-                <i><img src="~/Content/images/Index/pro4.jpg" alt=""></i>
-            </a>
-            <strong class="sale">NT$ 1,580</strong>
-            <del>NT$2,280</del>
-            <em>-30%</em>
-            <ul class="label">
-                <li><span class="kv">10KV</span></li>
-                <li><span class="new">New</span></li>
-            </ul>
-        </article>
+<section id="content">
+
+    <h2 class="sr-only">全部中古車一覽表</h2>
+
+    <section class="grid-search">
+        <h3 class="sr-only">搜尋條件</h3>
+        <form class="form-inline text-center" action="">
+            <div class="form-group">
+                <label for="">廠牌</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected disabled>廠牌</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">車型</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected disabled>車型</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">車色</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected disabled>車色</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">年份</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected disabled>年份</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">地點</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected disabled>地點</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">價格</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected>$0</option>
+                </select>
+                <label for="">~</label>
+                <select name="" id="" class="form-control c-select style2">
+                    <option value="" selected>不限</option>
+                    <option value="">$1,000,000</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary">找車</button>
+                <button class="btn btn-muted">清除搜尋條件</button>
+                <a href="~/UsedCar/Form" class="btn btn-muted">填寫更多需求 (協助找車)</a>
+            </div>
+        </form>
     </section>
 
-    <section id="tab2" class="prolist tab-content">
-        <h3 class="hidden">熱門商品</h3>
-        <article class="pro">
-            <h4 class="title">【限時下殺】Dowai 10.1吋四核無線影音輸出平板電腦</h4>
-            <a href="~/Products/content">
-                <i><img src="~/Content/images/Index/pro4.jpg" alt=""></i>
-            </a>
-            <strong class="sale">NT$ 1,580</strong>
-            <del>NT$2,280</del>
-            <em>-30%</em>
-            <ul class="label">
-                <li><span class="kv">10KV</span></li>
-                <li><span class="new">New</span></li>
-            </ul>
-        </article>
-    </section>
+    <section class="grid-products">
+        <h3 class="sr-only">拍賣中的車款</h3>
+        
+        <ol class="card-list row">
+            <li class="card-wrap">
+                <dl class="card">
+                    <dt class="card-img-top">
+                        <a href="~/UsedCar/Content" title="SEE MORE">
+                            <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
+                        </a>
+                    </dt>
+                    <dd class="card-block">
+                        <article>
+                            <h3 class="card-title">
+                                拍賣編號
+                                <a href="~/UsedCar/Content">A08037</a>
+                            </h3>
+                            <div class="card-text">
+                                <ul class="info list-unstyled">
+                                    <li><em>廠牌:</em> Mitsubishi</li>
+                                    <li><em>車型:</em> COLTPLUS1 6LNB030</li>
+                                    <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
+                                </ul>
+                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                            </div>
+                        </article>
+                    </dd>
+                </dl>
+            </li>
+            <li class="card-wrap">
+                <dl class="card">
+                    <dt class="card-img-top">
+                        <a href="~/UsedCar/Content" title="SEE MORE">
+                            <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
+                        </a>
+                    </dt>
+                    <dd class="card-block">
+                        <article>
+                            <h3 class="card-title">
+                                拍賣編號
+                                <a href="~/UsedCar/Content">A08037</a>
+                            </h3>
+                            <div class="card-text">
+                                <ul class="info list-unstyled">
+                                    <li><em>廠牌:</em> Mitsubishi</li>
+                                    <li><em>車型:</em> COLTPLUS1 6LNB030</li>
+                                    <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
+                                </ul>
+                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                            </div>
+                        </article>
+                    </dd>
+                </dl>
+            </li>
+            <li class="card-wrap">
+                <dl class="card">
+                    <dt class="card-img-top">
+                        <a href="~/UsedCar/Content" title="SEE MORE">
+                            <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
+                        </a>
+                    </dt>
+                    <dd class="card-block">
+                        <article>
+                            <h3 class="card-title">
+                                拍賣編號
+                                <a href="~/UsedCar/Content">A08037</a>
+                            </h3>
+                            <div class="card-text">
+                                <ul class="info list-unstyled">
+                                    <li><em>廠牌:</em> Mitsubishi</li>
+                                    <li><em>車型:</em> COLTPLUS1 6LNB030</li>
+                                    <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
+                                </ul>
+                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                            </div>
+                        </article>
+                    </dd>
+                </dl>
+            </li>
+            <li class="card-wrap">
+                <dl class="card">
+                    <dt class="card-img-top">
+                        <a href="~/UsedCar/Content" title="SEE MORE">
+                            <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
+                        </a>
+                    </dt>
+                    <dd class="card-block">
+                        <article>
+                            <h3 class="card-title">
+                                拍賣編號
+                                <a href="~/UsedCar/Content">A08037</a>
+                            </h3>
+                            <div class="card-text">
+                                <ul class="info list-unstyled">
+                                    <li><em>廠牌:</em> Mitsubishi</li>
+                                    <li><em>車型:</em> COLTPLUS1 6LNB030</li>
+                                    <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
+                                </ul>
+                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                            </div>
+                        </article>
+                    </dd>
+                </dl>
+            </li>
+            <li class="card-wrap">
+                <dl class="card">
+                    <dt class="card-img-top">
+                        <a href="~/UsedCar/Content" title="SEE MORE">
+                            <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
+                        </a>
+                    </dt>
+                    <dd class="card-block">
+                        <article>
+                            <h3 class="card-title">
+                                拍賣編號
+                                <a href="~/UsedCar/Content">A08037</a>
+                            </h3>
+                            <div class="card-text">
+                                <ul class="info list-unstyled">
+                                    <li><em>廠牌:</em> Mitsubishi</li>
+                                    <li><em>車型:</em> COLTPLUS1 6LNB030</li>
+                                    <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
+                                </ul>
+                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                            </div>
+                        </article>
+                    </dd>
+                </dl>
+            </li>
+        </ol>
 
-    <section id="tab3" class="prolist tab-content">
-        <h3 class="hidden">銷售排行榜</h3>
-        <article class="pro">
-            <h4 class="title">【限時下殺】Dowai 10.1吋四核無線影音輸出平板電腦</h4>
-            <a href="~/Products/content">
-                <i><img src="~/Content/images/Index/pro4.jpg" alt=""></i>
-            </a>
-            <strong class="sale">NT$ 1,580</strong>
-            <del>NT$2,280</del>
-            <em>-30%</em>
-            <ul class="label">
-                <li><span class="kv">10KV</span></li>
-                <li><span class="new">New</span></li>
-            </ul>
-        </article>
-    </section>
-
-    <section id="tab4" class="prolist tab-content">
-        <h3 class="hidden">商品快速查詢</h3>
-        <div id="search_content"></div>
     </section>
 
 </section>
 
-<section class="sell-info">
-    <div class="wrap">
-        <h2 class="hidden">購買資訊</h2>
-        <ul class="list-unstyled row">
-            <li class="col-4"><a href="~/QA/#qa-1"><i class="icon-pay"></i>加入會員<em>JOIN US</em></a></li>
-            <li class="col-4"><a href="~/QA/#qa-2"><i class="icon-cart"></i>購物須知<em>HOW TO BUY</em></a></li>
-            <li class="col-4"><a href="~/QA/#qa-3"><i class="icon-business"></i>招商專區<em>BUSINESS</em></a></li>
-        </ul>
-    </div>
-</section>
-
-<section class="news">
-    <h2 class="title">Latest News</h2>
-    <div class="row">
-        <article class="col-6">
-            <figure class="pic">
-                <img src="~/Content/images/Index/index-news.png" alt="">
-            </figure>
-            <h3 class="title">
-                <em>2015/10/1</em>
-                10月新會員首購禮！購物滿500送200購物滿500送200
-            </h3>
-            <p>廚具家電、美食精選、居家百貨、親子/外出運動、女裝鞋包、美妝保養、名牌飾品、潮流男裝、特殺電器街等等，等您來選購！</p>
-            @* 節錄前60個字 *@
-            <a href="" class="btn">Read more</a>
-        </article>
-    </div>
-</section>
-
-<section class="brand">
-    <h2 class="hidden">品牌總覽</h2>
-    <div class="wrap">
-        <div id="marquee" class="swiper-container">
-            <ol class="swiper-wrapper list-unstyled">
-            </ol>
-            <a class="prev swiper-button-prev" href=""></a>
-            <a class="next swiper-button-next" href=""></a>
-        </div>
-    </div>
-</section>
+</div>

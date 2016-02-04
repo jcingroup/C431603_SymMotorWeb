@@ -4,9 +4,9 @@
 // var
 // ------------------------------------------------------------
 $img-path2:             '../images/Index';
-$banner-height:         320px;
-$content-spacing: 0;
-$footer-height: 160px;
+$banner-height:         560px;
+$content-spacing:       0;
+$footer-height:         160px;
 
 
 // import
@@ -26,48 +26,19 @@ $footer-height: 160px;
 
 // Elements
 @import "element/type";
-@import "element/images";
-// @import "element/code";
-@import "element/tables";
-@import "element/forms";
-@import "element/buttons";
 
 // Layout
 @import "layout/grid";
 
 // Module
-// @import "module/animation";
-@import "module/dropdown";
-// @import "module/button-group";
-// @import "module/input-group";
-@import "module/custom-forms";
+@import "module/animation";
 @import "module/nav";
 @import "module/navbar";
-@import "module/card";
-@import "module/breadcrumb";
-// @import "module/pagination";
-// @import "module/pager";
-// @import "module/labels";
-// @import "module/jumbotron";
-// @import "module/alert";
-// @import "module/progress";
-// @import "module/media";
-// @import "module/list-group";
-// @import "module/responsive-embed";
-// @import "module/close";
-
-// Components w/ JavaScript
-// @import "module/modal";
-// @import "module/tooltip";
-// @import "module/popover";
-// @import "module/carousel";
 
 // Utility classes
-// @import "helper/utilities";
 @import "helper/utilities-extends";
 @import "helper/extend";
-// @import "helper/utilities-background";
-// @import "helper/utilities-spacing";
+@import "helper/classes";
 @import "helper/utilities-responsive";
 
 @import "_web/layout";
@@ -87,14 +58,18 @@ $footer-height: 160px;
 // main
 // ----------------------------------------------------------------------
 #banner {
-	height: 560px;
+	height: auto;
 	background: #2E2A27;
 
-	li {
-		img {
-			width: 1400px;
-			height: 560px;
-			margin-left: -700px;
+	> ul {
+		> li {
+			img {
+				position: static;
+				width: 100%;
+				max-width: 1920px;
+				height: auto;
+				margin-left: 0;
+			}
 		}
 	}
 }
@@ -106,7 +81,7 @@ $footer-height: 160px;
 }
 
 .grid-series {
-	background: #757C7F url(#{$img-path2}/bgSeries.jpg) no-repeat center top;
+	background: #757C7F url(#{$img-path}/bg4.jpg) no-repeat center top;
 	text-align: center;
 
 	padding: 55px 0 30px 0;
@@ -140,7 +115,7 @@ $footer-height: 160px;
         li {
         	padding-bottom: $spacer*2.5;
 
-        	i {
+        	a {
         		height: 155px;
         		line-height: 155px;
         	}
@@ -170,6 +145,11 @@ $footer-height: 160px;
 
 			top:30%;
 			margin-top: -23px;
+
+			opacity: 0.5;
+			transition: opacity 0.3s;
+
+			&:hover {opacity: 1;}
 		}
 
 		.prev {left: 0;}
@@ -206,14 +186,15 @@ $footer-height: 160px;
 
     	color: #E1E3DF;
 
-    	.h3 {
+    	.h2 {
 	    	color: #E6E6E6;
 	    	font-size: em(75px);
 	    	font-family: $font-family-en;
 	    }
 
-	    .h4 {
+	    .h3 {
 	    	font-weight: bold;
+	    	font-size: $font-size-h4;
 
 	    	small {
 	    		display: block;

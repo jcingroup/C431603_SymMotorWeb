@@ -40,27 +40,32 @@
                     <li><a href="~/Careers">菁英招募</a></li>
                 </ul>
 
-                <div class="showcase">
+                <div id="series" class="showcase panel">
                     <h2 class="h2">車款展示</h2>
-                    <ul class="list-inline">
-                        <li><a href="">COLT PLUS</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" id="showcase-drop1" data-toggle="dropdown">LANCER</a>
-                            <ul class="dropdown-menu" aria-labelledby="showcase-drop1">
-                                <li class="dropdown-item">1</li>
-                                <li class="dropdown-item">2</li>
-                                <li class="dropdown-item">3</li>
-                            </ul>
+                    <ul class="menu">
+                        <li><a href="http://www.coltplus.com.tw/" target="new">COLT PLUS</a></li>
+                        <li>
+                        
+                            @* 有子項目的車款，<a>要加class, 參數 *@
+                            <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series1" aria-expanded="false">LANCER</a>
+
                         </li>
-                        <li><a href="">ZINGER</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" id="showcase-drop2" data-toggle="dropdown">OUTLANDER</a>
-                            <ul class="dropdown-menu" aria-labelledby="showcase-drop2">
-                                <li class="dropdown-item">1</li>
-                                <li class="dropdown-item">2</li>
-                            </ul>
+                        <li><a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series2" aria-expanded="false">OUTLANDER</a></li>
+                        <li><a href="http://www.zinger.com.tw/" target="new">ZINGER</a></li>
+                        <li><a href="http://pajero.mitsubishi-motors.com.tw/" target="new">PAJERO</a></li>
+                    </ul>
+
+                    @* 子項目 *@
+                    <ul id="series1" class="submenu collapse">
+                        <li><a href="http://lancerfortis.mitsubishi-motors.com.tw/" target="new">LANCER FORTIS</a></li>
+                        <li><a href="http://lancer.mitsubishi-motors.com.tw/" target="new">LANCER iO</a></li>
+                        <li><a href="http://lancersportback.mitsubishi-motors.com.tw/" target="new">LANCER SPORTBACK</a>
                         </li>
-                        <li><a href="">PAJERO</a></li>
+                    </ul>
+
+                    <ul id="series2" class="submenu collapse">
+                        <li><a href="http://www.outlander.com.tw/" target="new">OUTLANDER 2.4</a></li>
+                        <li><a href="http://outlander.mitsubishi-motors.com.tw/phev/" target="new">OUTLANDER PHEV</a></li>
                     </ul>
                 </div>
 
@@ -98,14 +103,14 @@
         <div class="wrap">
             <h1 class="tel">服務專線<strong>0800-030-530</strong></h1>
             <div class="copyright">SYM 順益汽車 &copy; 2015</div>
-            @* <a href="#header" class="goTop scroll">TOP</a> *@
+            <a href="#header" class="goTop scroll">TOP</a>
         </div>
     </footer><!-- footer -->
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <script src="~/Content/js/bootstrap/util.js"></script>
-    <script src="~/Content/js/bootstrap/dropdown.js"></script>
+    <script src="~/Content/js/bootstrap/collapse.js"></script>
 
     <script type="text/javascript">
         // 回頂端
