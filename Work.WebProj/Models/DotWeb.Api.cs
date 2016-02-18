@@ -29,7 +29,7 @@ namespace DotWeb.Api
         protected string UserId;
         protected string LoginUserFlag = string.Empty;
         protected IEnumerable<string> UserRoles;
-        protected C13B0_1KomoEntities db0;
+        protected C34A1_SYM_MotorEntities db0;
         protected override void Initialize(System.Web.Http.Controllers.HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
@@ -68,7 +68,7 @@ namespace DotWeb.Api
         {
             return System.Globalization.CultureInfo.CurrentCulture.Name;
         }
-        protected static C13B0_1KomoEntities getDB0()
+        protected static C34A1_SYM_MotorEntities getDB0()
         {
             LogicCenter.SetDB0EntityString(CommSetup.CommWebSetup.DB0_CodeString);
             return LogicCenter.getDB0;
