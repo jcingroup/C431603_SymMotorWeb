@@ -64,7 +64,27 @@
         aspNetRoles?: server.AspNetRoles[];
         role_array?: Array<UserRoleInfo>;
     }
-
+    interface Menu extends BaseEntityTable {
+        menu_id?: number;
+        parent_menu_id?: number;
+        menu_name?: string;
+        description?: string;
+        area?: string;
+        controller?: string;
+        action?: string;
+        icon_class?: string;
+        sort?: number;
+        is_folder?: boolean;
+        is_use?: boolean;
+        is_on_tablet?: boolean;
+        is_only_tablet?: boolean;
+        aspNetRoles?: server.AspNetRoles[];
+        role_array?: Array<UserRoleInfo>;
+    }
+    interface Option {//分類管理選單用
+        val?: number;
+        Lname?: string;
+    }
     interface Product extends BaseEntityTable {
         product_no?: string;
         product_category_l1_id?: number;

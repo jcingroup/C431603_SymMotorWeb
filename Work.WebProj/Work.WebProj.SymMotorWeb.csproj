@@ -222,6 +222,7 @@
     <Content Include="Areas\Active\Views\ParmData\Parm.cshtml" />
     <Content Include="Areas\Active\Views\BannerData\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
+    <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\UsersController.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
@@ -274,6 +275,7 @@
     <Compile Include="Controllers\AccessoryController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
     <Compile Include="Controllers\Api\BannerController.cs" />
+    <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
@@ -418,6 +420,7 @@
     <Content Include="Content\sass\helper\_utilities-spacing.scss" />
     <Content Include="Content\sass\helper\_utilities.scss" />
     <Content Include="Content\sass\helper\_variables.scss" />
+    <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
     <None Include="Content\sass\index.scss" />
     <Content Include="Content\sass\layout\_grid.scss" />
     <Content Include="Content\sass\module\_alert.scss" />
@@ -753,6 +756,7 @@
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-banner.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-menu_set.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-parm.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-roles.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-aboutus.tsx" />
@@ -834,6 +838,7 @@
     <Content Include="Areas\Active\Views\NewsData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\ParmData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\BannerData\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
