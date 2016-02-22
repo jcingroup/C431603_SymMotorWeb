@@ -706,6 +706,8 @@
     <Content Include="Views\Offer\Offer_content.cshtml" />
     <Content Include="Views\Offer\Offer_list.cshtml" />
     <Content Include="Views\FAQ\FAQ_sidebar.cshtml" />
+    <Content Include="Views\FAQ\FAQ_content.cshtml" />
+    <Content Include="Views\FAQ\FAQ_list.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
