@@ -36,7 +36,7 @@ namespace DotWeb.Api
                     .Select(x => new m_News()
                     {
                         news_id = x.news_id,
-                        news_date = x.news_date,
+                        day = x.day,
                         news_title = x.news_title,
                         sort=x.sort,
                         i_Hide=x.i_Hide
@@ -71,11 +71,10 @@ namespace DotWeb.Api
                 item = await db0.News.FindAsync(md.news_id);
 
                 item.news_title = md.news_title;
-                item.news_date = md.news_date;
+                item.day = md.day;
                 item.news_content = md.news_content;
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
-                //item.sort = md.sort;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

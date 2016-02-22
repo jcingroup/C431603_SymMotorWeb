@@ -27,70 +27,6 @@ namespace ProcCore.Business.DB0
         onSite = 1,//現場
         online = 2 //網路訂購
     }
-    public enum PaybyState
-    {
-        Cash = 1,//付現
-        ATM = 2,//atm轉帳
-        CashOnDelivery = 3//貨到付款
-    }
-    public enum PurchaseState
-    {
-        onSite = 0,//現場付款
-        waitForPayment = 1,//待繳款
-        waitForPaymentCheckout = 2,//待對帳確認
-        waitForShip = 3,//匯款完畢待出貨通知
-        complete = 4//訂單完成
-    }
-    public enum PaymentReplyState
-    {
-        notCheck = 0,//未核對
-        correct = 1,//核對正確
-        error = -1//核對錯誤
-    }
-    public enum PurchaseViewType
-    {
-        self = 1,//個人消費紀錄
-        share = 2,//共享圈消費紀錄
-        member = 3,//直推會員消費紀錄
-        manager = 4,//直推經理人消費紀錄
-        center = 5//間接推薦會員消費紀錄
-    }
-    public enum SalesRankState
-    {
-        notSet = 0,//未設定
-        general = 1,//一般會員
-        manager = 2,//經理人
-        operationsCenter = 3,//營運中心
-        managementOffice = 4//管理處
-    }
-    public enum SalesRiseRankType
-    {
-        generalToManager = 1,//一般會員->經理人
-        managerToOperationsCenter = 2,//經理人->營運中心
-        operationsCenterToManagerOffice = 3//營運中心->管理處
-    }
-    public enum ShippingState
-    {
-        HomoiothermyFee = 0,//常溫:false
-        RefrigerFee = 1//冷凍、冷藏:true
-    }
-    public enum PurchasePickupState
-    {
-        online = 0, //現場取貨
-        delivery = 1,//宅配
-        getBySelf = 2//自行取貨
-    }
-
-    public enum BannerType
-    {
-        banner = 1,
-        firm = 2
-    }
-    public enum SettleState
-    {
-        progress = 1,//結算中
-        complete = 2//結算完成
-    }
     #region set CodeSheet
 
     public static class CodeSheet
@@ -122,9 +58,9 @@ namespace ProcCore.Business.DB0
     }
     #endregion
 
-    public partial class C13B0_1KomoEntities : DbContext
+    public partial class C34A1_SYM_MotorEntities : DbContext
     {
-        public C13B0_1KomoEntities(string connectionstring)
+        public C34A1_SYM_MotorEntities(string connectionstring)
             : base(connectionstring)
         {
         }
@@ -176,57 +112,9 @@ namespace ProcCore.Business.DB0
 
     }
     #region Model Expand
-
-    public partial class Sales
-    {
-        public string share_name { get; set; }
-    }
-    public partial class m_Sales
-    {
-        public int? rise_type { get; set; }
-        public int sub_count { get; set; }
-    }
-    public partial class Purchase
-    {
-        public string sales_name { get; set; }
-        public bool is_mail { get; set; }
-        public IList<PurchaseDetail> detail { get; set; }
-    }
-    public partial class m_Purchase
-    {
-        public string sales_name { get; set; }
-    }
-    public partial class PurchaseDetail
-    {
-        public string imgsrc { get; set; }
-    }
-    public partial class m_Product
-    {
-        public string imgsrc { get; set; }
-    }
-    public partial class Product
-    {
-        public string[] imgsrcs { get; set; }
-        public string category_l1_name { get; set; }
-        public string category_l2_name { get; set; }
-    }
     public partial class m_News
     {
         public string imgsrc { get; set; }
-    }
-    public partial class m_ProductCategory_l2
-    {
-        public string category_l1_name { get; set; }
-    }
-    public partial class PaymentReply
-    {
-        public string day_string { get; set; }
-        public string sales_name { get; set; }
-    }
-    public partial class m_PaymentReply
-    {
-        public int state { get; set; }
-        public string sales_name { get; set; }
     }
     public partial class m_Banner
     {
@@ -237,6 +125,21 @@ namespace ProcCore.Business.DB0
         public string id { get; set; }
         public int state { get; set; }
         public bool is_mail { get; set; }
+    }
+    public partial class Menu
+    {
+        public IList<MenuRoleArray> role_array { get; set; }
+    }
+    public class MenuRoleArray
+    {
+        public string role_id { get; set; }
+        public bool role_use { get; set; }
+        public string role_name { get; set; }
+    }
+    public class option
+    {
+        public int val { get; set; }
+        public string Lname { get; set; }
     }
     public class L1
     {

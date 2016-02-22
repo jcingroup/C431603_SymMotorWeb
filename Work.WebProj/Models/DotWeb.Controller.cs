@@ -34,7 +34,7 @@ namespace DotWeb.Controller
     public abstract class SourceController : System.Web.Mvc.Controller
     {
         //protected string IP;
-        protected C13B0_1KomoEntities db0;
+        protected C34A1_SYM_MotorEntities db0;
         protected bool isTablet = false;
         protected virtual string getRecMessage(string MsgId)
         {
@@ -61,7 +61,7 @@ namespace DotWeb.Controller
         {
             return System.Globalization.CultureInfo.CurrentCulture.Name;
         }
-        protected static C13B0_1KomoEntities getDB0()
+        protected static C34A1_SYM_MotorEntities getDB0()
         {
             LogicCenter.SetDB0EntityString(CommSetup.CommWebSetup.DB0_CodeString);
             return LogicCenter.getDB0;
@@ -171,13 +171,6 @@ namespace DotWeb.Controller
 
             using (db0 = getDB0())
             {
-                if (UserId != null)
-                {
-                    int rank = db0.Sales.Find(UserId).rank;
-                    ViewBag.Rank = rank;
-                    ViewBag.RankName = CodeSheet.GetStateVal(rank, CodeSheet.sales_rank);
-                    ViewBag.UserId = this.UserId;
-                }
 
                 #region getRoles
                 var aspnet_user_id = User.Identity.GetUserId();
@@ -907,26 +900,10 @@ namespace DotWeb.Controller
             Log.SetupBasePath = System.Web.HttpContext.Current.Server.MapPath("~\\_Code\\Log\\");
             Log.Enabled = true;
 
-            var getMemberIdCookie = Request.Cookies[CommWebSetup.WebCookiesId + ".member_id"];
-            var getMemberName = Request.Cookies[CommWebSetup.WebCookiesId + ".member_name"];
-            MemberId = getMemberIdCookie == null ? null : EncryptString.desDecryptBase64(Server.UrlDecode(getMemberIdCookie.Value));
             try
             {
                 var db = getDB0();
-                #region 判斷會員是否正確登入
-                this.isLogin = false;
-                ViewBag.isLogin = false;
-                if (MemberId != null)
-                {
-                    Boolean check = db.Sales.Any(x => x.sales_no == this.MemberId);
-                    if (check)
-                    {
-                        this.isLogin = true;
-                        ViewBag.isLogin = true;
-                        ViewBag.MName = Server.UrlDecode(getMemberName.Value);
-                    }
-                }
-                #endregion
+
                 var Async = db.SaveChangesAsync();
                 Async.Wait();
 
@@ -1151,27 +1128,27 @@ namespace DotWeb.Controller
         /// </summary>
         public void ajax_GetSidebarData()
         {
-            List<L1> l1 = new List<L1>();
-            using (var db = getDB0())
-            {
-                l1 = db.ProductCategory_l1.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
-                                .Select(x => new L1()
-                                {
-                                    l1_id = x.product_category_l1_id,
-                                    l1_name = x.category_l1_name
-                                }).ToList();
-                foreach (var item in l1)
-                {
-                    item.l2_list = db.ProductCategory_l2.Where(x => !x.i_Hide & x.product_category_l1_id == item.l1_id).OrderByDescending(x => x.sort)
-                                        .Select(x => new L2()
-                                        {
-                                            l2_id = x.product_category_l2_id,
-                                            l2_name = x.category_l2_name
-                                        }).ToList();
-                }
+            //List<L1> l1 = new List<L1>();
+            //using (var db = getDB0())
+            //{
+            //    l1 = db.ProductCategory_l1.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+            //                    .Select(x => new L1()
+            //                    {
+            //                        l1_id = x.product_category_l1_id,
+            //                        l1_name = x.category_l1_name
+            //                    }).ToList();
+            //    foreach (var item in l1)
+            //    {
+            //        item.l2_list = db.ProductCategory_l2.Where(x => !x.i_Hide & x.product_category_l1_id == item.l1_id).OrderByDescending(x => x.sort)
+            //                            .Select(x => new L2()
+            //                            {
+            //                                l2_id = x.product_category_l2_id,
+            //                                l2_name = x.category_l2_name
+            //                            }).ToList();
+            //    }
 
-            }
-            ViewBag.Sidebar = l1;
+            //}
+            //ViewBag.Sidebar = l1;
         }
         /// <summary>
         /// 取得萬客摩關於我們資料
