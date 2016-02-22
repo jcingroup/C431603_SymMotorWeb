@@ -15,6 +15,11 @@ namespace DotWeb.Controllers
             return View("BuyCar_Info");
         }
 
+        public ActionResult Form()
+        {
+            return View("BuyCar_Form");
+        }
+
         public ActionResult List()
         {
             return View("BuyCar_list");

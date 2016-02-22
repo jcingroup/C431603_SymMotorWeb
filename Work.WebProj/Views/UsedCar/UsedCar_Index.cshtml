@@ -18,29 +18,10 @@
             loop: true,
             speed: 500
         });
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 150) {
-                $('#sidebar').addClass('fixed');
-                $('#content').addClass('fixed');
-            } else {
-                $('#sidebar').removeClass('fixed');
-                $('#content').removeClass('fixed');
-            }
-        });
     </script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
-
-<aside id="sidebar">
-    <h2 class="sr-only">子選單</h2>
-    <ul class="submenu">
-        <li><a href="~/UsedCar/Form">協助找車</a></li>
-        <li><a href="~/UsedCar/History">個人標購狀況</a></li>
-        <li><a href="#">登出</a></li>
-    </ul>
-</aside><!-- sidebar //-->
 
 <section id="content">
 
@@ -58,7 +39,7 @@
                             <figcaption>
                                 <ul class="info">
                                     <li>車型　COLT plus 1.6L</li>
-                                    <li>價格　<strong>40萬</strong></li>
+                                    <li>價格　<strong>$40,0000</strong></li>
                                     <li>年份　2012</li>
                                 </ul>
                                 <p class="detail">11年出廠，最省油的小車，好開好停車。</p>@* 最多78字 *@
@@ -72,7 +53,7 @@
                             <figcaption>
                                 <ul class="info">
                                     <li>車型　COLT plus 1.6L</li>
-                                    <li>價格　<strong>40萬</strong></li>
+                                    <li>價格　<strong>$40,0000</strong></li>
                                     <li>年份　2012</li>
                                 </ul>
                                 <p class="detail">最省油的小車，好開好停車。最省油的小車，好開好停車。最省油的小車，好開好停車。最省油的小車，好開好停車。最省油的小車，好開好停車。最省油的小車，好開好停車。</p>@* 最多78字 *@
@@ -85,26 +66,6 @@
         </section>
 
         <div class="search">
-
-            @* 會員登入 (登入會員後就看不到) *@
-            @* <h3 class="h1 style2">會員登入</h3>
-            <form class="form" action="">
-                <div class="form-group">
-                    <label for="">帳號</label>
-                    <input type="text" class="form-control c-input style2">
-                </div>
-                <div class="form-group">
-                    <label for="">密碼</label>
-                    <input type="password" class="form-control c-input style2">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-secondary">會員登入</button>
-                </div>
-            </form>
-            <p>來賓請輸入：帳號 sym 、密碼 888</p> *@
-            @* end of 會員登入 *@
-            
-            @* 產品搜尋 (登入會員後才看得到) *@
             <h3 class="h1 style2">我要找車</h3>
             <form class="form" action="">
                 <div class="form-group row">
@@ -164,13 +125,10 @@
             <p>
                 <a href="~/UsedCar/List" class="btn btn-block btn-danger">看全部中古車</a>
             </p>
-            @* end of 產品搜尋 *@
-
         </div>
 
     </div></div>
 
-    @* 產品列表 (登入會員後才看得到) *@
     <section class="grid-products"><div class="wrap">
         <h3 class="sr-only">最新刊登車款</h3>
         
@@ -178,7 +136,7 @@
             <li class="card-wrap">
                 <dl class="card">
                     <dt class="card-img-top">
-                        <a href="~/UsedCar/Content" title="SEE MORE">
+                        <a class="num" href="~/UsedCar/Content" title="SEE MORE">
                             <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
                             <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
                         </a>
@@ -195,8 +153,10 @@
                                     <li><em>車型:</em> COLTPLUS1 6LNB030</li>
                                     <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
                                 </ul>
-                                <p class="price text-danger">直購價<strong>66.8萬</strong></p> @* 直購商品 *@
-                                @* <p class="price text-danger">目前最高價<strong>66.8萬</strong></p> 拍賣商品 *@
+                                @* 直購商品 *@
+                                <p class="price text-danger">直購價<strong>$668,000</strong></p>
+                                @* 拍賣商品 *@
+                                @* <p class="price text-danger">目前最高價<strong>$668,000</strong></p> *@
                             </div>
                         </article>
                     </dd>
@@ -205,7 +165,7 @@
             <li class="card-wrap">
                 <dl class="card">
                     <dt class="card-img-top">
-                        <a href="~/UsedCar/Content" title="SEE MORE">
+                        <a class="num" href="~/UsedCar/Content" title="SEE MORE">
                             <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
                             <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
                         </a>
@@ -222,7 +182,7 @@
                                     <li><em>車型:</em> COLTPLUS1 6LNB030</li>
                                     <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
                                 </ul>
-                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                                <p class="price text-danger">直購價<strong>$668,000</strong></p>
                             </div>
                         </article>
                     </dd>
@@ -231,7 +191,7 @@
             <li class="card-wrap">
                 <dl class="card">
                     <dt class="card-img-top">
-                        <a href="~/UsedCar/Content" title="SEE MORE">
+                        <a class="num" href="~/UsedCar/Content" title="SEE MORE">
                             <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
                             <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
                         </a>
@@ -248,7 +208,7 @@
                                     <li><em>車型:</em> COLTPLUS1 6LNB030</li>
                                     <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
                                 </ul>
-                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                                <p class="price text-danger">直購價<strong>$668,000</strong></p>
                             </div>
                         </article>
                     </dd>
@@ -257,7 +217,7 @@
             <li class="card-wrap">
                 <dl class="card">
                     <dt class="card-img-top">
-                        <a href="~/UsedCar/Content" title="SEE MORE">
+                        <a class="num" href="~/UsedCar/Content" title="SEE MORE">
                             <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
                             <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
                         </a>
@@ -274,7 +234,7 @@
                                     <li><em>車型:</em> COLTPLUS1 6LNB030</li>
                                     <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
                                 </ul>
-                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                                <p class="price text-danger">直購價<strong>$668,000</strong></p>
                             </div>
                         </article>
                     </dd>
@@ -283,7 +243,7 @@
             <li class="card-wrap">
                 <dl class="card">
                     <dt class="card-img-top">
-                        <a href="~/UsedCar/Content" title="SEE MORE">
+                        <a class="num" href="~/UsedCar/Content" title="SEE MORE">
                             <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
                             <span class="label label-danger">結束時間：2016/1/1 18:00:59</span>
                         </a>
@@ -300,7 +260,7 @@
                                     <li><em>車型:</em> COLTPLUS1 6LNB030</li>
                                     <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
                                 </ul>
-                                <p class="price text-danger">直購價<strong>66.8萬</strong></p>
+                                <p class="price text-danger">直購價<strong>$668,000</strong></p>
                             </div>
                         </article>
                     </dd>
@@ -309,7 +269,6 @@
         </ol>
 
     </div></section>
-    @* end of 產品列表 *@
 
     <div class="grid-quality"><div class="wrap">
         <aside class="quality">

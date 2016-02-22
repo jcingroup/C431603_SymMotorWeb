@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "貸款專區";
+    ViewBag.BodyClass = "Loan p4";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+@Html.Partial("~/Views/Loan/Loan_sidebar.cshtml")
+
+<div class="wrap">
+
+    <section id="content">
+
+        <h2 class="h1">貸款服務簡介</h2>
+        @Html.Partial("~/Views/Shared/Form.cshtml")
+        
+    </section><!-- content //-->
+    
+</div>

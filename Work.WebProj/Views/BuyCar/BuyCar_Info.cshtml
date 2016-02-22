@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "購車服務";
-    ViewBag.BodyClass = "BuyCar p3";
+    ViewBag.BodyClass = "BuyCar";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -8,11 +8,9 @@
 <script>
     $(window).scroll(function () {
         if ($(this).scrollTop() > 150) {
-            $('#sidebar').addClass('fixed');
-            $('#content').addClass('fixed');
+            $('#sidebar, #content').addClass('fixed');
         } else {
-            $('#sidebar').removeClass('fixed');
-            $('#content').removeClass('fixed');
+            $('#sidebar, #content').removeClass('fixed');
         }
     });
 </script>
@@ -20,22 +18,13 @@
 
 <h1 class="sr-only">@ViewBag.Title</h1>
 
-<aside id="sidebar">
-    <h2 class="sr-only">子選單</h2>
-    <ul class="submenu">
-        <li><a href="~/BuyCar/List">購車優惠</a></li>
-        <li><a href="~/BuyCar#location">全台營業據點</a></li>
-        <li><a href="~/BuyCar/Info">新車購買指南</a></li>
-        <li><a href="~/BuyCar/Info">服務達人</a></li>
-        <li><a href="~/FAQ/Form">預約賞車</a></li>
-    </ul>
-</aside><!-- sidebar //-->
+@Html.Partial("~/Views/BuyCar/BuyCar_sidebar.cshtml")
 
 <div class="wrap">
 
     <section id="content">
         <h2 class="h1">新車購買指南</h2>
-        <article class="editor">
+        <div class="editor">
             <p>您想買車嗎？當有購車需求的時候，您會考慮些甚麼呢？是廠牌？是進口或國產？是車子的用途？還是貸款金額及乘數？您的這些問題，順益汽車都為您想到囉！所以，特別為您規劃了新車購買指南，透過以下幾個步驟，為您介紹購車前的基本常識，並為您進行分析，希望能對您有所幫助，買到一台適合您的車唷！</p>
             <h1>STEP I：選車</h1>
             <p>選車，是購車時的第一個步驟，通常需要考慮以下幾點： </p>
@@ -53,7 +42,7 @@
             <p>受到國際金融風暴影響，景氣仍未回春，對消費者而言，各項花費自是能省則省。所以，為節省駕駛車輛的交通費用，車輛是否節能省油，自然成為現今駕駛人最關心的話題，也是現今車主購車時最重要的考慮因素之一。而有環保署所頒發之節能標章的車款，就是購買省油節能車款的最好選擇。 </p>
             <h2>排氣量：</h2>
             <p>排氣量高低除與稅金息息相關外，通常排氣量較高之車款，亦相對較為耗油。 </p>
-        </article>
+        </div>
     </section><!-- content //-->
     
 </div>

@@ -1,14 +1,13 @@
 ﻿@{
-    ViewBag.Title = "預約試乘";
-    ViewBag.BodyClass = "TestDrive";
+    ViewBag.Title = "購車服務";
+    ViewBag.BodyClass = "BuyCar p5";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section CSS {
     <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
 }
-
 @section Scripts {
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script type="text/javascript">
         // When the window has finished loading create our google map below
         google.maps.event.addDomListener(window, 'load', init);
@@ -74,16 +73,28 @@
             }
         }
     </script>
+
+	<script>
+	    $(window).scroll(function () {
+	        if ($(this).scrollTop() > 150) {
+	            $('#sidebar, #content').addClass('fixed');
+	        } else {
+	            $('#sidebar, #content').removeClass('fixed');
+	        }
+	    });
+	</script>
 }
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+@Html.Partial("~/Views/BuyCar/BuyCar_sidebar.cshtml")
 
 <div class="wrap">
 
-    <h1 class="h1">@ViewBag.Title</h1>
-
     <section id="content">
 
-        <h2 class="sr-only">預約試乘申請表</h2>
-        
+        <h2 class="h1">預約賞車</h2>
+
         @Html.Partial("~/Views/Shared/Form.cshtml")
 
     </section><!-- content //-->

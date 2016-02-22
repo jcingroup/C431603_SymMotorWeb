@@ -1,20 +1,12 @@
 ﻿@{
     ViewBag.Title = "貸款專區";
-    ViewBag.BodyClass = "Loan p1";
+    ViewBag.BodyClass = "Loan";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
 
-<aside id="sidebar">
-    <h2 class="sr-only">子選單</h2>
-    <ul class="submenu">
-        <li><a href="~/Loan">貸款服務簡介</a></li>
-        <li><a href="~/Loan">各項分期貸款須知</a></li>
-        <li><a href="~/Loan">各項貸款問題 Q&amp;A</a></li>
-        <li><a href="~/FAQ/Form">線上申貸表格</a></li>
-    </ul>
-</aside><!-- sidebar //-->
+@Html.Partial("~/Views/Loan/Loan_sidebar.cshtml")
 
 <div class="wrap">
 

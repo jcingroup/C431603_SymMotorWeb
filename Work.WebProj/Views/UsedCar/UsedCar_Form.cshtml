@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "認證中古車";
+    ViewBag.BodyClass = "UsedCar p3";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@section Scripts {
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 150) {
+                $('#sidebar, #content').addClass('fixed');
+            } else {
+                $('#sidebar, #content').removeClass('fixed');
+            }
+        });
+    </script>
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+@Html.Partial("~/Views/UsedCar/UsedCar_sidebar.cshtml")
+
+<div class="wrap">
+
+    <section id="content">
+
+        <h2 class="h1">協助找車</h2>
+
+        @Html.Partial("~/Views/Shared/Form.cshtml")
+
+    </section><!-- content //-->
+    
+</div>

@@ -4,29 +4,122 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<div class="wrap">
+@section css {
+    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+}
 
-    <h1 class="h1">@ViewBag.Title</h1>
+@section Scripts {
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
+    <script>
+        var banner = new Swiper('#banner', {
+            effect: 'fade',
+            autoplay: 2500,
+            autoplayDisableOnInteraction: 'true',
+            speed: 500,
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
+    </script>
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+<div id="banner" class="swiper-container">
+    <ul class="swiper-wrapper list-unstyled">
+        <li class="swiper-slide">
+            <a href="~/Events/Content"><img src="~/Content/images/BuyCar/banner1.jpg" alt=""></a>
+        </li>
+        <li class="swiper-slide">
+            <a href="~/Events/Content"><img src="~/Content/images/BuyCar/banner1.jpg" alt=""></a>
+        </li>
+        <li class="swiper-slide">
+            <a href="~/Events/Content"><img src="~/Content/images/BuyCar/banner1.jpg" alt=""></a>
+        </li>
+    </ul>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div class="wrap">
 
     <section id="content">
 
-        <h2 class="h2">精彩活動回顧</h2>
+        <h2 class="h2">@ViewBag.Title</h2>
 
-        <ol class="card-list row">
-            <li class="card-wrap">
-                <dl class="card">
-                    <dt class="card-img-top">
-                        <a href="~/UsedCar/Content">
-                            <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
-                        </a>
-                    </dt>
-                    <a class="card-block" href="~/UsedCar/Content">
-                        <h3 class="card-title">OUTLANDER 拍照抽大獎</h3>
-                        <h6 class="card-subtitle">拍照打卡抽『Outlander PHEV+花蓮遠雄三天兩夜雙人自由行』</h6>
-                    </a>
-                </dl>
-            </li>
-        </ol>
+        <section class="grid-products">
+            <h3 class="sr-only">活動一覽</h3>
+            
+            <ol class="card-list row">
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Events/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Events/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Events/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Events/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Events/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Events/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Events/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Events/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+            </ol>
+
+        </section>
         
     </section><!-- content //-->
     

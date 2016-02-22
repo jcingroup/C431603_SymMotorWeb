@@ -287,6 +287,7 @@
     <Compile Include="Controllers\InsuranceController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\RepairController.cs" />
     <Compile Include="Controllers\TestDriveController.cs" />
     <Compile Include="Controllers\UsedCarController.cs" />
@@ -345,6 +346,9 @@
     <Content Include="Content\images\arrows2.jpg" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg2.jpg" />
+    <Content Include="Content\images\bg3.jpg" />
+    <Content Include="Content\images\bg4.jpg" />
+    <Content Include="Content\images\bgCard.png" />
     <Content Include="Content\images\bgDot.png" />
     <Content Include="Content\images\bgFooter.jpg" />
     <Content Include="Content\images\bgHeader.gif" />
@@ -355,10 +359,12 @@
     <Content Include="Content\images\BuyCar\banner1.jpg" />
     <Content Include="Content\images\BuyCar\banner2-thumb.jpg" />
     <Content Include="Content\images\BuyCar\banner2.jpg" />
+    <Content Include="Content\images\iconCheck.gif" />
+    <Content Include="Content\images\iconQuality.gif" />
     <Content Include="Content\images\iconSelect.jpg" />
+    <Content Include="Content\images\iconSelect2.gif" />
     <Content Include="Content\images\Index\banner1.jpg" />
     <Content Include="Content\images\Index\banner2.jpg" />
-    <Content Include="Content\images\Index\bgSeries.jpg" />
     <Content Include="Content\images\Index\car1.png" />
     <Content Include="Content\images\Index\car2.png" />
     <Content Include="Content\images\Index\car3.png" />
@@ -638,6 +644,8 @@
     <Content Include="Scripts\cdn\swfobject.js" />
     <Content Include="Scripts\cdn\toastr.js" />
     <Content Include="Scripts\src\xformat.html" />
+    <Content Include="Views\AboutUs\AboutUs.cshtml" />
+    <Content Include="Views\BuyCar\BuyCar_Form.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Scripts\cdn\BrowerInfo.js" />
     <Content Include="Scripts\cdn\chart\Chart.js" />
@@ -664,7 +672,6 @@
     <Content Include="Scripts\cdn\shadowbox\shadowbox.js" />
     <Content Include="Scripts\cdn\shadowbox\LICENSE" />
     <Content Include="Scripts\cdn\shadowbox\README" />
-    <Content Include="Views\AboutUs\AboutUs.cshtml" />
     <Content Include="Views\Accessory\Accessory.cshtml" />
     <Content Include="Views\BuyCar\BuyCar_content.cshtml" />
     <Content Include="Views\BuyCar\BuyCar_Index.cshtml" />
@@ -675,9 +682,7 @@
     <Content Include="Views\Enterprise\Enterprise.cshtml" />
     <Content Include="Views\Events\Events_content.cshtml" />
     <Content Include="Views\Events\Events_list.cshtml" />
-    <Content Include="Views\FAQ\FAQ_content.cshtml" />
     <Content Include="Views\FAQ\FAQ_Form.cshtml" />
-    <Content Include="Views\FAQ\FAQ_list.cshtml" />
     <Content Include="Views\Insurance\Insurance.cshtml" />
     <Content Include="Views\Loan\Loan.cshtml" />
     <Content Include="Views\News\News_content.cshtml" />
@@ -685,9 +690,19 @@
     <Content Include="Views\Repair\Repair.cshtml" />
     <Content Include="Views\TestDrive\TestDrive.cshtml" />
     <Content Include="Views\UsedCar\UsedCar_content.cshtml" />
+    <Content Include="Views\UsedCar\UsedCar_Form.cshtml" />
     <Content Include="Views\UsedCar\UsedCar_Index.cshtml" />
-    <Content Include="Views\UsedCar\UsedCar_Info.cshtml" />
     <Content Include="Views\UsedCar\UsedCar_list.cshtml" />
+    <Content Include="Views\BuyCar\BuyCar_sidebar.cshtml" />
+    <Content Include="Views\Loan\Loan_Form.cshtml" />
+    <Content Include="Views\Loan\Loan_sidebar.cshtml" />
+    <Content Include="Views\Repair\Repair_sidebar.cshtml" />
+    <Content Include="Views\Shared\Form.cshtml" />
+    <Content Include="Views\UsedCar\UsedCar_sidebar.cshtml" />
+    <Content Include="Views\AboutUs\AboutUs_sidebar.cshtml" />
+    <Content Include="Views\Offer\Offer_content.cshtml" />
+    <Content Include="Views\Offer\Offer_list.cshtml" />
+    <Content Include="Views\FAQ\FAQ_sidebar.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

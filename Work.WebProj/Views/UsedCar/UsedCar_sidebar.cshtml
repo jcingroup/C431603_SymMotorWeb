@@ -1,0 +1,13 @@
+﻿<aside id="sidebar">
+    <h2 class="sr-only">子選單</h2>
+    <ul class="submenu">
+    	@* 協助找車 *@
+        @if (@ViewBag.BodyClass.IndexOf("page_content") >= 0)
+        {
+    	<li><a href="#" id="goBack">回前頁</a></li>
+    	}
+        <li><a href="~/UsedCar">中古車首頁</a></li>
+        <li><a href="~/UsedCar/List">全部中古車</a></li>
+        <li><a href="~/UsedCar/Form">協助找車</a></li>
+    </ul>
+</aside><!-- sidebar //-->

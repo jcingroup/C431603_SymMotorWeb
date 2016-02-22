@@ -9,5 +9,9 @@ namespace DotWeb.Controllers
         {
             return View("Loan");
         }
+        public ActionResult Form()
+        {
+            return View("Loan_Form");
+        }
     }
 }

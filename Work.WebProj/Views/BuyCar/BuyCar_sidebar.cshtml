@@ -1,0 +1,18 @@
+﻿<aside id="sidebar">
+    <h2 class="sr-only">子選單</h2>
+    <ul class="submenu">
+    	@if (@ViewBag.BodyClass.IndexOf("page_content") >= 0)
+        {
+    	<li><a href="#" id="goBack">回前頁</a></li>
+    	}
+    	
+    	<li><a href="~/Offer/List">購車優惠</a></li>
+        <li><a href="~/BuyCar#location">全台營業據點</a></li>
+
+		@* current page: <a> + class="current" *@
+        <li><a href="~/BuyCar/Info">新車購買指南</a></li>
+        <li><a href="~/BuyCar/Info">服務達人</a></li>
+
+        <li><a href="~/BuyCar/Form">預約賞車</a></li>
+    </ul>
+</aside><!-- sidebar //-->

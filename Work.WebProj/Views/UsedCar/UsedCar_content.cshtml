@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "認證中古車";
-    ViewBag.BodyClass = "UsedCar";
+    ViewBag.BodyClass = "UsedCar page_content";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section css {
@@ -23,32 +23,32 @@
 
         $(window).scroll(function () {
             if ($(this).scrollTop() > 150) {
-                $('#sidebar').addClass('fixed');
-                $('#content').addClass('fixed');
+                $('#sidebar, #content').addClass('fixed');
             } else {
-                $('#sidebar').removeClass('fixed');
-                $('#content').removeClass('fixed');
+                $('#sidebar, #content').removeClass('fixed');
             }
+        });
+
+        //回上一頁
+        $('a#goBack').click(function(){
+            history.back();
+            return false;
         });
     </script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
 
-<aside id="sidebar">
-    <h2 class="sr-only">子選單</h2>
-    <ul class="submenu">
-        <li><a href="~/UsedCar">中古車首頁</a></li>
-        <li><a href="~/UsedCar/List">回列表</a></li>
-        <li><a href="~/UsedCar/Form">協助找車</a></li>
-        <li><a href="#">登出</a></li>
-    </ul>
-</aside><!-- sidebar //-->
+@Html.Partial("~/Views/UsedCar/UsedCar_sidebar.cshtml")
 
 <section id="content">
 
     <div class="grid-info"><div class="wrap">
-        <h2 class="h1">拍賣編號 <strong>A08037</strong></h2>
+        <h2 class="h1">
+            拍賣編號
+            <strong>A08037</strong>
+            <span class="price text-danger">直購價：$668,000</span>
+        </h2>
         <div class="gallery">
             <div id="banner" class="swiper-container">
                 <ul class="swiper-wrapper list-unstyled">
@@ -80,17 +80,17 @@
     </div></div>
 
     <div class="grid-info"><div class="wrap">
-        <h3 class="price text-danger">直購價<strong>66.8萬</strong></h3>
+        <h3 class="sr-only">車況介紹</h3>
         <div class="row">
             <dl class="info col-xs-4">
                 <dt class="icon"><i class="ti-car"></i></dt>
                 <dd>
                     <ul class="list-unstyled">
-                        <li><em>廠牌:</em> Mitsubishi</li>
-                        <li><em>車型:</em> COLTPLUS1 6LNB030</li>
-                        <li><em>車色:</em> 銀</li>
-                        <li><em>年份:</em> 2013</li>
-                        <li><em>地點:</em> 蘆洲廠</li>
+                        <li><em>廠牌：</em> Mitsubishi</li>
+                        <li><em>車型：</em> COLTPLUS1 6LNB030</li>
+                        <li><em>車色：</em> 銀</li>
+                        <li><em>年份：</em> 2013</li>
+                        <li><em>地點：</em> 蘆洲廠</li>
                     </ul>
                 </dd>
             </dl>
@@ -98,10 +98,10 @@
                 <dt class="icon"><i class="ti-settings"></i></dt>
                 <dd>
                     <ul class="list-unstyled">
-                        <li><em>排氣量</em>2977</li>
-                        <li><em>里程數(數據僅供參考)</em>約 120000</li>
-                        <li><em>排檔</em>手排</li>
-                        <li><em>胎深</em>1mm</li>
+                        <li><em>排氣量：</em>2977</li>
+                        <li><em>里程數(數據僅供參考)：</em>約 120000</li>
+                        <li><em>排檔：</em>手排</li>
+                        <li><em>胎深：</em>1mm</li>
                     </ul>
                 </dd>
             </dl>
@@ -109,17 +109,17 @@
                 <dt class="icon"><i class="ti-notepad"></i></dt>
                 <dd>
                     <ul class="list-unstyled">
-                        <li><em>原廠證件</em>牌照登記書『繳銷過戶』</li>
-                        <li><em>監理站</em>-</li>
-                        <li><em>引擎號碼</em>-</li>
-                        <li><em>領牌日</em>-</li>
-                        <li><em>原車價</em>$995000</li>
-                        <li><em>車輛整備表下載</em>-</li>
+                        <li><em>原廠證件：</em>牌照登記書『繳銷過戶』</li>
+                        <li><em>監理站：</em>暫無資料</li>
+                        <li><em>引擎號碼：</em>暫無資料</li>
+                        <li><em>領牌日：</em>暫無資料</li>
+                        <li><em>原車價：</em>$995000</li>
+                        <li><em>車輛整備表下載：</em>暫無資料</li>
                     </ul>
                 </dd>
             </dl>
             <dl class="detail col-xs-12">
-                <dt>配備</dt>
+                <dt>配備：</dt>
                 <dd>天窗、CD音響、衛星導航、定速、電動後視鏡、安全氣囊、4WD、皮椅、VCD、恆溫、ABS、倒車雷達、霧燈、電動座椅、DVD、防盜、TCS、鋁圈、電動窗</dd>
             </dl>
         </div>
@@ -128,16 +128,11 @@
     <div class="grid-info"><div class="wrap">
         <article class="article">
             <h2 class="h1">購買須知</h2>
-            <ul class="info list-unstyled">
+            <ul class="notice list-unstyled">
                 <li><em>配備說明</em>車輛相關資料請由整備表中下載，實況交車</li>
-                <li><em>車況</em>本車為購入中古車，詳細車況請參考整備表或與存放廠確認</li>
-                <li><em>備註</em>車牌已繳銷須重新驗車領牌。如須異動監理站車籍至其他監理站，請自行以新車主名義申請，須一個工作天。</li>
-                <li>
-                    <dl>
-                        <dt>注意事項</dt>
-                        <dd>1.請於完款後三天內至監理站為過戶登記，相關費用需自行承擔。 2.若需托運，其運費依規定辦理。</dd>
-                    </dl>
-                </li>
+                <li><em>車　　況</em>本車為購入中古車，詳細車況請參考整備表或與存放廠確認</li>
+                <li><em>備　　註</em>車牌已繳銷須重新驗車領牌。如須異動監理站車籍至其他監理站，請自行以新車主名義申請，須一個工作天。</li>
+                <li><em>注意事項</em>1. 請於完款後三天內至監理站為過戶登記，相關費用需自行承擔。<br>2. 若需托運，其運費依規定辦理。</li>
             </ul>
         </article>
     </div></div>

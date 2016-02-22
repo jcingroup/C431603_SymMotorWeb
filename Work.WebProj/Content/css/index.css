@@ -2128,6 +2128,10 @@ mark,
   text-align: center;
 }
 
+.text-middle {
+  vertical-align: middle;
+}
+
 .hidden-xs-up {
   display: none !important;
 }
@@ -2487,6 +2491,12 @@ a:focus {
 #sidebar .submenu li a:hover::after {
   width: 100%;
 }
+#sidebar .submenu li a.current {
+  color: #fff;
+}
+#sidebar .submenu li a.current::after {
+  width: 100%;
+}
 .p1 #sidebar .submenu li:nth-of-type(1) a {
   color: #fff;
 }
@@ -2519,7 +2529,7 @@ a:focus {
 }
 
 #content.fixed {
-  padding-top: 58px;
+  padding-top: 47px;
 }
 
 #footer {
@@ -2565,6 +2575,7 @@ a:focus {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
+  display: none;
 }
 .goTop:focus, .goTop:hover {
   color: white;

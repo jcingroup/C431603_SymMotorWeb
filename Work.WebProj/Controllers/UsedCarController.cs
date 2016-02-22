@@ -20,9 +20,9 @@ namespace DotWeb.Controllers
             return View("UsedCar_content");
         }
 
-        public ActionResult Info()
+        public ActionResult Form()
         {
-            return View("UsedCar_Info");
+            return View("UsedCar_Form");
         }
 
     }

@@ -36,7 +36,7 @@ $footer-height:         172px !default;
 @import "module/animation";
 // @import "module/dropdown";
 // @import "module/button-group";
-// @import "module/input-group";
+@import "module/input-group";
 @import "module/custom-forms";
 @import "module/nav";
 @import "module/navbar";
@@ -76,7 +76,7 @@ $footer-height:         172px !default;
 
 #map {
     height: 450px;
-    margin: $spacer*1.6 0;
+    margin-bottom: $spacer*1.2;
 }
 
 
@@ -146,8 +146,6 @@ $footer-height:         172px !default;
         width: 71.5%;
         padding-right: 0;
     }
-
-    #map {margin-top: 0;}
 }
 
 
@@ -260,7 +258,7 @@ $footer-height:         172px !default;
             display: block;
             width: 100%;
             position: absolute;
-            z-index: $zindex-popover;
+            z-index: 50;
         }
 
         &::before {
@@ -296,10 +294,7 @@ $footer-height:         172px !default;
     .card-title {
         font-size: $font-size-base;
 
-        a {
-            font-size: $font-size-lg;
-            margin-left: $spacer*0.5;
-        }
+        a {font-size: $font-size-lg;}
     }
 
     .info {
@@ -335,9 +330,9 @@ $footer-height:         172px !default;
     }
 
     .quality {
-        width: 20%;
+        width: 30%;
         float: left;
-        padding-right: $spacer;
+        padding: 0 $spacer 0 $spacer*2;
 
         li {
             background: url(#{$img-path}/iconCheck.gif) no-repeat left center;
@@ -381,11 +376,101 @@ $footer-height:         172px !default;
         padding-bottom: $content-spacing;
     }
 
-    .h1 {margin: 0 0 $spacer*2 0;}
+    .h1 {
+        margin: 0 0 $spacer*2 0;
+
+        .price {margin-left: $spacer;}
+    }
 
     .article {
         @include center-block;
         width: 65%;
+    }
+
+    .notice {
+
+        > li {
+            text-indent: -4.5em;
+            margin-left: 4.5em;
+
+            em {
+                font-style: normal;
+                font-weight: bold;
+                margin-right: 0.5em;
+            }
+        }
+    }
+
+    .info {
+        background: url(#{$img-path}/bgCard.png) no-repeat center bottom;
+        margin-bottom: $spacer*2;
+        padding-bottom: 26px;
+
+        .icon {
+            width: 105px;
+            background: #554B46;
+            border-radius: 50%;
+            
+            text-align: center;
+            line-height: 105px;
+            font-size: em(50px);
+            color: #fff;
+
+            position: relative;
+            z-index: 10;
+
+            margin: 0 auto;
+        }
+        &:first-of-type {
+            .icon {
+                line-height: 95px;
+                padding-bottom: 10px;
+            }
+        }
+
+        dd {
+            min-height: 311px;
+            text-align: center;
+            background: #f7f7f7;
+            color: $gray;
+
+            margin-top: -50px;
+            margin-bottom: 0;
+            padding: $spacer;
+            padding-top: 66px;
+
+            ul {margin-bottom: 0}
+
+            li {
+                border-bottom: 1px solid #dfdfdf;
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+
+                &:last-of-type {
+                    border: 0;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                em {
+                    font-style: normal;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.bid {
+    margin: 30px 0;
+
+    li {
+        margin-left: 10px;
+
+        em {
+            font-style: normal;
+            font-weight: bold;
+        }
     }
 }
 
@@ -453,21 +538,68 @@ $footer-height:         172px !default;
     }
 }
 
-.info {
 
-    .icon {
-        text-align: center;
-        font-size: em(60px);
-        color: $gray-lighter;
+// Events & Offer
+// ----------------------------------------------------------------------
+.Events, .Offer {
 
-        margin-bottom: $spacer;
+    #banner {
+        height: auto;
+        margin-bottom: $spacer*2;
+        overflow: hidden;
+
+        > ul {
+            > li {
+                background: #000;
+                
+                img {
+                    position: static;
+                    width: 100%;
+                    min-width: 1440px;
+                    max-width: 1920px;
+                    height: auto;
+                    margin-left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
     }
 
-    dd {
-        text-align: center;
+    .card-text {
+        height: 3em;
+        overflow: hidden;
     }
 }
 
 
-// TestDrive
+// News
 // ----------------------------------------------------------------------
+.article-list {
+    @include clearfix;
+    margin-bottom: $spacer*2;
+
+    .h2 {margin-bottom: $spacer*0.7;}
+
+    .thumb {
+        display: block;
+        width: 35%;
+        height: 260px;
+        border: 3px solid $gray-lighter;
+        
+        float: right;
+        margin-left: $spacer;
+
+        position: relative;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    p {}
+}
