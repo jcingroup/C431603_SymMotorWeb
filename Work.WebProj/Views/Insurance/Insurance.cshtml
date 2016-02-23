@@ -3,6 +3,17 @@
     ViewBag.BodyClass = "Insurance";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@section Scripts {
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 150) {
+                $('#sidebar, #content').addClass('fixed');
+            } else {
+                $('#sidebar, #content').removeClass('fixed');
+            }
+        });
+    </script>
+}
 
 <h1 class="sr-only">@ViewBag.Title</h1>
 

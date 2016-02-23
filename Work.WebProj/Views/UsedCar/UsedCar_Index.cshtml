@@ -18,10 +18,19 @@
             loop: true,
             speed: 500
         });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 150) {
+                $('#sidebar, #content').addClass('fixed');
+            } else {
+                $('#sidebar, #content').removeClass('fixed');
+            }
+        });
     </script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
+
+@Html.Partial("~/Views/UsedCar/UsedCar_sidebar.cshtml")
 
 <section id="content">
 
@@ -153,10 +162,7 @@
                                     <li><em>車型:</em> COLTPLUS1 6LNB030</li>
                                     <li><em>車色:</em> 銀 <em>年份:</em> 2013 <em>地點:</em> 蘆洲廠</li>
                                 </ul>
-                                @* 直購商品 *@
                                 <p class="price text-danger">直購價<strong>$668,000</strong></p>
-                                @* 拍賣商品 *@
-                                @* <p class="price text-danger">目前最高價<strong>$668,000</strong></p> *@
                             </div>
                         </article>
                     </dd>

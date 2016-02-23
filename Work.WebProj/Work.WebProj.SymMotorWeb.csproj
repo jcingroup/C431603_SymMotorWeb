@@ -682,10 +682,8 @@
     <Content Include="Scripts\cdn\shadowbox\LICENSE" />
     <Content Include="Scripts\cdn\shadowbox\README" />
     <Content Include="Views\Accessory\Accessory.cshtml" />
-    <Content Include="Views\BuyCar\BuyCar_content.cshtml" />
     <Content Include="Views\BuyCar\BuyCar_Index.cshtml" />
     <Content Include="Views\BuyCar\BuyCar_Info.cshtml" />
-    <Content Include="Views\BuyCar\BuyCar_list.cshtml" />
     <Content Include="Views\Careers\Careers.cshtml" />
     <Content Include="Views\Eco\Eco.cshtml" />
     <Content Include="Views\Enterprise\Enterprise.cshtml" />

@@ -19,16 +19,5 @@ namespace DotWeb.Controllers
         {
             return View("BuyCar_Form");
         }
-
-        public ActionResult List()
-        {
-            return View("BuyCar_list");
-        }
-
-        public ActionResult Content()
-        {
-            return View("BuyCar_content");
-        }
-
     }
 }

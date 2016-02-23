@@ -3949,6 +3949,12 @@ a.text-danger:focus, a.text-danger:hover {
   margin: 3rem 0;
   padding-bottom: 1rem;
 }
+.h1 small {
+  display: block;
+  color: #55595c;
+  font-size: 0.5em;
+  margin-bottom: 0.5rem;
+}
 .h1.style2 {
   font-size: 2.1875em;
   margin: 1rem 0 2rem 0;
@@ -4003,7 +4009,7 @@ a.text-danger:focus, a.text-danger:hover {
   font-weight: bold;
   text-shadow: 1px 1px 0 #E5E5E5;
 }
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary.active {
   background: linear-gradient(#5f5f5f, #2d2d2d);
   color: #fff;
   text-shadow: 1px 1px 0 #333;
@@ -4889,7 +4895,7 @@ a:focus {
 .grid-info .info dd {
   min-height: 311px;
   text-align: center;
-  background: #f7f7f7;
+  background: #f5f5f5;
   color: #55595c;
   margin-top: -50px;
   margin-bottom: 0;

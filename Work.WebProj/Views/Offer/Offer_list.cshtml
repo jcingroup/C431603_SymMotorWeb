@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "購車優惠";
+    ViewBag.BodyClass = "Offer p1";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section css {
+    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+}
+
+@section Scripts {
+<script>
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 150) {
+            $('#sidebar, #content').addClass('fixed');
+        } else {
+            $('#sidebar, #content').removeClass('fixed');
+        }
+    });
+</script>
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+@Html.Partial("~/Views/BuyCar/BuyCar_sidebar.cshtml")
+
+<div class="wrap">
+
+    <section id="content">
+
+        <h2 class="h1">@ViewBag.Title</h2>
+
+        <section class="grid-products">
+            <h3 class="sr-only">優惠一覽</h3>
+            
+            <ol class="card-list row">
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Offer/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Offer/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Offer/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Offer/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Offer/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Offer/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="card-wrap">
+                    <dl class="card">
+                        <dt class="card-img-top">
+                            <a href="~/Offer/Content" title="SEE MORE">
+                                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            </a>
+                        </dt>
+                        <dd class="card-block">
+                            <article>
+                                <h3 class="card-title">
+                                    <a href="~/Offer/Content">Outlander 打卡抽大獎</a>
+                                </h3>
+                                <div class="card-text">來店與 Outlander PHEV 合照抽「花蓮遠雄三天兩夜雙人自由行」</div>
+                            </article>
+                        </dd>
+                    </dl>
+                </li>
+            </ol>
+
+        </section>
+        
+    </section><!-- content //-->
+    
+</div>
