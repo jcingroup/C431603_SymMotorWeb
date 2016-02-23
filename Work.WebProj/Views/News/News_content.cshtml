@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.News
+@{
     ViewBag.Title = "最新消息";
     ViewBag.BodyClass = "News";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -15,7 +16,7 @@
         });
 
         //回上一頁
-        $('a#goBack').click(function(){
+        $('a#goBack').click(function () {
             history.back();
             return false;
         });
@@ -39,15 +40,15 @@
 
         <article class="article">
             <h3 class="h2">
-                <small>2015/10/1</small>
-                <a href="~/News/Content">10月新會員首購禮！購物滿500送200</a>
+                <small>@Model.day.ToString("yyyy/MM/dd")</small>
+                <a href="~/News/Content?id=@Model.news_id">@Model.news_title</a>
             </h3>
             <div class="editor">
-                <p>廚具家電、美食精選、居家百貨、親子/外出運動、女裝鞋包、美妝保養、名牌飾品、潮流男裝、特殺電器街等等，等您來選購！廚具家電、美食精選、居家百貨、親子/外出運動、女裝鞋包、美妝保養、名牌飾品、潮流男裝、特殺電器街等等，等您來選購！廚具家電、美食精選、居家百貨、親子/外出運動、女裝鞋包、美妝保養、名牌飾品、潮流男裝、特殺電器街等等，等您來選購！廚具家電、美食精選、居家百貨、親子/外出運動、女裝鞋包、美妝保養、名牌飾品、潮流男裝、特殺電器街等等，等您來選購！等您來選購！等您來</p>
-                
+                @Html.Raw(Model.news_content)
+
             </div>
         </article>
-        
+
     </section><!-- content //-->
 
 </div>

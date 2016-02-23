@@ -414,16 +414,15 @@ namespace News {
             <div className="form-group">
                 <label className="col-xs-2 control-label">簡介</label>
                 <div className="col-xs-8">
-                    <textarea type="text" className="form-control" rows={3} value={fieldData.news_info} onChange={this.changeFDValue.bind(this, 'news_info') } />
+                    <textarea type="text" className="form-control" rows={3} value={fieldData.news_info} onChange={this.changeFDValue.bind(this, 'news_info') } maxLength={235} />
                     </div>
-                <small className="col-xs-2 help-inline">最多512字</small>
+                <small className="col-xs-2 help-inline">最多235字</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">內容</label>
                 <div className="col-xs-10">
                     <textarea type="date" className="form-control" id="news_content" name="news_content"
-                        value={fieldData.news_content} onChange={this.changeFDValue.bind(this, 'news_content') }
-                        maxLength={512}/>
+                        value={fieldData.news_content} onChange={this.changeFDValue.bind(this, 'news_content') }/>
                     </div>
                 </div>
             <div className="form-action">
