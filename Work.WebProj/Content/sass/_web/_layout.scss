@@ -1,0 +1,424 @@
+@charset "UTF-8";
+
+
+/*      config
+-----------------------------------------------------------------------*/
+
+// var
+// 
+
+$header-height:         146px !default;
+$logo-width:            255px !default;
+$logo-spacing:          25px !default;
+$submenu-pages:         6;
+
+
+// base
+//
+
+html, body { height: 100%; }
+a {
+    @include transition(color 0.3s, background 0.3s);
+    &:focus { outline: none; }
+}
+
+
+
+/*      layout
+-----------------------------------------------------------------------*/
+
+// 外層-內容有絕對定位
+// %center {
+//     max-width: wrap-width(xl); // 最大寬度限制 (非滿版才需要)
+//     margin: 0 auto;
+// }
+
+// 容器-header、wrap、main、footer等
+// %contain {
+//     @extend %clearfix;
+
+//     // 最小寬度限制 (無 RWD)
+//     min-width: 1140px;
+
+//     // 最小寬度限制 (有 RWD - 至少 xxs 的寬度)
+//     min-width: wrap-width(xxs);
+// }
+
+#wrapper {
+    @if $enable-lte7 { _height: 100%; }
+    min-height: 100%;
+
+    background: #F5F5F5 url(#{$img-path}/bg.jpg) repeat-x left bottom $footer-height;
+
+    padding-bottom: $footer-height + $content-spacing; // 內容與footer間距
+}
+
+.wrap {
+    @extend .container;
+
+    position: relative;
+    padding: 0;
+}
+
+#header, #footer, #main {
+    // @extend %container;
+    // @extend %contain;
+    position: relative;
+}
+
+
+// header
+// ----------------------------------------------------------------------
+#header {
+    background:
+        url(#{$img-path}/bgHeader.gif) repeat-x center bottom,
+        #403734 url(#{$img-path}/bgHeader2.jpg) repeat-y center top;
+
+    z-index: $zindex-navbar;
+
+    .logo {
+        @include reset-text;
+        margin: 0;
+        
+        position: absolute;
+        left: 0;
+        top: -8px;
+
+        z-index: $zindex-navbar+10;
+
+        a {
+            @include text-pic('logo.png', 257px, 180px);
+        }
+    }
+
+    .topNav {
+        @extend .list-inline;
+        font-size: $font-size-sm;
+
+        position: absolute;
+        right: 0;
+        top: $spacer*0.5;
+
+        z-index: $zindex-navbar+1;
+
+        li:not(:last-child) { margin-right: $spacer; }
+
+        a {
+            color: #999;
+            &:hover, &:active { color: $brand-primary; }
+        }
+
+        @each $item in $pages2 {
+            $i: index($pages2, $item);
+            .#{$item} & li:nth-of-type(#{$i+1}) a {color: $brand-primary;}
+        }
+    }
+
+    .showcase {
+        position: relative;
+
+        padding-left: $logo-width + $logo-spacing;
+        padding-top: 47px;
+        padding-bottom: 25px;
+
+        .h2 {
+            @include reset-text;
+            border: 0;
+            margin: 0;
+            padding: 0;
+
+            font-size: em(17px);
+            color: #ccc;
+
+            position: absolute;
+            left: 280px; top: 45px;
+
+            &::after {
+                content: "/";
+                color:#999;
+                font-size: em(18px);
+                margin-left:$spacer*0.5;
+            }
+        }
+
+        a {
+            color: #fff;
+            font-size: em(18px);
+
+            &:hover {color: $link-hover-color;}
+        }
+
+        .menu, .submenu {
+            @extend .list-inline;
+            margin-bottom: 0;
+        }
+
+        .menu {
+            padding-left: $spacer*7.5;
+
+            > li:not(:last-child) { margin-right:$spacer*4.9; }
+        }
+
+        .submenu {
+
+            li {display: inline-block;}
+
+            a {
+                display: inline-block;
+                background: #866F5F;
+                border-radius: $border-radius*2;
+                font-size: $font-size-sm;
+                letter-spacing: 0.05em;
+
+                margin-right: $spacer*0.5;
+                margin-top: $spacer;
+                padding:$spacer*0.3 $spacer;
+            }
+        }
+
+        .collapse-toggle {
+            color: $link-hover-color;
+
+            &::after {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                margin-top: -0.3em;
+                margin-right: .25rem;
+                margin-left: $spacer*0.8;
+                vertical-align: middle;
+                content: "";
+                border-top: 0.5em solid lighten($link-hover-color, 35%);
+                border-right: 0.35em solid transparent;
+                border-left: 0.35em solid transparent;
+            }
+
+            &.collapsed {
+                color: #fff;
+
+                &:hover {color: $link-hover-color;}
+                &::after {border-top-color: #82744B;}
+                &:hover::after {border-top-color: lighten($link-hover-color, 35%);}
+            }
+
+            
+        }
+
+    }
+
+}
+
+#menu {
+    @extend .navbar;
+
+    padding-left: 260px;
+
+    .navbar-nav {
+        li {margin:0;}
+    }
+
+    a {
+        color: #fff;
+        font-size: em(17px);
+
+        padding-left: $spacer*1.48;
+        padding-right: $spacer*1.48
+    }
+
+    $selector: ();
+    @each $item in $pages {
+        $i: index($pages, $item);
+        $selector: append($selector, unquote(".#{$item} & li:nth-of-type(#{$i}) a"), comma);
+    }
+    #{$selector} {
+        position: relative;
+
+        &::after {
+            content: " ";
+            display: block;
+            width: 100%;
+            height: 26px;
+            background: url(#{$img-path}/menuActive.png) center bottom;
+
+            position: absolute;
+            left:0;
+            bottom:-30px;
+        }
+    }
+    a:hover, #{$selector} {
+        color: $link-hover-color;
+    }
+}
+
+
+// main
+// ----------------------------------------------------------------------
+
+#banner {
+    height: $banner-height;
+    background: #000;
+
+    > ul {
+        margin-bottom: 0;
+
+        > li {
+        text-align: center;
+
+            img {
+                width: 1920px;
+                height: $banner-height;
+                position: absolute;
+                left: 50%;
+                margin-left: -960px;
+            }
+        }
+    }
+}
+
+.title {
+    
+}
+
+#sidebar {
+    background: #2E2A27;
+    box-shadow: 0 5px 5px hsla(0,0,0,0.2);
+    padding-top: $spacer*0.7;
+    transition: padding 0.3s;
+
+    &.fixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding-top: 0;
+        z-index: $zindex-navbar-sticky;
+    }
+
+    .submenu {
+        @extend .wrap;
+        @extend .list-inline;
+
+        margin-bottom: 0;
+        padding-left: $logo-width + $logo-spacing;
+
+        li {
+            margin-left: -$spacer*0.5;
+
+            a {
+                display: inline-block;
+                color: #82744B;
+
+                position: relative;
+                padding: $spacer*0.7;
+
+                &::after {
+                    content:" ";
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    background: #CF2D2D;
+
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+
+                    transition: width 0.3s;
+                }
+
+                &:hover {
+                    color: #fff;
+
+                    &::after {width: 100%;}
+                }
+
+                &.current {
+                    color: #fff;
+                    &::after {width: 100%;}
+                }
+            }
+
+            @for $i from 1 through $submenu-pages {
+                
+                .p#{$i} &:nth-of-type(#{$i}) a {
+                    color: #fff;
+                    &::after {width: 100%;}
+                }
+            }
+        }
+    }
+}
+
+#content {
+    
+    &.fixed {
+        padding-top: 47px;
+    }
+}
+
+
+
+
+// footer
+// ----------------------------------------------------------------------
+#footer {
+    margin-top: -($footer-height);
+    height: $footer-height;
+    background: 
+        url(#{$img-path}/bgDot.png),
+        #1a1a1a url(#{$img-path}/bgFooter.jpg) repeat-y center top;
+
+    text-align: center;
+
+    padding-top: 35px;
+
+    &::before {
+        content:" ";
+        display: block;
+        width: 100%;
+        height: 197px;
+        background:
+            url(#{$img-path}/bgLine.png) no-repeat center top,
+            url(#{$img-path}/bgLine2.png) repeat-x center top;
+
+        position: absolute;
+        left: 0;
+        top: -112px;
+    }
+
+    .tel {
+        color: $brand-primary;
+        font-size: em(27px);
+
+        strong {
+            font-size: $font-size-h1;
+            letter-spacing: 0.1em;
+
+            margin-left: $spacer;
+        }
+    }
+}
+
+.copyright {
+    color:#8C9294;
+    font-size: em(13px);
+
+    margin-top: 20px;
+}
+
+.goTop {
+    @include size(54px);
+    
+    color: hsla(0, 0%, 100%, 0.5);
+    line-height: 3.35rem;
+    background: hsla(45, 100%, 36%, 0.5);
+    border-radius: 50%;
+
+    position: fixed;
+    right: $spacer;
+    bottom: $spacer;
+    
+    display: none;
+
+    &:focus, &:hover {color: hsla(0, 0%, 100%, 1);}
+    &:hover {background: hsla(45, 100%, 36%, 1);}
+}

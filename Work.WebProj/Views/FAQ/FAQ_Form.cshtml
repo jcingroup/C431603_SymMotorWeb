@@ -1,134 +1,23 @@
 ﻿@{
     ViewBag.Title = "FAQ 常見問題";
-    ViewBag.BodyClass = "faq";
+    ViewBag.BodyClass = "FAQ p6";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@section CSS {
+    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+@Html.Partial("~/Views/FAQ/FAQ_sidebar.cshtml")
 
 <div class="wrap">
 
-    <h1 class="h1">@ViewBag.Title</h1>
-
     <section id="content">
 
-        <h2 class="sr-only">聯絡我們</h2>
-        <h5 class="h5">請填妥以下基本資料，我們將有專人為您處理。</h5>
-
-        <hr>
-
-        <form action="" class="form">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label for="" class="control-label">姓名 <small class="text-danger">*</small></label>
-                        <input type="text" class="form-control c-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">E-mail <small class="text-danger">*</small></label>
-                        <input type="text" class="form-control c-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">試乘車款 <small class="text-danger">*</small></label>
-                        <select name="" id="" class="form-control c-select">
-                            <option value="" selected disabled>請選擇</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label for="" class="control-label">性別 <small class="text-danger">*</small></label>
-                        <div class="c-radio-group">
-                            <label class="c-input c-radio">
-                                <input id="radio1" name="radio" type="radio">
-                                <span class="c-indicator">男</span>
-                            </label>
-                            <label class="c-input c-radio">
-                                <input id="radio2" name="radio" type="radio">
-                                <span class="c-indicator">女</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">連絡電話 <small class="text-danger">*</small></label>
-                        <input type="text" class="form-control c-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">客服人員聯繫時間</label>
-                        <select name="" id="" class="form-control c-select">
-                            <option value="" selected disabled>請選擇</option>
-                            <option value="">上午 8:00~12:00</option>
-                            <option value="">下午 12:00~16:00</option>
-                            <option value="">下午 16:00 以後</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="" class="control-label">希望試乘日期 <small class="text-danger">*</small></label>
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <select name="" id="" class="form-control c-select">
-                                    <option value="" selected>2016年</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-2">
-                                <select name="" id="" class="form-control c-select">
-                                    <option value="" selected>2月</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-2">
-                                <select name="" id="" class="form-control c-select">
-                                    <option value="" selected>1日</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-3">
-                                <select name="" id="" class="form-control c-select">
-                                    <option value="" selected>08:00~10:00</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label for="" class="control-label">試乘據點 <small class="text-danger">*</small></label>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <select name="" id="" class="form-control c-select">
-                                    <option value="" selected disabled>選擇縣市</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-6">
-                                <select name="" id="" class="form-control c-select">
-                                    <option value="" selected disabled>選擇營業所</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group c-inputs-stacked">
-                        <label class="c-input c-checkbox">
-                            <input id="checkbox1" name="checkbox" type="checkbox">
-                            <span class="c-indicator"><i class="ti-check"></i></span>
-                            我已閱讀並同意 <a href="">試乘條款</a>
-                        </label>
-                        <label class="c-input c-checkbox">
-                            <input id="checkbox2" name="checkbox" type="checkbox">
-                            <span class="c-indicator"><i class="ti-check"></i></span>
-                            我願意收到EDM
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="sr-only">驗證</label>
-                        <img src="https://www.google.com/recaptcha/intro/images/hero-recaptcha-demo.gif" alt="" width="300">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg">填寫完成，送出資料</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-
+        <h2 class="h1">聯絡我們</h2>
+        @Html.Partial("~/Views/Shared/Form.cshtml")
+        
     </section><!-- content //-->
     
 </div>

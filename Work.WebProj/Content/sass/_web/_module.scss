@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+
+// cards
+// ----------------------------------------------------------------------
+.card-list {
+    @extend .list-unstyled;
+
+    .card {
+        background: url(#{$img-path}/bgCard.png) no-repeat center bottom;
+        padding-bottom: 26px;
+    }
+
+    .card-img-top {
+        background: $card-bg;
+        height: 215px;
+        text-align: center;
+
+        overflow: hidden;
+        position: relative;
+
+        img {
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .label {
+            font-size: $font-size-sm;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    .card-block {
+        background: $card-bg;
+        margin-bottom: 0;
+    }
+
+    .card-title {
+        font-size: $font-size-lg;
+        font-weight: bold;
+
+        @include text-truncate;
+    }
+
+    .card-subtitle {
+        height: 2.8em;
+
+        font-size: $font-size-sm;
+        line-height: 1.4;
+
+        overflow: hidden;
+    }
+}
+
+
+// custom forms
+// ----------------------------------------------------------------------
+
+.c-input {cursor: text;}
+.c-radio, .c-checkbox, .c-select {cursor: pointer;}
+
+[class*="c-"].style2 {
+    color: #4F6E80;
+    padding: $spacer*0.2 $spacer*0.3;
+}
+
+.c-select {
+    background: #fff url(#{$img-path}/iconSelect.jpg) no-repeat right center;
+    font-size: em(15px);
+
+    padding-right: em(56px);
+
+    &.style2 {
+        background: #fff url(#{$img-path}/iconSelect2.gif) no-repeat right 0.5em center;
+        padding-right: $spacer*2;
+    }
+}
+
+.c-input {
+    padding-left: .75rem;
+
+    &.c-checkbox, &.c-radio {padding-left: 2rem;}
+
+    > input {
+        &:focus ~ .c-indicator {box-shadow: none;}
+        &:active ~ .c-indicator {background: $link-hover-color;}
+    }
+}
+
+.c-indicator {
+    width: $line-height*1rem;
+    height: $line-height*1rem;
+    line-height: $line-height*1rem;
+    font-size: 80%;
+}
+
+.c-checkbox {
+
+    input:checked ~ .c-indicator { background: $brand-primary; }
+
+    input:indeterminate ~ .c-indicator {
+        background: $brand-primary;
+
+        &::after {content:"■";}
+    }
+}
+
+.c-radio-group, .c-checkbox-group {
+    .c-indicator {
+        position: relative;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        font-size: 100%;
+        line-height: $line-height;
+        color: $body-color;
+        background: #cfcfcf;
+        border: 1px solid $input-border-color;
+        border-radius: 0;
+
+        padding: $input-padding-y $input-padding-x;
+    }
+
+    .c-radio, .c-checkbox {
+
+        margin: 0;
+        padding: 0;
+
+        &:first-child {
+            .c-indicator {border-radius: $border-radius 0 0 $border-radius;}
+        }
+
+        &:last-child {
+            .c-indicator {border-radius: 0 $border-radius $border-radius 0;}
+        }
+
+        input:checked ~ .c-indicator {
+            background: $brand-primary;
+            border-color: $brand-primary;
+            color: #fff;
+        }
+    }
+
+    .c-radio + .c-radio, .c-checkbox + .c-checkbox {margin-left: -3px;}
+}
+
+
+// carousel
+// ----------------------------------------------------------------------
+#banner {
+    .swiper-pagination {
+        bottom: 0;
+
+        height: 30px;
+        line-height: 30px;
+        background: hsla(0,0,0,0.5);
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #B2B2B2;
+            border:2px solid #fff;
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+            background: $brand-secondary;
+            border-color: #fff;
+        }
+    }
+}

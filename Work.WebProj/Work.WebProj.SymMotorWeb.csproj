@@ -340,10 +340,7 @@
     <Content Include="Content\css\_admin\vendors\mask-load.css" />
     <Content Include="Content\css\_admin\vendors\toastr.css" />
     <Content Include="Content\font\fontAwesome\fontawesome-webfont.svg" />
-    <Content Include="Content\font\icomoon\icomoon.svg" />
-    <Content Include="Content\font\MElleHK.otf" />
-    <Content Include="Content\font\MElleHK.ttf" />
-    <Content Include="Content\font\MElleHK.woff" />
+    <Content Include="Content\images\Accessory\pic.jpg" />
     <Content Include="Content\images\arrows.png" />
     <Content Include="Content\images\arrows2.jpg" />
     <Content Include="Content\images\bg.jpg" />
@@ -374,6 +371,9 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\menuActive.png" />
     <Content Include="Content\images\no-pic.gif" />
+    <Content Include="Content\images\UsedCar\featured.jpg" />
+    <Content Include="Content\images\UsedCar\pro1-1.jpg" />
+    <Content Include="Content\images\UsedCar\pro1-2.jpg" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />
@@ -427,6 +427,10 @@
     <Content Include="Content\sass\helper\_utilities.scss" />
     <Content Include="Content\sass\helper\_variables.scss" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
+    <Content Include="Content\font\themify-icons\themify.eot" />
+    <Content Include="Content\font\themify-icons\themify.svg" />
+    <Content Include="Content\font\themify-icons\themify.ttf" />
+    <Content Include="Content\font\themify-icons\themify.woff" />
     <None Include="Content\sass\index.scss" />
     <Content Include="Content\sass\layout\_grid.scss" />
     <Content Include="Content\sass\module\_alert.scss" />
@@ -552,10 +556,12 @@
     <None Include="Content\sass\_admin\_modules.scss" />
     <None Include="Content\sass\_admin\_scripts.scss" />
     <None Include="Content\sass\_admin\_variables.scss" />
-    <Content Include="Content\font\icomoon\icomoon.eot" />
-    <Content Include="Content\font\icomoon\icomoon.ttf" />
-    <Content Include="Content\font\icomoon\icomoon.woff" />
     <None Include="Content\sass\editor.scss" />
+    <Content Include="Content\sass\_web\_element.scss" />
+    <Content Include="Content\sass\_web\_icon.scss" />
+    <Content Include="Content\sass\_web\_layout.scss" />
+    <Content Include="Content\sass\_web\_module.scss" />
+    <Content Include="Content\sass\_web\_var.scss" />
     <None Include="gulpfile.js" />
     <Content Include="Content\images\noIE\bg.gif" />
     <Content Include="Content\images\noIE\brow.gif" />
@@ -706,8 +712,8 @@
     <Content Include="Views\Offer\Offer_content.cshtml" />
     <Content Include="Views\Offer\Offer_list.cshtml" />
     <Content Include="Views\FAQ\FAQ_sidebar.cshtml" />
-    <Content Include="Views\FAQ\FAQ_content.cshtml" />
-    <Content Include="Views\FAQ\FAQ_list.cshtml" />
+    <Content Include="Views\FAQ\FAQ.cshtml" />
+    <Content Include="Views\Accessory\Accessory_sidebar.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

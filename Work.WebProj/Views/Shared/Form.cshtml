@@ -30,7 +30,7 @@
 
         <div class="col-xs-6">
             <div class="form-group">
-                <label for="" class="control-label">E-mail</label>
+                <label for="" class="control-label">E-mail <small class="text-danger">*</small></label>
                 <input type="text" class="form-control c-input">
             </div>
         </div>
@@ -367,6 +367,63 @@
         </div>
         @* end of 中古車貸款申請  *@
 
+        }
+
+        @* FAQ *@
+        @if (@ViewBag.BodyClass.IndexOf("FAQ") >= 0)
+        {
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label for="" class="control-label">愛車車款</label>
+                <input type="text" class="form-control c-input">
+                <small class="text-muted">若您是本公司客戶，請填寫關於愛車的基本資料</small>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label for="" class="control-label">車牌號碼</label>
+                <input type="text" class="form-control c-input">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label for="" class="control-label">營業所/服務廠</label>
+                <input type="text" class="form-control c-input">
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="" class="control-label">問題種類 <small class="text-danger">*</small></label>
+                <div>
+                    <label class="c-input c-checkbox">
+                        <input id="checkbox1" name="checkbox" type="checkbox">
+                        <span class="c-indicator"><i class="ti-check"></i></span>
+                        產品/購車/銷售
+                    </label>
+                    <label class="c-input c-checkbox">
+                        <input id="checkbox2" name="checkbox" type="checkbox">
+                        <span class="c-indicator"><i class="ti-check"></i></span>
+                        技術/維修/品質
+                    </label>
+                    <label class="c-input c-checkbox">
+                        <input id="checkbox2" name="checkbox" type="checkbox">
+                        <span class="c-indicator"><i class="ti-check"></i></span>
+                        網站/諮詢/其他
+                    </label>
+                    <label class="c-input c-checkbox">
+                        <input id="checkbox2" name="checkbox" type="checkbox">
+                        <span class="c-indicator"><i class="ti-check"></i></span>
+                        相關車款DM索取
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="" class="control-label">請留下您的問題，我們將竭誠為您服務與解答 <small class="text-danger">*</small></label>
+                <textarea class="form-control"></textarea>
+            </div>
+        </div>
         }
 
         <div class="col-xs-12">

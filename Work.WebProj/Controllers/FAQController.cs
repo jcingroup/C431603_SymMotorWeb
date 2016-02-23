@@ -5,13 +5,9 @@ namespace DotWeb.Controllers
 {
     public class FAQController : WebUserController
     {
-        public ActionResult List()
+        public ActionResult Index()
         {
-            return View("FAQ_list");
-        }
-        public ActionResult Content()
-        {
-            return View("FAQ_content");
+            return View("FAQ");
         }
         public ActionResult Form()
         {
