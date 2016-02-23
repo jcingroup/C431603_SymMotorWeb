@@ -222,7 +222,8 @@
     interface News extends BaseEntityTable {
         news_id?: number;
         news_title?: string;
-        news_date?: any;
+        day?: any;
+        news_info?: string;
         news_content?: string;
         sort?: number;
         i_Hide?: boolean;
@@ -265,10 +266,7 @@
     interface Banner extends BaseEntityTable {
         banner_id?: number;
         banner_name?: string;
-        type?: number;
         sort?: number;
-        show_name?: boolean;
-        style_string?: string;
         i_Hide?: boolean;
     }
     interface L1 extends BaseEntityTable {

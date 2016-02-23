@@ -43,7 +43,7 @@ namespace DotWeb.Areas.Active.Controllers
             {
                 //代表圖片
                 if (filekind == "List")
-                    handleImageSave(fileName, id, ImageFileUpParm.ProductList, filekind, "Active", "News");
+                    handleImageSave(fileName, id, ImageFileUpParm.NewsList, filekind, "Active", "News");
 
 
                 r.result = true;

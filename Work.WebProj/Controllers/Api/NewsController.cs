@@ -72,6 +72,7 @@ namespace DotWeb.Api
 
                 item.news_title = md.news_title;
                 item.day = md.day;
+                item.news_info = md.news_info;
                 item.news_content = md.news_content;
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
