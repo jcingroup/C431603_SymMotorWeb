@@ -11,8 +11,7 @@
 @section Scripts {
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        var banner = new Swiper('#banner', {
-            // effect: 'fade',
+        var banner = new Swiper('#banner .swiper-container', {
             autoplay: 2500,
             autoplayDisableOnInteraction: 'true',
             speed: 500
@@ -22,7 +21,8 @@
         });
 
         $(window).scroll(function () {
-            if ($(this).scrollTop() > 150) {
+            var h = $('#header').height();
+            if ($(this).scrollTop() > h) {
                 $('#sidebar, #content').addClass('fixed');
             } else {
                 $('#sidebar, #content').removeClass('fixed');
@@ -51,18 +51,20 @@
             <span class="price text-danger">直購價：$668,000</span>
         </h2>
         <div class="gallery">
-            <div id="banner" class="swiper-container">
-                <ul class="swiper-wrapper list-unstyled">
-                    <li class="swiper-slide"><img src="~/Content/images/Index/banner1.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                </ul>
+            <div id="banner">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper list-unstyled">
+                        <li class="swiper-slide"><img src="~/Content/images/Index/banner1.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
+                    </ul>
+                </div>
             </div>
             <div id="banner-thumb">
                 <ul class="list-unstyled">

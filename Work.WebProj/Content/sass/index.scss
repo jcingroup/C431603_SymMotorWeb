@@ -7,6 +7,7 @@ $img-path2:             '../images/Index';
 $banner-height:         560px;
 $content-spacing:       0;
 $footer-height:         160px;
+$content-spacing-xs:    $content-spacing;
 
 
 // import
@@ -52,6 +53,10 @@ $footer-height:         160px;
 	&::before {display: none;}
 
 	.copyright {margin-top: 45px;}
+
+	@include media-breakpoint-down(sm) {
+		.copyright {margin-top: 25px;}
+	}
 }
 
 
@@ -116,13 +121,10 @@ $footer-height:         160px;
 		}
 	}
 
-	.h3 {
-		font-size: $font-size-h5;
-	}
+	.h3 {font-size: $font-size-h5;}
 
 	#marquee {
-		width:calc(100% - 120px);
-
+		position: relative;
         margin: 50px auto;
         padding:0 60px;
 
@@ -130,8 +132,11 @@ $footer-height:         160px;
         	padding-bottom: $spacer*2.5;
 
         	a {
+        		display: block;
         		height: 155px;
         		line-height: 155px;
+
+        		margin: 0 30px;
         	}
             img {
             	max-width: 100%;
@@ -173,6 +178,40 @@ $footer-height:         160px;
 			background-position: right top;
 		}
 	}
+
+	@include media-breakpoint-down(sm) {
+		padding-top: 40px;
+
+		.h2 {
+			font-size: 3em;
+
+			&::before {transform: translate(-1.5px, -1.5px);}
+		}
+
+		.h3 {
+			font-size: 1em;
+			line-height: 1.5;
+		}
+
+		#marquee {
+			margin: 20px auto;
+			padding:0;
+
+			li {
+	        	padding-bottom: 0;
+
+	        	a {
+	        		height: 70px;
+	        		line-height: 70px;
+	        		margin: 0 $spacer/2;
+	        	}
+	        }
+
+	        .h4 {display: none;}
+
+			.prev, .next {display: none;}
+		}
+	}
 }
 
 .grid-news {
@@ -194,7 +233,8 @@ $footer-height:         160px;
     }
 
     .article-list {
-    	@extend .col-xs-8;
+    	@extend .col-md-8;
+    	@extend .col-xs-12;
     	padding-left: 0;
     	padding-right: $grid-gutter-width;
 
@@ -226,9 +266,16 @@ $footer-height:         160px;
     }
 
     .fb {
-    	@extend .col-xs-4;
+    	@extend .col-md-4;
+    	@extend .col-xs-12;
     	padding-right: 0;
     	padding-left: $grid-gutter-width;
+    }
+
+    @include media-breakpoint-down(sm) {
+    	padding: 40px 0;
+
+    	.article-list, .fb {padding:0 $grid-gutter-width/2;}
     }
 }
 
@@ -260,6 +307,22 @@ $footer-height:         160px;
 				letter-spacing: 0.1em;
 
 				margin: 0 $spacer*0.7;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+
+		.h2 {
+			span {
+				font-size: $font-size-sm;
+				&::before, &::after {display: none;}
+				
+				strong {
+					font-size: 1em;
+					letter-spacing: 0.05em;
+					margin: 0;
+				}
 			}
 		}
 	}

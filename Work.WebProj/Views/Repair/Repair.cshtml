@@ -7,7 +7,8 @@
 @section Scripts {
 <script>
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 150) {
+        var h = $('#header').height();
+            if ($(this).scrollTop() > h) {
             $('#sidebar, #content').addClass('fixed');
         } else {
             $('#sidebar, #content').removeClass('fixed');

@@ -17,6 +17,15 @@ $submenu-pages:         6;
 //
 
 html, body { height: 100%; }
+
+body {
+    position: relative;
+    left: 0;
+    transition: left 0.35s;
+
+    // &.push {overflow: hidden;}
+}
+
 a {
     @include transition(color 0.3s, background 0.3s);
     &:focus { outline: none; }
@@ -34,24 +43,23 @@ a {
     background: #F5F5F5 url(#{$img-path}/bg.jpg) repeat-x left bottom $footer-height;
 
     padding-bottom: $footer-height + $content-spacing; // 內容與footer間距
+
+    @include media-breakpoint-down(sm) {
+        padding-bottom: $footer-height + $content-spacing-xs;
+    }
 }
 
 .wrap {
     @extend .container;
 
     position: relative;
-    padding: 0;
+    // padding: 0;
 }
 
 #header, #footer, #main {
     // @extend %container;
     // @extend %contain;
     position: relative;
-}
-
-.push {
-    position: relative;
-    left: 250px;
 }
 
 
@@ -75,21 +83,6 @@ a {
         z-index: $zindex-navbar+10;
 
         a {@include text-pic('logo.png', 257px, 180px);}
-
-        @include media-breakpoint-down(md) {
-
-            background: linear-gradient(135deg, #e22f1a 0%,#992121 100%);
-            box-shadow: 0 1px 1px #491D1D;
-
-            padding: $spacer 0 $spacer*1.2 0;
-            position: static;
-
-            a {
-                width: 186px;
-                height: 40px;
-                background: url(#{$img-path}/logo2.gif) no-repeat;
-            }
-        }
     }
 
     .topNav {
@@ -124,6 +117,8 @@ a {
 
         .h2 {
             @include reset-text;
+            @extend .hidden-md-down;
+
             border: 0;
             margin: 0;
             padding: 0;
@@ -157,7 +152,7 @@ a {
         .menu {
             padding-left: $spacer*7.5;
 
-            > li:not(:last-child) { margin-right:$spacer*4.9; }
+            > li:not(:last-child) { margin-right:$spacer*4.55; }
         }
 
         .submenu {
@@ -178,6 +173,7 @@ a {
         }
 
         .collapse-toggle {
+            @extend .hidden-md-down;
             color: $link-hover-color;
 
             &::after {
@@ -207,6 +203,90 @@ a {
 
     }
 
+    @include media-breakpoint-down(md) {
+        background: linear-gradient(135deg, #e22f1a 0%,#992121 100%);
+        box-shadow: 0 2px 2px hsla(0,0,0,0.5);
+
+        .logo {
+            padding: $spacer 0 $spacer*1.2 0;
+            position: static;
+
+            a {
+                width: 186px;
+                height: 40px;
+                background: url(#{$img-path}/logo2.gif) no-repeat;
+            }
+        }
+
+        .topNav {
+            padding: $spacer*0.5;
+            position: static;
+            order: 3;
+
+            li:not(:last-child) {
+                margin: 0;
+
+                &::after {
+                    content:"/";
+                    color: #6E6661;
+                    margin: 0 $spacer*0.3;
+                }
+            }
+        }
+
+        .showcase {
+            border-bottom: 1px solid #6E6661;
+            padding: $spacer*0.6 $spacer;
+            order: 2;
+
+            .h2 {position: static;}
+
+            .menu {
+                padding: 0;
+
+                li {
+                    display: block;
+                    margin: 0;
+                    
+                    a {
+                        display: inline-block;
+                        font-size: $font-size-sm;
+                        padding: $spacer*0.1 0;
+                    }
+                }
+            }
+            .submenu {
+                &.collapse {display: block;}
+
+                li {
+                    display: block;
+
+                    a {
+                        background: none;
+                        margin: 0;
+                        padding: $spacer*0.1 0;
+                    }
+                }
+            }
+
+            a {
+                letter-spacing: 0.1em;
+
+                &::before {
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    margin: 0 $spacer*0.5;
+                    vertical-align: middle;
+                    content: "";
+                    border-left: 0.5em solid lighten($link-hover-color, 35%);
+                    border-top: 0.35em solid transparent;
+                    border-bottom: 0.35em solid transparent;
+                }
+            }
+        }
+    }
+
 }
 
 #menu {
@@ -222,8 +302,8 @@ a {
         color: #fff;
         font-size: em(17px);
 
-        padding-left: $spacer*1.48;
-        padding-right: $spacer*1.48
+        padding-left: $spacer*1.35;
+        padding-right: $spacer*1.35;
     }
 
     $selector: ();
@@ -249,15 +329,98 @@ a {
     a:hover, #{$selector} {
         color: $link-hover-color;
     }
+
+    @include media-breakpoint-down(md) {
+        padding:0;
+        order: 1;
+
+        .navbar-nav {
+            > li {
+                float: none;
+                border-bottom: 1px solid #6E6661;
+            }
+        }
+
+        a {
+            padding: $spacer*0.6 $spacer;
+            border-left: 3px solid $brand-secondary;
+        }
+
+        #{$selector} {
+            background: #393129;
+
+            &::after {display: none;}
+        }
+    }
 }
 
-#header .menu-pull {
+.menu-trigger {
+    @extend .hidden-lg-up;
+    @include text-hide;
+    @include size(50px);
+
+    float:left;
+    background: none;
+
+    margin: $spacer*0.8 0;
+    margin-right: $spacer;
+    padding: $spacer*0.5;
+
+    background: hsla(0,0,0,0.2);
+
+    span {
+        display: block;
+        height: 4px;
+        background: #C5665C;
+        position: relative;
+
+        transition: background 0.35s;
+
+        &::before, &::after {
+            content: " ";
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: #C5665C;
+
+            position: absolute;
+            left: 0;
+        }
+
+        &::before {
+            top: -10px;
+            transition: transform 0.35s, top 0.35s;
+        }
+        &::after {
+            bottom: -10px;
+            transition: transform 0.35s, bottom 0.35s;
+        }
+    }
+
+    &.active {
+        span {
+            background: transparent;
+
+            &::before {
+                top: 0;
+                transform: rotate(45deg);
+            }
+            &::after {
+                bottom: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+}
+
+.mobile-menu {
     @include media-breakpoint-down(md) {
         background: #544D48;
         width: 250px;
 
         position: fixed;
-        left: 0;
+        left: -250px;
         top: 0; bottom: 0;
 
         padding: 0;
@@ -266,41 +429,9 @@ a {
         display: flex;
         flex-direction: column;
 
-        .topNav {
-            position: static;
-            order: 3;
-        }
+        transition: left 0.35s;
 
-        .showcase {
-            padding: 0;
-            order: 2;
-
-            .h2 {position: static;}
-
-            .menu {
-                padding: 0;
-            }
-        }
-
-        #menu {
-            padding:0;
-            order: 1;
-
-            // border-bottom: 1px solid hsla(0,0,100%,0.5);
-
-            .navbar-nav {
-                > li {
-                    float: none;
-                    border-bottom: 1px solid #6E6661;
-                }
-            }
-
-            a {
-                padding: $spacer*0.6 $spacer;
-                border-left: 3px solid $brand-secondary;
-            }
-        }
-
+        &.pull {left: 0;}
     }
 }
 
@@ -400,6 +531,14 @@ a {
             }
         }
     }
+
+    @include media-breakpoint-down(md) {
+        padding-top: 0;
+
+        .push &.fixed {position: static;}
+        
+        .submenu {padding-left: $grid-gutter-width/2;}
+    }
 }
 
 #content {
@@ -448,6 +587,21 @@ a {
             letter-spacing: 0.1em;
 
             margin-left: $spacer;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        &::before {
+            height: 18px;
+            top: -9px;
+            background: linear-gradient(90deg, #989C9D 0%,#ECEDED 100%);
+            box-shadow: 0 0 5px hsla(0,0,0,0.5);
+        }
+
+        .tel {
+            strong {
+                font-size: 1.2em;
+            }
         }
     }
 }
