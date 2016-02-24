@@ -28,60 +28,66 @@
         <header id="header">
             <div class="wrap">
 
+                <button class="menu-trigger hidden-sm-up"><span>MENU</span></button>
+
                 <h1 class="logo"><a href="~/Index" title="回首頁">@Resources.Res.System_FrontName</a></h1>
 
-                <ul class="topNav">
-                    <li><a href="~/BuyCar#location">營業據點</a></li>
-                    <li><a href="~/AboutUs">公司介紹</a></li>
-                    <li><a href="~/News/List">最新消息</a></li>
-                    <li><a href="~/Events/List">精彩活動回顧</a></li>
-                    <li><a href="~/FAQ">FAQ 常見問題</a></li>
-                    <li><a href="~/Enterprise">企業相關網站</a></li>
-                    <li><a href="~/Careers">菁英招募</a></li>
-                </ul>
+                <div class="mobile-menu">
 
-                <div id="series" class="showcase panel">
-                    <h2 class="h2">車款展示</h2>
-                    <ul class="menu">
-                        <li><a href="http://www.coltplus.com.tw/" target="new">COLT PLUS</a></li>
-                        <li>
-                        
-                            @* 有子項目的車款，<a>要加class, 參數 *@
-                            <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series1" aria-expanded="false">LANCER</a>
-
-                        </li>
-                        <li><a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series2" aria-expanded="false">OUTLANDER</a></li>
-                        <li><a href="http://www.zinger.com.tw/" target="new">ZINGER</a></li>
-                        <li><a href="http://pajero.mitsubishi-motors.com.tw/" target="new">PAJERO</a></li>
+                    <ul class="topNav">
+                        <li><a href="~/BuyCar#location">營業據點</a></li>
+                        <li><a href="~/AboutUs">公司介紹</a></li>
+                        <li><a href="~/News/List">最新消息</a></li>
+                        <li><a href="~/Events/List">精彩活動回顧</a></li>
+                        <li><a href="~/FAQ">FAQ 常見問題</a></li>
+                        <li><a href="~/Enterprise">企業相關網站</a></li>
+                        <li><a href="~/Careers">菁英招募</a></li>
                     </ul>
 
-                    @* 子項目 *@
-                    <ul id="series1" class="submenu collapse">
-                        <li><a href="http://lancerfortis.mitsubishi-motors.com.tw/" target="new">LANCER FORTIS</a></li>
-                        <li><a href="http://lancer.mitsubishi-motors.com.tw/" target="new">LANCER iO</a></li>
-                        <li><a href="http://lancersportback.mitsubishi-motors.com.tw/" target="new">LANCER SPORTBACK</a>
-                        </li>
-                    </ul>
+                    <div id="series" class="showcase panel">
+                        <h2 class="h2">車款展示</h2>
+                        <ul class="menu">
+                            <li><a href="http://www.coltplus.com.tw/" target="new">COLT PLUS</a></li>
+                            <li>
+                            
+                                @* 有子項目的車款，<a>要加class, 參數 *@
+                                <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series1" aria-expanded="false">LANCER</a>
 
-                    <ul id="series2" class="submenu collapse">
-                        <li><a href="http://www.outlander.com.tw/" target="new">OUTLANDER 2.4</a></li>
-                        <li><a href="http://outlander.mitsubishi-motors.com.tw/phev/" target="new">OUTLANDER PHEV</a></li>
-                    </ul>
+                            </li>
+                            <li><a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series2" aria-expanded="false">OUTLANDER</a></li>
+                            <li><a href="http://www.zinger.com.tw/" target="new">ZINGER</a></li>
+                            <li><a href="http://pajero.mitsubishi-motors.com.tw/" target="new">PAJERO</a></li>
+                        </ul>
+
+                        @* 子項目 *@
+                        <ul id="series1" class="submenu collapse">
+                            <li><a href="http://lancerfortis.mitsubishi-motors.com.tw/" target="new">LANCER FORTIS</a></li>
+                            <li><a href="http://lancer.mitsubishi-motors.com.tw/" target="new">LANCER iO</a></li>
+                            <li><a href="http://lancersportback.mitsubishi-motors.com.tw/" target="new">LANCER SPORTBACK</a>
+                            </li>
+                        </ul>
+
+                        <ul id="series2" class="submenu collapse">
+                            <li><a href="http://www.outlander.com.tw/" target="new">OUTLANDER 2.4</a></li>
+                            <li><a href="http://outlander.mitsubishi-motors.com.tw/phev/" target="new">OUTLANDER PHEV</a></li>
+                        </ul>
+                    </div>
+
+                    <nav id="menu">
+                        <h2 class="sr-only">主選單</h2>
+                        <ul class="nav navbar-nav">
+                            <li><a href="~/TestDrive">預約試乘</a></li>
+                            <li><a href="~/UsedCar">認證中古車</a></li>
+                            <li><a href="~/BuyCar">購車服務</a></li>
+                            <li><a href="~/Repair">維修服務</a></li>
+                            <li><a href="~/Loan">貸款專區</a></li>
+                            <li><a href="~/Insurance">保險專區</a></li>
+                            <li><a href="~/Accessory">配件專區</a></li>
+                            <li><a href="~/Eco">綠能專區</a></li>
+                        </ul>
+                    </nav>
+
                 </div>
-
-                <nav id="menu">
-                    <h2 class="hidden-sm-up">主選單</h2>
-                    <ul class="nav navbar-nav">
-                        <li><a href="~/TestDrive">預約試乘</a></li>
-                        <li><a href="~/UsedCar">認證中古車</a></li>
-                        <li><a href="~/BuyCar">購車服務</a></li>
-                        <li><a href="~/Repair">維修服務</a></li>
-                        <li><a href="~/Loan">貸款專區</a></li>
-                        <li><a href="~/Insurance">保險專區</a></li>
-                        <li><a href="~/Accessory">配件專區</a></li>
-                        <li><a href="~/Eco">綠能專區</a></li>
-                    </ul>
-                </nav>
 
             </div><!-- wrap //-->
         </header><!-- header //-->
@@ -130,8 +136,9 @@
 
         // 行動裝置的主選單
         $(".menu-trigger").click(function (event) {
-            $("#menu").fadeToggle();
-            // $("#menu").toggleClass("toggled");
+            $(this).toggleClass("active");
+            $("body").toggleClass("push");
+            $(".mobile-menu").toggleClass("pull");
             event.preventDefault();
         });
     </script>

@@ -659,7 +659,7 @@ mark,
   content: "\00A0 \2014";
 }
 
-.container, .wrap, #sidebar .submenu {
+.container, .wrap, #sidebar .submenu, #banner > ul > li::before {
   margin-left: auto;
   margin-right: auto;
   padding-left: 0.9375rem;
@@ -671,23 +671,28 @@ mark,
   clear: both;
 }
 @media (min-width: 544px) {
-  .container, .wrap, #sidebar .submenu {
+  .container, .wrap, #sidebar .submenu, #banner > ul > li::before {
     max-width: 576px;
   }
 }
 @media (min-width: 768px) {
-  .container, .wrap, #sidebar .submenu {
+  .container, .wrap, #sidebar .submenu, #banner > ul > li::before {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .container, .wrap, #sidebar .submenu {
+  .container, .wrap, #sidebar .submenu, #banner > ul > li::before {
     max-width: 940px;
   }
 }
 @media (min-width: 1280px) {
-  .container, .wrap, #sidebar .submenu {
+  .container, .wrap, #sidebar .submenu, #banner > ul > li::before {
     max-width: 1200px;
+  }
+}
+@media (min-width: 1440px) {
+  .container, .wrap, #sidebar .submenu, #banner > ul > li::before {
+    max-width: 1400px;
   }
 }
 
@@ -713,7 +718,7 @@ mark,
   clear: both;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-news .fb, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-news .article-list, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-news .fb, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-news .article-list, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
   position: relative;
   min-height: 1px;
   padding-left: 0.9375rem;
@@ -1764,6 +1769,215 @@ mark,
     margin-left: 100%;
   }
 }
+@media (min-width: 1440px) {
+  .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
+    float: left;
+  }
+
+  .col-xxl-1 {
+    width: 8.33333%;
+  }
+
+  .col-xxl-2 {
+    width: 16.66667%;
+  }
+
+  .col-xxl-3 {
+    width: 25%;
+  }
+
+  .col-xxl-4 {
+    width: 33.33333%;
+  }
+
+  .col-xxl-5 {
+    width: 41.66667%;
+  }
+
+  .col-xxl-6 {
+    width: 50%;
+  }
+
+  .col-xxl-7 {
+    width: 58.33333%;
+  }
+
+  .col-xxl-8 {
+    width: 66.66667%;
+  }
+
+  .col-xxl-9 {
+    width: 75%;
+  }
+
+  .col-xxl-10 {
+    width: 83.33333%;
+  }
+
+  .col-xxl-11 {
+    width: 91.66667%;
+  }
+
+  .col-xxl-12 {
+    width: 100%;
+  }
+
+  .col-xxl-pull-0 {
+    right: auto;
+  }
+
+  .col-xxl-pull-1 {
+    right: 8.33333%;
+  }
+
+  .col-xxl-pull-2 {
+    right: 16.66667%;
+  }
+
+  .col-xxl-pull-3 {
+    right: 25%;
+  }
+
+  .col-xxl-pull-4 {
+    right: 33.33333%;
+  }
+
+  .col-xxl-pull-5 {
+    right: 41.66667%;
+  }
+
+  .col-xxl-pull-6 {
+    right: 50%;
+  }
+
+  .col-xxl-pull-7 {
+    right: 58.33333%;
+  }
+
+  .col-xxl-pull-8 {
+    right: 66.66667%;
+  }
+
+  .col-xxl-pull-9 {
+    right: 75%;
+  }
+
+  .col-xxl-pull-10 {
+    right: 83.33333%;
+  }
+
+  .col-xxl-pull-11 {
+    right: 91.66667%;
+  }
+
+  .col-xxl-pull-12 {
+    right: 100%;
+  }
+
+  .col-xxl-push-0 {
+    left: auto;
+  }
+
+  .col-xxl-push-1 {
+    left: 8.33333%;
+  }
+
+  .col-xxl-push-2 {
+    left: 16.66667%;
+  }
+
+  .col-xxl-push-3 {
+    left: 25%;
+  }
+
+  .col-xxl-push-4 {
+    left: 33.33333%;
+  }
+
+  .col-xxl-push-5 {
+    left: 41.66667%;
+  }
+
+  .col-xxl-push-6 {
+    left: 50%;
+  }
+
+  .col-xxl-push-7 {
+    left: 58.33333%;
+  }
+
+  .col-xxl-push-8 {
+    left: 66.66667%;
+  }
+
+  .col-xxl-push-9 {
+    left: 75%;
+  }
+
+  .col-xxl-push-10 {
+    left: 83.33333%;
+  }
+
+  .col-xxl-push-11 {
+    left: 91.66667%;
+  }
+
+  .col-xxl-push-12 {
+    left: 100%;
+  }
+
+  .col-xxl-offset-0 {
+    margin-left: 0%;
+  }
+
+  .col-xxl-offset-1 {
+    margin-left: 8.33333%;
+  }
+
+  .col-xxl-offset-2 {
+    margin-left: 16.66667%;
+  }
+
+  .col-xxl-offset-3 {
+    margin-left: 25%;
+  }
+
+  .col-xxl-offset-4 {
+    margin-left: 33.33333%;
+  }
+
+  .col-xxl-offset-5 {
+    margin-left: 41.66667%;
+  }
+
+  .col-xxl-offset-6 {
+    margin-left: 50%;
+  }
+
+  .col-xxl-offset-7 {
+    margin-left: 58.33333%;
+  }
+
+  .col-xxl-offset-8 {
+    margin-left: 66.66667%;
+  }
+
+  .col-xxl-offset-9 {
+    margin-left: 75%;
+  }
+
+  .col-xxl-offset-10 {
+    margin-left: 83.33333%;
+  }
+
+  .col-xxl-offset-11 {
+    margin-left: 91.66667%;
+  }
+
+  .col-xxl-offset-12 {
+    margin-left: 100%;
+  }
+}
 .fade {
   opacity: 0;
   transition: opacity .15s linear;
@@ -2180,7 +2394,19 @@ mark,
   }
 }
 
-.hidden-xl-down {
+@media (max-width: 1439px) {
+  .hidden-xl-down {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hidden-xxl-up {
+    display: none !important;
+  }
+}
+
+.hidden-xxl-down {
   display: none !important;
 }
 
@@ -2247,6 +2473,11 @@ a:focus {
   position: relative;
 }
 
+.push {
+  position: relative;
+  left: 250px;
+}
+
 #header {
   background: url(../images/bgHeader.gif) repeat-x center bottom, #403734 url(../images/bgHeader2.jpg) repeat-y center top;
   z-index: 1000;
@@ -2284,6 +2515,19 @@ a:focus {
   width: 257px;
   height: 180px;
   overflow: hidden;
+}
+@media (max-width: 991px) {
+  #header .logo {
+    background: linear-gradient(135deg, #e22f1a 0%, #992121 100%);
+    box-shadow: 0 1px 1px #491D1D;
+    padding: 1rem 0 1.2rem 0;
+    position: static;
+  }
+  #header .logo a {
+    width: 186px;
+    height: 40px;
+    background: url(../images/logo2.gif) no-repeat;
+  }
 }
 #header .topNav {
   font-size: 0.875rem;
@@ -2441,6 +2685,47 @@ a:focus {
 }
 #menu a:hover, .TestDrive #menu li:nth-of-type(1) a, .UsedCar #menu li:nth-of-type(2) a, .BuyCar #menu li:nth-of-type(3) a, .Repair #menu li:nth-of-type(4) a, .Loan #menu li:nth-of-type(5) a, .Insurance #menu li:nth-of-type(6) a, .Accessory #menu li:nth-of-type(7) a, .Eco #menu li:nth-of-type(8) a {
   color: #ffbf07;
+}
+
+@media (max-width: 991px) {
+  #header .menu-pull {
+    background: #544D48;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  #header .menu-pull .topNav {
+    position: static;
+    order: 3;
+  }
+  #header .menu-pull .showcase {
+    padding: 0;
+    order: 2;
+  }
+  #header .menu-pull .showcase .h2 {
+    position: static;
+  }
+  #header .menu-pull .showcase .menu {
+    padding: 0;
+  }
+  #header .menu-pull #menu {
+    padding: 0;
+    order: 1;
+  }
+  #header .menu-pull #menu .navbar-nav > li {
+    float: none;
+    border-bottom: 1px solid #6E6661;
+  }
+  #header .menu-pull #menu a {
+    padding: 0.6rem 1rem;
+    border-left: 3px solid #CF2D2D;
+  }
 }
 
 #banner {
@@ -2617,6 +2902,18 @@ a:focus {
 #banner {
   height: auto;
   background: #2E2A27;
+}
+#banner > ul > li::before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 83px;
+  background: url(../images/Index/watermark.png) no-repeat 1.875rem 17px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 1060;
 }
 #banner > ul > li img {
   position: static;
