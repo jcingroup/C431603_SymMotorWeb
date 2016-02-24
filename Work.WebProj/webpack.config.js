@@ -11,7 +11,7 @@ module.exports = {
         m_change_password: path.resolve(__dirname, 'Scripts/src/tsx/m-change_password.js'),
         m_users: path.resolve(__dirname, 'Scripts/src/tsx/m-users.js'),
         //後台 管理者
-        m_sales: path.resolve(__dirname, 'Scripts/src/tsx/m-sales.js'),
+        m_event: path.resolve(__dirname, 'Scripts/src/tsx/m-event.js'),
         m_news: path.resolve(__dirname, 'Scripts/src/tsx/m-news.js'),
         m_aboutus: path.resolve(__dirname, 'Scripts/src/tsx/m-aboutus.js'),
         m_parm: path.resolve(__dirname, 'Scripts/src/tsx/m-parm.js'),

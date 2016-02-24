@@ -101,6 +101,9 @@
     <Compile Include="DB0\Department.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Event.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\i_Currency.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
@@ -132,6 +135,9 @@
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_Department.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_Event.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_i_Currency.cs">

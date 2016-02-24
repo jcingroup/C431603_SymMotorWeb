@@ -7,11 +7,11 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Banner {
+namespace Event {
     interface Rows {
-        banner_id?: string;
+        event_id?: string;
         check_del?: boolean,
-        banner_name?: string;
+        event_title?: string;
         sort?: number;
         i_Hide?: boolean;
     }
@@ -46,14 +46,14 @@ namespace Banner {
             return <tr>
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
-                       <td>{this.props.itemData.banner_name}</td>
+                       <td>{this.props.itemData.event_title}</td>
                        <td>{this.props.itemData.sort }</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
                 </tr>;
 
         }
     }
-    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Banner>>{
+    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Event>>{
 
         constructor() {
 
@@ -71,6 +71,7 @@ namespace Banner {
             this.changeFDValue = this.changeFDValue.bind(this);
             this.setInputValue = this.setInputValue.bind(this);
             this.handleSearch = this.handleSearch.bind(this);
+            this.componentDidUpdate = this.componentDidUpdate.bind(this);
             this.render = this.render.bind(this);
 
 
@@ -84,10 +85,16 @@ namespace Banner {
         static defaultProps: BaseDefine.GridFormPropsBase = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPath: gb_approot + 'api/Banner'
+            apiPath: gb_approot + 'api/Event'
         }
         componentDidMount() {
             this.queryGridData(1);
+        }
+        componentDidUpdate(prevProps, prevState) {
+            if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
+                console.log('CKEDITOR');
+                CKEDITOR.replace('event_content', { customConfig: '../ckeditor/inlineConfig.js' });
+            }
         }
         gridData(page: number) {
 
@@ -116,6 +123,7 @@ namespace Banner {
         handleSubmit(e: React.FormEvent) {
 
             e.preventDefault();
+            this.state.fieldData.event_content = CKEDITOR.instances['event_content'].getData();
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: FormResult, textStatus, jqXHRdata) => {
@@ -157,7 +165,7 @@ namespace Banner {
             var ids = [];
             for (var i in this.state.gridData.rows) {
                 if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].banner_id);
+                    ids.push('ids=' + this.state.gridData.rows[i].event_id);
                 }
             }
 
@@ -199,7 +207,7 @@ namespace Banner {
             this.setState(newState);
         }
         insertType() {
-            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0 } });
+            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, show_banner: true } });
         }
         updateType(id: number | string) {
 
@@ -291,7 +299,7 @@ namespace Banner {
                                         (itemData, i) =>
                                             <GridRow key={i}
                                                 ikey={i}
-                                                primKey={itemData.banner_id}
+                                                primKey={itemData.event_id}
                                                 itemData={itemData}
                                                 delCheck={this.delCheck}
                                                 updateType={this.updateType} />
@@ -323,25 +331,60 @@ namespace Banner {
     <h4 className="title"> {this.props.caption} 基本資料維護</h4>
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className="col-xs-10">
+
             <div className="form-group">
-                <label className="col-xs-2 control-label">首頁輪播圖</label>
+                <label className="col-xs-2 control-label">輪播圖</label>
                 <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.banner_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BannerData/aj_FUpload'} url_list={gb_approot + 'Active/BannerData/aj_FList'}
-                       url_delete={gb_approot + 'Active/BannerData/aj_FDelete'} />
+                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'}
+                       url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
                     <small className="help-block">最多1張圖，建議尺寸 1920*725 px, 每張圖最大不可超過2MB</small>
                     </div>
                 </div>
-
+            <div className="form-group">
+                <label className="col-xs-2 control-label">代表圖</label>
+                <div className="col-xs-8">
+                   <CommCmpt.MasterImageUpload FileKind="List" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'}
+                       url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
+                    <small className="help-block">最多1張圖，建議尺寸 280*215  px, 每張圖最大不可超過2MB</small>
+                    </div>
+                </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">名稱</label>
                 <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'banner_name') } value={fieldData.banner_name} maxLength={64} />
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'event_title') } value={fieldData.event_title} maxLength={64} />
                     </div>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排序</label>
                 <div className="col-xs-8">
                     <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
+                    </div>
+                </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">輪播圖顯示於列表</label>
+                <div className="col-xs-4">
+                   <div className="radio-inline">
+                       <label>
+                            <input type="radio"
+                                name="show_banner"
+                                value={false}
+                                checked={fieldData.show_banner === false}
+                                onChange={this.changeFDValue.bind(this, 'show_banner') }
+                                />
+                            <span>隱藏</span>
+                           </label>
+                       </div>
+                   <div className="radio-inline">
+                       <label>
+                            <input type="radio"
+                                name="show_banner"
+                                value={true}
+                                checked={fieldData.show_banner === true}
+                                onChange={this.changeFDValue.bind(this, 'show_banner') }
+                                />
+                            <span>顯示</span>
+                           </label>
+                       </div>
                     </div>
                 </div>
             <div className="form-group">
@@ -371,6 +414,20 @@ namespace Banner {
                        </div>
                     </div>
                 </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">簡介</label>
+                <div className="col-xs-8">
+                    <textarea type="text" className="form-control" rows={3} value={fieldData.event_info} onChange={this.changeFDValue.bind(this, 'event_info') } maxLength={128} />
+                    </div>
+                <small className="col-xs-2 help-inline">最多128字</small>
+                </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">內容</label>
+                <div className="col-xs-10">
+                    <textarea type="date" className="form-control" id="event_content" name="event_content"
+                        value={fieldData.event_content} onChange={this.changeFDValue.bind(this, 'event_content') }/>
+                    </div>
+                </div>
             <div className="form-action">
                 <div className="col-xs-4 col-xs-offset-2">
                     <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
@@ -390,4 +447,4 @@ namespace Banner {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Banner.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);
+ReactDOM.render(<Event.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);

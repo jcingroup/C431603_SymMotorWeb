@@ -195,6 +195,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\EventDataController.cs" />
     <Compile Include="Areas\Active\Controllers\BannerDataController.cs" />
     <Compile Include="Areas\Active\Controllers\ParmDataController.cs" />
     <Compile Include="Areas\Active\Controllers\NewsDataController.cs" />
@@ -221,6 +222,7 @@
     <Content Include="Areas\Active\Views\ParmData\AboutUS.cshtml" />
     <Content Include="Areas\Active\Views\ParmData\Parm.cshtml" />
     <Content Include="Areas\Active\Views\BannerData\Main.cshtml" />
+    <Content Include="Areas\Active\Views\EventData\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
@@ -274,6 +276,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\EventController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
     <Compile Include="Controllers\Api\BannerController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
@@ -589,26 +592,12 @@
     <Content Include="Scripts\build\app\m_aboutus.js" />
     <Content Include="Scripts\build\app\m_banner.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
+    <Content Include="Scripts\build\app\m_event.js" />
     <Content Include="Scripts\build\app\m_issue.js" />
+    <Content Include="Scripts\build\app\m_menu_set.js" />
     <Content Include="Scripts\build\app\m_news.js" />
     <Content Include="Scripts\build\app\m_parm.js" />
-    <Content Include="Scripts\build\app\m_payment_reply.js" />
-    <Content Include="Scripts\build\app\m_product_category_l1.js" />
-    <Content Include="Scripts\build\app\m_product_category_l2.js" />
-    <Content Include="Scripts\build\app\m_product_set.js" />
-    <Content Include="Scripts\build\app\m_purchase_view.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
-    <Content Include="Scripts\build\app\m_sales_rank.js" />
-    <Content Include="Scripts\build\app\m_sales_recommend.js" />
-    <Content Include="Scripts\build\app\m_sales_self.js" />
-    <Content Include="Scripts\build\app\m_settle_accumulate.js" />
-    <Content Include="Scripts\build\app\m_settle_self.js" />
-    <Content Include="Scripts\build\app\m_share_circle.js" />
-    <Content Include="Scripts\build\app\w_payment_order.js" />
-    <Content Include="Scripts\build\app\w_payment_reply.js" />
-    <Content Include="Scripts\build\app\w_product_search.js" />
-    <Content Include="Scripts\build\app\w_purchase_cart.js" />
-    <Content Include="Scripts\build\app\w_purchase_history.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -636,10 +625,6 @@
     <Content Include="Scripts\cdn\toastr.min.js" />
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
-    <Content Include="Scripts\build\app\m_product.js" />
-    <Content Include="Scripts\build\app\m_purchase.js" />
-    <Content Include="Scripts\build\app\m_sales.js" />
-    <Content Include="Scripts\build\app\m_settle.js" />
     <Content Include="Scripts\build\app\vendors.js" />
     <Content Include="Scripts\GoogleAnalytics.js" />
     <Content Include="Scripts\cdn\jquery.flexslider-min.js" />
@@ -776,6 +761,7 @@
     <TypeScriptCompile Include="app_modules\Pikaday\pikadaydef.ts" />
     <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-event.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-banner.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-menu_set.tsx" />
@@ -786,7 +772,6 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-sales.tsx" />
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
@@ -861,6 +846,7 @@
     <Content Include="Areas\Active\Views\ParmData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\BannerData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\EventData\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
