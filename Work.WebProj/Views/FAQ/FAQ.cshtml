@@ -1,7 +1,9 @@
-﻿@{
+﻿@model List<ProcCore.Business.DB0.m_Faq>
+@{
     ViewBag.Title = "FAQ 常見問題";
     ViewBag.BodyClass = "FAQ";
     Layout = "~/Views/Shared/Layout.cshtml";
+    var index = 1;
 }
 @section Scripts {
     <script>
@@ -22,28 +24,20 @@
 <div class="wrap">
 
     <section id="content">
-        <h2 class="h1">車主使用須知</h2>
-
-        <article class="article-list">
-            <h3 class="h2">
-                <small>FAQ 1.</small>
-                10月新會員首購禮！購物滿500送200
-            </h3>
-            <div class="editor">
-                為想買車嗎？當有購車需求的時候，您會考慮些甚麼呢？是廠牌？是進口或國產？是車子的用途？還是貸款金額及乘數？您的這些問題，順益汽車都為您想到囉！所以，特別為您規劃了新車購買指南，透過以下幾個步驟，為您介紹購車前的基本常識，並為您進行分析，希望能對您有所幫助，買到一台適合您的車唷！
-            </div>
-        </article>
-
-        <article class="article-list">
-            <h3 class="h2">
-                <small>FAQ 2.</small>
-                10月新會員首購禮！購物滿500送200
-            </h3>
-            <div class="editor">
-                為想買車嗎？當有購車需求的時候，您會考慮些甚麼呢？是廠牌？是進口或國產？是車子的用途？還是貸款金額及乘數？您的這些問題，順益汽車都為您想到囉！所以，特別為您規劃了新車購買指南，透過以下幾個步驟，為您介紹購車前的基本常識，並為您進行分析，希望能對您有所幫助，買到一台適合您的車唷！
-            </div>
-        </article>
-
+        <h2 class="h1">@ViewBag.category_name</h2>
+        @foreach (var i in Model)
+        {
+            <article class="article-list">
+                <h3 class="h2">
+                    <small>FAQ @index.</small>
+                    @i.faq_title
+                </h3>
+                <div class="editor">
+                    @Html.Raw(i.faq_content)
+                </div>
+            </article>
+            index++;
+        }
     </section><!-- content //-->
-    
+
 </div>
