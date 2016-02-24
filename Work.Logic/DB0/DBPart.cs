@@ -133,6 +133,14 @@ namespace ProcCore.Business.DB0
     {
         public string category_name { get; set; }
     }
+    public partial class m_EditorDetail
+    {
+        public EditState edit_state { get; set; }
+    }
+    public partial class EditorDetail
+    {
+        public EditState edit_state { get; set; }
+    }
     public class PutPurchaseCheckPram
     {
         public string id { get; set; }

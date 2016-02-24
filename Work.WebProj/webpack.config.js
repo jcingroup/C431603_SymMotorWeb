@@ -18,6 +18,7 @@ module.exports = {
         m_banner: path.resolve(__dirname, 'Scripts/src/tsx/m-banner.js'),
         m_faq_category: path.resolve(__dirname, 'Scripts/src/tsx/m-faq_category.js'),
         m_faq: path.resolve(__dirname, 'Scripts/src/tsx/m-faq.js'),
+        m_editor: path.resolve(__dirname, 'Scripts/src/tsx/m-editor.js'),
 
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
     },

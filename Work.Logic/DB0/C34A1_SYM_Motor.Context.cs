@@ -40,5 +40,7 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Faq> Faq { get; set; }
         public virtual DbSet<FaqCategory> FaqCategory { get; set; }
+        public virtual DbSet<Editor> Editor { get; set; }
+        public virtual DbSet<EditorDetail> EditorDetail { get; set; }
     }
 }

@@ -23,6 +23,9 @@
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Faq" Width="1.5" PointX="7.625" PointY="11" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.FaqCategory" Width="1.5" PointX="5.375" PointY="11.25" />
         <AssociationConnector Association="C34A1_SYM_MotorModel.FK_Faq_FaqCategory" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Editor" Width="1.5" PointX="10.375" PointY="7.25" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.EditorDetail" Width="1.5" PointX="12.625" PointY="7" />
+        <AssociationConnector Association="C34A1_SYM_MotorModel.FK_EditorDetail_Editor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

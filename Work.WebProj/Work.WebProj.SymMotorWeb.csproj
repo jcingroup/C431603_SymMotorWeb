@@ -195,6 +195,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\EditorController.cs" />
     <Compile Include="Areas\Active\Controllers\FaqDataController.cs" />
     <Compile Include="Areas\Active\Controllers\EventDataController.cs" />
     <Compile Include="Areas\Active\Controllers\BannerDataController.cs" />
@@ -226,6 +227,8 @@
     <Content Include="Areas\Active\Views\EventData\Main.cshtml" />
     <Content Include="Areas\Active\Views\FaqData\Main.cshtml" />
     <Content Include="Areas\Active\Views\FaqData\Category.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\AboutUs.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
@@ -279,6 +282,8 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\EditorDetailController.cs" />
+    <Compile Include="Controllers\Api\EditorController.cs" />
     <Compile Include="Controllers\Api\FaqController.cs" />
     <Compile Include="Controllers\Api\FaqCategoryController.cs" />
     <Compile Include="Controllers\Api\EventController.cs" />
@@ -597,6 +602,7 @@
     <Content Include="Scripts\build\app\m_aboutus.js" />
     <Content Include="Scripts\build\app\m_banner.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
+    <Content Include="Scripts\build\app\m_editor.js" />
     <Content Include="Scripts\build\app\m_event.js" />
     <Content Include="Scripts\build\app\m_faq.js" />
     <Content Include="Scripts\build\app\m_faq_category.js" />
@@ -768,6 +774,7 @@
     <TypeScriptCompile Include="app_modules\Pikaday\pikadaydef.ts" />
     <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-editor.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-faq.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-faq_category.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-event.tsx" />
@@ -786,7 +793,7 @@
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\Jquery.Ext.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\def\defGlobal.ts" />
-    <TypeScriptCompile Include="Scripts\ts-def\def\Payby.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\def\defEnum.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\def\Toaster.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IAjaxResult.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IEditType.d.ts" />
@@ -857,6 +864,7 @@
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\EventData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\FaqData\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\Editor\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

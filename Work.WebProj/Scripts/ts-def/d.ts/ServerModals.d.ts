@@ -150,6 +150,23 @@
         i_Hide?: boolean;
         FaqCategory?: server.FaqCategory;
     }
+    interface Editor extends BaseEntityTable {
+        editor_id?: number;
+        name?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        EditorDetail?: server.EditorDetail[];
+    }
+    interface EditorDetail extends BaseEntityTable {
+        editor_detail_id?: number;
+        editor_id?: number;
+        detail_name?: string;
+        detail_content?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        edit_state?: EditState;
+        Editor?: server.Editor;
+    }
     interface L1 extends BaseEntityTable {
         l1_id?: number;
         l1_name?: string;
