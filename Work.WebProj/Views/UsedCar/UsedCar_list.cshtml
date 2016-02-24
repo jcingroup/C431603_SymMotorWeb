@@ -6,7 +6,8 @@
 @section Scripts {
     <script>
         $(window).scroll(function () {
-            if ($(this).scrollTop() > 150) {
+            var h = $('#header').height();
+            if ($(this).scrollTop() > h) {
                 $('#sidebar, #content').addClass('fixed');
             } else {
                 $('#sidebar, #content').removeClass('fixed');
@@ -27,7 +28,7 @@
 
     <section class="grid-search">
         <h3 class="sr-only">搜尋條件</h3>
-        <form class="form-inline text-xs-center" action="">
+        <form class="form-inline text-sm-center text-xs-left" action="">
             <div class="form-group">
                 <label for="">廠牌</label>
                 <select name="" id="" class="form-control c-select style2">
