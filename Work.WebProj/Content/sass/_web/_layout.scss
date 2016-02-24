@@ -27,23 +27,6 @@ a {
 /*      layout
 -----------------------------------------------------------------------*/
 
-// 外層-內容有絕對定位
-// %center {
-//     max-width: wrap-width(xl); // 最大寬度限制 (非滿版才需要)
-//     margin: 0 auto;
-// }
-
-// 容器-header、wrap、main、footer等
-// %contain {
-//     @extend %clearfix;
-
-//     // 最小寬度限制 (無 RWD)
-//     min-width: 1140px;
-
-//     // 最小寬度限制 (有 RWD - 至少 xxs 的寬度)
-//     min-width: wrap-width(xxs);
-// }
-
 #wrapper {
     @if $enable-lte7 { _height: 100%; }
     min-height: 100%;
@@ -66,6 +49,11 @@ a {
     position: relative;
 }
 
+.push {
+    position: relative;
+    left: 250px;
+}
+
 
 // header
 // ----------------------------------------------------------------------
@@ -86,8 +74,21 @@ a {
 
         z-index: $zindex-navbar+10;
 
-        a {
-            @include text-pic('logo.png', 257px, 180px);
+        a {@include text-pic('logo.png', 257px, 180px);}
+
+        @include media-breakpoint-down(md) {
+
+            background: linear-gradient(135deg, #e22f1a 0%,#992121 100%);
+            box-shadow: 0 1px 1px #491D1D;
+
+            padding: $spacer 0 $spacer*1.2 0;
+            position: static;
+
+            a {
+                width: 186px;
+                height: 40px;
+                background: url(#{$img-path}/logo2.gif) no-repeat;
+            }
         }
     }
 
@@ -247,6 +248,59 @@ a {
     }
     a:hover, #{$selector} {
         color: $link-hover-color;
+    }
+}
+
+#header .menu-pull {
+    @include media-breakpoint-down(md) {
+        background: #544D48;
+        width: 250px;
+
+        position: fixed;
+        left: 0;
+        top: 0; bottom: 0;
+
+        padding: 0;
+        overflow-y: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        .topNav {
+            position: static;
+            order: 3;
+        }
+
+        .showcase {
+            padding: 0;
+            order: 2;
+
+            .h2 {position: static;}
+
+            .menu {
+                padding: 0;
+            }
+        }
+
+        #menu {
+            padding:0;
+            order: 1;
+
+            // border-bottom: 1px solid hsla(0,0,100%,0.5);
+
+            .navbar-nav {
+                > li {
+                    float: none;
+                    border-bottom: 1px solid #6E6661;
+                }
+            }
+
+            a {
+                padding: $spacer*0.6 $spacer;
+                border-left: 3px solid $brand-secondary;
+            }
+        }
+
     }
 }
 
