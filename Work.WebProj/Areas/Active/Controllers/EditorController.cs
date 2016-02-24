@@ -22,6 +22,46 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Enterprise()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Careers()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult BuyCar()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Repair()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Loan()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Insurance()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Accessory()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Eco()
+        {
+            ActionRun();
+            return View();
+        }
         #endregion
 
         #region ajax call section

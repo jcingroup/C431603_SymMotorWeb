@@ -29,18 +29,11 @@ namespace EditorDetail {
 
             super();
             this.updateType = this.updateType.bind(this);
-            this.noneType = this.noneType.bind(this);
-            this.queryGridData = this.queryGridData.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
-            this.deleteSubmit = this.deleteSubmit.bind(this);
-            this.delCheck = this.delCheck.bind(this);
-            this.checkAll = this.checkAll.bind(this);
             this.componentDidMount = this.componentDidMount.bind(this);
-            this.insertType = this.insertType.bind(this);
             this.changeGDValue = this.changeGDValue.bind(this);
             this.changeFDValue = this.changeFDValue.bind(this);
             this.setInputValue = this.setInputValue.bind(this);
-            this.handleSearch = this.handleSearch.bind(this);
             this.render = this.render.bind(this);
 
 
@@ -58,30 +51,6 @@ namespace EditorDetail {
         }
         componentDidMount() {
             this.updateType(gb_id);
-        }
-        gridData(page: number) {
-
-            var parms = {
-                page: 0
-            };
-
-            if (page == 0) {
-                parms.page = this.state.gridData.page;
-            } else {
-                parms.page = page;
-            }
-
-            $.extend(parms, this.state.searchData);
-            return CommFunc.jqGet(this.props.apiPath, parms);
-        }
-        queryGridData(page: number) {
-            this.gridData(page)
-                .done((data, textStatus, jqXHRdata) => {
-                    this.setState({ gridData: data });
-                })
-                .fail((jqXHR, textStatus, errorThrown) => {
-                    CommFunc.showAjaxError(errorThrown);
-                });
         }
         handleSubmit(e: React.FormEvent) {
 
@@ -120,59 +89,6 @@ namespace EditorDetail {
         handleOnBlur(date) {
 
         }
-        deleteSubmit() {
-
-            if (!confirm('確定是否刪除?')) {
-                return;
-            }
-
-            var ids = [];
-            for (var i in this.state.gridData.rows) {
-                if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].editor_id);
-                }
-            }
-
-            if (ids.length == 0) {
-                CommFunc.tosMessage(null, '未選擇刪除項', 2);
-                return;
-            }
-
-            CommFunc.jqDelete(this.props.apiPath + '?' + ids.join('&'), {})
-                .done(function (data, textStatus, jqXHRdata) {
-                    if (data.result) {
-                        CommFunc.tosMessage(null, '刪除完成', 1);
-                        this.queryGridData(0);
-                    } else {
-                        alert(data.message);
-                    }
-                }.bind(this))
-                .fail(function (jqXHR, textStatus, errorThrown) {
-                    CommFunc.showAjaxError(errorThrown);
-                });
-        }
-        handleSearch(e: React.FormEvent) {
-            e.preventDefault();
-            this.queryGridData(0);
-            return;
-        }
-        delCheck(i: number, chd: boolean) {
-            let newState = this.state;
-            this.state.gridData.rows[i].check_del = !chd;
-            this.setState(newState);
-        }
-        checkAll() {
-
-            let newState = this.state;
-            newState.checkAll = !newState.checkAll;
-            for (var prop in this.state.gridData.rows) {
-                this.state.gridData.rows[prop].check_del = newState.checkAll;
-            }
-            this.setState(newState);
-        }
-        insertType() {
-            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0 } });
-        }
         updateType(id: number | string) {
 
             CommFunc.jqGet(this.props.apiPath, { id: id })
@@ -183,16 +99,6 @@ namespace EditorDetail {
                     CommFunc.showAjaxError(errorThrown);
                 });
         }
-        noneType() {
-            this.gridData(0)
-                .done(function (data, textStatus, jqXHRdata) {
-                    this.setState({ edit_type: 0, gridData: data });
-                }.bind(this))
-                .fail(function (jqXHR, textStatus, errorThrown) {
-                    CommFunc.showAjaxError(errorThrown);
-                });
-        }
-
         changeFDValue(name: string, e: React.SyntheticEvent) {
             this.setInputValue(this.props.fdName, name, e);
         }
@@ -227,7 +133,6 @@ namespace EditorDetail {
                             <div className="col-xs-12">
                                 <GridDetailForm
                                     MainId={fieldData.editor_id}
-                                    noneType={this.noneType}
                                     ref="GridDetailForm" />
                                 </div>
                             </form>
@@ -244,7 +149,6 @@ namespace EditorDetail {
     }
     interface DetailFormProps {
         MainId: number,
-        noneType(): void,
         ref: string,
         apiDetailPath?: string
     }
@@ -322,7 +226,6 @@ namespace EditorDetail {
                             </Tabs>
                         <div className="form-action text-center">
                             <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                            <button type="button" onClick={this.props.noneType}><i className="fa-times"></i> 回前頁</button>
                             </div>
                     </div>
             );

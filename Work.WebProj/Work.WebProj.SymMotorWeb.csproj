@@ -229,6 +229,14 @@
     <Content Include="Areas\Active\Views\FaqData\Category.cshtml" />
     <Content Include="Areas\Active\Views\Editor\AboutUs.cshtml" />
     <Content Include="Areas\Active\Views\Editor\Main.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Enterprise.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Careers.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\BuyCar.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Loan.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Insurance.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Accessory.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Eco.cshtml" />
+    <Content Include="Areas\Active\Views\Editor\Repair.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />

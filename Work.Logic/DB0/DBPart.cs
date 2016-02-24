@@ -24,7 +24,7 @@ namespace ProcCore.Business.DB0
     }
     public enum EditorState
     {
-        aboutUs = 1,//公司介紹
+        AboutUs = 1,//公司介紹
         Enterprise = 2, //企業相關網站
         Careers = 3, //菁英招募
         BuyCar = 4, //購車服務
