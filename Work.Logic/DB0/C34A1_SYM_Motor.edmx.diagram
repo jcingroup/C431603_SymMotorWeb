@@ -20,6 +20,9 @@
         <AssociationConnector Association="C34A1_SYM_MotorModel.MenuRole" ManuallyRouted="false" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.News" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Event" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Faq" Width="1.5" PointX="7.625" PointY="11" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.FaqCategory" Width="1.5" PointX="5.375" PointY="11.25" />
+        <AssociationConnector Association="C34A1_SYM_MotorModel.FK_Faq_FaqCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

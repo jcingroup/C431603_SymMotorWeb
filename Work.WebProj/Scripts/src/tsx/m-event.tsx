@@ -288,7 +288,7 @@ namespace Event {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-4">名稱</th>
+                                        <th className="col-xs-4">標題</th>
                                         <th className="col-xs-2">排序</th>
                                         <th className="col-xs-2">狀態</th>
                                         </tr>
@@ -349,16 +349,18 @@ namespace Event {
                     </div>
                 </div>
             <div className="form-group">
-                <label className="col-xs-2 control-label">名稱</label>
+                <label className="col-xs-2 control-label">標題</label>
                 <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'event_title') } value={fieldData.event_title} maxLength={64} />
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'event_title') } value={fieldData.event_title} maxLength={64} required />
                     </div>
+                <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排序</label>
                 <div className="col-xs-8">
                     <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
                     </div>
+                <small className="col-xs-2 help-inline">數字越大越前面</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">輪播圖顯示於列表</label>

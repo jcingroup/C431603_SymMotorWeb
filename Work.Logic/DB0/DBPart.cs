@@ -129,6 +129,10 @@ namespace ProcCore.Business.DB0
     {
         public string banner_imgsrc { get; set; }
     }
+    public partial class m_Faq
+    {
+        public string category_name { get; set; }
+    }
     public class PutPurchaseCheckPram
     {
         public string id { get; set; }

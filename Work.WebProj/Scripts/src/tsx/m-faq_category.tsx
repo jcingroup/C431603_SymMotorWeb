@@ -7,11 +7,11 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Banner {
+namespace FaqCategory {
     interface Rows {
-        banner_id?: string;
+        faq_category_id?: string;
         check_del?: boolean,
-        banner_name?: string;
+        category_name?: string;
         sort?: number;
         i_Hide?: boolean;
     }
@@ -33,7 +33,7 @@ namespace Banner {
         static defaultProps = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPathName: gb_approot + 'api/Banner'
+            apiPathName: gb_approot + 'api/FaqCategory'
         }
         delCheck(i, chd) {
             this.props.delCheck(i, chd);
@@ -46,15 +46,14 @@ namespace Banner {
             return <tr>
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
-                       <td>{this.props.itemData.banner_name}</td>
+                       <td>{this.props.itemData.category_name}</td>
                        <td>{this.props.itemData.sort }</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
                 </tr>;
 
         }
     }
-    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Banner>>{
-
+    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.FaqCategory>>{
         constructor() {
 
             super();
@@ -84,7 +83,7 @@ namespace Banner {
         static defaultProps: BaseDefine.GridFormPropsBase = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPath: gb_approot + 'api/Banner'
+            apiPath: gb_approot + 'api/FaqCategory'
         }
         componentDidMount() {
             this.queryGridData(1);
@@ -157,7 +156,7 @@ namespace Banner {
             var ids = [];
             for (var i in this.state.gridData.rows) {
                 if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].banner_id);
+                    ids.push('ids=' + this.state.gridData.rows[i].faq_category_id);
                 }
             }
 
@@ -291,7 +290,7 @@ namespace Banner {
                                         (itemData, i) =>
                                             <GridRow key={i}
                                                 ikey={i}
-                                                primKey={itemData.banner_id}
+                                                primKey={itemData.faq_category_id}
                                                 itemData={itemData}
                                                 delCheck={this.delCheck}
                                                 updateType={this.updateType} />
@@ -323,19 +322,11 @@ namespace Banner {
     <h4 className="title"> {this.props.caption} 基本資料維護</h4>
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className="col-xs-10">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">首頁輪播圖</label>
-                <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.banner_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BannerData/aj_FUpload'} url_list={gb_approot + 'Active/BannerData/aj_FList'}
-                       url_delete={gb_approot + 'Active/BannerData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 1920*725 px, 每張圖最大不可超過2MB</small>
-                    </div>
-                </div>
 
             <div className="form-group">
                 <label className="col-xs-2 control-label">名稱</label>
                 <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'banner_name') } value={fieldData.banner_name} maxLength={64}  />
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'category_name') } value={fieldData.category_name} maxLength={64} required/>
                     </div>
                 <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
                 </div>
@@ -392,4 +383,4 @@ namespace Banner {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Banner.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);
+ReactDOM.render(<FaqCategory.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);

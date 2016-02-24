@@ -84,6 +84,40 @@
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
+        <EntityType Name="Faq">
+          <Key>
+            <PropertyRef Name="faq_id" />
+          </Key>
+          <Property Name="faq_id" Type="int" Nullable="false" />
+          <Property Name="faq_category_id" Type="int" Nullable="false" />
+          <Property Name="faq_title" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="faq_content" Type="ntext" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FaqCategory">
+          <Key>
+            <PropertyRef Name="faq_category_id" />
+          </Key>
+          <Property Name="faq_category_id" Type="int" Nullable="false" />
+          <Property Name="category_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
         <EntityType Name="i_Currency">
           <Key>
             <PropertyRef Name="id" />
@@ -219,6 +253,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Faq_FaqCategory">
+          <End Role="FaqCategory" Type="Self.FaqCategory" Multiplicity="1" />
+          <End Role="Faq" Type="Self.Faq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FaqCategory">
+              <PropertyRef Name="faq_category_id" />
+            </Principal>
+            <Dependent Role="Faq">
+              <PropertyRef Name="faq_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuRole_AspNetRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
           <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
@@ -250,6 +296,8 @@
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faq" EntityType="Self.Faq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FaqCategory" EntityType="Self.FaqCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_Lang" EntityType="Self.i_Lang" Schema="dbo" store:Type="Tables" />
@@ -266,6 +314,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faq_FaqCategory" Association="Self.FK_Faq_FaqCategory">
+            <End Role="FaqCategory" EntitySet="FaqCategory" />
+            <End Role="Faq" EntitySet="Faq" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuRole_AspNetRoles" Association="Self.FK_MenuRole_AspNetRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -445,6 +497,12 @@
           </AssociationSet>
           <EntitySet Name="News" EntityType="C34A1_SYM_MotorModel.News" />
           <EntitySet Name="Event" EntityType="C34A1_SYM_MotorModel.Event" />
+          <EntitySet Name="Faq" EntityType="C34A1_SYM_MotorModel.Faq" />
+          <EntitySet Name="FaqCategory" EntityType="C34A1_SYM_MotorModel.FaqCategory" />
+          <AssociationSet Name="FK_Faq_FaqCategory" Association="C34A1_SYM_MotorModel.FK_Faq_FaqCategory">
+            <End Role="FaqCategory" EntitySet="FaqCategory" />
+            <End Role="Faq" EntitySet="Faq" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -485,6 +543,54 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
+        <EntityType Name="Faq">
+          <Key>
+            <PropertyRef Name="faq_id" />
+          </Key>
+          <Property Name="faq_id" Type="Int32" Nullable="false" />
+          <Property Name="faq_category_id" Type="Int32" Nullable="false" />
+          <Property Name="faq_title" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="faq_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="FaqCategory" Relationship="C34A1_SYM_MotorModel.FK_Faq_FaqCategory" FromRole="Faq" ToRole="FaqCategory" />
+        </EntityType>
+        <EntityType Name="FaqCategory">
+          <Key>
+            <PropertyRef Name="faq_category_id" />
+          </Key>
+          <Property Name="faq_category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Faq" Relationship="C34A1_SYM_MotorModel.FK_Faq_FaqCategory" FromRole="FaqCategory" ToRole="Faq" />
+        </EntityType>
+        <Association Name="FK_Faq_FaqCategory">
+          <End Type="C34A1_SYM_MotorModel.FaqCategory" Role="FaqCategory" Multiplicity="1" />
+          <End Type="C34A1_SYM_MotorModel.Faq" Role="Faq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FaqCategory">
+              <PropertyRef Name="faq_category_id" />
+            </Principal>
+            <Dependent Role="Faq">
+              <PropertyRef Name="faq_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -687,6 +793,42 @@
                 <ScalarProperty Name="show_banner" ColumnName="show_banner" />
                 <ScalarProperty Name="event_title" ColumnName="event_title" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faq">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Faq">
+              <MappingFragment StoreEntitySet="Faq">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="faq_content" ColumnName="faq_content" />
+                <ScalarProperty Name="faq_title" ColumnName="faq_title" />
+                <ScalarProperty Name="faq_category_id" ColumnName="faq_category_id" />
+                <ScalarProperty Name="faq_id" ColumnName="faq_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaqCategory">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.FaqCategory">
+              <MappingFragment StoreEntitySet="FaqCategory">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="faq_category_id" ColumnName="faq_category_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

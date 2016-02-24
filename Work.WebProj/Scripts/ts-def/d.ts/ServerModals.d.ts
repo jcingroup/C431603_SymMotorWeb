@@ -118,13 +118,6 @@
         sort?: number;
         i_Hide?: boolean;
     }
-    interface Issue extends BaseEntityTable {
-        issue_id?: number;
-        issue_title?: string;
-        issue_content?: string;
-        sort?: number;
-        i_Hide?: boolean;
-    }
     interface Banner extends BaseEntityTable {
         banner_id?: number;
         banner_name?: string;
@@ -140,6 +133,22 @@
         event_content?: string;
         sort?: number;
         i_Hide?: boolean;
+    }
+    interface FaqCategory extends BaseEntityTable {
+        faq_category_id?: number;
+        category_name?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        faq?: server.Faq[];
+    }
+    interface Faq extends BaseEntityTable {
+        faq_id?: number;
+        faq_category_id?: number;
+        faq_title?: string;
+        faq_content?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        FaqCategory?: server.FaqCategory;
     }
     interface L1 extends BaseEntityTable {
         l1_id?: number;
