@@ -11,8 +11,8 @@ var debug_account: string;
 var debug_password: string;
 var debug_validate: string;
 
-//前台 payment_reply 匯款末五碼驗證頁
-var gb_no: string;//purchase_no
+//後台 editor 
+var gb_id: string;
 
 var gb_rank: number;
 var gb_sales_no: string;
