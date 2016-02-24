@@ -120,6 +120,15 @@ namespace ProcCore.Business.DB0
     {
         public string imgsrc { get; set; }
     }
+    public partial class m_Event
+    {
+        public string list_imgsrc { get; set; }
+        public string banner_imgsrc { get; set; }
+    }
+    public partial class Event
+    {
+        public string banner_imgsrc { get; set; }
+    }
     public class PutPurchaseCheckPram
     {
         public string id { get; set; }
