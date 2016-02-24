@@ -1,4 +1,8 @@
-﻿<aside id="sidebar">
+﻿@{
+
+    var sidebar = (List<ProcCore.Business.DB0.m_FaqCategory>)ViewBag.Sidebar;
+}
+<aside id="sidebar">
     <h2 class="sr-only">子選單</h2>
     <ul class="submenu">
         @if (@ViewBag.BodyClass.IndexOf("page_content") >= 0)
@@ -7,12 +11,17 @@
     	}
 
         @* current page: <a> + class="current" *@
-        <li><a href="~/FAQ">車主使用須知</a></li>
-        <li><a href="~/FAQ">服務問答集</a></li>
-        <li><a href="~/FAQ">車輛緊急狀況處理方式介紹</a></li>
-        <li><a href="~/FAQ">保養密技</a></li>
-        <li><a href="~/FAQ">汽車小博士</a></li>
+        @foreach (var i in sidebar)
+        {
+            if (i.faq_category_id == ViewBag.category_id)
+            {
+                <li><a class="current" href="~/FAQ?category_id=@i.faq_category_id">@i.category_name</a></li>
+            }
+            else {
+                <li><a href="~/FAQ?category_id=@i.faq_category_id">@i.category_name</a></li>
+            }
 
+        }
         <li><a href="~/FAQ/Form">聯絡我們</a></li>
     </ul>
 </aside><!-- sidebar //-->

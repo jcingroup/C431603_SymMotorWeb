@@ -101,7 +101,19 @@
     <Compile Include="DB0\Department.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Editor.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\EditorDetail.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\Event.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\Faq.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\FaqCategory.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\i_Currency.cs">
@@ -137,7 +149,19 @@
     <Compile Include="DB0\m_Department.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\m_Editor.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_EditorDetail.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\m_Event.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_Faq.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_FaqCategory.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_i_Currency.cs">

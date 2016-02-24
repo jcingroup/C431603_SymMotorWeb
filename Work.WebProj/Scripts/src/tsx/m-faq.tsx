@@ -7,18 +7,21 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Banner {
+namespace Faq {
     interface Rows {
-        banner_id?: string;
+        faq_id?: string;
         check_del?: boolean,
-        banner_name?: string;
+        category_name?: string,
+        faq_title?: string;
         sort?: number;
         i_Hide?: boolean;
     }
     interface FormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
-            keyword: string
+            keyword: string,
+            category_id: number
         }
+        option_category?: server.FaqCategory[]
     }
     interface FormResult extends IResultBase {
         id: string
@@ -33,7 +36,7 @@ namespace Banner {
         static defaultProps = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPathName: gb_approot + 'api/Banner'
+            apiPathName: gb_approot + 'api/Faq'
         }
         delCheck(i, chd) {
             this.props.delCheck(i, chd);
@@ -46,14 +49,15 @@ namespace Banner {
             return <tr>
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
-                       <td>{this.props.itemData.banner_name}</td>
+                       <td>{this.props.itemData.category_name}</td>
+                       <td>{this.props.itemData.faq_title}</td>
                        <td>{this.props.itemData.sort }</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
                 </tr>;
 
         }
     }
-    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Banner>>{
+    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Faq>>{
 
         constructor() {
 
@@ -71,6 +75,8 @@ namespace Banner {
             this.changeFDValue = this.changeFDValue.bind(this);
             this.setInputValue = this.setInputValue.bind(this);
             this.handleSearch = this.handleSearch.bind(this);
+            this.componentDidUpdate = this.componentDidUpdate.bind(this);
+            this.queryInitData = this.queryInitData.bind(this);
             this.render = this.render.bind(this);
 
 
@@ -78,16 +84,34 @@ namespace Banner {
                 fieldData: {},
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
-                searchData: { keyword: null }
+                searchData: { keyword: null, category_id: null },
+                option_category: []
             }
         }
         static defaultProps: BaseDefine.GridFormPropsBase = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPath: gb_approot + 'api/Banner'
+            apiPath: gb_approot + 'api/Faq',
+            apiInitPath: gb_approot + 'Active/FaqData/aj_Init'
         }
         componentDidMount() {
             this.queryGridData(1);
+            this.queryInitData();
+        }
+        componentDidUpdate(prevProps, prevState) {
+            if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
+                console.log('CKEDITOR');
+                CKEDITOR.replace('faq_content', { customConfig: '../ckeditor/inlineConfig.js' });
+            }
+        }
+        queryInitData() {
+            CommFunc.jqGet(this.props.apiInitPath, {})
+                .done((data, textStatus, jqXHRdata) => {
+                    this.setState({ option_category: data.data });
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
         }
         gridData(page: number) {
 
@@ -116,6 +140,7 @@ namespace Banner {
         handleSubmit(e: React.FormEvent) {
 
             e.preventDefault();
+            this.state.fieldData.faq_content = CKEDITOR.instances['faq_content'].getData();
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: FormResult, textStatus, jqXHRdata) => {
@@ -157,7 +182,7 @@ namespace Banner {
             var ids = [];
             for (var i in this.state.gridData.rows) {
                 if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].banner_id);
+                    ids.push('ids=' + this.state.gridData.rows[i].faq_id);
                 }
             }
 
@@ -199,7 +224,7 @@ namespace Banner {
             this.setState(newState);
         }
         insertType() {
-            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0 } });
+            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, faq_category_id: this.state.option_category[0].faq_category_id } });
         }
         updateType(id: number | string) {
 
@@ -243,6 +268,7 @@ namespace Banner {
         render() {
 
             var outHtml: JSX.Element = null;
+            let option = this.state.option_category;
 
             if (this.state.edit_type == 0) {
                 let searchData = this.state.searchData;
@@ -265,6 +291,16 @@ namespace Banner {
                                                 onChange={this.changeGDValue.bind(this, 'keyword') }
                                                 value={searchData.keyword}
                                                 placeholder="請輸入關鍵字..." /> { }
+                                            <label>分類</label> { }
+                                            <select className="form-control"
+                                                id="search-category"
+                                                onChange={this.changeGDValue.bind(this, 'category_id') }
+                                                value={searchData.category_id} >
+                                                <option value="">全部</option>
+                                                {
+                                                option.map((itemData, i) => <option key={i} value={itemData.faq_category_id}>{itemData.category_name}</option>)
+                                                }
+                                                </select> { }
                                             <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                             </div>
                                         </div>
@@ -280,7 +316,8 @@ namespace Banner {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-4">名稱</th>
+                                        <th className="col-xs-3">分類</th>
+                                        <th className="col-xs-3">標題</th>
                                         <th className="col-xs-2">排序</th>
                                         <th className="col-xs-2">狀態</th>
                                         </tr>
@@ -291,7 +328,7 @@ namespace Banner {
                                         (itemData, i) =>
                                             <GridRow key={i}
                                                 ikey={i}
-                                                primKey={itemData.banner_id}
+                                                primKey={itemData.faq_id}
                                                 itemData={itemData}
                                                 delCheck={this.delCheck}
                                                 updateType={this.updateType} />
@@ -324,20 +361,24 @@ namespace Banner {
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className="col-xs-10">
             <div className="form-group">
-                <label className="col-xs-2 control-label">首頁輪播圖</label>
+                <label className="col-xs-2 control-label">標題</label>
                 <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.banner_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BannerData/aj_FUpload'} url_list={gb_approot + 'Active/BannerData/aj_FList'}
-                       url_delete={gb_approot + 'Active/BannerData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 1920*725 px, 每張圖最大不可超過2MB</small>
-                    </div>
-                </div>
-
-            <div className="form-group">
-                <label className="col-xs-2 control-label">名稱</label>
-                <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'banner_name') } value={fieldData.banner_name} maxLength={64}  />
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'faq_title') } value={fieldData.faq_title} maxLength={64} required />
                     </div>
                 <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
+                </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">分類</label>
+                <div className="col-xs-8">
+                    <select className="form-control" id="field-category"
+                        onChange={this.changeFDValue.bind(this, 'faq_category_id') }
+                        value={fieldData.faq_category_id} >
+                        {
+                        option.map((itemData, i) => <option key={i} value={itemData.faq_category_id}>{itemData.category_name}</option>)
+                        }
+                        </select>
+                    </div>
+                <small className="help-inline col-xs-2 text-danger">(必填) </small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排序</label>
@@ -373,6 +414,12 @@ namespace Banner {
                        </div>
                     </div>
                 </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">內容</label>
+                <div className="col-xs-10">
+                    <textarea type="date" className="form-control" id="faq_content" name="faq_content" value={fieldData.faq_content} onChange={this.changeFDValue.bind(this, 'faq_content') } />
+                    </div>
+                </div>
             <div className="form-action">
                 <div className="col-xs-4 col-xs-offset-2">
                     <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
@@ -392,4 +439,4 @@ namespace Banner {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Banner.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);
+ReactDOM.render(<Faq.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);

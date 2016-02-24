@@ -1,5 +1,8 @@
 ﻿using System.Web.Mvc;
 using DotWeb.Controller;
+using System.Collections.Generic;
+using ProcCore.Business.DB0;
+using System.Linq;
 
 namespace DotWeb.Controllers
 {
@@ -7,11 +10,46 @@ namespace DotWeb.Controllers
     {
         public ActionResult List()
         {
-            return View("Events_list");
+            List<m_Event> items = new List<m_Event>();
+            using (var db0 = getDB0())
+            {
+                #region get content
+                items = db0.Event.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                                         .Select(x => new m_Event()
+                                         {
+                                             event_id = x.event_id,
+                                             event_title = x.event_title,
+                                             event_info = x.event_info,
+                                             show_banner = x.show_banner
+                                         }).ToList();
+                foreach (var i in items)
+                {
+                    i.list_imgsrc = GetImg(i.event_id.ToString(), "List", "Active", "EventData", null);
+                    i.banner_imgsrc = GetImg(i.event_id.ToString(), "Banner", "Active", "EventData", null);
+                }
+                #endregion
+            }
+            return View("Events_list", items);
         }
-        public ActionResult Content()
+        public ActionResult Content(int? id)
         {
-            return View("Events_content");
+            Event item = new Event();
+            using (var db0 = getDB0())
+            {
+                #region get content
+                bool Exist = db0.Event.Any(x => x.event_id == id && !x.i_Hide);
+                if (id == null || !Exist)
+                {
+                    return Redirect("~/Events/List");
+                }
+                else
+                {
+                    item = db0.Event.Find(id);
+                    item.banner_imgsrc = GetImg(item.event_id.ToString(), "Banner", "Active", "EventData", null);
+                }
+                #endregion
+            }
+            return View("Events_content", item);
         }
     }
 }
