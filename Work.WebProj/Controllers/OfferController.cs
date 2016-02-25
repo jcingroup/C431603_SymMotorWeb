@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using DotWeb.Controller;
+using ProcCore.Business.DB0;
 
 namespace DotWeb.Controllers
 {
@@ -7,6 +8,7 @@ namespace DotWeb.Controllers
     {
         public ActionResult List()
         {
+            ajax_GetEditorSidebar((int)EditorState.BuyCar);
             return View("Offer_list");
         }
         public ActionResult Content()

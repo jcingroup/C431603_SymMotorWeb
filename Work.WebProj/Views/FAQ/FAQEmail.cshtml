@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Email";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【順益汽車股份有限公司】 - FAQ常見問題/聯絡我們</title>
+</head>
+<body style="font: .8em/140% '微軟正黑體', 'Microsoft JhengHei', Helvetica, sans-serif;">
+    <h1 style="font-size:1.5em;">【順益汽車股份有限公司】 - FAQ常見問題/聯絡我們</h1>
+    <table border="1" bordercolor="#ddd" style="border:1px solid #ccc">
+        <caption style="background:#FCF8E3; color:#9C7163; font-size:1.2em; font-weight:bold; padding:5px; text-align:center;">
+            以下為聯絡人資料
+        </caption>
+
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">姓名</td>
+            <td colspan="3" style="width:50px; padding:5px; border:1px solid #ccc">@Model.name</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">性別</td>
+            <td style="width:50px; padding:5px; border:1px solid #ccc">
+                @if (Model.sex)
+            { <span>男</span>}
+            else { <span>女</span>}
+            </td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">E-mail</td>
+            <td colspan="3" style="width:100px; padding:5px; border:1px solid #ccc">@Model.email</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">連絡電話</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.tel</td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">愛車車款</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_class</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車牌號碼</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.license_plate_number</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">營業所/服務廠</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.services</td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">問題種類</td>
+            <td colspan="5" style="width:150px; padding:5px; border:1px solid #ccc">
+                @foreach (var i in (List<int>)Model.problem_class)
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            <span>產品/購車/銷售、</span>
+                            break;
+                        case 2:
+                            <span>技術/維修/品質、</span>
+                            break;
+                        case 3:
+                            <span>網站/諮詢/其他、</span>
+                            break;
+                        case 4:
+                            <span>相關車款DM索取</span>
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">提問內容</td>
+            <td colspan="5" style="width:500px; height:100px; word-break:break-all; height:100px; padding:5px; border:1px solid #ccc">
+                @Html.Raw(Model.content.Replace("\n", "<br/>"))
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

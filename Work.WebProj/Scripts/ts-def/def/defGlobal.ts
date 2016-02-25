@@ -12,7 +12,7 @@ var debug_password: string;
 var debug_validate: string;
 
 //後台 editor 
-var gb_id: string;
+var gb_id: any;
 
 var gb_rank: number;
 var gb_sales_no: string;

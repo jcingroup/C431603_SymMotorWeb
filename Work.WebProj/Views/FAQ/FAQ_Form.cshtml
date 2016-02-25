@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
 }
 @section Scripts {
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $(window).scroll(function () {
             var h = $('#header').height();
@@ -16,7 +17,9 @@
                 $('#sidebar, #content').removeClass('fixed');
             }
         });
+        var gb_id = 1;
     </script>
+    <script src="~/Scripts/src/tsx/w-email.js"></script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
@@ -29,7 +32,7 @@
 
         <h2 class="h1">聯絡我們</h2>
         @Html.Partial("~/Views/Shared/Form.cshtml")
-        
+
     </section><!-- content //-->
-    
+
 </div>

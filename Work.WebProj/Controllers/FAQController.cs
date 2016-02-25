@@ -3,6 +3,10 @@ using DotWeb.Controller;
 using System.Collections.Generic;
 using ProcCore.Business.DB0;
 using System.Linq;
+using ProcCore.HandleResult;
+using GooglereCAPTCHa.Models;
+using DotWeb.CommSetup;
+using System;
 
 namespace DotWeb.Controllers
 {
@@ -45,7 +49,6 @@ namespace DotWeb.Controllers
         public ActionResult Form()
         {
             ajax_GetSidebar();
-            ViewBag.category_id = 0;
             return View("FAQ_Form");
         }
         public void ajax_GetSidebar()
@@ -64,5 +67,72 @@ namespace DotWeb.Controllers
             }
             ViewBag.Sidebar = category;
         }
+        [HttpPost]
+        public string sendMail(FaqMailContent md)
+        {
+            ResultInfo r = new ResultInfo();
+            #region 驗證碼
+            ValidateResponse Validate = ValidateCaptcha(md.response, "6LfOXBcTAAAAAOqEElEieoCCTQmHAmtRfnqSS141");
+            if (!Validate.Success)
+            {
+                r.result = false;
+                r.message = Resources.Res.Log_Err_googleValideNotEquel;
+                return defJSON(r);
+            }
+            #endregion
+            try
+            {
+                using (db0 = getDB0())
+                {
+                    if (md.email == null)
+                    {
+                        r.result = false;
+                        r.message = Resources.Res.Log_Err_MailAddressBlank;
+                        return defJSON(r);
+                    }
+                    #region 信件發送
+                    string Body = getMailBody("FAQEmail", md);//套用信件版面
+                    Boolean mail;
+                    string mailfrom = md.name + ":" + md.email;
+
+                    mail = Mail_Send(mailfrom, //寄信人
+                                    openLogic().getReceiveMails(), //收信人
+                                    CommWebSetup.MailTitle_FAQ, //信件標題
+                                    Body, //信件內容
+                                    true); //是否為html格式
+                    if (mail == false)
+                    {
+                        r.result = false;
+                        r.message = Resources.Res.Log_Err_SendMailFail;
+                        return defJSON(r);
+                    }
+                    #endregion
+                }
+                r.result = true;
+                r.message = Resources.Res.Log_Success_SendMail;
+            }
+            catch (Exception ex)
+            {
+                r.result = false;
+                r.message = ex.Message;
+            }
+            return defJSON(r);
+        }
+    }
+    public class BasicMailContent
+    {
+        public string name { get; set; }//姓名
+        public bool sex { get; set; }//性別 男:true,女:false
+        public string email { get; set; }//email
+        public string tel { get; set; }//電話
+        public string response { get; set; }//google 驗證碼
+    }
+    public class FaqMailContent : BasicMailContent
+    {
+        public string car_class { get; set; }//愛車車款
+        public string license_plate_number { get; set; }//車牌號碼
+        public string services { get; set; }// 營業所/服務廠
+        public List<int> problem_class { get; set; }//問題種類
+        public string content { get; set; }// 提問內容
     }
 }
