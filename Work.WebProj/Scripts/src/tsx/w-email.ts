@@ -13,6 +13,13 @@
         problem_class: Array<any>,
         content: string
     }
+    interface UsedCarData extends BasicData {
+        car_models: string;
+        car_color: string;
+        car_year: string;
+        car_price: number;
+        content: string;
+    }
     interface LoginResult {
         result: boolean;
         message: string;
@@ -44,6 +51,21 @@
                 alert("請選擇「問題種類」！");
                 return;
             }
+            result = data;
+        } else if (gb_id == EmailState.UsedCar) {
+            sendMailPath = gb_approot + 'UsedCar/sendMail';
+            let data: UsedCarData = {
+                name: $("#m_name").val().replace(/<|>/g, ""),
+                sex: $("[name='radio']:checked").val(),
+                tel: $("#m_tel").val().replace(/<|>/g, ""),
+                email: $("#m_email").val().replace(/<|>/g, ""),
+                response: $("#g-recaptcha-response").val(),
+                car_models: $("#m_car_models").val().replace(/<|>/g, ""),
+                car_color: $("#m_car_color").val().replace(/<|>/g, ""),
+                car_year: $("#m_car_year").val().replace(/<|>/g, ""),
+                car_price: $("#m_car_price").val().replace(/<|>/g, ""),
+                content: $("#m_usedcarcontent").val().replace(/<|>/g, "")
+            };
             result = data;
         }
         if (sendMailPath != "") {

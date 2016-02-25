@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Email";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【順益汽車股份有限公司】 - 認證中古車/協尋找車</title>
+</head>
+<body style="font: .8em/140% '微軟正黑體', 'Microsoft JhengHei', Helvetica, sans-serif;">
+    <h1 style="font-size:1.5em;">【順益汽車股份有限公司】 - 認證中古車/協尋找車</h1>
+    <table border="1" bordercolor="#ddd" style="border:1px solid #ccc">
+        <caption style="background:#FCF8E3; color:#9C7163; font-size:1.2em; font-weight:bold; padding:5px; text-align:center;">
+            以下為聯絡人資料
+        </caption>
+
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">姓名</td>
+            <td style="width:50px; padding:5px; border:1px solid #ccc">@Model.name</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">性別</td>
+            <td style="width:50px; padding:5px; border:1px solid #ccc">
+                @if (Model.sex)
+            { <span>男</span>}
+            else { <span>女</span>}
+            </td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">E-mail</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.email</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">連絡電話</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.tel</td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車型</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_models</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車色</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_color</td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">年份</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_year</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">價格</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_price</td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">需求描述</td>
+            <td colspan="3" style="width:500px; height:100px; word-break:break-all; height:100px; padding:5px; border:1px solid #ccc">
+                @Html.Raw(Model.content.Replace("\n", "<br/>"))
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

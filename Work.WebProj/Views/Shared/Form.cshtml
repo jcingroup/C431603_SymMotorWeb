@@ -157,7 +157,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="" class="control-label">車型 <small class="text-danger">*</small></label>
-                    <select name="" id="" class="form-control c-select">
+                    <select name="" id="m_car_models" class="form-control c-select" required>
                         <option value="" selected disabled>請選擇</option>
                         <option value="JT">JT</option>
                         <option value="PS">PS</option>
@@ -181,7 +181,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="" class="control-label">車色 <small class="text-danger">*</small></label>
-                    <select name="" id="" class="form-control c-select">
+                    <select name="" id="m_car_color" class="form-control c-select" required>
                         <option value="" selected disabled>請選擇</option>
                         <option value="不限">不限</option>
                         <option value="黑">黑</option>
@@ -206,7 +206,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="" class="control-label">年份 <small class="text-danger">*</small></label>
-                    <select name="" id="" class="form-control c-select">
+                    <select name="" id="m_car_year" class="form-control c-select" required>
                         <option value="" selected disabled>請選擇</option>
                         <option value="不限">不限</option>
                         <option value="2016">2016</option>
@@ -224,7 +224,7 @@
                     <label for="" class="control-label">價格 <small class="text-danger">*</small></label>
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input type="text" class="form-control c-input">
+                        <input type="number" id="m_car_price" class="form-control c-input" required>
                         <span class="input-group-addon">以下</span>
                     </div>
                 </div>
@@ -233,7 +233,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                     <label for="" class="control-label">需求描述</label>
-                    <textarea name="" id="" rows="3" class="form-control c-textarea"></textarea>
+                    <textarea name="" id="m_usedcarcontent" rows="3" class="form-control c-textarea"></textarea>
                 </div>
             </div>
 
