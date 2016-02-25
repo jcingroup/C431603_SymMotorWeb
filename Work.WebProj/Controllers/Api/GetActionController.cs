@@ -133,26 +133,6 @@ namespace DotWeb.Api
 
 
         #region 後台-參數設定
-        [HttpPost]
-        public ResultInfo PostAboutUs([FromBody]AboutUsParm md)
-        {
-            ResultInfo rAjaxResult = new ResultInfo();
-            try
-            {
-                var open = openLogic();
-                md.aboutus = RemoveScriptTag(md.aboutus);//移除script標籤
-
-                open.setParmValue(ParmDefine.AboutUs, md.aboutus);
-
-                rAjaxResult.result = true;
-            }
-            catch (Exception ex)
-            {
-                rAjaxResult.result = false;
-                rAjaxResult.message = ex.Message;
-            }
-            return rAjaxResult;
-        }
         public ResultInfo PostParamData([FromBody]Param md)
         {
             ResultInfo rAjaxResult = new ResultInfo();
@@ -161,16 +141,6 @@ namespace DotWeb.Api
                 var open = openLogic();
 
                 open.setParmValue(ParmDefine.Email, md.Email);
-
-                open.setParmValue(ParmDefine.PurchaseTotal, md.PurchaseTotal);
-                open.setParmValue(ParmDefine.HomoiothermyFee, md.HomoiothermyFee);
-                open.setParmValue(ParmDefine.RefrigerFee, md.RefrigerFee);
-
-                open.setParmValue(ParmDefine.AccountName, md.AccountName);
-                open.setParmValue(ParmDefine.BankName, md.BankName);
-                open.setParmValue(ParmDefine.BankCode, md.BankCode);
-                open.setParmValue(ParmDefine.AccountNumber, md.AccountNumber);
-                open.setParmValue(ParmDefine.Fee, md.Fee);
 
                 rAjaxResult.result = true;
             }

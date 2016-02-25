@@ -607,7 +607,6 @@
     <Content Include="ckeditor\config.js" />
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
-    <Content Include="Scripts\build\app\m_aboutus.js" />
     <Content Include="Scripts\build\app\m_banner.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_editor.js" />
@@ -793,7 +792,6 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-menu_set.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-parm.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-roles.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-aboutus.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-menu.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />

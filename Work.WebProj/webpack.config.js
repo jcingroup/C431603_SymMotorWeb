@@ -13,7 +13,6 @@ module.exports = {
         //後台 管理者
         m_event: path.resolve(__dirname, 'Scripts/src/tsx/m-event.js'),
         m_news: path.resolve(__dirname, 'Scripts/src/tsx/m-news.js'),
-        m_aboutus: path.resolve(__dirname, 'Scripts/src/tsx/m-aboutus.js'),
         m_parm: path.resolve(__dirname, 'Scripts/src/tsx/m-parm.js'),
         m_banner: path.resolve(__dirname, 'Scripts/src/tsx/m-banner.js'),
         m_faq_category: path.resolve(__dirname, 'Scripts/src/tsx/m-faq_category.js'),
