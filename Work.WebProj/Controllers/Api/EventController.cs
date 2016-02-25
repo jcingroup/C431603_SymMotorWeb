@@ -73,7 +73,7 @@ namespace DotWeb.Api
                 item.show_banner = md.show_banner;
                 item.banner_url = md.banner_url;
                 item.event_info = md.event_info;
-                item.event_content = md.event_content;
+                item.event_content = RemoveScriptTag(md.event_content);
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 
@@ -111,6 +111,8 @@ namespace DotWeb.Api
             {
                 #region working
                 db0 = getDB0();
+
+                md.event_content = RemoveScriptTag(md.event_content);
 
                 db0.Event.Add(md);
                 await db0.SaveChangesAsync();

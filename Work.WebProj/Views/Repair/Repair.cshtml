@@ -1,20 +1,21 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.EditorDetail
+@{
     ViewBag.Title = "維修服務";
-    ViewBag.BodyClass = "Repair p2";
+    ViewBag.BodyClass = "Repair";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section Scripts {
-<script>
-    $(window).scroll(function () {
-        var h = $('#header').height();
+    <script>
+        $(window).scroll(function () {
+            var h = $('#header').height();
             if ($(this).scrollTop() > h) {
-            $('#sidebar, #content').addClass('fixed');
-        } else {
-            $('#sidebar, #content').removeClass('fixed');
-        }
-    });
-</script>
+                $('#sidebar, #content').addClass('fixed');
+            } else {
+                $('#sidebar, #content').removeClass('fixed');
+            }
+        });
+    </script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
@@ -24,18 +25,10 @@
 <div class="wrap">
 
     <section id="content">
-        <h2 class="h1">順益的服務特色</h2>
+        <h2 class="h1">@Model.detail_name</h2>
         <div class="editor">
-            <h1>順益服務四大保證</h1>
-            <ol>
-                <li>車輛預約車且準時入廠，10分鐘內未準時開工，該次保養機油免費。</li>
-                <li>維修項目未事先告知而擅自更換，則該項零件、工資免費。</li>
-                <li>完修車輛，提供免費車輛外觀及車室清潔。</li>
-                <li>車輛留廠維修、租用代步車免煩惱。</li>
-            </ol>
-            <h1>專業的服務 </h1>
-            
+            @Html.Raw(Model.detail_content)
         </div>
     </section><!-- content //-->
-    
+
 </div>

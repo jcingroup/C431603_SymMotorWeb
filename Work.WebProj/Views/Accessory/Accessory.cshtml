@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.EditorDetail
+@{
     ViewBag.Title = "配件專區";
     ViewBag.BodyClass = "Accessory";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -23,35 +24,12 @@
 <div class="wrap">
 
     <section id="content">
-        <h2 class="h1">一般百貨</h2>
+        <h2 class="h1">@Model.detail_name</h2>
 
-        <div class="editor">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th style="width:25%;">名稱</th>
-                        <th style="width:15%;" class="text-xs-center">照片</th>
-                        <th style="width:15%;">價格</th>
-                        <th style="width:45%;">說明</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>立體防污踏墊</td>
-                        <td class="text-xs-center"><img src="~/Content/images/Accessory/pic.jpg" alt=""></td>
-                        <td class="text-middle">$3600</td>
-                        <td>僅適用於OUTLANDER車款<br>高質感表面絨毛設計<br>有效防止地板髒污、容易清理<br>三片式設計<br>安全性高<br>駕駛座墊防滑設計，可避免影響駕駛安全性</td>
-                    </tr>
-                    <tr>
-                        <td>立體防污踏墊</td>
-                        <td class="text-xs-center"><img src="~/Content/images/Accessory/pic.jpg" alt=""></td>
-                        <td class="text-middle">$3600</td>
-                        <td>僅適用於OUTLANDER車款<br>高質感表面絨毛設計<br>有效防止地板髒污、容易清理<br>三片式設計<br>安全性高<br>駕駛座墊防滑設計，可避免影響駕駛安全性</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="editor">
+        @Html.Raw(Model.detail_content)
+    </div>
 
-    </section><!-- content //-->
-    
+</section><!-- content //-->
+
 </div>

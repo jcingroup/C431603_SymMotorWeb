@@ -38,8 +38,8 @@ namespace DotWeb.Api
                         news_id = x.news_id,
                         day = x.day,
                         news_title = x.news_title,
-                        sort=x.sort,
-                        i_Hide=x.i_Hide
+                        sort = x.sort,
+                        i_Hide = x.i_Hide
                     });
                 if (q.keyword != null)
                 {
@@ -73,7 +73,7 @@ namespace DotWeb.Api
                 item.news_title = md.news_title;
                 item.day = md.day;
                 item.news_info = md.news_info;
-                item.news_content = md.news_content;
+                item.news_content = RemoveScriptTag(md.news_content);
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 
@@ -111,6 +111,8 @@ namespace DotWeb.Api
             {
                 #region working
                 db0 = getDB0();
+
+                md.news_content = RemoveScriptTag(md.news_content);
 
                 db0.News.Add(md);
                 await db0.SaveChangesAsync();

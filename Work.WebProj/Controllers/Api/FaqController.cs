@@ -77,7 +77,7 @@ namespace DotWeb.Api
 
                 item.faq_title = md.faq_title;
                 item.faq_category_id = md.faq_category_id;
-                item.faq_content = md.faq_content;
+                item.faq_content = RemoveScriptTag(md.faq_content);
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 
@@ -115,7 +115,7 @@ namespace DotWeb.Api
             {
                 #region working
                 db0 = getDB0();
-
+                md.faq_content = RemoveScriptTag(md.faq_content);
                 db0.Faq.Add(md);
                 await db0.SaveChangesAsync();
 

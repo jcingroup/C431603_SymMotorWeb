@@ -1150,19 +1150,24 @@ namespace DotWeb.Controller
             //}
             //ViewBag.Sidebar = l1;
         }
-        /// <summary>
-        /// 取得萬客摩關於我們資料
-        /// </summary>
-        public void ajax_GetAboutUsData()
+        #region 前台editor用sidebar
+        public void ajax_GetEditorSidebar(int editor_id)
         {
-            string AboutUs = string.Empty;
-            using (var db = getDB0())
+            List<option> category = new List<option>();
+            using (var db0 = getDB0())
             {
-                var open = openLogic();
-                AboutUs = RemoveHTMLTag((string)open.getParmValue(ParmDefine.AboutUs));
+                #region get category 
+                category = db0.EditorDetail.Where(x => !x.i_Hide & x.editor_id == editor_id).OrderByDescending(x => x.sort)
+                                         .Select(x => new option()
+                                         {
+                                             val = x.editor_detail_id,
+                                             Lname = x.detail_name
+                                         }).ToList();
+                #endregion
             }
-            ViewBag.AboutUs = AboutUs;
+            ViewBag.Sidebar = category;
         }
+        #endregion
         #region 前台抓取圖片
         public string[] GetImgs(string id, string file_kind, string category1, string category2, string size)
         {

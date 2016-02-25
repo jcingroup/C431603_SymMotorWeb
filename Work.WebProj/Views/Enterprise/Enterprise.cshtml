@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.EditorDetail
+@{
     ViewBag.Title = " 企業相關網站";
     ViewBag.BodyClass = "Enterprise";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -11,17 +12,8 @@
     <section id="content">
         <h2 class="sr-only">順益關係企業一覽</h2>
         <div class="editor">
-
-            順益汽車為全國數一數二之大型汽車經銷商，已名列天下雜誌調查之服務業二百大企業多年，經營規模宏大，體質完整健全。
-
-公司除戮力經營事業外，亦相當重視人力資源規劃及發展。我們一直秉持著『員工是公司最重要的資產』這樣的信念，所以，我們求才若渴，且在推動教育訓練及制定相關福利方面，做了相當的努力，希望員工進入順益，就如同身處於一個大家庭中！
-
-良禽擇木而棲，優秀的您，是否已準備好加入順益汽車這個大家庭了呢？
-
- 
-
-我們竭誠歡迎您！
+            @Html.Raw(Model.detail_content)
         </div>
     </section><!-- content //-->
-    
+
 </div>

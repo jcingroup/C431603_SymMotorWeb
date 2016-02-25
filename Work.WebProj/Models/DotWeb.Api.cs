@@ -172,7 +172,8 @@ namespace DotWeb.Api
         public static string RemoveScriptTag(string htmlSource)
         {
             //移除  javascript code.
-            htmlSource = Regex.Replace(htmlSource, @"<script[\d\D]*?>[\d\D]*?</script>", String.Empty);
+            if (htmlSource != null)
+                htmlSource = Regex.Replace(htmlSource, @"<script[\d\D]*?>[\d\D]*?</script>", String.Empty);
 
             //移除html tag.
             //htmlSource = Regex.Replace(htmlSource, @"<[^>]*>", String.Empty);

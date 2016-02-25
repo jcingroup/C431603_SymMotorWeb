@@ -1,7 +1,9 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.EditorDetail
+@{
     ViewBag.Title = "綠能專區";
     ViewBag.BodyClass = "Eco";
     Layout = "~/Views/Shared/Layout.cshtml";
+    var sidebar = (List<ProcCore.Business.DB0.option>)ViewBag.Sidebar;
 }
 @section Scripts {
     <script>
@@ -23,24 +25,27 @@
     <ul class="submenu">
 
         @* current page: <a> + class="current" *@
-        <li><a href="~/Eco">電氣二輪車</a></li>
-        <li><a href="~/Eco">電氣自行車</a></li>
-        <li><a href="~/Eco">Ralliart 自行車</a></li>
-        
+        @foreach (var i in sidebar)
+        {
+            if (ViewBag.detail_id == i.val)
+            {
+                <li><a class="current" href="~/Eco?id=@i.val">@i.Lname</a></li>
+            }
+            else {
+                <li><a href="~/Eco?id=@i.val">@i.Lname</a></li>
+            }
+        }
+
     </ul>
 </aside><!-- sidebar //-->
 
 <div class="wrap">
 
     <section id="content">
-        <h2 class="h1">電氣二輪車</h2>
+        <h2 class="h1">@Model.detail_name</h2>
         <div class="editor">
-            為想買車嗎？當有購車需求的時候，您會考慮些甚麼呢？
-是廠牌？是進口或國產？是車子的用途？還是貸款金額及乘數？
-
-您的這些問題，順益汽車都為您想到囉！
-所以，特別為您規劃了新車購買指南，透過以下幾個步驟，為您介紹購車前的基本常識，並為您進行分析，希望能對您有所幫助，買到一台適合您的車唷！
+            @Html.Raw(Model.detail_content)
         </div>
     </section><!-- content //-->
-    
+
 </div>

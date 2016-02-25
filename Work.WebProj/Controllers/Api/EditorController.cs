@@ -76,7 +76,7 @@ namespace DotWeb.Api
                     var md_detail = md.EditorDetail.First(x => x.editor_detail_id == detail.editor_detail_id);
                     detail.sort = md_detail.sort;
                     detail.detail_name = md_detail.detail_name;
-                    detail.detail_content = md_detail.detail_content;
+                    detail.detail_content = RemoveScriptTag(md_detail.detail_content);
                     detail.i_Hide = md_detail.i_Hide;
                 }
 
@@ -84,6 +84,7 @@ namespace DotWeb.Api
                 foreach (var detail in add_detail)
                 {
                     detail.editor_detail_id = GetNewId(CodeTable.EditorDetail);
+                    detail.detail_content = RemoveScriptTag(detail.detail_content);
                     detail.i_InsertUserID = this.UserId;
                     detail.i_InsertDateTime = DateTime.Now;
                     detail.i_InsertDeptID = this.departmentId;

@@ -1,11 +1,23 @@
-﻿<aside id="sidebar">
+﻿@{
+
+    var sidebar = (List<ProcCore.Business.DB0.option>)ViewBag.Sidebar;
+}
+<aside id="sidebar">
     <h2 class="sr-only">子選單</h2>
     <ul class="submenu">
         <li><a href="~/BuyCar#location">全台維修廠點</a></li>
 
-		@* current page: <a> + class="current" *@
-        <li><a class="current" href="~/Repair">順益的服務特色</a></li>
-        <li><a href="~/Repair">原廠鈑噴作業介紹</a></li>
+        @* current page: <a> + class="current" *@
+        @foreach (var i in sidebar)
+        {
+            if (ViewBag.detail_id == i.val)
+            {
+                <li><a class="current" href="~/Repair?id=@i.val">@i.Lname</a></li>
+            }
+            else {
+                <li><a href="~/Repair?id=@i.val">@i.Lname</a></li>
+            }
+        }
 
     </ul>
 </aside><!-- sidebar //-->
