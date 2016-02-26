@@ -103,9 +103,9 @@
             <PropertyRef Name="event_id" />
           </Key>
           <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="event_type" Type="int" Nullable="false" />
           <Property Name="event_title" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="show_banner" Type="bit" Nullable="false" />
-          <Property Name="banner_url" Type="varchar" MaxLength="256" />
           <Property Name="event_info" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="event_content" Type="ntext" Nullable="false" />
           <Property Name="sort" Type="int" />
@@ -548,7 +548,6 @@
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <EntitySet Name="News" EntityType="C34A1_SYM_MotorModel.News" />
-          <EntitySet Name="Event" EntityType="C34A1_SYM_MotorModel.Event" />
           <EntitySet Name="Faq" EntityType="C34A1_SYM_MotorModel.Faq" />
           <EntitySet Name="FaqCategory" EntityType="C34A1_SYM_MotorModel.FaqCategory" />
           <AssociationSet Name="FK_Faq_FaqCategory" Association="C34A1_SYM_MotorModel.FK_Faq_FaqCategory">
@@ -561,6 +560,7 @@
             <End Role="Editor" EntitySet="Editor" />
             <End Role="EditorDetail" EntitySet="EditorDetail" />
           </AssociationSet>
+          <EntitySet Name="Event" EntityType="C34A1_SYM_MotorModel.Event" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -572,26 +572,6 @@
           <Property Name="news_info" Type="String" MaxLength="265" FixedLength="false" Unicode="true" />
           <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="event_id" />
-          </Key>
-          <Property Name="event_id" Type="Int32" Nullable="false" />
-          <Property Name="event_title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="show_banner" Type="Boolean" Nullable="false" />
-          <Property Name="banner_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="event_info" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="event_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" />
           <Property Name="i_Hide" Type="Boolean" Nullable="false" />
           <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="i_InsertDeptID" Type="Int32" />
@@ -697,6 +677,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" />
+          <Property Name="event_type" Type="Int32" Nullable="false" />
+          <Property Name="event_title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="show_banner" Type="Boolean" Nullable="false" />
+          <Property Name="event_info" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="event_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -881,27 +881,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Event">
-            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Event">
-              <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="event_content" ColumnName="event_content" />
-                <ScalarProperty Name="event_info" ColumnName="event_info" />
-                <ScalarProperty Name="banner_url" ColumnName="banner_url" />
-                <ScalarProperty Name="show_banner" ColumnName="show_banner" />
-                <ScalarProperty Name="event_title" ColumnName="event_title" />
-                <ScalarProperty Name="event_id" ColumnName="event_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Faq">
             <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Faq">
               <MappingFragment StoreEntitySet="Faq">
@@ -971,6 +950,27 @@
                 <ScalarProperty Name="detail_name" ColumnName="detail_name" />
                 <ScalarProperty Name="editor_id" ColumnName="editor_id" />
                 <ScalarProperty Name="editor_detail_id" ColumnName="editor_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="event_content" ColumnName="event_content" />
+                <ScalarProperty Name="event_info" ColumnName="event_info" />
+                <ScalarProperty Name="show_banner" ColumnName="show_banner" />
+                <ScalarProperty Name="event_title" ColumnName="event_title" />
+                <ScalarProperty Name="event_type" ColumnName="event_type" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

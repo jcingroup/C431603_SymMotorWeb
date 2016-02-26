@@ -17,6 +17,16 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Event()
+        {
+            ActionRun();
+            return View();
+        }
+        public ActionResult Offer()
+        {
+            ActionRun();
+            return View();
+        }
         #endregion
 
         #region ajax call section

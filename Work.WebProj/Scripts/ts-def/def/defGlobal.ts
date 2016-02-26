@@ -13,6 +13,8 @@ var debug_validate: string;
 
 //後台 editor 
 var gb_id: any;
+//後台 event
+var gb_type: number;
 
 var gb_rank: number;
 var gb_sales_no: string;

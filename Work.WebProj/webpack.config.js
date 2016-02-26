@@ -12,6 +12,7 @@ module.exports = {
         m_users: path.resolve(__dirname, 'Scripts/src/tsx/m-users.js'),
         //後台 管理者
         m_event: path.resolve(__dirname, 'Scripts/src/tsx/m-event.js'),
+        m_event_type: path.resolve(__dirname, 'Scripts/src/tsx/m-event_type.js'),
         m_news: path.resolve(__dirname, 'Scripts/src/tsx/m-news.js'),
         m_parm: path.resolve(__dirname, 'Scripts/src/tsx/m-parm.js'),
         m_banner: path.resolve(__dirname, 'Scripts/src/tsx/m-banner.js'),

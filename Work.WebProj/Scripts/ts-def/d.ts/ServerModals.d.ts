@@ -128,7 +128,7 @@
         event_id?: number;
         event_title?: string;
         show_banner?: boolean;
-        banner_url?: string;
+        event_type?: number;
         event_info?: string;
         event_content?: string;
         sort?: number;

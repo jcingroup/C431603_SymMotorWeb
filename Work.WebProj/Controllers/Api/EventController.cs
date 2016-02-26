@@ -37,6 +37,7 @@ namespace DotWeb.Api
                     {
                         event_id = x.event_id,
                         event_title = x.event_title,
+                        event_type = x.event_type,
                         sort = x.sort,
                         i_Hide = x.i_Hide
                     });
@@ -44,6 +45,11 @@ namespace DotWeb.Api
                 {
                     items = items.Where(x => x.event_title.Contains(q.keyword));
                 }
+                if (q.type != null)
+                {
+                    items = items.Where(x => x.event_type == q.type);
+                }
+
                 int page = (q.page == null ? 1 : (int)q.page);
                 int startRecord = PageCount.PageInfo(page, this.defPageSize, items.Count());
                 var resultItems = await items.Skip(startRecord).Take(this.defPageSize).ToListAsync();
@@ -68,10 +74,9 @@ namespace DotWeb.Api
                 db0 = getDB0();
 
                 item = await db0.Event.FindAsync(md.event_id);
-
+                item.event_type = md.event_type;
                 item.event_title = md.event_title;
                 item.show_banner = md.show_banner;
-                item.banner_url = md.banner_url;
                 item.event_info = md.event_info;
                 item.event_content = RemoveScriptTag(md.event_content);
                 item.sort = md.sort;
@@ -185,5 +190,6 @@ namespace DotWeb.Api
     public class q_Event : QueryBase
     {
         public string keyword { get; set; }
+        public int? type { get; set; }
     }
 }

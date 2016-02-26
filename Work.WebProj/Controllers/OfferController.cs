@@ -13,6 +13,7 @@ namespace DotWeb.Controllers
         }
         public ActionResult Content()
         {
+            ajax_GetEditorSidebar((int)EditorState.BuyCar);
             return View("Offer_content");
         }
     }

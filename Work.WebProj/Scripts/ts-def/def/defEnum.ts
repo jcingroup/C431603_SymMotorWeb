@@ -21,3 +21,7 @@ const enum EmailState {
     BuyCar = 4,//購車服務 預約賞車
     Loan = 5//貸款專區 線上申貸表格
 }
+const enum EventType {
+    OldActivity = 1,//精彩活動回顧
+    NewActivity = 2//購車優惠
+}

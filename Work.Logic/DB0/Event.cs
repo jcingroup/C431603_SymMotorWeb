@@ -16,9 +16,9 @@ namespace ProcCore.Business.DB0
     public partial class Event : BaseEntityTable
     {
         public int event_id { get; set; }
+        public int event_type { get; set; }
         public string event_title { get; set; }
         public bool show_banner { get; set; }
-        public string banner_url { get; set; }
         public string event_info { get; set; }
         public string event_content { get; set; }
         public Nullable<int> sort { get; set; }

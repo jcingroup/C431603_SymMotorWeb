@@ -34,6 +34,11 @@ namespace ProcCore.Business.DB0
         Accessory = 8, //配件專區
         Eco = 9 //綠能專區
     }
+    public enum EventType
+    {
+        OldActivity = 1,//精彩活動回顧
+        NewActivity = 2//購車優惠
+    }
     #region set CodeSheet
 
     public static class CodeSheet
