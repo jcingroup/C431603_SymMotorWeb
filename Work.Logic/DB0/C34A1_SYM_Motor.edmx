@@ -106,8 +106,8 @@
           <Property Name="event_type" Type="int" Nullable="false" />
           <Property Name="event_title" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="show_banner" Type="bit" Nullable="false" />
-          <Property Name="event_info" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="event_content" Type="ntext" Nullable="false" />
+          <Property Name="event_info" Type="nvarchar" MaxLength="128" />
+          <Property Name="event_content" Type="ntext" />
           <Property Name="sort" Type="int" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
           <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
@@ -685,8 +685,8 @@
           <Property Name="event_type" Type="Int32" Nullable="false" />
           <Property Name="event_title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="show_banner" Type="Boolean" Nullable="false" />
-          <Property Name="event_info" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="event_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="event_info" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="event_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="sort" Type="Int32" />
           <Property Name="i_Hide" Type="Boolean" Nullable="false" />
           <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
