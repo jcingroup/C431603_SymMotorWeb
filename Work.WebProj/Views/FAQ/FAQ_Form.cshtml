@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
 }
 @section Scripts {
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $(window).scroll(function () {
             var h = $('#header').height();
@@ -19,6 +18,8 @@
         });
         var gb_id = 1;
     </script>
+    <script src="~/Scripts/googleReCAPTCHA.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
     <script src="~/Scripts/src/tsx/w-email.js"></script>
 }
 

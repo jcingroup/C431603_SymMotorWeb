@@ -14,6 +14,10 @@
             }
         });
     </script>
+    <script src="~/Scripts/googleReCAPTCHA.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_loan_email.js?v=@CommWebSetup.CacheVer"></script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
@@ -25,8 +29,9 @@
     <section id="content">
 
         <h2 class="h1">貸款服務簡介</h2>
-        @Html.Partial("~/Views/Shared/Form.cshtml")
-        
+        <div id="email_content"></div>
+        @*@Html.Partial("~/Views/Shared/Form.cshtml")*@
+
     </section><!-- content //-->
-    
+
 </div>
