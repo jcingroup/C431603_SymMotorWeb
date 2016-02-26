@@ -195,6 +195,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\BrandDataController.cs" />
     <Compile Include="Areas\Active\Controllers\EditorController.cs" />
     <Compile Include="Areas\Active\Controllers\FaqDataController.cs" />
     <Compile Include="Areas\Active\Controllers\EventDataController.cs" />
@@ -239,6 +240,7 @@
     <Content Include="Areas\Active\Views\Editor\Repair.cshtml" />
     <Content Include="Areas\Active\Views\EventData\Event.cshtml" />
     <Content Include="Areas\Active\Views\EventData\Offer.cshtml" />
+    <Content Include="Areas\Active\Views\BrandData\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
@@ -292,6 +294,8 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\BrandController.cs" />
+    <Compile Include="Controllers\Api\BrandDetailController.cs" />
     <Compile Include="Controllers\Api\EditorDetailController.cs" />
     <Compile Include="Controllers\Api\EditorController.cs" />
     <Compile Include="Controllers\Api\FaqController.cs" />
@@ -613,6 +617,7 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Scripts\build\app\m_banner.js" />
+    <Content Include="Scripts\build\app\m_brand.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_editor.js" />
     <Content Include="Scripts\build\app\m_editor_detail.js" />
@@ -793,6 +798,7 @@
     <TypeScriptCompile Include="app_modules\Pikaday\pikadaydef.ts" />
     <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-brand.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-event_type.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-email.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-editor_detail.tsx" />
@@ -887,6 +893,7 @@
     <Content Include="Areas\Active\Views\EventData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\FaqData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Editor\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\BrandData\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

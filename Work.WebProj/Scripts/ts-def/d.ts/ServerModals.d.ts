@@ -167,6 +167,23 @@
         edit_state?: EditState;
         Editor?: server.Editor;
     }
+    interface Brand extends BaseEntityTable {
+        brand_id?: number;
+        brand_name?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        BrandDetail?: server.BrandDetail[];
+    }
+    interface BrandDetail extends BaseEntityTable {
+        brand_detail_id?: number;
+        brand_id?: number;
+        detail_name?: string;
+        link_url?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        edit_state?: EditState;
+        Brand?: server.Brand;
+    }
     interface L1 extends BaseEntityTable {
         l1_id?: number;
         l1_name?: string;
