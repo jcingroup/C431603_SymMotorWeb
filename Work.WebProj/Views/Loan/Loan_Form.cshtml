@@ -13,13 +13,8 @@
                 $('#sidebar, #content').removeClass('fixed');
             }
         });
-        var widgetId;
-        var onloadCallback = function () {
-            widgetId = grecaptcha.render('Validate', {
-                'sitekey': '6LfOXBcTAAAAAFNfTvo7HMmCLVvn3oz6flwzI445'
-            });
-        };
     </script>
+    <script src="~/Scripts/googleReCAPTCHA.js"></script>
     <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
     <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
     <script src="~/Scripts/build/app/w_loan_email.js?v=@CommWebSetup.CacheVer"></script>

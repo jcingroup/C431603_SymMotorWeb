@@ -36,7 +36,7 @@
                 sex: $("[name='radio']:checked").val(),
                 tel: $("#m_tel").val().replace(/<|>/g, ""),
                 email: $("#m_email").val().replace(/<|>/g, ""),
-                response: $("#g-recaptcha-response").val(),
+                response: grecaptcha.getResponse(widgetId),
                 car_class: $("#m_car_class").val().replace(/<|>/g, ""),
                 license_plate_number: $("#m_license_plate_number").val().replace(/<|>/g, ""),
                 services: $("#m_services").val().replace(/<|>/g, ""),
@@ -59,7 +59,7 @@
                 sex: $("[name='radio']:checked").val(),
                 tel: $("#m_tel").val().replace(/<|>/g, ""),
                 email: $("#m_email").val().replace(/<|>/g, ""),
-                response: $("#g-recaptcha-response").val(),
+                response: grecaptcha.getResponse(widgetId),
                 car_models: $("#m_car_models").val().replace(/<|>/g, ""),
                 car_color: $("#m_car_color").val().replace(/<|>/g, ""),
                 car_year: $("#m_car_year").val().replace(/<|>/g, ""),
@@ -75,12 +75,8 @@
                 data: result,
                 dataType: 'json'
             }).done(function (result: LoginResult, textStatus, jqXHRdata) {
-                if (result.result) {
-                    alert(result.message);
-                }
-                else {
-                    alert(result.message);
-                }
+                alert(result.message);
+                grecaptcha.reset(widgetId);
             }).fail(function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
             });

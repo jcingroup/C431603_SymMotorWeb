@@ -661,6 +661,7 @@
     <Content Include="Scripts\cdn\Sortable.min.js" />
     <Content Include="Scripts\cdn\swfobject.js" />
     <Content Include="Scripts\cdn\toastr.js" />
+    <Content Include="Scripts\googleReCAPTCHA.js" />
     <Content Include="Scripts\src\xformat.html" />
     <Content Include="Views\AboutUs\AboutUs.cshtml" />
     <Content Include="Views\BuyCar\BuyCar_Form.cshtml" />
