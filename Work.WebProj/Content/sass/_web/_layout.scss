@@ -476,21 +476,17 @@ a {
 // ----------------------------------------------------------------------
 
 #banner {
-    height: $banner-height;
     background: #000;
 
     > ul {
         margin-bottom: 0;
 
         > li {
-        text-align: center;
+            text-align: center;
 
             img {
-                width: 1920px;
-                height: $banner-height;
-                position: absolute;
-                left: 50%;
-                margin-left: -960px;
+                width: 100%;
+                max-width: 1920px;
             }
         }
     }

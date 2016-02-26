@@ -4,7 +4,6 @@
 // var
 // ------------------------------------------------------------
 $img-path2:             '../images/Index';
-$banner-height:         560px;
 $content-spacing:       0;
 $footer-height:         160px;
 $content-spacing-xs:    $content-spacing;
@@ -63,7 +62,6 @@ $content-spacing-xs:    $content-spacing;
 // main
 // ----------------------------------------------------------------------
 #banner {
-	height: auto;
 	background: #2E2A27;
 
 	> ul {
@@ -81,13 +79,6 @@ $content-spacing-xs:    $content-spacing;
 				top: 0;
 				transform: translateX(-50%);
 				z-index: $zindex-popover;
-			}
-			img {
-				position: static;
-				width: 100%;
-				max-width: 1920px;
-				height: auto;
-				margin-left: 0;
 			}
 		}
 	}

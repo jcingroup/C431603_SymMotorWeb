@@ -18,21 +18,9 @@
         margin-bottom: $spacer*0.5;
     }
 
-    &.style2 {
-        font-size: em(35px);
-        margin: $spacer 0 $spacer*2 0;
-        padding-bottom: $spacer;
-    }
-
     @include media-breakpoint-down(sm) {
         font-size: 2em;
         margin: $spacer*1.5 0;
-
-        &.style2 {
-            font-size: 2em;
-            margin: 0 0 $spacer 0;
-            padding-bottom: $spacer*0.8;
-        }
     }
 }
 
