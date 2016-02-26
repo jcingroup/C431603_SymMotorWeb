@@ -127,7 +127,8 @@ a {
             color: #ccc;
 
             position: absolute;
-            left: 280px; top: 45px;
+            left: $logo-width + $logo-spacing;
+            top: 45px;
 
             &::after {
                 content: "/";
@@ -201,6 +202,27 @@ a {
             
         }
 
+    }
+
+    @include media-breakpoint-only(lg) {
+        .showcase {
+            padding-left: $logo-width;
+
+            .h2 {left: $logo-width;}
+
+            .menu {
+                padding-left: $spacer*6;
+
+                > li:not(:last-child) { margin-right:$spacer*1.55; }
+            }
+
+            .collapse-toggle {
+                &::after {
+                    margin-left: $spacer*0.5;
+                    margin-right: 0;
+                }
+            }
+        }
     }
 
     @include media-breakpoint-down(md) {
@@ -328,6 +350,20 @@ a {
     }
     a:hover, #{$selector} {
         color: $link-hover-color;
+    }
+
+    @include media-breakpoint-only(lg) {
+        padding-left: 249px;
+
+        a {
+            font-size: 1.05em;
+            padding-left: $spacer*0.4;
+            padding-right: $spacer*0.4;
+        }
+
+        #{$selector} {
+            &::after {bottom: -27px;}
+        }
     }
 
     @include media-breakpoint-down(md) {
@@ -535,16 +571,25 @@ a {
     @include media-breakpoint-down(md) {
         padding-top: 0;
 
-        .push &.fixed {position: static;}
+        &.fixed {position: static;}
         
-        .submenu {padding-left: $grid-gutter-width/2;}
+        .submenu {
+            padding-left: $grid-gutter-width/2;
+
+            li {
+
+                a {padding: $spacer*0.3;}
+            }
+        }
     }
 }
 
 #content {
     
-    &.fixed {
-        padding-top: 47px;
+    &.fixed {padding-top: 47px;}
+
+    @include media-breakpoint-down(md) {
+        &.fixed {padding-top: 0;}
     }
 }
 

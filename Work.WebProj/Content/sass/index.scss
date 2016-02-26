@@ -179,6 +179,23 @@ $content-spacing-xs:    $content-spacing;
 		}
 	}
 
+	@include media-breakpoint-down(md) {
+
+		#marquee {
+			margin: 20px auto;
+
+			li {
+
+				a {
+					height: 120px;
+					margin: 0 $spacer*0.7;
+				}
+			}
+
+			.h4 {font-size: $font-size-sm;}
+		}
+	}
+
 	@include media-breakpoint-down(sm) {
 		padding-top: 40px;
 
@@ -194,7 +211,6 @@ $content-spacing-xs:    $content-spacing;
 		}
 
 		#marquee {
-			margin: 20px auto;
 			padding:0;
 
 			li {
@@ -233,7 +249,8 @@ $content-spacing-xs:    $content-spacing;
     }
 
     .article-list {
-    	@extend .col-md-8;
+    	@extend .col-lg-8;
+    	@extend .col-md-7;
     	@extend .col-xs-12;
     	padding-left: 0;
     	padding-right: $grid-gutter-width;
@@ -266,7 +283,8 @@ $content-spacing-xs:    $content-spacing;
     }
 
     .fb {
-    	@extend .col-md-4;
+    	@extend .col-lg-4;
+    	@extend .col-md-5;
     	@extend .col-xs-12;
     	padding-right: 0;
     	padding-left: $grid-gutter-width;
@@ -307,6 +325,14 @@ $content-spacing-xs:    $content-spacing;
 				letter-spacing: 0.1em;
 
 				margin: 0 $spacer*0.7;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		.h2 {
+			span {
+				&::before, &::after {width: 20%;}
 			}
 		}
 	}

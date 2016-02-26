@@ -258,6 +258,23 @@ $content-spacing-xs:    40px !default;
         }
     }
 
+    @include media-breakpoint-down(md) {
+        .featured {
+            width: 100%;
+            margin-bottom: $spacer*2;
+
+            #banner {
+                .thumb {width:455px;}
+
+                figcaption {
+                    width: calc(100% - 455px);
+                }
+            }
+        }
+        .search {width: 100%;}
+
+    }
+
     @include media-breakpoint-down(sm) {
 
         .p0 & {
@@ -267,8 +284,6 @@ $content-spacing-xs:    40px !default;
         .featured, .search {padding: 0;}
 
         .featured {
-            width: 100%;
-            margin-bottom: $spacer*2;
 
             #banner {
                 height: auto;
@@ -306,10 +321,6 @@ $content-spacing-xs:    40px !default;
             }
         }
 
-        .search {
-            width: 100%;
-        }
-
         .form-inline {
 
             .form-group {display: inline-block;}
@@ -327,9 +338,12 @@ $content-spacing-xs:    40px !default;
 .grid-products {
 
     .card-wrap {
-        @extend .col-sm-3;
+        @extend .col-lg-3;
+        @extend .col-sm-6;
         @extend .col-xs-12;
     }
+
+    .card-img-top {background: #ddd;}
 
     .card-img-top a {
         display: block;
@@ -722,5 +736,33 @@ $content-spacing-xs:    40px !default;
         }
     }
 
-    p {}
+    @include media-breakpoint-down(sm) {
+        .thumb {
+            width: 100%;
+            float: none;
+            margin: 0 0 $spacer 0;
+        }
+    }
+}
+
+
+// FAQ
+// ----------------------------------------------------------------------
+.checkbox-group {
+
+    @include media-breakpoint-down(sm) {
+
+        .c-input {
+
+            &::after {
+              display: block;
+              margin-bottom: .25rem;
+              content: "";
+          }
+
+          + .c-input {
+              margin-left: 0;
+          }
+        }
+    }
 }

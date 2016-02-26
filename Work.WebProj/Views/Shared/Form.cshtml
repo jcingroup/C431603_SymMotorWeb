@@ -93,22 +93,22 @@
                     }
 
                     <div class="row">
-                        <div class="col-sm-2 col-xs-12">
+                        <div class="col-md-3 col-sm-4 col-xs-12">
                             <select name="" id="" class="form-control c-select">
                                 <option value="" selected>2016年</option>
                             </select>
                         </div>
-                        <div class="col-sm-2 col-xs-6">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
                             <select name="" id="" class="form-control c-select">
                                 <option value="" selected>2月</option>
                             </select>
                         </div>
-                        <div class="col-sm-2 col-xs-6">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
                             <select name="" id="" class="form-control c-select">
                                 <option value="" selected>1日</option>
                             </select>
                         </div>
-                        <div class="col-sm-2 col-xs-12">
+                        <div class="col-md-3 col-xs-12">
                             <select name="" id="" class="form-control c-select">
                                 <option value="" selected>08:00~10:00</option>
                             </select>
@@ -117,7 +117,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
 
                     @* 預約試乘 *@
@@ -255,14 +255,14 @@
             </div>
 
             @* 新車購車分期 (選新車購車分期才會出現) *@
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                     <label for="" class="control-label">購買車型 <small class="text-danger">*</small></label>
                     <input type="text" class="form-control c-input">
                 </div>
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                     <label for="" class="control-label">車輛牌價</label>
                     <div class="input-group">
@@ -273,7 +273,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
                 <div class="form-group">
                     <label for="" class="control-label">頭款 <small class="text-danger">*</small></label>
                     <div class="input-group">
@@ -283,7 +283,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
                 <div class="form-group">
                     <label for="" class="control-label">貸款金額</label>
                     <div class="input-group">
@@ -293,7 +293,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-6 col-sm-2">
                 <div class="form-group">
                     <label for="" class="control-label">期繳 <small class="text-danger">*</small></label>
                     <div class="input-group">
@@ -303,7 +303,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-6 col-sm-2">
                 <div class="form-group">
                     <label for="" class="control-label">利率 <small class="text-danger">*</small></label>
                     <div class="input-group">
@@ -313,7 +313,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-12 col-sm-2">
                 <div class="form-group">
                     <label for="" class="control-label">月付款</label>
                     <div class="input-group">
@@ -325,28 +325,28 @@
             @* end of 新車購車分期  *@
 
             @* 中古車貸款申請 (選中古車貸款申請才會出現)  *@
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
                 <div class="form-group">
                     <label for="" class="control-label">車牌號碼 <small class="text-danger">*</small></label>
                     <input type="text" class="form-control c-input">
                 </div>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-6 col-sm-3">
                 <div class="form-group">
                     <label for="" class="control-label">車輛廠牌 <small class="text-danger">*</small></label>
                     <input type="text" class="form-control c-input">
                 </div>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-12 col-sm-3">
                 <div class="form-group">
                     <label for="" class="control-label">車型 <small class="text-danger">*</small></label>
                     <input type="text" class="form-control c-input">
                 </div>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-12 col-sm-3">
                 <div class="form-group">
                     <label for="" class="control-label">出廠年份</label>
                     <div class="row">
@@ -372,20 +372,20 @@
         @* FAQ *@
         @if (@ViewBag.BodyClass.IndexOf("FAQ") >= 0)
         {
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label for="" class="control-label">愛車車款</label>
                     <input type="text" class="form-control c-input" id="m_car_class" />
                     <small class="text-muted">若您是本公司客戶，請填寫關於愛車的基本資料</small>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label for="" class="control-label">車牌號碼</label>
                     <input type="text" class="form-control c-input" id="m_license_plate_number" />
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label for="" class="control-label">營業所/服務廠</label>
                     <input type="text" class="form-control c-input" id="m_services" />
@@ -394,7 +394,7 @@
             <div class="col-xs-12">
                 <div class="form-group">
                     <label for="" class="control-label">問題種類 <small class="text-danger">*</small></label>
-                    <div>
+                    <div class="checkbox-group">
                         <label class="c-input c-checkbox">
                             <input id="checkbox1" name="problem" type="checkbox" value="1">
                             <span class="c-indicator"><i class="ti-check"></i></span>

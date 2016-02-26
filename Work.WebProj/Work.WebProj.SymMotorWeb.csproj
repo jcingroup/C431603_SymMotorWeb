@@ -397,6 +397,8 @@
     <Content Include="Content\images\UsedCar\featured.jpg" />
     <Content Include="Content\images\UsedCar\pro1-1.jpg" />
     <Content Include="Content\images\UsedCar\pro1-2.jpg" />
+    <Content Include="Content\js\bootstrap\collapse.js" />
+    <Content Include="Content\js\bootstrap\util.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />
