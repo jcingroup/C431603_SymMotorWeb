@@ -620,6 +620,7 @@
     <Content Include="Scripts\build\app\m_news.js" />
     <Content Include="Scripts\build\app\m_parm.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
+    <Content Include="Scripts\build\app\w_loan_email.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -722,6 +723,7 @@
     <Content Include="Views\Accessory\Accessory_sidebar.cshtml" />
     <Content Include="Views\FAQ\FAQEmail.cshtml" />
     <Content Include="Views\UsedCar\UsedCarEmail.cshtml" />
+    <Content Include="Views\Loan\LoanEmail.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -800,6 +802,7 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-loan_email.tsx" />
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />

@@ -125,6 +125,13 @@ namespace DotWeb.CommSetup
                 return GetKeyValue("MailTitle_UsedCar");
             }
         }
+        public static string MailTitle_Loan
+        {
+            get
+            {
+                return GetKeyValue("MailTitle_Loan");
+            }
+        }
         public static string[] MailToList
         {
             get

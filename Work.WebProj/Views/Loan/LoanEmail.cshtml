@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Email";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【順益汽車股份有限公司】 - 貸款專區/線上申貸表格</title>
+</head>
+<body style="font: .8em/140% '微軟正黑體', 'Microsoft JhengHei', Helvetica, sans-serif;">
+    <h1 style="font-size:1.5em;">【順益汽車股份有限公司】 - 貸款專區/線上申貸表格</h1>
+    <table border="1" bordercolor="#ddd" style="border:1px solid #ccc">
+        <caption style="background:#FCF8E3; color:#9C7163; font-size:1.2em; font-weight:bold; padding:5px; text-align:center;">
+            以下為聯絡人資料
+        </caption>
+
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">姓名</td>
+            <td colspan="3"  style="width:50px; padding:5px; border:1px solid #ccc">@Model.name</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">性別</td>
+            <td style="width:50px; padding:5px; border:1px solid #ccc">
+                @if (Model.sex)
+            { <span>男</span>}
+            else { <span>女</span>}
+            </td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">E-mail</td>
+            <td colspan="3"  style="width:100px; padding:5px; border:1px solid #ccc">@Model.email</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">連絡電話</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.tel</td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">申貸項目</td>
+            <td colspan="5" style="width:100px; padding:5px; border:1px solid #ccc">@Model.loan_project</td>
+        </tr>
+        @if (Model.loan_project == "新車購車分期")
+        {
+            <tr>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">購買車型</td>
+                <td colspan="3" style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_models</td>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車輛牌價</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_price</td>
+            </tr>
+            <tr>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">頭款</td>
+                <td colspan="3" style="width:100px; padding:5px; border:1px solid #ccc">@Model.down_payment</td>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">貸款金額</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.loan_price</td>
+            </tr>
+            <tr>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">期繳</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.installments</td>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">利率</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.rate</td>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">月付款</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.monthly_payment</td>
+            </tr>
+        }
+        else if (Model.loan_project == "中古車貸款申請")
+        {
+            <tr>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車牌號碼</td>
+                <td colspan="3" style="width:100px; padding:5px; border:1px solid #ccc">@Model.license_plate_number</td>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車輛廠牌</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_brand</td>
+            </tr>
+            <tr>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">車型</td>
+                <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_models</td>
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">出場年分</td>
+                <td colspan="3" style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_year 年 @Model.car_month 月</td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
+
