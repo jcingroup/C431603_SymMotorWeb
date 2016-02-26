@@ -132,6 +132,10 @@ namespace ProcCore.Business.DB0
     {
         public string imgsrc { get; set; }
     }
+    public partial class m_BrandDetail
+    {
+        public string imgsrc { get; set; }
+    }
     public partial class m_Event
     {
         public string list_imgsrc { get; set; }
@@ -186,12 +190,14 @@ namespace ProcCore.Business.DB0
     {
         public int l1_id { get; set; }
         public string l1_name { get; set; }
+        public string l1_url { get; set; }
         public List<L2> l2_list { get; set; }
     }
     public class L2
     {
         public int l2_id { get; set; }
         public string l2_name { get; set; }
+        public string l2_url { get; set; }
     }
     public class Param
     {
