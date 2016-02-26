@@ -13,48 +13,42 @@ using System.Web.Http;
 
 namespace DotWeb.Api
 {
-    public class EventController : ajaxApi<Event, q_Event>
+    public class BrandController : ajaxApi<Brand, q_Brand>
     {
         public async Task<IHttpActionResult> Get(int id)
         {
             using (db0 = getDB0())
             {
-                item = await db0.Event.FindAsync(id);
-                r = new ResultInfo<Event>() { data = item };
+                item = await db0.Brand.FindAsync(id);
+                r = new ResultInfo<Brand>() { data = item };
             }
 
             return Ok(r);
         }
-        public async Task<IHttpActionResult> Get([FromUri]q_Event q)
+        public async Task<IHttpActionResult> Get([FromUri]q_Brand q)
         {
             #region working
 
             using (db0 = getDB0())
             {
-                var items = db0.Event
+                var items = db0.Brand
                     .OrderByDescending(x => x.sort)
-                    .Select(x => new m_Event()
+                    .Select(x => new m_Brand()
                     {
-                        event_id = x.event_id,
-                        event_title = x.event_title,
-                        event_type = x.event_type,
+                        brand_id = x.brand_id,
+                        brand_name = x.brand_name,
                         sort = x.sort,
                         i_Hide = x.i_Hide
                     });
                 if (q.keyword != null)
                 {
-                    items = items.Where(x => x.event_title.Contains(q.keyword));
+                    items = items.Where(x => x.brand_name.Contains(q.keyword));
                 }
-                if (q.type != null)
-                {
-                    items = items.Where(x => x.event_type == q.type);
-                }
-
                 int page = (q.page == null ? 1 : (int)q.page);
                 int startRecord = PageCount.PageInfo(page, this.defPageSize, items.Count());
                 var resultItems = await items.Skip(startRecord).Take(this.defPageSize).ToListAsync();
 
-                return Ok(new GridInfo<m_Event>()
+                return Ok(new GridInfo<m_Brand>()
                 {
                     rows = resultItems,
                     total = PageCount.TotalPage,
@@ -66,19 +60,38 @@ namespace DotWeb.Api
             }
             #endregion
         }
-        public async Task<IHttpActionResult> Put([FromBody]Event md)
+        public async Task<IHttpActionResult> Put([FromBody]Brand md)
         {
             ResultInfo rAjaxResult = new ResultInfo();
             try
             {
                 db0 = getDB0();
 
-                item = await db0.Event.FindAsync(md.event_id);
-                item.event_type = md.event_type;
-                item.event_title = md.event_title;
-                item.show_banner = md.show_banner;
-                item.event_info = md.event_info;
-                item.event_content = RemoveScriptTag(md.event_content);
+                item = await db0.Brand.FindAsync(md.brand_id);
+
+                var details = item.BrandDetail;
+
+                foreach (var detail in details)
+                {
+                    var md_detail = md.BrandDetail.First(x => x.brand_detail_id == detail.brand_detail_id);
+                    detail.sort = md_detail.sort;
+                    detail.detail_name = md_detail.detail_name;
+                    detail.link_url = md_detail.link_url;
+                    detail.i_Hide = md_detail.i_Hide;
+                }
+
+                var add_detail = md.BrandDetail.Where(x => x.edit_state == EditState.Insert);
+                foreach (var detail in add_detail)
+                {
+                    detail.brand_detail_id = GetNewId(CodeTable.BrandDetail);
+                    detail.i_InsertUserID = this.UserId;
+                    detail.i_InsertDateTime = DateTime.Now;
+                    detail.i_InsertDeptID = this.departmentId;
+                    detail.i_Lang = "zh-TW";
+                    details.Add(detail);
+                }
+
+                item.brand_name = md.brand_name;
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 
@@ -96,15 +109,15 @@ namespace DotWeb.Api
             }
             return Ok(rAjaxResult);
         }
-        public async Task<IHttpActionResult> Post([FromBody]Event md)
+        public async Task<IHttpActionResult> Post([FromBody]Brand md)
         {
-            md.event_id = GetNewId(CodeTable.Event);
+            md.brand_id = GetNewId(CodeTable.Brand);
 
             md.i_InsertDateTime = DateTime.Now;
             md.i_InsertDeptID = this.departmentId;
             md.i_InsertUserID = this.UserId;
             md.i_Lang = "zh-TW";
-            r = new ResultInfo<Event>();
+            r = new ResultInfo<Brand>();
             if (!ModelState.IsValid)
             {
                 r.message = ModelStateErrorPack();
@@ -117,13 +130,11 @@ namespace DotWeb.Api
                 #region working
                 db0 = getDB0();
 
-                md.event_content = RemoveScriptTag(md.event_content);
-
-                db0.Event.Add(md);
+                db0.Brand.Add(md);
                 await db0.SaveChangesAsync();
 
                 r.result = true;
-                r.id = md.event_id;
+                r.id = md.brand_id;
                 return Ok(r);
                 #endregion
             }
@@ -149,12 +160,12 @@ namespace DotWeb.Api
             try
             {
                 db0 = getDB0();
-                r = new ResultInfo<Event>();
+                r = new ResultInfo<Brand>();
                 foreach (var id in ids)
                 {
-                    item = new Event() { event_id = id };
-                    db0.Event.Attach(item);
-                    db0.Event.Remove(item);
+                    item = new Brand() { brand_id = id };
+                    db0.Brand.Attach(item);
+                    db0.Brand.Remove(item);
                 }
                 await db0.SaveChangesAsync();
 
@@ -187,9 +198,8 @@ namespace DotWeb.Api
             }
         }
     }
-    public class q_Event : QueryBase
+    public class q_Brand : QueryBase
     {
         public string keyword { get; set; }
-        public int? type { get; set; }
     }
 }

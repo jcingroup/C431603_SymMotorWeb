@@ -43,34 +43,41 @@
                         <li><a href="~/Enterprise">企業相關網站</a></li>
                         <li><a href="~/Careers">菁英招募</a></li>
                     </ul>
-
+                    @{
+                        var Brand = (List<ProcCore.Business.DB0.L1>)ViewBag.Brand;
+                    }
                     <div id="series" class="showcase panel">
                         <h2 class="h2">車款展示</h2>
                         <ul class="menu">
-                            <li><a href="http://www.coltplus.com.tw/" target="new">COLT PLUS</a></li>
-                            <li>
-                            
-                                @* 有子項目的車款，<a>要加class, 參數 *@
-                                <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series1" aria-expanded="false">LANCER</a>
-
-                            </li>
-                            <li><a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#series2" aria-expanded="false">OUTLANDER</a></li>
-                            <li><a href="http://www.zinger.com.tw/" target="new">ZINGER</a></li>
-                            <li><a href="http://pajero.mitsubishi-motors.com.tw/" target="new">PAJERO</a></li>
+                            @foreach (var i in Brand)
+                            {
+                                if (i.l2_list.Count() == 1)
+                                {
+                                    <li><a href="@i.l1_url" target="new">@i.l1_name</a></li>
+                                }
+                                else if (i.l2_list.Count() > 1)
+                                {
+                                    <li>
+                                        @* 有子項目的車款，<a>要加class, 參數 *@
+                                        <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#l1-@i.l1_id" aria-expanded="false">@i.l1_name</a>
+                                    </li>
+                                }
+                            }
                         </ul>
 
-                        @* 子項目 *@
-                        <ul id="series1" class="submenu collapse">
-                            <li><a href="http://lancerfortis.mitsubishi-motors.com.tw/" target="new">LANCER FORTIS</a></li>
-                            <li><a href="http://lancer.mitsubishi-motors.com.tw/" target="new">LANCER iO</a></li>
-                            <li><a href="http://lancersportback.mitsubishi-motors.com.tw/" target="new">LANCER SPORTBACK</a>
-                            </li>
-                        </ul>
-
-                        <ul id="series2" class="submenu collapse">
-                            <li><a href="http://www.outlander.com.tw/" target="new">OUTLANDER 2.4</a></li>
-                            <li><a href="http://outlander.mitsubishi-motors.com.tw/phev/" target="new">OUTLANDER PHEV</a></li>
-                        </ul>
+                        @foreach (var i in Brand)
+                        {
+                            if (i.l2_list.Count() > 1)
+                            {
+                                @* 子項目 *@
+                                <ul id="l1-@i.l1_id" class="submenu collapse">
+                                    @foreach (var j in i.l2_list)
+                                    {
+                                        <li><a href="@j.l2_url" target="new">@j.l2_name</a></li>
+                                    }
+                                </ul>
+                            }
+                        }
                     </div>
 
                     <nav id="menu">
@@ -129,7 +136,7 @@
         });
         $('.scroll').click(function (event) {
             $('html, body').animate({
-                scrollTop: $($.attr(this, 'href')).offset().top -50
+                scrollTop: $($.attr(this, 'href')).offset().top - 50
             }, 1000);
             event.preventDefault();
         });

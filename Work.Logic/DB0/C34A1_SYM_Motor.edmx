@@ -56,6 +56,40 @@
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="int" Nullable="false" />
+          <Property Name="brand_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandDetail">
+          <Key>
+            <PropertyRef Name="brand_detail_id" />
+          </Key>
+          <Property Name="brand_detail_id" Type="int" Nullable="false" />
+          <Property Name="brand_id" Type="int" Nullable="false" />
+          <Property Name="detail_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="link_url" Type="varchar" MaxLength="256" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="department_id" />
@@ -103,11 +137,11 @@
             <PropertyRef Name="event_id" />
           </Key>
           <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="event_type" Type="int" Nullable="false" />
           <Property Name="event_title" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="show_banner" Type="bit" Nullable="false" />
-          <Property Name="banner_url" Type="varchar" MaxLength="256" />
-          <Property Name="event_info" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="event_content" Type="ntext" Nullable="false" />
+          <Property Name="event_info" Type="nvarchar" MaxLength="128" />
+          <Property Name="event_content" Type="ntext" />
           <Property Name="sort" Type="int" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
           <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
@@ -259,6 +293,18 @@
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
+        <Association Name="FK_BrandDetail_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="BrandDetail" Type="Self.BrandDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="BrandDetail">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -340,6 +386,8 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandDetail" EntityType="Self.BrandDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Editor" EntityType="Self.Editor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EditorDetail" EntityType="Self.EditorDetail" Schema="dbo" store:Type="Tables" />
@@ -355,6 +403,10 @@
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BrandDetail_Brand" Association="Self.FK_BrandDetail_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="BrandDetail" EntitySet="BrandDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
@@ -548,7 +600,6 @@
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <EntitySet Name="News" EntityType="C34A1_SYM_MotorModel.News" />
-          <EntitySet Name="Event" EntityType="C34A1_SYM_MotorModel.Event" />
           <EntitySet Name="Faq" EntityType="C34A1_SYM_MotorModel.Faq" />
           <EntitySet Name="FaqCategory" EntityType="C34A1_SYM_MotorModel.FaqCategory" />
           <AssociationSet Name="FK_Faq_FaqCategory" Association="C34A1_SYM_MotorModel.FK_Faq_FaqCategory">
@@ -561,6 +612,13 @@
             <End Role="Editor" EntitySet="Editor" />
             <End Role="EditorDetail" EntitySet="EditorDetail" />
           </AssociationSet>
+          <EntitySet Name="Event" EntityType="C34A1_SYM_MotorModel.Event" />
+          <EntitySet Name="Brand" EntityType="C34A1_SYM_MotorModel.Brand" />
+          <EntitySet Name="BrandDetail" EntityType="C34A1_SYM_MotorModel.BrandDetail" />
+          <AssociationSet Name="FK_BrandDetail_Brand" Association="C34A1_SYM_MotorModel.FK_BrandDetail_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="BrandDetail" EntitySet="BrandDetail" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -572,26 +630,6 @@
           <Property Name="news_info" Type="String" MaxLength="265" FixedLength="false" Unicode="true" />
           <Property Name="news_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="event_id" />
-          </Key>
-          <Property Name="event_id" Type="Int32" Nullable="false" />
-          <Property Name="event_title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="show_banner" Type="Boolean" Nullable="false" />
-          <Property Name="banner_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="event_info" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="event_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" />
           <Property Name="i_Hide" Type="Boolean" Nullable="false" />
           <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="i_InsertDeptID" Type="Int32" />
@@ -694,6 +732,74 @@
             </Principal>
             <Dependent Role="EditorDetail">
               <PropertyRef Name="editor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" />
+          <Property Name="event_type" Type="Int32" Nullable="false" />
+          <Property Name="event_title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="show_banner" Type="Boolean" Nullable="false" />
+          <Property Name="event_info" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="event_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BrandDetail" Relationship="C34A1_SYM_MotorModel.FK_BrandDetail_Brand" FromRole="Brand" ToRole="BrandDetail" />
+        </EntityType>
+        <EntityType Name="BrandDetail">
+          <Key>
+            <PropertyRef Name="brand_detail_id" />
+          </Key>
+          <Property Name="brand_detail_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <Property Name="detail_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="link_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Brand" Relationship="C34A1_SYM_MotorModel.FK_BrandDetail_Brand" FromRole="BrandDetail" ToRole="Brand" />
+        </EntityType>
+        <Association Name="FK_BrandDetail_Brand">
+          <End Type="C34A1_SYM_MotorModel.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="C34A1_SYM_MotorModel.BrandDetail" Role="BrandDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="BrandDetail">
+              <PropertyRef Name="brand_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -881,27 +987,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Event">
-            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Event">
-              <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="event_content" ColumnName="event_content" />
-                <ScalarProperty Name="event_info" ColumnName="event_info" />
-                <ScalarProperty Name="banner_url" ColumnName="banner_url" />
-                <ScalarProperty Name="show_banner" ColumnName="show_banner" />
-                <ScalarProperty Name="event_title" ColumnName="event_title" />
-                <ScalarProperty Name="event_id" ColumnName="event_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Faq">
             <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Faq">
               <MappingFragment StoreEntitySet="Faq">
@@ -971,6 +1056,63 @@
                 <ScalarProperty Name="detail_name" ColumnName="detail_name" />
                 <ScalarProperty Name="editor_id" ColumnName="editor_id" />
                 <ScalarProperty Name="editor_detail_id" ColumnName="editor_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="event_content" ColumnName="event_content" />
+                <ScalarProperty Name="event_info" ColumnName="event_info" />
+                <ScalarProperty Name="show_banner" ColumnName="show_banner" />
+                <ScalarProperty Name="event_title" ColumnName="event_title" />
+                <ScalarProperty Name="event_type" ColumnName="event_type" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandDetail">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.BrandDetail">
+              <MappingFragment StoreEntitySet="BrandDetail">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="link_url" ColumnName="link_url" />
+                <ScalarProperty Name="detail_name" ColumnName="detail_name" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+                <ScalarProperty Name="brand_detail_id" ColumnName="brand_detail_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,7 +14,7 @@ namespace DotWeb.Controllers
             using (var db0 = getDB0())
             {
                 #region get content
-                items = db0.Event.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                items = db0.Event.Where(x => !x.i_Hide & x.event_type == (int)EventType.OldActivity).OrderByDescending(x => x.sort)
                                          .Select(x => new m_Event()
                                          {
                                              event_id = x.event_id,
@@ -37,7 +37,7 @@ namespace DotWeb.Controllers
             using (var db0 = getDB0())
             {
                 #region get content
-                bool Exist = db0.Event.Any(x => x.event_id == id && !x.i_Hide);
+                bool Exist = db0.Event.Any(x => x.event_id == id & !x.i_Hide & x.event_type == (int)EventType.OldActivity);
                 if (id == null || !Exist)
                 {
                     return Redirect("~/Events/List");

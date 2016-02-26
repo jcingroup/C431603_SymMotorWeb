@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ProcCore.Business.DB0.m_Event>
+@{
     ViewBag.Title = "購車服務";
     ViewBag.BodyClass = "BuyCar p0";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -52,7 +53,7 @@
                 zoom: 14,
 
                 // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(25.0161618,121.299573) // center
+                center: new google.maps.LatLng(25.0161618, 121.299573) // center
             };
 
             // Get the HTML DOM element that will contain your map
@@ -83,13 +84,13 @@
             // };
 
             // for geolocation
-            var infoWindow = new google.maps.InfoWindow({map: map});
+            var infoWindow = new google.maps.InfoWindow({ map: map });
 
             // multi positions
             for (var i = 0; i < stores.length; i++) {
                 var store = stores[i];
                 var marker = new google.maps.Marker({
-                    position: {lat: store[1], lng: store[2]},
+                    position: { lat: store[1], lng: store[2] },
                     map: map,
                     // icon: image,
                     title: store[0],
@@ -101,7 +102,7 @@
                 var infowindow = new google.maps.InfoWindow({
                     content: "loading..."
                 });
-                marker.addListener('click', function() {
+                marker.addListener('click', function () {
                     infowindow.setContent(this.info);
                     infowindow.open(map, this);
                 });
@@ -109,7 +110,7 @@
 
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
@@ -118,7 +119,7 @@
                     infoWindow.setPosition(pos);
                     infoWindow.setContent('您的位置');
                     map.setCenter(pos);
-                }, function() {
+                }, function () {
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
             } else {
@@ -138,26 +139,37 @@
 <section id="banner" class="swiper-container">
     <h2 class="sr-only">最新購車優惠</h2>
     <ul class="swiper-wrapper list-unstyled">
+            @foreach (var i in Model)
+            {
+                if (i.show_banner & i.banner_imgsrc != null)
+                {
         <li class="swiper-slide">
-            @* 超連結連到 購車優惠 *@
-            <a href="~/Offer/Content"><img src="~/Content/images/BuyCar/banner1.jpg" alt=""></a>
+                        <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
         </li>
+                }
+            }
     </ul>
 </section>
-<div class="grid-gallery"><div class="wrap">
+    <div class="grid-gallery">
+        <div class="wrap">
     <div id="banner-thumb" class="swiper-container">
         <ul class="swiper-wrapper list-unstyled">
+                    @foreach (var i in Model)
+                    {
             <li class="swiper-slide">
-                <img src="~/Content/images/BuyCar/banner1-thumb.jpg" alt="">
+                            <img src="@i.list_imgsrc" alt="@i.event_title">
             </li>
+                    }
         </ul>
         <a class="prev swiper-button-prev" href=""></a>
         <a class="next swiper-button-next" href=""></a>
     </div>
-</div></div>
+        </div>
+    </div>
 
 
-<div id="location" class="grid-location"><div class="wrap">
+    <div id="location" class="grid-location">
+        <div class="wrap">
 
     <section class="search">
         <h2 class="h1">營業據點查詢</h2>
@@ -291,6 +303,7 @@
 
     </section>
 
-</div></div>
+        </div>
+    </div>
 
 </section>

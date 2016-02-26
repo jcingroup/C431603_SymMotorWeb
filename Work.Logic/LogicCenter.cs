@@ -17,7 +17,8 @@ namespace ProcCore.Business
         Base, Menu,
         News, Banner, Event,
         FaqCategory, Faq,
-        Editor, EditorDetail
+        Editor, EditorDetail,
+        Brand,BrandDetail
     }
     public enum SNType
     {

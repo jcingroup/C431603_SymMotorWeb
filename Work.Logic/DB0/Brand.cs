@@ -13,15 +13,16 @@ namespace ProcCore.Business.DB0
     using System.Collections.Generic;
     
     using Newtonsoft.Json;
-    public partial class Event : BaseEntityTable
+    public partial class Brand : BaseEntityTable
     {
-        public int event_id { get; set; }
-        public int event_type { get; set; }
-        public string event_title { get; set; }
-        public bool show_banner { get; set; }
-        public string event_info { get; set; }
-        public string event_content { get; set; }
-        public Nullable<int> sort { get; set; }
+        public Brand()
+        {
+            this.BrandDetail = new HashSet<BrandDetail>();
+        }
+    
+        public int brand_id { get; set; }
+        public string brand_name { get; set; }
+        public int sort { get; set; }
         public bool i_Hide { get; set; }
         public string i_InsertUserID { get; set; }
         public Nullable<int> i_InsertDeptID { get; set; }
@@ -30,5 +31,8 @@ namespace ProcCore.Business.DB0
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
+    
+    	[JsonIgnore]
+        public virtual ICollection<BrandDetail> BrandDetail { get; set; }
     }
 }

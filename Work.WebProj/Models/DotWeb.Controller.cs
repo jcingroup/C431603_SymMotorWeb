@@ -911,7 +911,7 @@ namespace DotWeb.Controller
 
                 ViewBag.VisitCount = visitCount;
                 ViewBag.IsFirstPage = false; //是否為首頁，請在首頁的Action此值設為True
-                //ajax_GetSidebarData();//取得左選單內容
+                ajax_GetBrandSidebar();//取得head車款展示選單內容
                 //ajax_GetAboutUsData();//layout下方aboutus
 
                 this.isTablet = (new WebInfo()).isTablet();
@@ -1126,31 +1126,36 @@ namespace DotWeb.Controller
             return r;
         }
         /// <summary>
-        /// 取得前台每頁左選單內容
+        /// 取得前台每頁車款展示內容
         /// </summary>
-        public void ajax_GetSidebarData()
+        public void ajax_GetBrandSidebar()
         {
-            //List<L1> l1 = new List<L1>();
-            //using (var db = getDB0())
-            //{
-            //    l1 = db.ProductCategory_l1.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
-            //                    .Select(x => new L1()
-            //                    {
-            //                        l1_id = x.product_category_l1_id,
-            //                        l1_name = x.category_l1_name
-            //                    }).ToList();
-            //    foreach (var item in l1)
-            //    {
-            //        item.l2_list = db.ProductCategory_l2.Where(x => !x.i_Hide & x.product_category_l1_id == item.l1_id).OrderByDescending(x => x.sort)
-            //                            .Select(x => new L2()
-            //                            {
-            //                                l2_id = x.product_category_l2_id,
-            //                                l2_name = x.category_l2_name
-            //                            }).ToList();
-            //    }
+            List<L1> l1 = new List<L1>();
+            using (var db = getDB0())
+            {
+                l1 = db.Brand.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                                .Select(x => new L1()
+                                {
+                                    l1_id = x.brand_id,
+                                    l1_name = x.brand_name
+                                }).ToList();
+                foreach (var item in l1)
+                {
+                    item.l2_list = db.BrandDetail.Where(x => !x.i_Hide & x.brand_id == item.l1_id).OrderByDescending(x => x.sort)
+                                        .Select(x => new L2()
+                                        {
+                                            l2_id = x.brand_detail_id,
+                                            l2_name = x.detail_name,
+                                            l2_url = x.link_url
+                                        }).ToList();
+                    if (item.l2_list.Count() == 1)
+                    {
+                        item.l1_url = item.l2_list.FirstOrDefault().l2_url;
+                    }
+                }
 
-            //}
-            //ViewBag.Sidebar = l1;
+            }
+            ViewBag.Brand = l1;
         }
         #region 前台editor用sidebar
         public void ajax_GetEditorSidebar(int editor_id)

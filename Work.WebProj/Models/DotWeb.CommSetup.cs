@@ -188,7 +188,7 @@ namespace DotWeb.CommSetup
             {
                 ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
                 imUp.Parm = new ImageSizeParm[] {
-                    new ImageSizeParm(){  width=280}
+                    new ImageSizeParm(){  width=400}
                 };
                 return imUp;
             }
@@ -200,6 +200,17 @@ namespace DotWeb.CommSetup
                 ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
                 imUp.Parm = new ImageSizeParm[] {
                     new ImageSizeParm(){ width=1920,heigh=725}
+                };
+                return imUp;
+            }
+        }
+        public static ImageUpScope BrandRotator
+        {
+            get
+            {
+                ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
+                imUp.Parm = new ImageSizeParm[] {
+                    new ImageSizeParm(){ width=200}
                 };
                 return imUp;
             }

@@ -7,7 +7,7 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Event {
+namespace EventByType {
     interface Rows {
         event_id?: string;
         check_del?: boolean,
@@ -48,7 +48,6 @@ namespace Event {
             return <tr>
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
-                       <td><StateForGird stateData={DT.EventType} id={this.props.itemData.event_type} /></td>
                        <td>{this.props.itemData.event_title}</td>
                        <td>{this.props.itemData.sort }</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
@@ -82,7 +81,7 @@ namespace Event {
                 fieldData: {},
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
-                searchData: { keyword: null, type: null }
+                searchData: { keyword: null, type: gb_type }
             }
         }
         static defaultProps: BaseDefine.GridFormPropsBase = {
@@ -210,7 +209,7 @@ namespace Event {
             this.setState(newState);
         }
         insertType() {
-            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, show_banner: true, event_type: EventType.OldActivity } });
+            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, show_banner: true, event_type: gb_type } });
         }
         updateType(id: number | string) {
 
@@ -276,15 +275,6 @@ namespace Event {
                                                 onChange={this.changeGDValue.bind(this, 'keyword') }
                                                 value={searchData.keyword}
                                                 placeholder="請輸入關鍵字..." /> { }
-                                            <label>分類</label> { }
-                                            <select type="text" className="form-control"
-                                                onChange={this.changeGDValue.bind(this, 'type') }
-                                                value={searchData.type}>
-                                                    <option value="">全部</option>
-                                                    {
-                                                    DT.EventType.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.label}</option>)
-                                                    }
-                                                </select> { }
                                             <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                             </div>
                                         </div>
@@ -300,7 +290,6 @@ namespace Event {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-2">活動分類</th>
                                         <th className="col-xs-4">標題</th>
                                         <th className="col-xs-2">排序</th>
                                         <th className="col-xs-2">狀態</th>
@@ -367,17 +356,6 @@ namespace Event {
                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'event_title') } value={fieldData.event_title} maxLength={64} required />
                     </div>
                 <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">分類</label>
-                <div className="col-xs-8">
-                    <select className="form-control" onChange={this.changeFDValue.bind(this, 'event_type') } value={fieldData.event_type} required>
-                        {
-                        DT.EventType.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.label}</option>)
-                        }
-                        </select>
-                    </div>
-                <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span></small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排序</label>
@@ -472,4 +450,4 @@ namespace Event {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Event.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);
+ReactDOM.render(<EventByType.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);

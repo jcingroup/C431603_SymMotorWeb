@@ -9,20 +9,10 @@ using System.Linq;
 
 namespace DotWeb.Areas.Active.Controllers
 {
-    public class EventDataController : AdminController
+    public class BrandDataController : AdminController
     {
         #region Action and function section
         public ActionResult Main()
-        {
-            ActionRun();
-            return View();
-        }
-        public ActionResult Event()
-        {
-            ActionRun();
-            return View();
-        }
-        public ActionResult Offer()
         {
             ActionRun();
             return View();
@@ -53,9 +43,7 @@ namespace DotWeb.Areas.Active.Controllers
             {
                 //banner
                 if (filekind == "Banner")
-                    handleImageSave(fileName, id, ImageFileUpParm.BannerRotator, filekind, "Active", "EventData");
-                if (filekind == "List")
-                    handleImageSave(fileName, id, ImageFileUpParm.EventList, filekind, "Active", "EventData");
+                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
 
 
                 r.result = true;
@@ -80,7 +68,7 @@ namespace DotWeb.Areas.Active.Controllers
         {
             SerializeFileList r = new SerializeFileList();
 
-            r.files = listImgFiles(id, filekind, "Active", "EventData");
+            r.files = listImgFiles(id, filekind, "Active", "BrandData");
             r.result = true;
             return defJSON(r);
         }
@@ -89,7 +77,7 @@ namespace DotWeb.Areas.Active.Controllers
         public string aj_FDelete(string id, string filekind, string filename)
         {
             ResultInfo r = new ResultInfo();
-            DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "EventData");
+            DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "BrandData");
             r.result = true;
             return defJSON(r);
         }

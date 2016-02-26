@@ -38,7 +38,7 @@
         @foreach (var i in Model.banners)
         {
             <li class="swiper-slide">
-                <img src="@i.imgsrc" alt="">
+                <img src="@i.imgsrc" alt="@i.banner_name">
             </li>
         }
     </ul>
@@ -53,38 +53,16 @@
         <div id="marquee">
             <div class="swiper-container">
                 <ol class="swiper-wrapper list-unstyled">
-                    <li class="swiper-slide">
-                        <h4 class="h4">COLT PLUS</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car1.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">LANCER FORTIS</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car2.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">LANCER IO</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car3.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">LANCER SPORTBACK</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car4.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">COLT PLUS</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car1.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">LANCER FORTIS</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car2.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">LANCER IO</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car3.png" alt=""></a>
-                    </li>
-                    <li class="swiper-slide">
-                        <h4 class="h4">LANCER SPORTBACK</h4>
-                        <a href="" target="new"><img src="~/Content/images/Index/car4.png" alt=""></a>
-                    </li>
+                    @foreach (var i in Model.brand_detail)
+                    {
+                        if (i.imgsrc != null)
+                        {
+                            <li class="swiper-slide">
+                                <h4 class="h4">@i.detail_name</h4>
+                                <a href="@i.link_url" target="new"><img src="@i.imgsrc" alt="@i.detail_name"></a>
+                            </li>
+                        }
+                    }
                 </ol>
             </div>
             <a class="prev swiper-button-prev" href=""></a>

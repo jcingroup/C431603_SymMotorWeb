@@ -11,14 +11,10 @@ namespace ProcCore.Business.DB0
 {
     using System;
     using System.Collections.Generic;
-    public partial class m_Event :BaseEntityTable {
-    public int event_id { get; set; }
-    public int event_type { get; set; }
-    public string event_title { get; set; }
-    public bool show_banner { get; set; }
-    public string event_info { get; set; }
-    public string event_content { get; set; }
-    public Nullable<int> sort { get; set; }
+    public partial class m_Brand :BaseEntityTable {
+    public int brand_id { get; set; }
+    public string brand_name { get; set; }
+    public int sort { get; set; }
     public bool i_Hide { get; set; }
     public string i_InsertUserID { get; set; }
     public Nullable<int> i_InsertDeptID { get; set; }
