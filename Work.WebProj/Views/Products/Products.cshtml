@@ -3,15 +3,28 @@
     ViewBag.BodyClass = "Products";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@section css {
+    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+}
 @section Scripts {
+    <script src="~/Content/js/bootstrap/tab.js"></script>
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        $('.tab-switcher a').click(function (event) {
-            $('.tab-content').hide();
-            $($.attr(this, 'href')).fadeIn();
-            $(this).addClass('active');
-            $('.tab-switcher a').not(this).removeClass('active');
-            event.preventDefault();
-        });
+    var galleryTop = new Swiper('.gallery-top', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 10,
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true
+    });
+    galleryTop.params.control = galleryThumbs;
+    galleryThumbs.params.control = galleryTop;
+    
     </script>
 }
 
@@ -22,7 +35,7 @@
     <section id="content">
         <h2 class="h1">COLT PLUS</h2>
 
-        <dl class="pro-intro">
+        <dl class="pro-intro row">
             <dt class="thumb"><img src="~/Content/images/Index/car1.png" alt=""></dt>
             <dd>
                 <ul class="list-unstyled">
@@ -36,50 +49,122 @@
             </dd>
         </dl>
 
-        <ul class="tab-switcher">
-            <li><a class="active" href="#tab1">特色</a></li>
-            <li><a href="#tab2">內裝/外觀</a></li>
-            <li><a href="#tab3">規格表</a></li>
-            <li><a href="#tab4">媒體報導</a></li>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab">特色</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab2" role="tab">內裝/外觀</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab3" role="tab">規格表</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab4" role="tab">媒體報導</a>
+            </li>
         </ul>
 
-        <section id="tab1" class="tab-content">
-            <h3 class="sr-only">特色</h3>
-            
-            @* 編輯器 *@
-            <div class="editor">特色</div>
+        <div class="tab-content">
 
-        </section>
+            <section id="tab1" class="tab-pane active" role="tabpanel">
+                <h3 class="sr-only">特色</h3>
+                
+                @* 編輯器 *@
+                <div class="editor">特色</div>
 
-        <section id="tab1" class="tab-content">
-            <h3 class="sr-only">內裝/外觀</h3>
+            </section>
 
-            <ol class="gallery">
-                <li>
-                    <a href="">
-                        <img src="" alt="">
-                        <span>外觀</span>
-                    </a>
-                </li>
-            </ol>
-            
-        </section>
+            <section id="tab2" class="tab-pane" role="tabpanel">
+                <h3 class="sr-only">內裝/外觀</h3>
 
-        <section id="tab1" class="tab-content">
-            <h3 class="sr-only">規格表</h3>
+                <ol class="album row list-unstyled">
+                    <li>
+                        <a href="">
+                            <img src="https://image.u-car.com.tw/carheadlinethumb1_16719.jpg" alt="">
+                            <span>外觀外觀外觀外觀外觀外觀外觀外觀外觀</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
+                            <span>外觀</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="http://static4.businessinsider.com/image/52151a8aecad04591b000026/10-reasons-you-should-buy-a-diesel-car.jpg" alt="">
+                            <span>外觀</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="http://www.dupontregistry.com/portal08/images/2012-Ferrari-FF.jpg" alt="">
+                            <span>外觀</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="http://static4.businessinsider.com/image/52151a8aecad04591b000026/10-reasons-you-should-buy-a-diesel-car.jpg" alt="">
+                            <span>外觀</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="http://www.dupontregistry.com/portal08/images/2012-Ferrari-FF.jpg" alt="">
+                            <span>外觀</span>
+                        </a>
+                    </li>
+                </ol>
+                
+            </section>
 
-            @* 編輯器 *@
-            <div class="editor">規格表</div>
-            
-        </section>
+            <section id="tab3" class="tab-pane" role="tabpanel">
+                <h3 class="sr-only">規格表</h3>
 
-        <section id="tab1" class="tab-content">
-            <h3 class="sr-only">媒體報導</h3>
+                @* 編輯器 *@
+                <div class="editor">規格表</div>
+                
+            </section>
 
-            @* 編輯器 *@
-            <div class="editor">媒體報導</div>
-            
-        </section>
+            <section id="tab4" class="tab-pane" role="tabpanel">
+                <h3 class="sr-only">媒體報導</h3>
+
+                @* 編輯器 *@
+                <div class="editor">媒體報導</div>
+                
+            </section>
+
+        </div>
+
+        <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
+        </div>
+    </div>
 
     </section><!-- content //-->
 

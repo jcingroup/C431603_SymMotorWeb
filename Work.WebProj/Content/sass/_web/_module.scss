@@ -58,6 +58,34 @@
 }
 
 
+// navs
+// ----------------------------------------------------------------------
+.nav-tabs {
+
+    text-align: center;
+    border-bottom-width: 3px;
+
+    .nav-item {
+        display: inline-block;
+        float: none;
+    }
+
+    .nav-link {
+        color: $body-color;
+
+        &:hover {color: $brand-secondary;}
+    }
+
+}
+
+.tab-content {
+    background: #fff;
+    box-shadow: 0 10px 10px -10px #666 inset;
+
+    padding: $spacer*2;
+}
+
+
 // custom forms
 // ----------------------------------------------------------------------
 

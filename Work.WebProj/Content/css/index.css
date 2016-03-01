@@ -2035,7 +2035,7 @@ mark,
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #CF2D2D;
 }
 .nav-tabs::after {
   content: "";
@@ -2055,7 +2055,7 @@ mark,
   border: 1px solid transparent;
 }
 .nav-tabs .nav-link:focus, .nav-tabs .navbar-nav > li > a:focus, .nav-tabs .nav-link:hover, .nav-tabs .navbar-nav > li > a:hover {
-  border-color: #eceeef #eceeef #ddd;
+  border-color: #eceeef #eceeef #CF2D2D;
 }
 .nav-tabs .nav-link.disabled, .nav-tabs .navbar-nav > li > a.disabled, .nav-tabs .nav-link.disabled:focus, .nav-tabs .navbar-nav > li > a.disabled:focus, .nav-tabs .nav-link.disabled:hover, .nav-tabs .navbar-nav > li > a.disabled:hover {
   color: #818a91;
@@ -2075,9 +2075,9 @@ mark,
 .nav-tabs .navbar-nav > li.open .nav-link:hover,
 .nav-tabs .nav-item.open .navbar-nav > li > a:hover,
 .nav-tabs .navbar-nav > li.open .navbar-nav > li > a:hover {
-  color: #55595c;
-  background-color: #fff;
-  border-color: #ddd #ddd transparent;
+  color: #fff;
+  background-color: #544D48;
+  border-color: transparent transparent transparent;
 }
 
 .nav-pills::after {
@@ -2614,7 +2614,7 @@ a:focus {
   padding-left: 7.5rem;
 }
 #header .showcase .menu > li:not(:last-child) {
-  margin-right: 4.55rem;
+  margin-right: 2rem;
 }
 #header .showcase .submenu li {
   display: inline-block;
