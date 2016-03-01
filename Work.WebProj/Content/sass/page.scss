@@ -966,6 +966,10 @@ $content-spacing-xs:    40px !default;
         }
     }
 
+    @include media-breakpoint-down(md) {
+        .thumb {height: 200px;}
+    }
+
     @include media-breakpoint-down(sm) {
         .thumb {
             width: 100%;

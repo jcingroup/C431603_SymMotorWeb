@@ -318,6 +318,7 @@
     <Compile Include="Controllers\LoanController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RepairController.cs" />
     <Compile Include="Controllers\TestDriveController.cs" />
     <Compile Include="Controllers\UsedCarController.cs" />
@@ -735,6 +736,7 @@
     <Content Include="Views\FAQ\FAQEmail.cshtml" />
     <Content Include="Views\UsedCar\UsedCarEmail.cshtml" />
     <Content Include="Views\Loan\LoanEmail.cshtml" />
+    <Content Include="Views\Products\Products.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

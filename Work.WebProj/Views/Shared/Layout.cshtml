@@ -47,13 +47,13 @@
                         var Brand = (List<ProcCore.Business.DB0.L1>)ViewBag.Brand;
                     }
                     <div id="series" class="showcase panel">
-                        <h2 class="h2">車款展示</h2>
+                        <h2 class="h2"><a href="~/Products">車款展示</a></h2>
                         <ul class="menu">
                             @foreach (var i in Brand)
                             {
                                 if (i.l2_list.Count() == 1)
                                 {
-                                    <li><a href="@i.l1_url" target="new">@i.l1_name</a></li>
+                                    <li><a href="@i.l1_url">@i.l1_name</a></li>
                                 }
                                 else if (i.l2_list.Count() > 1)
                                 {
@@ -73,7 +73,7 @@
                                 <ul id="l1-@i.l1_id" class="submenu collapse">
                                     @foreach (var j in i.l2_list)
                                     {
-                                        <li><a href="@j.l2_url" target="new">@j.l2_name</a></li>
+                                        <li><a href="@j.l2_url">@j.l2_name</a></li>
                                     }
                                 </ul>
                             }

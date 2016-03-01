@@ -5818,6 +5818,11 @@ a:focus {
   left: 50%;
   transform: translateX(-50%);
 }
+@media (max-width: 991px) {
+  .article-list .thumb {
+    height: 200px;
+  }
+}
 @media (max-width: 767px) {
   .article-list .thumb {
     width: 100%;

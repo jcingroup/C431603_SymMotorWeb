@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "車款展示";
+    ViewBag.BodyClass = "Products";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@section Scripts {
+    <script>
+        $('.tab-switcher a').click(function (event) {
+            $('.tab-content').hide();
+            $($.attr(this, 'href')).fadeIn();
+            $(this).addClass('active');
+            $('.tab-switcher a').not(this).removeClass('active');
+            event.preventDefault();
+        });
+    </script>
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+<div class="wrap">
+
+    <section id="content">
+        <h2 class="h1">COLT PLUS</h2>
+
+        <dl class="pro-intro">
+            <dt class="thumb"><img src="~/Content/images/Index/car1.png" alt=""></dt>
+            <dd>
+                <ul class="list-unstyled">
+                    <li><em>車款</em>COLT PLUS</li>
+                    <li><em>車價</em>55.9 萬元 ~ 66.5 萬元</li>
+                    <li><em>車色</em>冰鑽銀、銀河灰、尊爵黑、海湛藍、晶玉白、陽光金</li>
+                    <li><em>乘客數</em>5 人座</li>
+                    <li><em>排氣量</em>1,499 c.c.</li>
+                    <li><em>排檔方式</em>無段變速</li>
+                </ul>
+            </dd>
+        </dl>
+
+        <ul class="tab-switcher">
+            <li><a class="active" href="#tab1">特色</a></li>
+            <li><a href="#tab2">內裝/外觀</a></li>
+            <li><a href="#tab3">規格表</a></li>
+            <li><a href="#tab4">媒體報導</a></li>
+        </ul>
+
+        <section id="tab1" class="tab-content">
+            <h3 class="sr-only">特色</h3>
+            
+            @* 編輯器 *@
+            <div class="editor">特色</div>
+
+        </section>
+
+        <section id="tab1" class="tab-content">
+            <h3 class="sr-only">內裝/外觀</h3>
+
+            <ol class="gallery">
+                <li>
+                    <a href="">
+                        <img src="" alt="">
+                        <span>外觀</span>
+                    </a>
+                </li>
+            </ol>
+            
+        </section>
+
+        <section id="tab1" class="tab-content">
+            <h3 class="sr-only">規格表</h3>
+
+            @* 編輯器 *@
+            <div class="editor">規格表</div>
+            
+        </section>
+
+        <section id="tab1" class="tab-content">
+            <h3 class="sr-only">媒體報導</h3>
+
+            @* 編輯器 *@
+            <div class="editor">媒體報導</div>
+            
+        </section>
+
+    </section><!-- content //-->
+
+</div>
