@@ -282,7 +282,7 @@ namespace Brand {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-4">名稱</th>
+                                        <th className="col-xs-4">主分類名稱</th>
                                         <th className="col-xs-2">排序</th>
                                         <th className="col-xs-2">狀態</th>
                                         </tr>
@@ -342,7 +342,7 @@ namespace Brand {
             <div className="col-xs-10">
 
                 <div className="form-group">
-                    <label className="col-xs-2 control-label">名稱</label>
+                    <label className="col-xs-2 control-label">主分類名稱</label>
                     <div className="col-xs-8">
                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'brand_name') } value={fieldData.brand_name} maxLength={64}  />
                         </div>
@@ -505,7 +505,7 @@ namespace Brand {
                 <div className="col-xs-12">
                     <p>
                         <button className="btn-success" type="button" onClick={this.creatNewData.bind(this) }>
-                            <i className="fa-plus-circle"></i> 新增明細
+                            <i className="fa-plus-circle"></i> 新增次分類
                             </button>
                         </p>
                         <div className="panel-group" ref="SortForm" id="SortForm">
@@ -600,22 +600,22 @@ namespace Brand {
                         <div className="panel-body">
                             <div className="col-xs-6">
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">名稱</label>
-                                    <div className="col-xs-8">
+                                    <label className="col-xs-2 control-label">次分類名稱</label>
+                                    <div className="col-xs-7">
                                         <input type="text" className="form-control" value={fieldData.detail_name} onChange={this.changeFDValue.bind(this, 'detail_name') } maxLength={64} required/>
                                         </div>
                                     <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
                                     </div>
-                                <div className="form-group">
+                                {/*<div className="form-group">
                                     <label className="col-xs-1 control-label">連結</label>
                                     <div className="col-xs-8">
                                         <input type="text" className="form-control" value={fieldData.link_url} onChange={this.changeFDValue.bind(this, 'link_url') } maxLength={256} required/>
                                         </div>
                                     <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多256字</small>
-                                    </div>
+                                    </div>*/}
                                 <div className="form-group">
-                                    <label className="col-xs-1 control-label">排序</label>
-                                    <div className="col-xs-8">
+                                    <label className="col-xs-2 control-label">排序</label>
+                                    <div className="col-xs-7">
                                         <input type="number" className="form-control"value={fieldData.sort} onChange={this.changeFDValue.bind(this, 'sort') } required />
                                         </div>
                                     <small className="col-xs-3 help-inline">數字越大越前面</small>
