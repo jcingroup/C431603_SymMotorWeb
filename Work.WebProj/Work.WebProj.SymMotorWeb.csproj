@@ -363,6 +363,7 @@
     <Content Include="Content\css\component\fontAwesome\font-awesome.css" />
     <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\swiper.min.css" />
     <Content Include="Content\css\_admin\bs\bootstrap.css" />
@@ -408,7 +409,9 @@
     <Content Include="Content\images\UsedCar\pro1-1.jpg" />
     <Content Include="Content\images\UsedCar\pro1-2.jpg" />
     <Content Include="Content\js\bootstrap\collapse.js" />
+    <Content Include="Content\js\bootstrap\tab.js" />
     <Content Include="Content\js\bootstrap\util.js" />
+    <Content Include="Content\js\magnific\jquery.magnific-popup.min.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
     <Content Include="Content\sass\base\_reboot.scss" />
@@ -741,6 +744,7 @@
     <Content Include="Views\UsedCar\UsedCarEmail.cshtml" />
     <Content Include="Views\Loan\LoanEmail.cshtml" />
     <Content Include="Views\Products\Products.cshtml" />
+    <Content Include="Views\Products\Album.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "車款展示";
+    ViewBag.BodyClass = "Products";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>車款展示:順益汽車股份有限公司 SHUNG YE MOTORS CO.</title>
+    <link href="~/Content/css/popup.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
+</head>
+<body class="popup">
+
+    <div class="popup-content">
+
+        <button title="關閉 (Esc)" type="button" class="mfp-close"><i class="ti-close"></i></button>
+
+        <div class="swiper-container gallery-top">
+
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                
+                    <img src="http://lorempixel.com/1200/1000/nature/1" alt="">
+
+                    @* 如果有圖說 *@
+                    <span class="caption">圖說</span>
+
+                </div>
+            </div>
+
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+
+        <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="http://lorempixel.com/200/300/nature/1" alt=""></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
+    <script>
+        var galleryTop = new Swiper('.gallery-top', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 10,
+        });
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            slideToClickedSlide: true,
+        });
+        galleryTop.params.control = galleryThumbs;
+        galleryThumbs.params.control = galleryTop;
+    </script>
+
+</body>
+</html>

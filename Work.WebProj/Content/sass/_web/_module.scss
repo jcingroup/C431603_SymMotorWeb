@@ -201,3 +201,19 @@
         }
     }
 }
+
+
+// popup
+// ----------------------------------------------------------------------
+.mfp-bg {opacity: 0.9 !important;}
+.mfp-container {
+    padding: $spacer !important;
+}
+.mfp-close {
+    color: #fff !important;
+    font-size: 40px !important;
+    text-shadow: 0 0 3px #000;
+}
+.mfp-content {
+    height: 100%;
+}

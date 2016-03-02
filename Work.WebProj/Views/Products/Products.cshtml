@@ -4,27 +4,46 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section css {
+    <link href="~/Content/css/magnific-popup.css" rel="stylesheet">
     <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <style>
+        .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+    .gallery-top {
+        height: 80%;
+        width: 100%;
+    }
+    .gallery-thumbs {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+    .gallery-thumbs .swiper-slide {
+        width: auto;
+        height: 100%;
+        opacity: 0.4;
+    }
+    .gallery-thumbs .swiper-slide-active {
+        opacity: 1;
+    }
+    </style>
 }
 @section Scripts {
     <script src="~/Content/js/bootstrap/tab.js"></script>
-    <script src="~/Content/js/swiper/swiper.min.js"></script>
+    <script src="~/Content/js/magnific/jquery.magnific-popup.min.js"></script>
     <script>
-    var galleryTop = new Swiper('.gallery-top', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 10,
-    });
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 10,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        touchRatio: 0.2,
-        slideToClickedSlide: true
-    });
-    galleryTop.params.control = galleryThumbs;
-    galleryThumbs.params.control = galleryTop;
-    
+        $('.popup').magnificPopup({
+            type: 'ajax',
+            closeOnBgClick: false,
+        });
     </script>
 }
 
@@ -79,38 +98,14 @@
 
                 <ol class="album row list-unstyled">
                     <li>
-                        <a href="">
+                        <a class="popup" href="~/Products/Album">
                             <img src="https://image.u-car.com.tw/carheadlinethumb1_16719.jpg" alt="">
                             <span>外觀外觀外觀外觀外觀外觀外觀外觀外觀</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a class="popup" href="~/Products/Album">
                             <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="http://static4.businessinsider.com/image/52151a8aecad04591b000026/10-reasons-you-should-buy-a-diesel-car.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="http://www.dupontregistry.com/portal08/images/2012-Ferrari-FF.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="http://static4.businessinsider.com/image/52151a8aecad04591b000026/10-reasons-you-should-buy-a-diesel-car.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="http://www.dupontregistry.com/portal08/images/2012-Ferrari-FF.jpg" alt="">
                             <span>外觀</span>
                         </a>
                     </li>
@@ -135,36 +130,6 @@
             </section>
 
         </div>
-
-        <div class="swiper-container gallery-top">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-        </div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next swiper-button-white"></div>
-        <div class="swiper-button-prev swiper-button-white"></div>
-    </div>
-    <div class="swiper-container gallery-thumbs">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-            <div class="swiper-slide"><img src="http://lorempixel.com/200/200/nature/1" alt=""></div>
-        </div>
-    </div>
 
     </section><!-- content //-->
 
