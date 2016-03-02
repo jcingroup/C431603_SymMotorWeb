@@ -248,6 +248,35 @@
           <Property Name="logintime" Type="datetime" Nullable="false" />
           <Property Name="browers" Type="varchar" MaxLength="2048" Nullable="false" />
         </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="int" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="location_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="tel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="is_sales" Type="bit" Nullable="false" />
+          <Property Name="is_repair" Type="bit" Nullable="false" />
+          <Property Name="engine" Type="bit" Nullable="false" />
+          <Property Name="spray_sheet" Type="bit" Nullable="false" />
+          <Property Name="night" Type="bit" Nullable="false" />
+          <Property Name="holiday" Type="bit" Nullable="false" />
+          <Property Name="fast_insurance" Type="bit" Nullable="false" />
+          <Property Name="north_coordinate" Type="float" Nullable="false" />
+          <Property Name="east_coordinate" Type="float" Nullable="false" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
         <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="menu_id" />
@@ -400,6 +429,7 @@
           <EntitySet Name="i_Parm" EntityType="Self.i_Parm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_SN" EntityType="Self.i_SN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="i_UserLoginLog" EntityType="Self.i_UserLoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -619,6 +649,7 @@
             <End Role="Brand" EntitySet="Brand" />
             <End Role="BrandDetail" EntitySet="BrandDetail" />
           </AssociationSet>
+          <EntitySet Name="Location" EntityType="C34A1_SYM_MotorModel.Location" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -803,6 +834,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int32" Nullable="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="location_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="is_sales" Type="Boolean" Nullable="false" />
+          <Property Name="is_repair" Type="Boolean" Nullable="false" />
+          <Property Name="engine" Type="Boolean" Nullable="false" />
+          <Property Name="spray_sheet" Type="Boolean" Nullable="false" />
+          <Property Name="night" Type="Boolean" Nullable="false" />
+          <Property Name="holiday" Type="Boolean" Nullable="false" />
+          <Property Name="fast_insurance" Type="Boolean" Nullable="false" />
+          <Property Name="north_coordinate" Type="Double" Nullable="false" />
+          <Property Name="east_coordinate" Type="Double" Nullable="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1113,6 +1173,36 @@
                 <ScalarProperty Name="detail_name" ColumnName="detail_name" />
                 <ScalarProperty Name="brand_id" ColumnName="brand_id" />
                 <ScalarProperty Name="brand_detail_id" ColumnName="brand_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="east_coordinate" ColumnName="east_coordinate" />
+                <ScalarProperty Name="north_coordinate" ColumnName="north_coordinate" />
+                <ScalarProperty Name="fast_insurance" ColumnName="fast_insurance" />
+                <ScalarProperty Name="holiday" ColumnName="holiday" />
+                <ScalarProperty Name="night" ColumnName="night" />
+                <ScalarProperty Name="spray_sheet" ColumnName="spray_sheet" />
+                <ScalarProperty Name="engine" ColumnName="engine" />
+                <ScalarProperty Name="is_repair" ColumnName="is_repair" />
+                <ScalarProperty Name="is_sales" ColumnName="is_sales" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location_name" ColumnName="location_name" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

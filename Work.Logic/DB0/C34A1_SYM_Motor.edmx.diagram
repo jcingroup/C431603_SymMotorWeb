@@ -29,6 +29,7 @@
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Brand" Width="1.5" PointX="12.375" PointY="1.25" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.BrandDetail" Width="1.5" PointX="14.625" PointY="1" />
         <AssociationConnector Association="C34A1_SYM_MotorModel.FK_BrandDetail_Brand" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Location" Width="1.5" PointX="12.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

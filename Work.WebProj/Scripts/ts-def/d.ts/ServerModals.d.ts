@@ -184,6 +184,25 @@
         edit_state?: EditState;
         Brand?: server.Brand;
     }
+    interface Location extends BaseEntityTable {
+        location_id?: number;
+        city?: string;
+        country?: string;
+        location_name?: string;
+        address?: string;
+        tel?: string;
+        is_sales?: boolean;
+        is_repair?: boolean;
+        engine?: boolean;
+        spray_sheet?: boolean;
+        night?: boolean;
+        holiday?: boolean;
+        fast_insurance?: boolean;
+        north_coordinate?: number;
+        east_coordinate?: number;
+        sort?: number;
+        i_Hide?: boolean;
+    }
     interface L1 extends BaseEntityTable {
         l1_id?: number;
         l1_name?: string;

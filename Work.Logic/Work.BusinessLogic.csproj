@@ -140,6 +140,9 @@
     <Compile Include="DB0\i_UserLoginLog.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Location.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\Menu.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
@@ -192,6 +195,9 @@
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_i_UserLoginLog.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_Location.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_Menu.cs">
