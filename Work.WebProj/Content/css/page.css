@@ -1671,14 +1671,14 @@ input[type="button"].btn-block {
   clear: both;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .album li, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .pro-intro .thumb, .col-xs-6, .col-xs-7, .pro-intro dd, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .grid-info .detail, .gallery #banner, .gallery #banner-thumb, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .grid-info .info, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .grid-info .detail, .gallery #banner, .gallery #banner-thumb, .pro-intro .thumb, .pro-intro dd, .album li, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .grid-info .info, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
   position: relative;
   min-height: 1px;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .album li, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .pro-intro .thumb, .col-xs-6, .col-xs-7, .pro-intro dd, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .grid-info .detail, .gallery #banner, .gallery #banner-thumb {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .grid-info .detail, .gallery #banner, .gallery #banner-thumb, .pro-intro .thumb, .pro-intro dd, .album li {
   float: left;
 }
 
@@ -1690,7 +1690,7 @@ input[type="button"].btn-block {
   width: 16.66667%;
 }
 
-.col-xs-3, .album li {
+.col-xs-3 {
   width: 25%;
 }
 
@@ -1698,7 +1698,7 @@ input[type="button"].btn-block {
   width: 33.33333%;
 }
 
-.col-xs-5, .pro-intro .thumb {
+.col-xs-5 {
   width: 41.66667%;
 }
 
@@ -1706,7 +1706,7 @@ input[type="button"].btn-block {
   width: 50%;
 }
 
-.col-xs-7, .pro-intro dd {
+.col-xs-7 {
   width: 58.33333%;
 }
 
@@ -1726,7 +1726,7 @@ input[type="button"].btn-block {
   width: 91.66667%;
 }
 
-.col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .grid-info .detail, .gallery #banner, .gallery #banner-thumb {
+.col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .grid-info .detail, .gallery #banner, .gallery #banner-thumb, .pro-intro .thumb, .pro-intro dd, .album li {
   width: 100%;
 }
 
@@ -1887,7 +1887,7 @@ input[type="button"].btn-block {
 }
 
 @media (min-width: 544px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .grid-quality .detail li, .col-sm-5, .col-sm-6, .grid-products .card-wrap, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .grid-quality .detail li, .col-sm-5, .col-sm-6, .grid-products .card-wrap, .album li, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left;
   }
 
@@ -1911,7 +1911,7 @@ input[type="button"].btn-block {
     width: 41.66667%;
   }
 
-  .col-sm-6, .grid-products .card-wrap {
+  .col-sm-6, .grid-products .card-wrap, .album li {
     width: 50%;
   }
 
@@ -2096,7 +2096,7 @@ input[type="button"].btn-block {
   }
 }
 @media (min-width: 768px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .grid-info .info {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .album li, .col-md-5, .col-md-6, .pro-intro .thumb, .pro-intro dd, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .grid-info .info {
     float: left;
   }
 
@@ -2112,7 +2112,7 @@ input[type="button"].btn-block {
     width: 25%;
   }
 
-  .col-md-4 {
+  .col-md-4, .album li {
     width: 33.33333%;
   }
 
@@ -2120,7 +2120,7 @@ input[type="button"].btn-block {
     width: 41.66667%;
   }
 
-  .col-md-6 {
+  .col-md-6, .pro-intro .thumb, .pro-intro dd {
     width: 50%;
   }
 
@@ -2305,7 +2305,7 @@ input[type="button"].btn-block {
   }
 }
 @media (min-width: 992px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .grid-products .card-wrap, .grid-info .info, .gallery #banner-thumb, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .gallery #banner, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .album li, .col-lg-4, .grid-products .card-wrap, .grid-info .info, .gallery #banner-thumb, .col-lg-5, .pro-intro .thumb, .col-lg-6, .col-lg-7, .pro-intro dd, .col-lg-8, .gallery #banner, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left;
   }
 
@@ -2317,7 +2317,7 @@ input[type="button"].btn-block {
     width: 16.66667%;
   }
 
-  .col-lg-3 {
+  .col-lg-3, .album li {
     width: 25%;
   }
 
@@ -2325,7 +2325,7 @@ input[type="button"].btn-block {
     width: 33.33333%;
   }
 
-  .col-lg-5 {
+  .col-lg-5, .pro-intro .thumb {
     width: 41.66667%;
   }
 
@@ -2333,7 +2333,7 @@ input[type="button"].btn-block {
     width: 50%;
   }
 
-  .col-lg-7 {
+  .col-lg-7, .pro-intro dd {
     width: 58.33333%;
   }
 
@@ -4502,6 +4502,24 @@ a.text-danger:focus, a.text-danger:hover {
   border-color: #fff;
 }
 
+.mfp-bg {
+  opacity: 0.9 !important;
+}
+
+.mfp-container {
+  padding: 1rem !important;
+}
+
+.mfp-close {
+  color: #fff !important;
+  font-size: 40px !important;
+  text-shadow: 0 0 3px #000;
+}
+
+.mfp-content {
+  height: 100%;
+}
+
 /*      config
 -----------------------------------------------------------------------*/
 html, body {
@@ -4810,8 +4828,8 @@ a:focus {
 #menu a {
   color: #fff;
   font-size: 1.0625em;
-  padding-left: 1.35rem;
-  padding-right: 1.35rem;
+  padding-left: 1.85rem;
+  padding-right: 1.85rem;
 }
 .TestDrive #menu li:nth-of-type(1) a, .UsedCar #menu li:nth-of-type(2) a, .BuyCar #menu li:nth-of-type(3) a, .Repair #menu li:nth-of-type(4) a, .Loan #menu li:nth-of-type(5) a, .Insurance #menu li:nth-of-type(6) a, .Accessory #menu li:nth-of-type(7) a, .Eco #menu li:nth-of-type(8) a {
   position: relative;
@@ -4835,8 +4853,8 @@ a:focus {
   }
   #menu a {
     font-size: 1.05em;
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
   .TestDrive #menu li:nth-of-type(1) a::after, .UsedCar #menu li:nth-of-type(2) a::after, .BuyCar #menu li:nth-of-type(3) a::after, .Repair #menu li:nth-of-type(4) a::after, .Loan #menu li:nth-of-type(5) a::after, .Insurance #menu li:nth-of-type(6) a::after, .Accessory #menu li:nth-of-type(7) a::after, .Eco #menu li:nth-of-type(8) a::after {
     bottom: -27px;
@@ -5889,6 +5907,11 @@ a:focus {
   color: #BA8A00;
   margin-right: 0.5rem;
 }
+@media (max-width: 767px) {
+  .pro-intro dd {
+    margin-top: 1rem;
+  }
+}
 
 .album {
   margin-bottom: -2rem;
@@ -5943,4 +5966,9 @@ a:focus {
 .album li a:hover span {
   top: 20%;
   opacity: 0;
+}
+@media (max-width: 1259px) {
+  .album li a {
+    height: 150px;
+  }
 }

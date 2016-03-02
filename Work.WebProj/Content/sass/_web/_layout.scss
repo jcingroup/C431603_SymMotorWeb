@@ -324,8 +324,8 @@ a {
         color: #fff;
         font-size: em(17px);
 
-        padding-left: $spacer*1.35;
-        padding-right: $spacer*1.35;
+        padding-left: $spacer*1.85;
+        padding-right: $spacer*1.85;
     }
 
     $selector: ();
@@ -357,8 +357,8 @@ a {
 
         a {
             font-size: 1.05em;
-            padding-left: $spacer*0.4;
-            padding-right: $spacer*0.4;
+            padding-left: $spacer*0.75;
+            padding-right: $spacer*0.75;
         }
 
         #{$selector} {

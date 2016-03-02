@@ -12,5 +12,9 @@ namespace DotWeb.Controllers
         {
             return View("Products");
         }
+        public ActionResult Album()
+        {
+            return View("Album");
+        }
     }
 }

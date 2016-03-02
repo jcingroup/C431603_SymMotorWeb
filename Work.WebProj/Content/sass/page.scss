@@ -1006,14 +1006,18 @@ $content-spacing-xs:    40px !default;
 .pro-intro {
 
     .thumb {
-        @extend .col-xs-5;
+        @extend .col-lg-5;
+        @extend .col-md-6;
+        @extend .col-xs-12;
         text-align: center;
 
         img {max-width: 100%;}
     }
 
     dd {
-        @extend .col-xs-7;
+        @extend .col-lg-7;
+        @extend .col-md-6;
+        @extend .col-xs-12;
 
         li {
             text-indent: -4.5em;
@@ -1032,13 +1036,21 @@ $content-spacing-xs:    40px !default;
             }
         }
     }
+
+    @include media-breakpoint-down(sm) {
+        dd {margin-top: $spacer;}
+    }
 }
 
 .album {
     margin-bottom: -$spacer*2;
 
     li {
-        @extend .col-xs-3;
+        @extend .col-lg-3;
+        @extend .col-md-4;
+        @extend .col-sm-6;
+        @extend .col-xs-12;
+        
         margin-bottom: $spacer*2;
 
         a {
@@ -1101,5 +1113,9 @@ $content-spacing-xs:    40px !default;
                 }
             }
         }
+    }
+
+    @include media-breakpoint-down(lg) {
+        li a {height: 150px;}
     }
 }
