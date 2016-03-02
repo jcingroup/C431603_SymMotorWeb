@@ -36,6 +36,8 @@ namespace DotWeb.Api
                     .Select(x => new m_Brand()
                     {
                         brand_id = x.brand_id,
+                        brand_category_id = x.brand_category_id,
+                        category_name=x.BrandCategory.category_name,
                         brand_name = x.brand_name,
                         sort = x.sort,
                         i_Hide = x.i_Hide
@@ -43,6 +45,10 @@ namespace DotWeb.Api
                 if (q.keyword != null)
                 {
                     items = items.Where(x => x.brand_name.Contains(q.keyword));
+                }
+                if (q.category_id != null)
+                {
+                    items = items.Where(x => x.brand_category_id == q.category_id);
                 }
                 int page = (q.page == null ? 1 : (int)q.page);
                 int startRecord = PageCount.PageInfo(page, this.defPageSize, items.Count());
@@ -69,29 +75,16 @@ namespace DotWeb.Api
 
                 item = await db0.Brand.FindAsync(md.brand_id);
 
-                var details = item.BrandDetail;
-
-                foreach (var detail in details)
-                {
-                    var md_detail = md.BrandDetail.First(x => x.brand_detail_id == detail.brand_detail_id);
-                    detail.sort = md_detail.sort;
-                    detail.detail_name = md_detail.detail_name;
-                    detail.link_url = md_detail.link_url;
-                    detail.i_Hide = md_detail.i_Hide;
-                }
-
-                var add_detail = md.BrandDetail.Where(x => x.edit_state == EditState.Insert);
-                foreach (var detail in add_detail)
-                {
-                    detail.brand_detail_id = GetNewId(CodeTable.BrandDetail);
-                    detail.i_InsertUserID = this.UserId;
-                    detail.i_InsertDateTime = DateTime.Now;
-                    detail.i_InsertDeptID = this.departmentId;
-                    detail.i_Lang = "zh-TW";
-                    details.Add(detail);
-                }
-
                 item.brand_name = md.brand_name;
+                item.brand_category_id = md.brand_category_id;
+                item.price = md.price;//價格
+                item.colors = md.colors;//車色
+                item.seat = md.seat;//乘客數
+                item.engine_displacement = md.engine_displacement;//排氣量
+                item.gearshift = md.gearshift;//排檔方式
+                item.feature = md.feature;//特色
+                item.specification = md.specification;//規格
+                item.news = md.news;//報導
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 
@@ -201,5 +194,6 @@ namespace DotWeb.Api
     public class q_Brand : QueryBase
     {
         public string keyword { get; set; }
+        public int? category_id { get; set; }
     }
 }

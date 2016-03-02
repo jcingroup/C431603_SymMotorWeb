@@ -21,6 +21,7 @@ module.exports = {
         m_editor: path.resolve(__dirname, 'Scripts/src/tsx/m-editor.js'),
         m_editor_detail: path.resolve(__dirname, 'Scripts/src/tsx/m-editor_detail.js'),
         m_brand: path.resolve(__dirname, 'Scripts/src/tsx/m-brand.js'),
+        m_brand_category: path.resolve(__dirname, 'Scripts/src/tsx/m-brand_category.js'),
         m_location: path.resolve(__dirname, 'Scripts/src/tsx/m-location.js'),
         //前台
         w_loan_email: path.resolve(__dirname, 'Scripts/src/tsx/w-loan_email.js'),

@@ -167,22 +167,28 @@
         edit_state?: EditState;
         Editor?: server.Editor;
     }
+    interface BrandCategory extends BaseEntityTable {
+        brand_category_id?: number;
+        category_name?: string;
+        sort?: number;
+        i_Hide?: boolean;
+        Brand?: server.Brand[];
+    }
     interface Brand extends BaseEntityTable {
         brand_id?: number;
+        brand_category_id?: number;
         brand_name?: string;
+        price?: string;
+        colors?: string;
+        seat?: number;
+        engine_displacement?: string;
+        gearshift?: string;
+        feature?: string;
+        specification?: string;
+        news?: string;
         sort?: number;
         i_Hide?: boolean;
-        BrandDetail?: server.BrandDetail[];
-    }
-    interface BrandDetail extends BaseEntityTable {
-        brand_detail_id?: number;
-        brand_id?: number;
-        detail_name?: string;
-        link_url?: string;
-        sort?: number;
-        i_Hide?: boolean;
-        edit_state?: EditState;
-        Brand?: server.Brand;
+        BrandCategory?: server.BrandCategory;
     }
     interface Location extends BaseEntityTable {
         location_id?: number;

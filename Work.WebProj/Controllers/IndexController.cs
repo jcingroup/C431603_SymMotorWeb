@@ -36,17 +36,17 @@ namespace DotWeb.Controllers
                                          }).Take(3).ToList();
                 #endregion
                 #region banner
-                info.brand_detail = db0.BrandDetail.Where(x => !x.i_Hide).OrderByDescending(x => new { main_sort = x.Brand.sort, x.sort })
-                                         .Select(x => new m_BrandDetail()
+                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => new { main_sort = x.BrandCategory.sort, x.sort })
+                                         .Select(x => new m_Brand()
                                          {
-                                             brand_detail_id = x.brand_detail_id,
+                                             brand_category_id = x.brand_category_id,
                                              brand_id = x.brand_id,
-                                             detail_name = x.detail_name,
-                                             link_url = x.link_url
+                                             category_name = x.BrandCategory.category_name,
+                                             brand_name = x.brand_name
                                          }).ToList();
-                foreach (var i in info.brand_detail)
+                foreach (var i in info.brands)
                 {
-                    i.imgsrc = GetImg(i.brand_detail_id.ToString(), "Banner", "Active", "BrandData", null);
+                    i.imgsrc = GetImg(i.brand_id.ToString(), "Banner", "Active", "BrandData", null);
                 }
                 #endregion
             }
@@ -61,6 +61,6 @@ namespace DotWeb.Controllers
     {
         public List<m_Banner> banners { get; set; }
         public List<m_News> news { get; set; }
-        public List<m_BrandDetail> brand_detail { get; set; }
+        public List<m_Brand> brands { get; set; }
     }
 }

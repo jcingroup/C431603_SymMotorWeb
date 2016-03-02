@@ -8,13 +8,33 @@ namespace DotWeb.Controllers
 {
     public class ProductsController : WebUserController
     {
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View("Products");
+            Brand item = new Brand();
+            using (var db0 = getDB0())
+            {
+                #region get content
+                bool Exist = db0.Brand.Any(x => x.brand_id == id && !x.i_Hide);
+                if (id == null || !Exist)
+                {
+                    return Redirect("~/Products/NoData");
+                }
+                else
+                {
+                    item = db0.Brand.Find(id);
+                    item.imgsrc = GetImg(item.brand_id.ToString(), "Banner", "Active", "BrandData", null);
+                }
+                #endregion
+            }
+            return View("Products",item);
         }
         public ActionResult Album()
         {
             return View("Album");
+        }
+        public ActionResult NoData()
+        {
+            return View();
         }
     }
 }

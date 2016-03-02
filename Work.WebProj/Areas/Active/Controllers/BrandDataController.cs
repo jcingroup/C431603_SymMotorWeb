@@ -17,6 +17,11 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Category()
+        {
+            ActionRun();
+            return View();
+        }
         #endregion
 
         #region ajax call section
@@ -26,6 +31,7 @@ namespace DotWeb.Areas.Active.Controllers
             {
                 return defJSON(new
                 {
+                    data = db0.BrandCategory.Where(x => !x.i_Hide).OrderByDescending(x => x.sort).ToList()
                 });
             }
         }

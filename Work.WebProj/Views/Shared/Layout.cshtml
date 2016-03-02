@@ -53,7 +53,7 @@
                             {
                                 if (i.l2_list.Count() == 1)
                                 {
-                                    <li><a href="~/Products">@i.l1_name</a></li>
+                                    <li><a href="~/Products?id=@i.l2_list[0].l2_id">@i.l1_name</a></li>
                                 }
                                 else if (i.l2_list.Count() > 1)
                                 {
@@ -61,6 +61,9 @@
                                         @* 有子項目的車款，<a>要加class, 參數 *@
                                         <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#l1-@i.l1_id" aria-expanded="false">@i.l1_name</a>
                                     </li>
+                                }
+                                else {
+                                    <li><a href="~/Products">@i.l1_name</a></li>
                                 }
                             }
                         </ul>
@@ -73,7 +76,7 @@
                                 <ul id="l1-@i.l1_id" class="submenu collapse">
                                     @foreach (var j in i.l2_list)
                                     {
-                                        <li><a href="~/Products">@j.l2_name</a></li>
+                                        <li><a href="~/Products?id=@j.l2_id">@j.l2_name</a></li>
                                     }
                                 </ul>
                             }

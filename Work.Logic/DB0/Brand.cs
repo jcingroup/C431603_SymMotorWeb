@@ -15,13 +15,17 @@ namespace ProcCore.Business.DB0
     using Newtonsoft.Json;
     public partial class Brand : BaseEntityTable
     {
-        public Brand()
-        {
-            this.BrandDetail = new HashSet<BrandDetail>();
-        }
-    
         public int brand_id { get; set; }
+        public int brand_category_id { get; set; }
         public string brand_name { get; set; }
+        public string price { get; set; }
+        public string colors { get; set; }
+        public Nullable<int> seat { get; set; }
+        public string engine_displacement { get; set; }
+        public string gearshift { get; set; }
+        public string feature { get; set; }
+        public string specification { get; set; }
+        public string news { get; set; }
         public int sort { get; set; }
         public bool i_Hide { get; set; }
         public string i_InsertUserID { get; set; }
@@ -33,6 +37,6 @@ namespace ProcCore.Business.DB0
         public string i_Lang { get; set; }
     
     	[JsonIgnore]
-        public virtual ICollection<BrandDetail> BrandDetail { get; set; }
+        public virtual BrandCategory BrandCategory { get; set; }
     }
 }

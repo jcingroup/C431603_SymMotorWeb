@@ -157,13 +157,15 @@ namespace ProcCore.Business.DB0
     {
         public EditState edit_state { get; set; }
     }
-    public partial class m_BrandDetail
+    public partial class m_Brand
     {
-        public EditState edit_state { get; set; }
+        public string category_name { get; set; }
+        public string imgsrc { get; set; }
     }
-    public partial class BrandDetail
+    public partial class Brand
     {
-        public EditState edit_state { get; set; }
+        public string category_name { get; set; }
+        public string imgsrc { get; set; }
     }
     public class PutPurchaseCheckPram
     {
@@ -190,14 +192,12 @@ namespace ProcCore.Business.DB0
     {
         public int l1_id { get; set; }
         public string l1_name { get; set; }
-        public string l1_url { get; set; }
         public List<L2> l2_list { get; set; }
     }
     public class L2
     {
         public int l2_id { get; set; }
         public string l2_name { get; set; }
-        public string l2_url { get; set; }
     }
     public class Param
     {

@@ -13,54 +13,63 @@ using System.Web.Http;
 
 namespace DotWeb.Api
 {
-    public class BrandDetailController : ajaxApi<BrandDetail, q_BrandDetail>
+    public class BrandCategoryController : ajaxApi<BrandCategory, q_BrandCategory>
     {
         public async Task<IHttpActionResult> Get(int id)
         {
             using (db0 = getDB0())
             {
-                item = await db0.BrandDetail.FindAsync(id);
-                r = new ResultInfo<BrandDetail>() { data = item };
+                item = await db0.BrandCategory.FindAsync(id);
+                r = new ResultInfo<BrandCategory>() { data = item };
             }
 
             return Ok(r);
         }
-        public async Task<IHttpActionResult> Get([FromUri]q_BrandDetail q)
+        public async Task<IHttpActionResult> Get([FromUri]q_BrandCategory q)
         {
             #region working
 
             using (db0 = getDB0())
             {
-                var items = db0.BrandDetail
-                    .Where(x => x.brand_id == q.main_id)
-                    .OrderByDescending(x => new { main_sort = x.Brand.sort, x.sort })
-                    .Select(x => new m_BrandDetail()
+                var items = db0.BrandCategory
+                    .OrderByDescending(x => x.sort)
+                    .Select(x => new m_BrandCategory()
                     {
-                        brand_id = x.brand_id,
-                        brand_detail_id = x.brand_detail_id,
-                        detail_name = x.detail_name,
-                        link_url = x.link_url,
+                        brand_category_id = x.brand_category_id,
+                        category_name = x.category_name,
                         sort = x.sort,
-                        i_Hide = x.i_Hide,
-                        edit_state = EditState.Update
+                        i_Hide = x.i_Hide
                     });
+                if (q.keyword != null)
+                {
+                    items = items.Where(x => x.category_name.Contains(q.keyword));
+                }
+                int page = (q.page == null ? 1 : (int)q.page);
+                int startRecord = PageCount.PageInfo(page, this.defPageSize, items.Count());
+                var resultItems = await items.Skip(startRecord).Take(this.defPageSize).ToListAsync();
 
-                return Ok(items.ToList());
+                return Ok(new GridInfo<m_BrandCategory>()
+                {
+                    rows = resultItems,
+                    total = PageCount.TotalPage,
+                    page = PageCount.Page,
+                    records = PageCount.RecordCount,
+                    startcount = PageCount.StartCount,
+                    endcount = PageCount.EndCount
+                });
             }
             #endregion
         }
-        public async Task<IHttpActionResult> Put([FromBody]BrandDetail md)
+        public async Task<IHttpActionResult> Put([FromBody]BrandCategory md)
         {
             ResultInfo rAjaxResult = new ResultInfo();
             try
             {
                 db0 = getDB0();
 
-                item = await db0.BrandDetail.FindAsync(md.brand_detail_id);
+                item = await db0.BrandCategory.FindAsync(md.brand_category_id);
 
-                item.detail_name = md.detail_name;
-                item.brand_id = md.brand_id;
-                item.link_url = md.link_url;
+                item.category_name = md.category_name;
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 
@@ -78,15 +87,15 @@ namespace DotWeb.Api
             }
             return Ok(rAjaxResult);
         }
-        public async Task<IHttpActionResult> Post([FromBody]BrandDetail md)
+        public async Task<IHttpActionResult> Post([FromBody]BrandCategory md)
         {
-            md.brand_detail_id = GetNewId(CodeTable.BrandDetail);
+            md.brand_category_id = GetNewId(CodeTable.BrandCategory);
 
             md.i_InsertDateTime = DateTime.Now;
             md.i_InsertDeptID = this.departmentId;
             md.i_InsertUserID = this.UserId;
             md.i_Lang = "zh-TW";
-            r = new ResultInfo<BrandDetail>();
+            r = new ResultInfo<BrandCategory>();
             if (!ModelState.IsValid)
             {
                 r.message = ModelStateErrorPack();
@@ -99,11 +108,11 @@ namespace DotWeb.Api
                 #region working
                 db0 = getDB0();
 
-                db0.BrandDetail.Add(md);
+                db0.BrandCategory.Add(md);
                 await db0.SaveChangesAsync();
 
                 r.result = true;
-                r.id = md.brand_detail_id;
+                r.id = md.brand_category_id;
                 return Ok(r);
                 #endregion
             }
@@ -129,12 +138,12 @@ namespace DotWeb.Api
             try
             {
                 db0 = getDB0();
-                r = new ResultInfo<BrandDetail>();
+                r = new ResultInfo<BrandCategory>();
                 foreach (var id in ids)
                 {
-                    item = new BrandDetail() { brand_detail_id = id };
-                    db0.BrandDetail.Attach(item);
-                    db0.BrandDetail.Remove(item);
+                    item = new BrandCategory() { brand_category_id = id };
+                    db0.BrandCategory.Attach(item);
+                    db0.BrandCategory.Remove(item);
                 }
                 await db0.SaveChangesAsync();
 
@@ -167,8 +176,8 @@ namespace DotWeb.Api
             }
         }
     }
-    public class q_BrandDetail : QueryBase
+    public class q_BrandCategory : QueryBase
     {
-        public int? main_id { get; set; }
+        public string keyword { get; set; }
     }
 }

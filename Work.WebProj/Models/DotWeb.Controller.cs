@@ -1133,25 +1133,20 @@ namespace DotWeb.Controller
             List<L1> l1 = new List<L1>();
             using (var db = getDB0())
             {
-                l1 = db.Brand.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                l1 = db.BrandCategory.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
                                 .Select(x => new L1()
                                 {
-                                    l1_id = x.brand_id,
-                                    l1_name = x.brand_name
+                                    l1_id = x.brand_category_id,
+                                    l1_name = x.category_name
                                 }).ToList();
                 foreach (var item in l1)
                 {
-                    item.l2_list = db.BrandDetail.Where(x => !x.i_Hide & x.brand_id == item.l1_id).OrderByDescending(x => x.sort)
+                    item.l2_list = db.Brand.Where(x => !x.i_Hide & x.brand_category_id == item.l1_id).OrderByDescending(x => x.sort)
                                         .Select(x => new L2()
                                         {
-                                            l2_id = x.brand_detail_id,
-                                            l2_name = x.detail_name,
-                                            l2_url = x.link_url
+                                            l2_id = x.brand_id,
+                                            l2_name = x.brand_name
                                         }).ToList();
-                    if (item.l2_list.Count() == 1)
-                    {
-                        item.l1_url = item.l2_list.FirstOrDefault().l2_url;
-                    }
                 }
 
             }

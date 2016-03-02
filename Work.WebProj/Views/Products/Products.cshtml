@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ProcCore.Business.DB0.Brand
+@{
     ViewBag.Title = "車款展示";
     ViewBag.BodyClass = "Products";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -52,18 +53,18 @@
 <div class="wrap">
 
     <section id="content">
-        <h2 class="h1">COLT PLUS</h2>
+        <h2 class="h1">@Model.category_name</h2>
 
         <dl class="pro-intro row">
-            <dt class="thumb"><img src="~/Content/images/Index/car1.png" alt=""></dt>
+            <dt class="thumb"><img src="@Model.imgsrc" alt=""></dt>
             <dd>
                 <ul class="list-unstyled">
-                    <li><em>車款</em>COLT PLUS</li>
-                    <li><em>車價</em>55.9 萬元 ~ 66.5 萬元</li>
-                    <li><em>車色</em>冰鑽銀、銀河灰、尊爵黑、海湛藍、晶玉白、陽光金</li>
-                    <li><em>乘客數</em>5 人座</li>
-                    <li><em>排氣量</em>1,499 c.c.</li>
-                    <li><em>排檔方式</em>無段變速</li>
+                    <li><em>車款</em>@Model.brand_name</li>
+                    <li><em>車價</em>@Model.price</li>
+                    <li><em>車色</em>@Model.colors</li>
+                    <li><em>乘客數</em>@Model.seat 人座</li>
+                    <li><em>排氣量</em>@Model.engine_displacement</li>
+                    <li><em>排檔方式</em>@Model.gearshift</li>
                 </ul>
             </dd>
         </dl>
@@ -89,7 +90,7 @@
                 <h3 class="sr-only">特色</h3>
                 
                 @* 編輯器 *@
-                <div class="editor">特色</div>
+                <div class="editor">@Html.Raw(Model.feature)</div>
 
             </section>
 
@@ -117,7 +118,7 @@
                 <h3 class="sr-only">規格表</h3>
 
                 @* 編輯器 *@
-                <div class="editor">規格表</div>
+                <div class="editor">@Html.Raw(Model.specification)</div>
                 
             </section>
 
@@ -125,7 +126,7 @@
                 <h3 class="sr-only">媒體報導</h3>
 
                 @* 編輯器 *@
-                <div class="editor">媒體報導</div>
+                <div class="editor">@Html.Raw(Model.news)</div>
                 
             </section>
 

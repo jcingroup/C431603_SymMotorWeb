@@ -42,8 +42,8 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Editor> Editor { get; set; }
         public virtual DbSet<EditorDetail> EditorDetail { get; set; }
         public virtual DbSet<Event> Event { get; set; }
-        public virtual DbSet<Brand> Brand { get; set; }
-        public virtual DbSet<BrandDetail> BrandDetail { get; set; }
         public virtual DbSet<Location> Location { get; set; }
+        public virtual DbSet<Brand> Brand { get; set; }
+        public virtual DbSet<BrandCategory> BrandCategory { get; set; }
     }
 }

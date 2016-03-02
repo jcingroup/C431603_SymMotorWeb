@@ -85,7 +85,7 @@
     <Compile Include="DB0\Brand.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB0\BrandDetail.cs">
+    <Compile Include="DB0\BrandCategory.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\C34A1_SYM_Motor.Context.cs">
@@ -158,7 +158,7 @@
     <Compile Include="DB0\m_Brand.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB0\m_BrandDetail.cs">
+    <Compile Include="DB0\m_BrandCategory.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_Department.cs">

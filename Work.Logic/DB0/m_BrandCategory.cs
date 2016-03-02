@@ -11,11 +11,9 @@ namespace ProcCore.Business.DB0
 {
     using System;
     using System.Collections.Generic;
-    public partial class m_BrandDetail :BaseEntityTable {
-    public int brand_detail_id { get; set; }
-    public int brand_id { get; set; }
-    public string detail_name { get; set; }
-    public string link_url { get; set; }
+    public partial class m_BrandCategory :BaseEntityTable {
+    public int brand_category_id { get; set; }
+    public string category_name { get; set; }
     public int sort { get; set; }
     public bool i_Hide { get; set; }
     public string i_InsertUserID { get; set; }
