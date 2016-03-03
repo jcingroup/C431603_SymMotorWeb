@@ -45,5 +45,7 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<Brand> Brand { get; set; }
         public virtual DbSet<BrandCategory> BrandCategory { get; set; }
+        public virtual DbSet<BrandAlbum> BrandAlbum { get; set; }
+        public virtual DbSet<BrandAlbumDetail> BrandAlbumDetail { get; set; }
     }
 }

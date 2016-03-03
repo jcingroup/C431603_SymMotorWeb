@@ -30,6 +30,10 @@
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Brand" Width="1.5" PointX="16.625" PointY="12.125" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.BrandCategory" Width="1.5" PointX="14.375" PointY="13" />
         <AssociationConnector Association="C34A1_SYM_MotorModel.FK_Brand_BrandCategory" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.BrandAlbum" Width="1.5" PointX="18.875" PointY="13.625" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.BrandAlbumDetail" Width="1.5" PointX="21.125" PointY="13.75" />
+        <AssociationConnector Association="C34A1_SYM_MotorModel.FK_BrandAlbum_Brand" />
+        <AssociationConnector Association="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

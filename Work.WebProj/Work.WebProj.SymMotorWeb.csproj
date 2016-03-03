@@ -297,6 +297,8 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\BrandAlbumDetailController.cs" />
+    <Compile Include="Controllers\Api\BrandAlbumController.cs" />
     <Compile Include="Controllers\Api\LocationController.cs" />
     <Compile Include="Controllers\Api\BrandCategoryController.cs" />
     <Compile Include="Controllers\Api\BrandController.cs" />
