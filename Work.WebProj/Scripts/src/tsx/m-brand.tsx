@@ -26,7 +26,147 @@ namespace Brand {
     interface FormResult extends IResultBase {
         id: string
     }
+    class HandleBrandAlbum extends React.Component<{ brand_id: number, parent_edit_type: number },
+        { albums?: Array<server.BrandAlbum>, album_name?: string }> {
+        constructor() {
+            super();
+            this.componentDidMount = this.componentDidMount.bind(this);
+            this.query = this.query.bind(this);
+            this.delItem = this.delItem.bind(this);
+            this.submit = this.submit.bind(this);
+            this.onChange = this.onChange.bind(this);
+            this.state = {
+                albums: [], album_name: null
+            };
+        }
+        static defaultProps = {
+        }
 
+        private query() {
+            CommFunc.jqGet(gb_approot + 'api/BrandAlbum', { brand_id: this.props.brand_id })
+                .done((data: Array<server.BrandAlbum>, textStatus, jqXHRdata) => {
+                    this.setState({
+                        album_name: null,
+                        albums: data
+                    });
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        componentDidMount() {
+            this.query();
+        }
+        addNew() {
+
+            let sort: number = 1;
+            let last_item: server.BrandAlbum;
+
+            if (this.state.albums.length > 0) {
+                last_item = this.state.albums[this.state.albums.length - 1];
+
+                if (last_item.edit_type == 1) {
+                    alert('尚有資料編輯中，無法新增。');
+                    return;
+                }
+                sort = last_item.sort + 1;
+            }
+
+
+            let new_item: server.BrandAlbum = {
+                edit_type: 1,
+                brand_album_id: 0,
+                brand_id: this.props.brand_id,
+                album_name: '',
+                sort: sort
+            };
+            let obj = this.state.albums;
+            obj.push(new_item);
+            this.setState({ albums: obj });
+        }
+        delItem(i: number, e: React.SyntheticEvent) {
+
+            let obj = this.state.albums;
+            let item = obj[i];
+
+            CommFunc.jqDelete(gb_approot + 'api/BrandAlbum?id=' + item.brand_album_id, {})
+                .done((data: Array<server.BrandAlbum>, textStatus, jqXHRdata) => {
+                    this.query();
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        submit() {
+            if (this.state.albums.length >= 6) {
+                alert('超過新增上限,最多新增六個相簿!');
+                return;
+            }
+            if (this.state.album_name != null) {
+                if (this.state.album_name.trim() == '') {
+                    alert('相簿名稱未填寫!');
+                    return;
+                }
+            } else if (this.state.album_name == null) {
+                alert('相簿名稱未填寫!');
+                return;
+            }
+
+            if (this.props.parent_edit_type == 1) {
+                alert('請先儲存確認產品新增完畢後，再新增相簿!');
+                return;
+            }
+            let sort: number = 1;
+            let last_item: server.BrandAlbum;
+
+            if (this.state.albums.length > 0) {
+                last_item = this.state.albums[this.state.albums.length - 1];
+                sort = last_item.sort + 1;
+            }
+
+            var new_obj: server.BrandAlbum = {
+                brand_id: this.props.brand_id,
+                album_name: this.state.album_name.trim(),
+                sort: sort
+            };
+
+            CommFunc.jqPost(gb_approot + 'api/BrandAlbum', new_obj)
+                .done((data, textStatus, jqXHRdata) => {
+                    this.query();
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        cancel() {
+            let obj = this.state.albums;
+            obj.splice(-1, 1);
+            this.setState({ albums: obj });
+        }
+        onChange(e: React.SyntheticEvent) {
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+            this.setState({ album_name: input.value });
+        }
+
+        render() {
+            return (
+                <div>
+    <div className="input-group">
+        <input type="text" className="form-control" value={this.state.album_name} onChange={this.onChange} placeholder="請輸入相簿名稱..." />
+        <span className="input-group-btn">
+            <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增相簿</button>
+            </span>
+        </div>
+    <ul className="help-block list-inline">
+        {this.state.albums.map((item, i) => {
+            return <li key={item.brand_album_id}><span className="label label-info">{item.album_name} <button type="button" className="btn-link" onClick={this.delItem.bind(this, i) }> &times; </button></span></li>
+        }) }
+        </ul>
+                    </div>
+
+            );
+        }
+    }
     class GridRow extends React.Component<BaseDefine.GridRowPropsBase<Rows>, BaseDefine.GridRowStateBase> {
         constructor() {
             super();
@@ -470,8 +610,14 @@ namespace Brand {
         <div className="col-xs-12">
             <div className="form-group clear bg-warning">
             <label className="col-xs-1 control-label">內裝/外觀</label>
-            <small className="col-xs-9 help-block">每車款「內裝/外觀」相簿最多新增五個，每個相簿最多新增16張圖片,每張最大不可超過2MB</small>
-                </div></div>
+            <small className="col-xs-9 help-block">每車款「內裝/外觀」相簿最多新增6個，每個相簿最多新增16張圖片, 每張最大不可超過2MB</small>
+            <div className="form-group">
+                <div className="col-xs-4 col-xs-offset-1">
+                    <HandleBrandAlbum brand_id={this.state.fieldData.brand_id} parent_edit_type={this.state.edit_type} />
+                    </div>
+                </div>
+                </div>
+            </div>
         <div className="col-xs-12">
         <Tabs defaultActiveKey={1} animation={false}>
                 <Tab eventKey={1} title="特色">
