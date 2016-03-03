@@ -12,7 +12,6 @@ $logo-width:            255px !default;
 $logo-spacing:          25px !default;
 $submenu-pages:         6;
 
-
 // base
 //
 
@@ -22,7 +21,6 @@ body {
     position: relative;
     left: 0;
     transition: left 0.35s;
-
     // &.push {overflow: hidden;}
 }
 
@@ -39,9 +37,7 @@ a {
 #wrapper {
     @if $enable-lte7 { _height: 100%; }
     min-height: 100%;
-
     background: #F5F5F5 url(#{$img-path}/bg.jpg) repeat-x left bottom $footer-height;
-
     padding-bottom: $footer-height + $content-spacing; // 內容與footer間距
 
     @include media-breakpoint-down(sm) {
@@ -50,15 +46,12 @@ a {
 }
 
 .wrap {
-    @extend .container;
-
+    @include make-container();
+    @include make-container-max-widths();
     position: relative;
-    // padding: 0;
 }
 
 #header, #footer, #main {
-    // @extend %container;
-    // @extend %contain;
     position: relative;
 }
 
@@ -69,39 +62,31 @@ a {
     background:
         url(#{$img-path}/bgHeader.gif) repeat-x center bottom,
         #403734 url(#{$img-path}/bgHeader2.jpg) repeat-y center top;
-
     z-index: $zindex-navbar;
 
     .logo {
         @include reset-text;
         margin: 0;
-        
         position: absolute;
         left: 0;
         top: -8px;
-
         z-index: $zindex-navbar+10;
 
         a {@include text-pic('logo.png', 257px, 180px);}
     }
 
     .topNav {
-        @extend .list-inline;
         font-size: $font-size-sm;
-
         position: absolute;
         right: 0;
         top: $spacer*0.5;
-
         z-index: $zindex-navbar+1;
 
         li:not(:last-child) { margin-right: $spacer; }
-
         a {
             color: #999;
             &:hover, &:active { color: $brand-primary; }
         }
-
         @each $item in $pages2 {
             $i: index($pages2, $item);
             .#{$item} & li:nth-of-type(#{$i+1}) a {color: $brand-primary;}
@@ -110,22 +95,17 @@ a {
 
     .showcase {
         position: relative;
-
         padding-left: $logo-width + $logo-spacing;
         padding-top: 47px;
         padding-bottom: 25px;
 
         .h2 {
             @include reset-text;
-            @extend .hidden-md-down;
-
             border: 0;
             margin: 0;
             padding: 0;
-
             font-size: em(17px);
             color: #ccc;
-
             position: absolute;
             left: $logo-width + $logo-spacing;
             top: 45px;
@@ -141,12 +121,10 @@ a {
         a {
             color: #fff;
             font-size: em(18px);
-
             &:hover {color: $link-hover-color;}
         }
 
         .menu, .submenu {
-            @extend .list-inline;
             margin-bottom: 0;
         }
 
@@ -157,9 +135,7 @@ a {
         }
 
         .submenu {
-
             li {display: inline-block;}
-
             a {
                 display: inline-block;
                 background: #866F5F;
@@ -174,7 +150,6 @@ a {
         }
 
         .collapse-toggle {
-            @extend .hidden-md-down;
             color: $link-hover-color;
 
             &::after {
@@ -198,24 +173,18 @@ a {
                 &::after {border-top-color: #82744B;}
                 &:hover::after {border-top-color: lighten($link-hover-color, 35%);}
             }
-
-            
         }
-
     }
-
     @include media-breakpoint-only(lg) {
         .showcase {
             padding-left: $logo-width;
 
             .h2 {left: $logo-width;}
-
             .menu {
                 padding-left: $spacer*6;
 
                 > li:not(:last-child) { margin-right:$spacer*1.55; }
             }
-
             .collapse-toggle {
                 &::after {
                     margin-left: $spacer*0.5;
@@ -224,7 +193,6 @@ a {
             }
         }
     }
-
     @include media-breakpoint-down(md) {
         background: linear-gradient(135deg, #e22f1a 0%,#992121 100%);
         box-shadow: 0 2px 2px hsla(0,0,0,0.5);
@@ -239,7 +207,6 @@ a {
                 background: url(#{$img-path}/logo2.gif) no-repeat;
             }
         }
-
         .topNav {
             padding: $spacer*0.5;
             position: static;
@@ -255,13 +222,10 @@ a {
                 }
             }
         }
-
         .showcase {
             border-bottom: 1px solid #6E6661;
             padding: $spacer*0.6 $spacer;
             order: 2;
-
-            .h2 {position: static;}
 
             .menu {
                 padding: 0;
@@ -290,7 +254,6 @@ a {
                     }
                 }
             }
-
             a {
                 letter-spacing: 0.1em;
 
@@ -312,14 +275,11 @@ a {
 }
 
 #menu {
-    @extend .navbar;
-
     padding-left: 260px;
 
     .navbar-nav {
         li {margin:0;}
     }
-
     a {
         color: #fff;
         font-size: em(17px);
@@ -327,7 +287,6 @@ a {
         padding-left: $spacer*1.85;
         padding-right: $spacer*1.85;
     }
-
     $selector: ();
     @each $item in $pages {
         $i: index($pages, $item);
@@ -351,7 +310,6 @@ a {
     a:hover, #{$selector} {
         color: $link-hover-color;
     }
-
     @include media-breakpoint-only(lg) {
         padding-left: 249px;
 
@@ -360,12 +318,10 @@ a {
             padding-left: $spacer*0.75;
             padding-right: $spacer*0.75;
         }
-
         #{$selector} {
             &::after {bottom: -27px;}
         }
     }
-
     @include media-breakpoint-down(md) {
         padding:0;
         order: 1;
@@ -376,7 +332,6 @@ a {
                 border-bottom: 1px solid #6E6661;
             }
         }
-
         a {
             padding: $spacer*0.6 $spacer;
             border-left: 3px solid $brand-secondary;
@@ -391,7 +346,6 @@ a {
 }
 
 .menu-trigger {
-    @extend .hidden-lg-up;
     @include text-hide;
     @include size(50px);
 
@@ -508,9 +462,6 @@ a {
     }
 
     .submenu {
-        @extend .wrap;
-        @extend .list-inline;
-
         margin-bottom: 0;
         padding-left: $logo-width + $logo-spacing;
 

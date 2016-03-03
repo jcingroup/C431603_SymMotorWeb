@@ -29,13 +29,13 @@
         <header id="header">
             <div class="wrap">
 
-                <button class="menu-trigger"><span>MENU</span></button>
+                <button class="menu-trigger hidden-lg-up"><span>MENU</span></button>
 
                 <h1 class="logo"><a href="~/Index" title="回首頁">@Resources.Res.System_FrontName</a></h1>
 
                 <div class="mobile-menu">
 
-                    <ul class="topNav">
+                    <ul class="topNav list-inline">
                         <li><a href="~/BuyCar#location">營業據點</a></li>
                         <li><a href="~/AboutUs">公司介紹</a></li>
                         <li><a href="~/News/List">最新消息</a></li>
@@ -48,8 +48,8 @@
                         var Brand = (List<ProcCore.Business.DB0.L1>)ViewBag.Brand;
                     }
                     <div id="series" class="showcase panel">
-                        <h2 class="h2">車款展示</h2>
-                        <ul class="menu">
+                        <h2 class="h2 hidden-md-down">車款展示</h2>
+                        <ul class="menu list-inline">
                             @foreach (var i in Brand)
                             {
                                 if (i.l2_list.Count() == 1)
@@ -60,7 +60,7 @@
                                 {
                                     <li>
                                         @* 有子項目的車款，<a>要加class, 參數 *@
-                                        <a class="collapse-toggle panel-title collapsed" data-toggle="collapse" data-parent="#series" href="#l1-@i.l1_id" aria-expanded="false">@i.l1_name</a>
+                                        <a class="collapse-toggle panel-title collapsed hidden-md-down" data-toggle="collapse" data-parent="#series" href="#l1-@i.l1_id" aria-expanded="false">@i.l1_name</a>
                                     </li>
                                 }
                                 else {
@@ -74,7 +74,7 @@
                             if (i.l2_list.Count() > 1)
                             {
                                 @* 子項目 *@
-                                <ul id="l1-@i.l1_id" class="submenu collapse">
+                                <ul id="l1-@i.l1_id" class="submenu list-inline collapse">
                                     @foreach (var j in i.l2_list)
                                     {
                                         <li><a href="~/Products?id=@j.l2_id">@j.l2_name</a></li>
@@ -84,7 +84,7 @@
                         }
                     </div>
 
-                    <nav id="menu">
+                    <nav id="menu" class="navbar">
                         <h2 class="sr-only">主選單</h2>
                         <ul class="nav navbar-nav">
                             <li><a href="~/TestDrive">預約試乘</a></li>
