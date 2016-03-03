@@ -72,7 +72,7 @@ namespace DotWeb.Controllers
         {
             ResultInfo r = new ResultInfo();
             #region 驗證碼
-            ValidateResponse Validate = ValidateCaptcha(md.response, "6LfOXBcTAAAAAOqEElEieoCCTQmHAmtRfnqSS141");
+            ValidateResponse Validate = ValidateCaptcha(md.response);
             if (!Validate.Success)
             {
                 r.result = false;
