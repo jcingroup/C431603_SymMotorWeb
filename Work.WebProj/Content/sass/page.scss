@@ -1044,6 +1044,7 @@ $content-spacing-xs:    40px !default;
 }
 
 .album {
+    text-align: center;
     margin-bottom: -$spacer*2;
 
     li {
@@ -1051,6 +1052,9 @@ $content-spacing-xs:    40px !default;
         @extend .col-md-4;
         @extend .col-sm-6;
         @extend .col-xs-12;
+
+        float: none;
+        display: inline-block;
         
         margin-bottom: $spacer*2;
 

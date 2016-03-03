@@ -4535,6 +4535,17 @@ a.text-danger:focus, a.text-danger:hover {
 
 .editor img {
   max-width: 100%;
+  transition: opacity 0.35s;
+}
+.editor a {
+  color: #876400;
+  transition: color 0.35s;
+}
+.editor a:hover {
+  color: #CF2D2D;
+}
+.editor a:hover img {
+  opacity: 0.8;
 }
 
 .colored {
@@ -5990,9 +6001,12 @@ a:focus {
 }
 
 .album {
+  text-align: center;
   margin-bottom: -2rem;
 }
 .album li {
+  float: none;
+  display: inline-block;
   margin-bottom: 2rem;
 }
 .album li a {
