@@ -4392,6 +4392,15 @@ a.text-danger:focus, a.text-danger:hover {
 .nav-tabs .nav-link:hover, .nav-tabs .navbar-nav > li > a:hover {
   color: #CF2D2D;
 }
+@media (max-width: 543px) {
+  .nav-tabs .nav-item, .nav-tabs .navbar-nav > li {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  .nav-tabs .nav-item .nav-link, .nav-tabs .navbar-nav > li .nav-link, .nav-tabs .nav-item .navbar-nav > li > a, .nav-tabs .navbar-nav > li > a {
+    padding: 0.5em;
+  }
+}
 
 .tab-content {
   background: #fff;
@@ -4518,6 +4527,48 @@ a.text-danger:focus, a.text-danger:hover {
 
 .mfp-content {
   height: 100%;
+}
+
+.editor img {
+  max-width: 100%;
+}
+
+h2.colored {
+  color: #CF2D2D;
+  font-size: 1.75em;
+}
+
+h3.colored {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #876400;
+}
+
+h5.colored {
+  color: #4D3B1F;
+}
+
+.list-underline > li {
+  border-bottom: 1px dotted #aaa;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.list-icon {
+  list-style: none;
+  padding: 0;
+}
+.list-icon > li {
+  padding-left: 15px;
+}
+.list-icon > li::before {
+  content: " ";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-left-color: #ba2828;
+  margin-left: -10px;
 }
 
 /*      config
@@ -5052,6 +5103,12 @@ a:focus {
 .p6 #sidebar .submenu li:nth-of-type(6) a::after {
   width: 100%;
 }
+@media (min-width: 992px) and (max-width: 1259px) {
+  #sidebar .submenu li a {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
 @media (max-width: 991px) {
   #sidebar {
     padding-top: 0;
@@ -5070,6 +5127,12 @@ a:focus {
 #content.fixed {
   padding-top: 47px;
 }
+@media (min-width: 992px) and (max-width: 1259px) {
+  #content.fixed {
+    padding-top: 40px;
+  }
+}
+
 @media (max-width: 991px) {
   #content.fixed {
     padding-top: 0;

@@ -2983,6 +2983,12 @@ a:focus {
 .p6 #sidebar .submenu li:nth-of-type(6) a::after {
   width: 100%;
 }
+@media (min-width: 992px) and (max-width: 1259px) {
+  #sidebar .submenu li a {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
 @media (max-width: 991px) {
   #sidebar {
     padding-top: 0;
@@ -3001,6 +3007,12 @@ a:focus {
 #content.fixed {
   padding-top: 47px;
 }
+@media (min-width: 992px) and (max-width: 1259px) {
+  #content.fixed {
+    padding-top: 40px;
+  }
+}
+
 @media (max-width: 991px) {
   #content.fixed {
     padding-top: 0;

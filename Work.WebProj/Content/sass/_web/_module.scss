@@ -76,6 +76,15 @@
         &:hover {color: $brand-secondary;}
     }
 
+    @include media-breakpoint-down(xs) {
+        .nav-item {
+            font-size: $font-size-sm;
+            margin: 0;
+
+            .nav-link {padding: 0.5em;}
+        }
+    }
+
 }
 
 .tab-content {
