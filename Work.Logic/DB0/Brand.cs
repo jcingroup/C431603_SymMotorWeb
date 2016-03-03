@@ -15,6 +15,11 @@ namespace ProcCore.Business.DB0
     using Newtonsoft.Json;
     public partial class Brand : BaseEntityTable
     {
+        public Brand()
+        {
+            this.BrandAlbum = new HashSet<BrandAlbum>();
+        }
+    
         public int brand_id { get; set; }
         public int brand_category_id { get; set; }
         public string brand_name { get; set; }
@@ -38,5 +43,7 @@ namespace ProcCore.Business.DB0
     
     	[JsonIgnore]
         public virtual BrandCategory BrandCategory { get; set; }
+    	[JsonIgnore]
+        public virtual ICollection<BrandAlbum> BrandAlbum { get; set; }
     }
 }

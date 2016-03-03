@@ -85,6 +85,12 @@
     <Compile Include="DB0\Brand.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\BrandAlbum.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\BrandAlbumDetail.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB0\BrandCategory.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
@@ -156,6 +162,12 @@
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_Brand.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_BrandAlbum.cs">
+      <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\m_BrandAlbumDetail.cs">
       <DependentUpon>C34A1_SYM_Motor.tt</DependentUpon>
     </Compile>
     <Compile Include="DB0\m_BrandCategory.cs">

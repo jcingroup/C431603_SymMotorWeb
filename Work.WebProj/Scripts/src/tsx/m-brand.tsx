@@ -370,7 +370,7 @@ namespace Brand {
                 <label className="col-xs-2 control-label">首頁輪播圖</label>
                 <div className="col-xs-8">
                    <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.brand_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
-                                            url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
+                       url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
                     <small className="help-block">最多1張圖，建議尺寸 500*200 px, 每張圖最大不可超過2MB</small>
                     </div>
                 </div>
@@ -466,8 +466,14 @@ namespace Brand {
                 <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
                 </div>
             </div>
+
         <div className="col-xs-12">
-            <Tabs defaultActiveKey={1} animation={false}>
+            <div className="form-group clear bg-warning">
+            <label className="col-xs-1 control-label">內裝/外觀</label>
+            <small className="col-xs-9 help-block">每車款「內裝/外觀」相簿最多新增五個，每個相簿最多新增16張圖片,每張最大不可超過2MB</small>
+                </div></div>
+        <div className="col-xs-12">
+        <Tabs defaultActiveKey={1} animation={false}>
                 <Tab eventKey={1} title="特色">
                     <textarea type="date" className="form-control" id="feature" name="feature" value={fieldData.feature} onChange={this.changeFDValue.bind(this, 'feature') } />
                     </Tab>
@@ -477,7 +483,7 @@ namespace Brand {
                 <Tab eventKey={3} title="媒體報導">
                     <textarea type="date" className="form-control" id="news" name="news" value={fieldData.news} onChange={this.changeFDValue.bind(this, 'news') } />
                     </Tab>
-                </Tabs>
+            </Tabs>
             <div className="form-action">
                 <div className="col-xs-4 col-xs-offset-2">
                     <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
@@ -486,7 +492,7 @@ namespace Brand {
                 </div>
             </div>
         </form>
-                        </div>
+                        </div >
                 );
             }
 

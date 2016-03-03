@@ -22,6 +22,7 @@ namespace DotWeb.Controllers
                 else
                 {
                     item = db0.Brand.Find(id);
+                    item.category_name = item.BrandCategory.category_name;
                     item.imgsrc = GetImg(item.brand_id.ToString(), "Banner", "Active", "BrandData", null);
                 }
                 #endregion
