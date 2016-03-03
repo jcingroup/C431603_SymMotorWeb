@@ -1351,13 +1351,13 @@ namespace DotWeb.Controller
 
         #endregion
         #region google驗證碼
-        public ValidateResponse ValidateCaptcha(string response, string secret)
+        public ValidateResponse ValidateCaptcha(string response)
         {
             ValidateResponse result = new ValidateResponse();
             var client = new WebClient();
             var reply =
                 client.DownloadString(
-                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", "6LcC2hkTAAAAAMtuAxmARTqQv10iFVaXBzyO6uxZ", response));
 
             var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
 
