@@ -219,7 +219,11 @@
     padding: $spacer !important;
 }
 .mfp-close {
+    width: 60px !important;
+    height: 60px !important;
+    line-height: 60px !important;
     color: #fff !important;
+    font-family: 'themify' !important;
     font-size: 40px !important;
     text-shadow: 0 0 3px #000;
 }

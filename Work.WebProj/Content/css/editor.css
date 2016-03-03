@@ -844,6 +844,10 @@ mark,
   max-width: 100%;
 }
 
+.colored {
+  margin-top: 1rem;
+}
+
 h2.colored {
   color: #CF2D2D;
   font-size: 1.75em;
@@ -853,6 +857,11 @@ h3.colored {
   font-size: 1.5em;
   font-weight: bold;
   color: #876400;
+}
+
+h4.colored {
+  color: #B96200;
+  font-size: 1.35em;
 }
 
 h5.colored {
