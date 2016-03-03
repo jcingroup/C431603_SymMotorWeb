@@ -13,7 +13,7 @@ namespace DotWeb.Controllers
             using (var db0 = getDB0())
             {
                 #region get content
-                item = db0.EditorDetail.Where(x => !x.i_Hide & x.editor_id == (int)EditorState.Enterprise).OrderByDescending(x => x.sort).FirstOrDefault();
+                item = db0.EditorDetail.Where(x => !x.i_Hide & x.editor_id == (int)EditorState.Careers).OrderByDescending(x => x.sort).FirstOrDefault();
                 #endregion
             }
             return View("Careers", item);
