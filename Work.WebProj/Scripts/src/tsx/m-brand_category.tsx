@@ -7,21 +7,18 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Brand {
+namespace BrandCategory {
     interface Rows {
-        brand_id?: string;
+        brand_category_id?: string;
         check_del?: boolean,
-        category_name?: string,
-        brand_name?: string;
+        category_name?: string;
         sort?: number;
         i_Hide?: boolean;
     }
     interface FormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
-            keyword: string,
-            category_id: number
+            keyword: string
         }
-        option_category?: server.BrandCategory[]
     }
     interface FormResult extends IResultBase {
         id: string
@@ -36,7 +33,7 @@ namespace Brand {
         static defaultProps = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPathName: gb_approot + 'api/Brand'
+            apiPathName: gb_approot + 'api/BrandCategory'
         }
         delCheck(i, chd) {
             this.props.delCheck(i, chd);
@@ -50,15 +47,13 @@ namespace Brand {
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
                        <td>{this.props.itemData.category_name}</td>
-                       <td>{this.props.itemData.brand_name}</td>
                        <td>{this.props.itemData.sort }</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
                 </tr>;
 
         }
     }
-    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.Brand>>{
-
+    export class GridForm extends React.Component<BaseDefine.GridFormPropsBase, FormState<Rows, server.BrandCategory>>{
         constructor() {
 
             super();
@@ -75,8 +70,6 @@ namespace Brand {
             this.changeFDValue = this.changeFDValue.bind(this);
             this.setInputValue = this.setInputValue.bind(this);
             this.handleSearch = this.handleSearch.bind(this);
-            this.componentDidUpdate = this.componentDidUpdate.bind(this);
-            this.queryInitData = this.queryInitData.bind(this);
             this.render = this.render.bind(this);
 
 
@@ -84,36 +77,16 @@ namespace Brand {
                 fieldData: {},
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
-                searchData: { keyword: null, category_id: null },
-                option_category: []
+                searchData: { keyword: null }
             }
         }
         static defaultProps: BaseDefine.GridFormPropsBase = {
             fdName: 'fieldData',
             gdName: 'searchData',
-            apiPath: gb_approot + 'api/Brand',
-            apiInitPath: gb_approot + 'Active/BrandData/aj_Init'
+            apiPath: gb_approot + 'api/BrandCategory'
         }
         componentDidMount() {
             this.queryGridData(1);
-            this.queryInitData();
-        }
-        componentDidUpdate(prevProps, prevState) {
-            if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
-                console.log('CKEDITOR');
-                CKEDITOR.replace('feature', { customConfig: '../ckeditor/inlineConfig.js' });
-                CKEDITOR.replace('specification', { customConfig: '../ckeditor/inlineConfig.js' });
-                CKEDITOR.replace('news', { customConfig: '../ckeditor/inlineConfig.js' });
-            }
-        }
-        queryInitData() {
-            CommFunc.jqGet(this.props.apiInitPath, {})
-                .done((data, textStatus, jqXHRdata) => {
-                    this.setState({ option_category: data.data });
-                })
-                .fail((jqXHR, textStatus, errorThrown) => {
-                    CommFunc.showAjaxError(errorThrown);
-                });
         }
         gridData(page: number) {
 
@@ -142,9 +115,6 @@ namespace Brand {
         handleSubmit(e: React.FormEvent) {
 
             e.preventDefault();
-            this.state.fieldData.feature = CKEDITOR.instances['feature'].getData();
-            this.state.fieldData.specification = CKEDITOR.instances['specification'].getData();
-            this.state.fieldData.news = CKEDITOR.instances['news'].getData();
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: FormResult, textStatus, jqXHRdata) => {
@@ -186,7 +156,7 @@ namespace Brand {
             var ids = [];
             for (var i in this.state.gridData.rows) {
                 if (this.state.gridData.rows[i].check_del) {
-                    ids.push('ids=' + this.state.gridData.rows[i].brand_id);
+                    ids.push('ids=' + this.state.gridData.rows[i].brand_category_id);
                 }
             }
 
@@ -228,7 +198,7 @@ namespace Brand {
             this.setState(newState);
         }
         insertType() {
-            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, brand_category_id: this.state.option_category[0].brand_category_id, seat: 0 } });
+            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0 } });
         }
         updateType(id: number | string) {
 
@@ -272,7 +242,6 @@ namespace Brand {
         render() {
 
             var outHtml: JSX.Element = null;
-            let option = this.state.option_category;
 
             if (this.state.edit_type == 0) {
                 let searchData = this.state.searchData;
@@ -295,16 +264,6 @@ namespace Brand {
                                                 onChange={this.changeGDValue.bind(this, 'keyword') }
                                                 value={searchData.keyword}
                                                 placeholder="請輸入關鍵字..." /> { }
-                                            <label>分類</label> { }
-                                            <select className="form-control"
-                                                id="search-category"
-                                                onChange={this.changeGDValue.bind(this, 'category_id') }
-                                                value={searchData.category_id} >
-                                                <option value="">全部</option>
-                                                {
-                                                option.map((itemData, i) => <option key={i} value={itemData.brand_category_id}>{itemData.category_name}</option>)
-                                                }
-                                                </select> { }
                                             <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                             </div>
                                         </div>
@@ -320,8 +279,7 @@ namespace Brand {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-2">分類</th>
-                                        <th className="col-xs-4">標題</th>
+                                        <th className="col-xs-4">名稱</th>
                                         <th className="col-xs-2">排序</th>
                                         <th className="col-xs-2">狀態</th>
                                         </tr>
@@ -332,7 +290,7 @@ namespace Brand {
                                         (itemData, i) =>
                                             <GridRow key={i}
                                                 ikey={i}
-                                                primKey={itemData.brand_id}
+                                                primKey={itemData.brand_category_id}
                                                 itemData={itemData}
                                                 delCheck={this.delCheck}
                                                 updateType={this.updateType} />
@@ -358,126 +316,54 @@ namespace Brand {
             else if (this.state.edit_type == 1 || this.state.edit_type == 2) {
                 let fieldData = this.state.fieldData;
                 let InputDate = CommCmpt.InputDate;
-                var Tabs = ReactBootstrap.Tabs;
-                var Tab = ReactBootstrap.Tab;
 
                 outHtml = (
                     <div>
     <h4 className="title"> {this.props.caption} 基本資料維護</h4>
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-6">
+        <div className="col-xs-10">
+
             <div className="form-group">
-                <label className="col-xs-2 control-label">首頁輪播圖</label>
+                <label className="col-xs-2 control-label">名稱</label>
                 <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.brand_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
-                                            url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 500*200 px, 每張圖最大不可超過2MB</small>
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'category_name') } value={fieldData.category_name} maxLength={64} required/>
                     </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">車款</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'brand_name') } value={fieldData.brand_name} maxLength={64} required />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">分類</label>
-                <div className="col-xs-7">
-                    <select className="form-control" id="field-category"
-                        onChange={this.changeFDValue.bind(this, 'brand_category_id') }
-                        value={fieldData.brand_category_id}>
-                            {
-                            option.map((itemData, i) => <option key={i} value={itemData.brand_category_id}>{itemData.category_name}</option>)
-                            }
-                        </select>
-                    </div>
-                <small className="help-inline col-xs-2 text-danger">(必填) </small>
+                <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排序</label>
-                <div className="col-xs-7">
+                <div className="col-xs-8">
                     <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
                     </div>
-                <small className="col-xs-3 help-inline">數字越大越前面</small>
+                <small className="col-xs-2 help-inline">數字越大越前面</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">狀態</label>
                 <div className="col-xs-4">
-                    <div className="radio-inline">
-                        <label>
-                               <input type="radio"
-                                   name="i_Hide"
-                                   value={true}
-                                   checked={fieldData.i_Hide === true}
-                                   onChange={this.changeFDValue.bind(this, 'i_Hide') }
-                                   />
-                                <span>隱藏</span>
-                            </label>
-                        </div>
-                      <div className="radio-inline">
-                          <label>
-                                <input type="radio"
-                                    name="i_Hide"
-                                    value={false}
-                                    checked={fieldData.i_Hide === false}
-                                    onChange={this.changeFDValue.bind(this, 'i_Hide') }
-                                    />
-                                <span>顯示</span>
-                              </label>
-                          </div>
+                   <div className="radio-inline">
+                       <label>
+                            <input type="radio"
+                                name="i_Hide"
+                                value={true}
+                                checked={fieldData.i_Hide === true}
+                                onChange={this.changeFDValue.bind(this, 'i_Hide') }
+                                />
+                            <span>隱藏</span>
+                           </label>
+                       </div>
+                   <div className="radio-inline">
+                       <label>
+                            <input type="radio"
+                                name="i_Hide"
+                                value={false}
+                                checked={fieldData.i_Hide === false}
+                                onChange={this.changeFDValue.bind(this, 'i_Hide') }
+                                />
+                            <span>顯示</span>
+                           </label>
+                       </div>
                     </div>
                 </div>
-            </div>
-        <div className="col-xs-6">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">車價</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'price') } value={fieldData.price} maxLength={64}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多64字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">車色</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'colors') } value={fieldData.colors} maxLength={128}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">乘客數</label>
-                <div className="col-xs-7">
-                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'seat') } value={fieldData.seat}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span></small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排氣量</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'engine_displacement') } value={fieldData.engine_displacement} maxLength={128}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排檔方式</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'gearshift') } value={fieldData.gearshift} maxLength={128}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            </div>
-        <div className="col-xs-12">
-            <Tabs defaultActiveKey={1} animation={false}>
-                <Tab eventKey={1} title="特色">
-                    <textarea type="date" className="form-control" id="feature" name="feature" value={fieldData.feature} onChange={this.changeFDValue.bind(this, 'feature') } />
-                    </Tab>
-                <Tab eventKey={2} title="規格表">
-                    <textarea type="date" className="form-control" id="specification" name="specification" value={fieldData.specification} onChange={this.changeFDValue.bind(this, 'specification') } />
-                    </Tab>
-                <Tab eventKey={3} title="媒體報導">
-                    <textarea type="date" className="form-control" id="news" name="news" value={fieldData.news} onChange={this.changeFDValue.bind(this, 'news') } />
-                    </Tab>
-                </Tabs>
             <div className="form-action">
                 <div className="col-xs-4 col-xs-offset-2">
                     <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
@@ -496,4 +382,4 @@ namespace Brand {
 }
 
 var dom = document.getElementById('page_content');
-ReactDOM.render(<Brand.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);
+ReactDOM.render(<BrandCategory.GridForm caption={gb_caption} menuName={gb_menuname} iconClass="fa-list-alt" />, dom);
