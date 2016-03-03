@@ -560,6 +560,16 @@ a {
         }
     }
 
+    @include media-breakpoint-only(lg) {
+        .submenu {
+            li {
+                a {
+                    padding: $spacer*0.5 $spacer*0.25;
+                }
+            }
+        }
+    }
+
     @include media-breakpoint-down(md) {
         padding-top: 0;
 
@@ -579,6 +589,10 @@ a {
 #content {
     
     &.fixed {padding-top: 47px;}
+
+    @include media-breakpoint-only(lg) {
+        &.fixed {padding-top: 40px;}
+    }
 
     @include media-breakpoint-down(md) {
         &.fixed {padding-top: 0;}
