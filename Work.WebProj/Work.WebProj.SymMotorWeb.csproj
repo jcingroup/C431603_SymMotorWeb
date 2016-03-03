@@ -501,6 +501,7 @@
     <Content Include="Content\sass\module\_tooltip.scss" />
     <None Include="Content\sass\page.scss" />
     <Content Include="Content\sass\sys.scss" />
+    <Content Include="Content\sass\popup.scss" />
     <None Include="Content\sass\_admin\bs\bootstrap.scss" />
     <None Include="Content\sass\_admin\bs\mixins\_alerts.scss" />
     <None Include="Content\sass\_admin\bs\mixins\_background-variant.scss" />
@@ -605,6 +606,7 @@
     <Content Include="Content\sass\_web\_layout.scss" />
     <Content Include="Content\sass\_web\_module.scss" />
     <Content Include="Content\sass\_web\_var.scss" />
+    <Content Include="Content\sass\_web\_editor.scss" />
     <None Include="gulpfile.js" />
     <Content Include="Content\images\noIE\bg.gif" />
     <Content Include="Content\images\noIE\brow.gif" />
