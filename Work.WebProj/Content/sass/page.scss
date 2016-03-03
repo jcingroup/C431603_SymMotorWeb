@@ -359,7 +359,6 @@ $content-spacing-xs:    40px !default;
 
             .btn {
                 font-size: 0.9em;
-                margin-bottom: $spacer*0.5;
                 padding: $spacer*0.3 $spacer*0.5;
             }
         }
@@ -425,7 +424,7 @@ $content-spacing-xs:    40px !default;
             }
         }
 
-        .btn {margin-bottom: $spacer*0.5;}
+        // .btn {margin-bottom: $spacer*0.5;}
 
         .form-inline {
 
