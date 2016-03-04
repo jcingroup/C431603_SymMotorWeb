@@ -23,11 +23,11 @@ namespace DotWeb.Controllers
                 {
                     item = db0.Brand.Find(id);
                     item.category_name = item.BrandCategory.category_name;
-                    item.imgsrc = GetImg(item.brand_id.ToString(), "Banner", "Active", "BrandData", null);
+                    item.imgsrc = GetImg(item.brand_id.ToString(), "Banner", "Active", "BrandData", null, true);
                 }
                 #endregion
             }
-            return View("Products",item);
+            return View("Products", item);
         }
         public ActionResult Album()
         {

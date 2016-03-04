@@ -177,7 +177,7 @@ namespace DotWeb.CommSetup
             {
                 ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
                 imUp.Parm = new ImageSizeParm[] {
-                    new ImageSizeParm(){  width=420}
+                    new ImageSizeParm(){  width=600}
                 };
                 return imUp;
             }
@@ -188,7 +188,7 @@ namespace DotWeb.CommSetup
             {
                 ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
                 imUp.Parm = new ImageSizeParm[] {
-                    new ImageSizeParm(){  width=400}
+                    new ImageSizeParm(){  width=600}
                 };
                 return imUp;
             }
@@ -210,7 +210,7 @@ namespace DotWeb.CommSetup
             {
                 ImageUpScope imUp = new ImageUpScope() { keepOrigin = true, limitCount = 1, limitSize = 1024 * 1024 * 2 };
                 imUp.Parm = new ImageSizeParm[] {
-                    new ImageSizeParm(){ width=500}
+                    new ImageSizeParm(){ width=600}
                 };
                 return imUp;
             }
