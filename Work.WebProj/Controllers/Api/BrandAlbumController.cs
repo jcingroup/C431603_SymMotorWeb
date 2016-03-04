@@ -33,7 +33,7 @@ namespace DotWeb.Api
             {
                 var items = db0.BrandAlbum
                     .Where(x => x.brand_id == q.brand_id)
-                    .OrderBy(x => x.sort)
+                    .OrderBy(x => x.brand_album_id)
                     .Select(x => new m_BrandAlbum()
                     {
                         brand_album_id = x.brand_album_id,
@@ -53,7 +53,7 @@ namespace DotWeb.Api
             {
                 db0 = getDB0();
 
-                item = await db0.BrandAlbum.FindAsync(md.brand_id);
+                item = await db0.BrandAlbum.FindAsync(md.brand_album_id);
 
                 item.album_name = md.album_name;
                 item.sort = md.sort;

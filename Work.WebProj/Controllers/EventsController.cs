@@ -24,8 +24,8 @@ namespace DotWeb.Controllers
                                          }).ToList();
                 foreach (var i in items)
                 {
-                    i.list_imgsrc = GetImg(i.event_id.ToString(), "List", "Active", "EventData", null);
-                    i.banner_imgsrc = GetImg(i.event_id.ToString(), "Banner", "Active", "EventData", null);
+                    i.list_imgsrc = GetImg(i.event_id.ToString(), "List", "Active", "EventData", null, true);
+                    i.banner_imgsrc = GetImg(i.event_id.ToString(), "Banner", "Active", "EventData", null, false);
                 }
                 #endregion
             }
@@ -45,7 +45,7 @@ namespace DotWeb.Controllers
                 else
                 {
                     item = db0.Event.Find(id);
-                    item.banner_imgsrc = GetImg(item.event_id.ToString(), "Banner", "Active", "EventData", null);
+                    item.banner_imgsrc = GetImg(item.event_id.ToString(), "Banner", "Active", "EventData", null, false);
                 }
                 #endregion
             }

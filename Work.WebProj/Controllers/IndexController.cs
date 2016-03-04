@@ -22,7 +22,7 @@ namespace DotWeb.Controllers
                                          }).ToList();
                 foreach (var i in info.banners)
                 {
-                    i.imgsrc = GetImg(i.banner_id.ToString(), "Banner", "Active", "BannerData", null);
+                    i.imgsrc = GetImg(i.banner_id.ToString(), "Banner", "Active", "BannerData", null, false);
                 }
                 #endregion
                 #region news
@@ -46,7 +46,7 @@ namespace DotWeb.Controllers
                                          }).ToList();
                 foreach (var i in info.brands)
                 {
-                    i.imgsrc = GetImg(i.brand_id.ToString(), "Banner", "Active", "BrandData", null);
+                    i.imgsrc = GetImg(i.brand_id.ToString(), "Banner", "Active", "BrandData", null, true);
                 }
                 #endregion
             }

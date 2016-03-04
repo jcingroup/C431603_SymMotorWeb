@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ProcCore.Business.DB0.BrandAlbumDetail>
+@{
     ViewBag.Title = "車款展示";
     ViewBag.BodyClass = "Products";
     Layout = null;
@@ -19,26 +20,36 @@
     <div class="popup-content">
 
         <div class="swiper-container gallery-top">
+            @foreach (var i in Model)
+            {
+                if (i.imgsrc != null)
+                {
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
 
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                
-                    <img src="http://lorempixel.com/1200/1000/nature/1" alt="">
+                            <img src="@i.imgsrc" alt="">
 
-                    @* 如果有圖說 *@
-                    <span class="caption">圖說</span>
+                            @* 如果有圖說 *@
+                            <span class="caption">@i.detail_name</span>
 
-                </div>
-            </div>
-
+                        </div>
+                    </div>
+                }
+            }
             <div class="swiper-button-next swiper-button-white"></div>
             <div class="swiper-button-prev swiper-button-white"></div>
         </div>
 
         <div class="swiper-container gallery-thumbs">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="http://lorempixel.com/200/300/nature/1" alt=""></div>
-            </div>
+            @foreach (var i in Model)
+            {
+                if (i.imgsrc != null)
+                {
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="@i.imgsrc" alt="@i.detail_name"></div>
+                    </div>
+                }
+            }
         </div>
 
     </div>

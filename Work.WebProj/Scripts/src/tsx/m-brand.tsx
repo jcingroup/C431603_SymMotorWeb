@@ -26,7 +26,9 @@ namespace Brand {
     interface FormResult extends IResultBase {
         id: string
     }
-    class HandleBrandAlbum extends React.Component<{ brand_id: number, parent_edit_type: number },
+    //---相簿---
+    //主檔新增
+    class HandleBrandAlbum extends React.Component<{ brand_id: number, parent_edit_type: number, apiPath?: string },
         { albums?: Array<server.BrandAlbum>, album_name?: string }> {
         constructor() {
             super();
@@ -34,16 +36,19 @@ namespace Brand {
             this.query = this.query.bind(this);
             this.delItem = this.delItem.bind(this);
             this.submit = this.submit.bind(this);
+            this.updateSubmit = this.updateSubmit.bind(this);
             this.onChange = this.onChange.bind(this);
+            this.setSubInputValue = this.setSubInputValue.bind(this);
             this.state = {
                 albums: [], album_name: null
             };
         }
         static defaultProps = {
+            apiPath: gb_approot + 'api/BrandAlbum'
         }
 
         private query() {
-            CommFunc.jqGet(gb_approot + 'api/BrandAlbum', { brand_id: this.props.brand_id })
+            CommFunc.jqGet(this.props.apiPath, { brand_id: this.props.brand_id })
                 .done((data: Array<server.BrandAlbum>, textStatus, jqXHRdata) => {
                     this.setState({
                         album_name: null,
@@ -57,41 +62,18 @@ namespace Brand {
         componentDidMount() {
             this.query();
         }
-        addNew() {
-
-            let sort: number = 1;
-            let last_item: server.BrandAlbum;
-
-            if (this.state.albums.length > 0) {
-                last_item = this.state.albums[this.state.albums.length - 1];
-
-                if (last_item.edit_type == 1) {
-                    alert('尚有資料編輯中，無法新增。');
-                    return;
-                }
-                sort = last_item.sort + 1;
-            }
-
-
-            let new_item: server.BrandAlbum = {
-                edit_type: 1,
-                brand_album_id: 0,
-                brand_id: this.props.brand_id,
-                album_name: '',
-                sort: sort
-            };
-            let obj = this.state.albums;
-            obj.push(new_item);
-            this.setState({ albums: obj });
-        }
         delItem(i: number, e: React.SyntheticEvent) {
 
             let obj = this.state.albums;
             let item = obj[i];
 
-            CommFunc.jqDelete(gb_approot + 'api/BrandAlbum?id=' + item.brand_album_id, {})
-                .done((data: Array<server.BrandAlbum>, textStatus, jqXHRdata) => {
-                    this.query();
+            CommFunc.jqDelete(this.props.apiPath + '?id=' + item.brand_album_id, {})
+                .done((data, textStatus, jqXHRdata) => {
+                    if (data.result) {
+                        this.query();
+                    } else {
+                        alert(data.message);
+                    }
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
                     CommFunc.showAjaxError(errorThrown);
@@ -130,9 +112,25 @@ namespace Brand {
                 sort: sort
             };
 
-            CommFunc.jqPost(gb_approot + 'api/BrandAlbum', new_obj)
+            CommFunc.jqPost(this.props.apiPath, new_obj)
                 .done((data, textStatus, jqXHRdata) => {
                     this.query();
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        updateSubmit(i: number) {
+            let obj = this.state.albums;
+            let item = obj[i];
+            CommFunc.jqPut(this.props.apiPath, item)
+                .done((data, textStatus, jqXHRdata) => {
+                    if (data.result) {
+                        CommFunc.tosMessage(null, '相簿內容修改完成!', 1);
+                        this.query();
+                    } else {
+                        alert(data.message);
+                    }
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
                     CommFunc.showAjaxError(errorThrown);
@@ -147,26 +145,265 @@ namespace Brand {
             let input: HTMLInputElement = e.target as HTMLInputElement;
             this.setState({ album_name: input.value });
         }
+        setSubInputValue(i: number, name: string, e: React.SyntheticEvent) {
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+            let obj = this.state.albums;
+            let item = obj[i];
+            if (input.value == 'true') {
+                item[name] = true;
+            } else if (input.value == 'false') {
+                item[name] = false;
+            } else {
+                item[name] = input.value;
+            }
+
+            this.setState({ albums: obj });
+        }
 
         render() {
             return (
                 <div>
-    <div className="input-group">
+    <div className="input-group col-xs-4 col-xs-offset-1">
         <input type="text" className="form-control" value={this.state.album_name} onChange={this.onChange} placeholder="請輸入相簿名稱..." />
         <span className="input-group-btn">
             <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增相簿</button>
             </span>
         </div>
-    <ul className="help-block list-inline">
+    <div className="help-block list-inline">
         {this.state.albums.map((item, i) => {
-            return <li key={item.brand_album_id}><span className="label label-info">{item.album_name} <button type="button" className="btn-link" onClick={this.delItem.bind(this, i) }> &times; </button></span></li>
+            return <GridAlbumField key={i + '-' + item.brand_album_id} iKey={i} fieldData={item}
+                setSubInputValue={this.setSubInputValue} DeleteItem={this.delItem} updateSubmit={this.updateSubmit}/>
         }) }
-        </ul>
+        </div>
                     </div>
 
             );
         }
     }
+
+    //主檔list
+    interface AlbumFieldState {
+        fieldData?: server.BrandAlbum,
+        open?: boolean
+    }
+    interface AlbumFieldProps {
+        fieldData: server.BrandAlbum,
+        iKey: number,
+        key: string,
+        setSubInputValue(i: number, name: string, e: React.SyntheticEvent): void,
+        DeleteItem(i: number, e: React.SyntheticEvent): void,
+        updateSubmit(i: number): void
+    }
+    export class GridAlbumField extends React.Component<AlbumFieldProps, AlbumFieldState>{
+
+        constructor() {
+
+            super();
+            this.componentDidMount = this.componentDidMount.bind(this);
+            this.changeFDValue = this.changeFDValue.bind(this);
+            this.deleteItem = this.deleteItem.bind(this);
+            this.render = this.render.bind(this);
+            this.state = {
+                fieldData: {},
+                open: true
+            }
+        }
+        static defaultProps = {
+            apiDetailPath: gb_approot + 'api/BrandAlbumDetail'
+        }
+        componentDidMount() {
+            let fieldData = this.props.fieldData;
+            this.setState({ fieldData: fieldData });
+        }
+        changeFDValue(name: string, e: React.SyntheticEvent) {
+            this.props.setSubInputValue(this.props.iKey, name, e);
+        }
+        deleteItem(i: number, e: React.SyntheticEvent) {
+            this.props.DeleteItem(i, e);
+        }
+        render() {
+
+            var outHtml: JSX.Element = null;
+
+            let fieldData = this.state.fieldData;
+            let Collapse = ReactBootstrap.Collapse;
+
+            outHtml = (
+                <div className="panel col-xs-10 col-xs-offset-1" data-id={this.props.iKey}>
+                    <div className="panel-heading">
+                        <h4 className="panel-title">
+                            <a className="draggable" href="#">
+                                <i className="fa-bars"></i>
+                                #{this.props.iKey}
+                                <ul className="widget">
+                                    <li><button onClick={() => this.setState({ open: !this.state.open }) } type="button" title="收合/展開" className="btn-link text-default"><i className="fa-chevron-down"></i></button></li>
+                                    <li><button className="btn-link text-danger" type="button" title="刪除" onClick={this.deleteItem.bind(this, this.props.iKey) }><i className="fa-times"></i></button></li>
+                                    </ul>
+                                </a>
+                            </h4>
+                        </div>
+                    <Collapse in={this.state.open}>
+                        <div className="panel-body">
+                            <div className="form-group">
+                             <label className="col-xs-1 control-label">代表圖</label>
+                             <div className="col-xs-6">
+                                <CommCmpt.MasterImageUpload FileKind="Album" MainId={this.props.fieldData.brand_album_id} ParentEditType={2} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
+                                    url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
+                                 </div>
+                                </div>
+                            <div className="form-group">
+                                <label className="col-xs-1 control-label">相簿名稱</label>
+                                <div className="col-xs-3">
+                                    <input className="form-control" type="text" value={fieldData.album_name} onChange={this.changeFDValue.bind(this, 'album_name') } maxLength={64} required/>
+                                    </div>
+                                <small className="col-xs-2 help-inline">最多64字</small>
+                                <label className="col-xs-1 control-label">排序</label>
+                                <div className="col-xs-3">
+                                    <input className="form-control" type="number" value={fieldData.sort} onChange={this.changeFDValue.bind(this, 'sort') } required/>
+                                    </div>
+                                <small className="col-xs-2 help-inline">由大到小排序</small>
+                                </div>
+                            <div className="form-group">
+                                 <label className="col-xs-1 control-label">圖片</label>
+                                <HandleAlbumDetail brand_album_id={this.props.fieldData.brand_album_id} parent_edit_type={2}/>
+                                </div>
+                            <div className="form-group">
+                                <div className="col-xs-2 pull-right">
+                                 <button type="button" onClick={this.props.updateSubmit.bind(this, this.props.iKey) } className="btn-primary"><i className="fa-check"></i> 相簿儲存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </Collapse>
+
+
+                    </div>
+            );
+
+            return outHtml;
+        }
+    }
+    //明細檔
+    class HandleAlbumDetail extends React.Component<{ brand_album_id: number, apiPath?: string, parent_edit_type: number },
+        { details?: Array<server.BrandAlbumDetail>, name_value?: string }> {
+        constructor() {
+            super();
+            this.componentDidMount = this.componentDidMount.bind(this);
+            this.query = this.query.bind(this);
+            this.delItem = this.delItem.bind(this);
+            this.submit = this.submit.bind(this);
+            this.onChange = this.onChange.bind(this);
+            this.state = {
+                details: [], name_value: null
+            };
+        }
+        static defaultProps = {
+            apiPath: gb_approot + 'api/BrandAlbumDetail'
+        }
+
+        private query() {
+            CommFunc.jqGet(this.props.apiPath, { brand_album_id: this.props.brand_album_id })
+                .done((data: Array<server.BrandAlbumDetail>, textStatus, jqXHRdata) => {
+                    this.setState({
+                        name_value: null,
+                        details: data
+                    });
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        componentDidMount() {
+            this.query();
+        }
+        delItem(i: number, e: React.SyntheticEvent) {
+
+            let obj = this.state.details;
+            let item = obj[i];
+
+            CommFunc.jqDelete(this.props.apiPath + '?id=' + item.brand_album_detail_id, {})
+                .done((data: Array<server.BrandAlbumDetail>, textStatus, jqXHRdata) => {
+                    this.query();
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        submit() {
+            if (this.state.details.length >= 12) {
+                alert('超過新增上限,每個相簿最多新增12張圖片!');
+                return;
+            }
+            if (this.state.name_value != null) {
+                if (this.state.name_value.trim() == '') {
+                    alert('說明名稱未填寫!');
+                    return;
+                }
+            } else if (this.state.name_value == null) {
+                alert('說明名稱未填寫!');
+                return;
+            }
+
+            if (this.props.parent_edit_type == 1) {
+                alert('請先儲存確認相簿新增完畢後，再新新增!');
+                return;
+            }
+            let sort: number = 1;
+            let last_item: server.BrandAlbumDetail;
+
+            if (this.state.details.length > 0) {
+                last_item = this.state.details[this.state.details.length - 1];
+                sort = last_item.sort + 1;
+            }
+
+            var new_obj: server.BrandAlbumDetail = {
+                brand_album_id: this.props.brand_album_id,
+                detail_name: this.state.name_value.trim(),
+                sort: sort
+            };
+
+            CommFunc.jqPost(this.props.apiPath, new_obj)
+                .done((data, textStatus, jqXHRdata) => {
+                    this.query();
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                    CommFunc.showAjaxError(errorThrown);
+                });
+        }
+        onChange(e: React.SyntheticEvent) {
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+            this.setState({ name_value: input.value });
+        }
+
+        render() {
+            return (
+                <div>
+            <div className="form-group">
+                <div className="col-xs-4">
+                    <div className="input-group">
+                        <input type="text" className="form-control" value={this.state.name_value} onChange={this.onChange} placeholder="請輸入要新增圖片說明..." />
+                        <span className="input-group-btn">
+                            <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+        {this.state.details.map((item, i) => {
+            return <div key={item.brand_album_detail_id} className="col-xs-4">
+                 <label className="col-xs-2 control-label">{item.detail_name}</label>
+                 <div className="col-xs-8">
+                    <CommCmpt.MasterImageUpload FileKind="AlbumList" MainId={item.brand_album_detail_id} ParentEditType={this.props.parent_edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
+                        url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
+                     </div>
+                    <button type="button" className="btn-danger col-xs-2" onClick={this.delItem.bind(this, i) }><i className="fa-times"></i></button>
+                </div>
+        }) }
+                    </div>
+
+            );
+        }
+    }
+    //---相簿---
     class GridRow extends React.Component<BaseDefine.GridRowPropsBase<Rows>, BaseDefine.GridRowStateBase> {
         constructor() {
             super();
@@ -610,11 +847,9 @@ namespace Brand {
         <div className="col-xs-12">
             <div className="form-group clear bg-warning">
             <label className="col-xs-1 control-label">內裝/外觀</label>
-            <small className="col-xs-9 help-block">每車款「內裝/外觀」相簿最多新增6個，每個相簿最多新增16張圖片, 每張最大不可超過2MB</small>
+            <small className="col-xs-9 help-block">每車款「內裝/外觀」相簿最多新增6個，每個相簿最多新增12張圖片, 每張最大不可超過2MB</small>
             <div className="form-group">
-                <div className="col-xs-4 col-xs-offset-1">
                     <HandleBrandAlbum brand_id={this.state.fieldData.brand_id} parent_edit_type={this.state.edit_type} />
-                    </div>
                 </div>
                 </div>
             </div>

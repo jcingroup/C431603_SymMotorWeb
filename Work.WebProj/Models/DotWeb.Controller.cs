@@ -1195,11 +1195,16 @@ namespace DotWeb.Controller
                 return imgs;
             }
         }
-        public string GetImg(string id, string file_kind, string category1, string category2, string size)
+        public string GetImg(string id, string file_kind, string category1, string category2, string size, bool have_replase)
         {
             string tpl_path = string.Format(getImg_path_tpl, category1, category2, id, file_kind);
             if (size != null) { tpl_path = tpl_path + "/" + size; }//有size才增加資料夾目錄
             string img_folder = Server.MapPath(tpl_path);
+            string result = null;
+            if (have_replase)
+            {
+                result = Url.Content("~/Content/images/no-pic.gif");
+            }
 
             if (Directory.Exists(img_folder))
             {
@@ -1215,12 +1220,12 @@ namespace DotWeb.Controller
                 else
                 {
                     //return Url.Content("~/Content/images/no-pic.gif");
-                    return null;
+                    return result;
                 }
             }
             else
             {
-                return null;
+                return result;
             }
         }
         #endregion

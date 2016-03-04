@@ -35,9 +35,12 @@
     <ul class="swiper-wrapper list-unstyled">
         @foreach (var i in Model.banners)
         {
-            <li class="swiper-slide">
-                <img src="@i.imgsrc" alt="@i.banner_name">
-            </li>
+            if (i.imgsrc != null)
+            {
+                <li class="swiper-slide">
+                    <img src="@i.imgsrc" alt="@i.banner_name">
+                </li>
+            }
         }
     </ul>
 </div>
