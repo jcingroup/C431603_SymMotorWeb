@@ -55,6 +55,17 @@ namespace DotWeb.Api
 
                 item = await db0.BrandAlbum.FindAsync(md.brand_album_id);
 
+
+                var details = item.BrandAlbumDetail;
+
+                foreach (var detail in details)
+                {
+                    var md_detail = md.BrandAlbumDetail.First(x => x.brand_album_detail_id == detail.brand_album_detail_id);
+                    detail.sort = md_detail.sort;
+                    detail.detail_name = md_detail.detail_name;
+                }
+
+
                 item.album_name = md.album_name;
                 item.sort = md.sort;
 

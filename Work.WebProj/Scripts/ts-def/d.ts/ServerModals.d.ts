@@ -196,7 +196,7 @@
         album_name?: string;
         sort?: number;
         Brand?: server.Brand;
-        BrandAlbumDetail?: any[];
+        BrandAlbumDetail?: server.BrandAlbumDetail[];
     }
     interface BrandAlbumDetail extends BaseEntityTable {
         brand_album_detail_id?: number;

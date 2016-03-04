@@ -120,9 +120,11 @@ namespace Brand {
                     CommFunc.showAjaxError(errorThrown);
                 });
         }
-        updateSubmit(i: number) {
+        updateSubmit(i: number, details: Array<server.BrandAlbumDetail>) {
             let obj = this.state.albums;
             let item = obj[i];
+
+            item.BrandAlbumDetail = details;
             CommFunc.jqPut(this.props.apiPath, item)
                 .done((data, textStatus, jqXHRdata) => {
                     if (data.result) {
@@ -192,7 +194,7 @@ namespace Brand {
         key: string,
         setSubInputValue(i: number, name: string, e: React.SyntheticEvent): void,
         DeleteItem(i: number, e: React.SyntheticEvent): void,
-        updateSubmit(i: number): void
+        updateSubmit(i: number, details: Array<server.BrandAlbumDetail>): void
     }
     export class GridAlbumField extends React.Component<AlbumFieldProps, AlbumFieldState>{
 
@@ -202,6 +204,7 @@ namespace Brand {
             this.componentDidMount = this.componentDidMount.bind(this);
             this.changeFDValue = this.changeFDValue.bind(this);
             this.deleteItem = this.deleteItem.bind(this);
+            this.updateSubmit = this.updateSubmit.bind(this);
             this.render = this.render.bind(this);
             this.state = {
                 fieldData: {},
@@ -220,6 +223,10 @@ namespace Brand {
         }
         deleteItem(i: number, e: React.SyntheticEvent) {
             this.props.DeleteItem(i, e);
+        }
+        updateSubmit(i: number, e: React.SyntheticEvent) {
+            let details = (this.refs["AlbumDetail"]).state.details;
+            this.props.updateSubmit(i, details);
         }
         render() {
 
@@ -265,11 +272,11 @@ namespace Brand {
                                 </div>
                             <div className="form-group">
                                  <label className="col-xs-1 control-label">圖片</label>
-                                <HandleAlbumDetail brand_album_id={this.props.fieldData.brand_album_id} parent_edit_type={2}/>
+                                <HandleAlbumDetail ref="AlbumDetail" brand_album_id={this.props.fieldData.brand_album_id} parent_edit_type={2}/>
                                 </div>
                             <div className="form-group">
                                 <div className="col-xs-2 pull-right">
-                                 <button type="button" onClick={this.props.updateSubmit.bind(this, this.props.iKey) } className="btn-primary"><i className="fa-check"></i> 相簿儲存</button>
+                                 <button type="button" onClick={this.updateSubmit.bind(this, this.props.iKey) } className="btn-primary"><i className="fa-check"></i> 相簿儲存</button>
                                     </div>
                                 </div>
                             </div>
@@ -283,17 +290,17 @@ namespace Brand {
         }
     }
     //明細檔
-    class HandleAlbumDetail extends React.Component<{ brand_album_id: number, apiPath?: string, parent_edit_type: number },
-        { details?: Array<server.BrandAlbumDetail>, name_value?: string }> {
+    class HandleAlbumDetail extends React.Component<{ brand_album_id: number, apiPath?: string, parent_edit_type: number, ref: string },
+        { details?: Array<server.BrandAlbumDetail> }> {
         constructor() {
             super();
             this.componentDidMount = this.componentDidMount.bind(this);
             this.query = this.query.bind(this);
             this.delItem = this.delItem.bind(this);
             this.submit = this.submit.bind(this);
-            this.onChange = this.onChange.bind(this);
+            this.setSubInputValue = this.setSubInputValue.bind(this);
             this.state = {
-                details: [], name_value: null
+                details: []
             };
         }
         static defaultProps = {
@@ -303,10 +310,7 @@ namespace Brand {
         private query() {
             CommFunc.jqGet(this.props.apiPath, { brand_album_id: this.props.brand_album_id })
                 .done((data: Array<server.BrandAlbumDetail>, textStatus, jqXHRdata) => {
-                    this.setState({
-                        name_value: null,
-                        details: data
-                    });
+                    this.setState({ details: data });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
                     CommFunc.showAjaxError(errorThrown);
@@ -333,31 +337,19 @@ namespace Brand {
                 alert('超過新增上限,每個相簿最多新增12張圖片!');
                 return;
             }
-            if (this.state.name_value != null) {
-                if (this.state.name_value.trim() == '') {
-                    alert('說明名稱未填寫!');
-                    return;
-                }
-            } else if (this.state.name_value == null) {
-                alert('說明名稱未填寫!');
-                return;
-            }
-
             if (this.props.parent_edit_type == 1) {
                 alert('請先儲存確認相簿新增完畢後，再新新增!');
                 return;
             }
             let sort: number = 1;
             let last_item: server.BrandAlbumDetail;
-
             if (this.state.details.length > 0) {
                 last_item = this.state.details[this.state.details.length - 1];
                 sort = last_item.sort + 1;
             }
-
             var new_obj: server.BrandAlbumDetail = {
                 brand_album_id: this.props.brand_album_id,
-                detail_name: this.state.name_value.trim(),
+                detail_name: null,//先新增,後填寫圖說
                 sort: sort
             };
 
@@ -369,29 +361,35 @@ namespace Brand {
                     CommFunc.showAjaxError(errorThrown);
                 });
         }
-        onChange(e: React.SyntheticEvent) {
+        setSubInputValue(i: number, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
-            this.setState({ name_value: input.value });
-        }
+            let obj = this.state.details;
+            let item = obj[i];
+            if (input.value == 'true') {
+                item[name] = true;
+            } else if (input.value == 'false') {
+                item[name] = false;
+            } else {
+                item[name] = input.value;
+            }
 
+            this.setState({ details: obj });
+        }
         render() {
             return (
                 <div>
             <div className="form-group">
                 <div className="col-xs-4">
-                    <div className="input-group">
-                        <input type="text" className="form-control" value={this.state.name_value} onChange={this.onChange} placeholder="請輸入要新增圖片說明..." />
-                        <span className="input-group-btn">
-                            <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增</button>
-                            </span>
-                        </div>
+                    <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增</button>
                     </div>
                 </div>
 
         {this.state.details.map((item, i) => {
-            return <div key={item.brand_album_detail_id} className="col-xs-4">
-                 <label className="col-xs-2 control-label">{item.detail_name}</label>
-                 <div className="col-xs-8">
+            return <div key={item.brand_album_detail_id} className="col-xs-6">
+                 <label className="col-xs-4">
+                    <input type="text" className="form-control" value={item.detail_name} onChange={this.setSubInputValue.bind(this, i, 'detail_name') } placeholder="請輸入圖片說明..." />
+                     </label>
+                 <div className="col-xs-6">
                     <CommCmpt.MasterImageUpload FileKind="AlbumList" MainId={item.brand_album_detail_id} ParentEditType={this.props.parent_edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
                         url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
                      </div>
