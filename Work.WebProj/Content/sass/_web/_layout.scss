@@ -292,7 +292,7 @@ a {
         $i: index($pages, $item);
         $selector: append($selector, unquote(".#{$item} & li:nth-of-type(#{$i}) a"), comma);
     }
-    #{$selector} {
+    #{$selector}, .Offer & li:nth-of-type(3) a {
         position: relative;
 
         &::after {
@@ -307,7 +307,7 @@ a {
             bottom:-30px;
         }
     }
-    a:hover, #{$selector} {
+    a:hover, #{$selector}, .Offer & li:nth-of-type(3) a {
         color: $link-hover-color;
     }
     @include media-breakpoint-only(lg) {
@@ -337,7 +337,7 @@ a {
             border-left: 3px solid $brand-secondary;
         }
 
-        #{$selector} {
+        #{$selector}, .Offer & li:nth-of-type(3) a {
             background: #393129;
 
             &::after {display: none;}

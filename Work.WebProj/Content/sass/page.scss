@@ -172,6 +172,8 @@ $content-spacing-xs:    40px !default;
         padding-left: $grid-gutter-width/2;
     }
 
+    .table {min-width:700px;}
+
     @include media-breakpoint-down(lg) {
         padding-top: 50px;
 
@@ -997,6 +999,7 @@ $content-spacing-xs:    40px !default;
 // Products
 // ----------------------------------------------------------------------
 .pro-intro {
+    margin: 0 0 $spacer*2 0;
 
     .thumb {
         @extend .col-lg-5;
