@@ -190,6 +190,21 @@
         i_Hide?: boolean;
         BrandCategory?: server.BrandCategory;
     }
+    interface BrandAlbum extends BaseEntityTable {
+        brand_album_id?: number;
+        brand_id?: number;
+        album_name?: string;
+        sort?: number;
+        Brand?: server.Brand;
+        BrandAlbumDetail?: any[];
+    }
+    interface BrandAlbumDetail extends BaseEntityTable {
+        brand_album_detail_id?: number;
+        brand_album_id?: number;
+        detail_name?: string;
+        sort?: number;
+        BrandAlbum?: server.BrandAlbum;
+    }
     interface Location extends BaseEntityTable {
         location_id?: number;
         city?: string;
