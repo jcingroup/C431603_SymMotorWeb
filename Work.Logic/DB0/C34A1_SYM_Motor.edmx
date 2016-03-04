@@ -65,7 +65,7 @@
           <Property Name="brand_name" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="price" Type="nvarchar" MaxLength="64" />
           <Property Name="colors" Type="nvarchar" MaxLength="128" />
-          <Property Name="seat" Type="int" />
+          <Property Name="seat" Type="nvarchar" MaxLength="128" />
           <Property Name="engine_displacement" Type="nvarchar" MaxLength="128" />
           <Property Name="gearshift" Type="nvarchar" MaxLength="128" />
           <Property Name="feature" Type="ntext" />
@@ -703,21 +703,21 @@
           </AssociationSet>
           <EntitySet Name="Event" EntityType="C34A1_SYM_MotorModel.Event" />
           <EntitySet Name="Location" EntityType="C34A1_SYM_MotorModel.Location" />
-          <EntitySet Name="Brand" EntityType="C34A1_SYM_MotorModel.Brand" />
           <EntitySet Name="BrandCategory" EntityType="C34A1_SYM_MotorModel.BrandCategory" />
+          <EntitySet Name="BrandAlbum" EntityType="C34A1_SYM_MotorModel.BrandAlbum" />
+          <EntitySet Name="BrandAlbumDetail" EntityType="C34A1_SYM_MotorModel.BrandAlbumDetail" />
+          <AssociationSet Name="FK_BrandAlbumDetail_BrandAlbum" Association="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum">
+            <End Role="BrandAlbum" EntitySet="BrandAlbum" />
+            <End Role="BrandAlbumDetail" EntitySet="BrandAlbumDetail" />
+          </AssociationSet>
+          <EntitySet Name="Brand" EntityType="C34A1_SYM_MotorModel.Brand" />
           <AssociationSet Name="FK_Brand_BrandCategory" Association="C34A1_SYM_MotorModel.FK_Brand_BrandCategory">
             <End Role="BrandCategory" EntitySet="BrandCategory" />
             <End Role="Brand" EntitySet="Brand" />
           </AssociationSet>
-          <EntitySet Name="BrandAlbum" EntityType="C34A1_SYM_MotorModel.BrandAlbum" />
-          <EntitySet Name="BrandAlbumDetail" EntityType="C34A1_SYM_MotorModel.BrandAlbumDetail" />
           <AssociationSet Name="FK_BrandAlbum_Brand" Association="C34A1_SYM_MotorModel.FK_BrandAlbum_Brand">
             <End Role="Brand" EntitySet="Brand" />
             <End Role="BrandAlbum" EntitySet="BrandAlbum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BrandAlbumDetail_BrandAlbum" Association="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum">
-            <End Role="BrandAlbum" EntitySet="BrandAlbum" />
-            <End Role="BrandAlbumDetail" EntitySet="BrandAlbumDetail" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="News">
@@ -884,33 +884,6 @@
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityType Name="Brand">
-          <Key>
-            <PropertyRef Name="brand_id" />
-          </Key>
-          <Property Name="brand_id" Type="Int32" Nullable="false" />
-          <Property Name="brand_category_id" Type="Int32" Nullable="false" />
-          <Property Name="brand_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="colors" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="seat" Type="Int32" />
-          <Property Name="engine_displacement" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="gearshift" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="feature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="news" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="BrandCategory" Relationship="C34A1_SYM_MotorModel.FK_Brand_BrandCategory" FromRole="Brand" ToRole="BrandCategory" />
-          <NavigationProperty Name="BrandAlbum" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbum_Brand" FromRole="Brand" ToRole="BrandAlbum" />
-        </EntityType>
         <EntityType Name="BrandCategory">
           <Key>
             <PropertyRef Name="brand_category_id" />
@@ -928,6 +901,66 @@
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Brand" Relationship="C34A1_SYM_MotorModel.FK_Brand_BrandCategory" FromRole="BrandCategory" ToRole="Brand" />
         </EntityType>
+        <EntityType Name="BrandAlbum">
+          <Key>
+            <PropertyRef Name="brand_album_id" />
+          </Key>
+          <Property Name="brand_album_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <Property Name="album_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BrandAlbumDetail" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum" FromRole="BrandAlbum" ToRole="BrandAlbumDetail" />
+          <NavigationProperty Name="Brand" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbum_Brand" FromRole="BrandAlbum" ToRole="Brand" />
+        </EntityType>
+        <EntityType Name="BrandAlbumDetail">
+          <Key>
+            <PropertyRef Name="brand_album_detail_id" />
+          </Key>
+          <Property Name="brand_album_detail_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_album_id" Type="Int32" Nullable="false" />
+          <Property Name="detail_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BrandAlbum" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum" FromRole="BrandAlbumDetail" ToRole="BrandAlbum" />
+        </EntityType>
+        <Association Name="FK_BrandAlbumDetail_BrandAlbum">
+          <End Type="C34A1_SYM_MotorModel.BrandAlbum" Role="BrandAlbum" Multiplicity="1" />
+          <End Type="C34A1_SYM_MotorModel.BrandAlbumDetail" Role="BrandAlbumDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandAlbum">
+              <PropertyRef Name="brand_album_id" />
+            </Principal>
+            <Dependent Role="BrandAlbumDetail">
+              <PropertyRef Name="brand_album_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_category_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="colors" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="seat" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="engine_displacement" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="gearshift" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="feature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BrandCategory" Relationship="C34A1_SYM_MotorModel.FK_Brand_BrandCategory" FromRole="Brand" ToRole="BrandCategory" />
+          <NavigationProperty Name="BrandAlbum" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbum_Brand" FromRole="Brand" ToRole="BrandAlbum" />
+        </EntityType>
         <Association Name="FK_Brand_BrandCategory">
           <End Type="C34A1_SYM_MotorModel.BrandCategory" Role="BrandCategory" Multiplicity="1" />
           <End Type="C34A1_SYM_MotorModel.Brand" Role="Brand" Multiplicity="*" />
@@ -940,27 +973,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="BrandAlbum">
-          <Key>
-            <PropertyRef Name="brand_album_id" />
-          </Key>
-          <Property Name="brand_album_id" Type="Int32" Nullable="false" />
-          <Property Name="brand_id" Type="Int32" Nullable="false" />
-          <Property Name="album_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Brand" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbum_Brand" FromRole="BrandAlbum" ToRole="Brand" />
-          <NavigationProperty Name="BrandAlbumDetail" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum" FromRole="BrandAlbum" ToRole="BrandAlbumDetail" />
-        </EntityType>
-        <EntityType Name="BrandAlbumDetail">
-          <Key>
-            <PropertyRef Name="brand_album_detail_id" />
-          </Key>
-          <Property Name="brand_album_detail_id" Type="Int32" Nullable="false" />
-          <Property Name="brand_album_id" Type="Int32" Nullable="false" />
-          <Property Name="detail_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BrandAlbum" Relationship="C34A1_SYM_MotorModel.FK_BrandAlbumDetail_BrandAlbum" FromRole="BrandAlbumDetail" ToRole="BrandAlbum" />
-        </EntityType>
         <Association Name="FK_BrandAlbum_Brand">
           <End Type="C34A1_SYM_MotorModel.Brand" Role="Brand" Multiplicity="1" />
           <End Type="C34A1_SYM_MotorModel.BrandAlbum" Role="BrandAlbum" Multiplicity="*" />
@@ -970,18 +982,6 @@
             </Principal>
             <Dependent Role="BrandAlbum">
               <PropertyRef Name="brand_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BrandAlbumDetail_BrandAlbum">
-          <End Type="C34A1_SYM_MotorModel.BrandAlbum" Role="BrandAlbum" Multiplicity="1" />
-          <End Type="C34A1_SYM_MotorModel.BrandAlbumDetail" Role="BrandAlbumDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BrandAlbum">
-              <PropertyRef Name="brand_album_id" />
-            </Principal>
-            <Dependent Role="BrandAlbumDetail">
-              <PropertyRef Name="brand_album_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1292,32 +1292,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Brand">
-            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Brand">
-              <MappingFragment StoreEntitySet="Brand">
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="news" ColumnName="news" />
-                <ScalarProperty Name="specification" ColumnName="specification" />
-                <ScalarProperty Name="feature" ColumnName="feature" />
-                <ScalarProperty Name="gearshift" ColumnName="gearshift" />
-                <ScalarProperty Name="engine_displacement" ColumnName="engine_displacement" />
-                <ScalarProperty Name="seat" ColumnName="seat" />
-                <ScalarProperty Name="colors" ColumnName="colors" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
-                <ScalarProperty Name="brand_category_id" ColumnName="brand_category_id" />
-                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BrandCategory">
             <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.BrandCategory">
               <MappingFragment StoreEntitySet="BrandCategory">
@@ -1352,6 +1326,32 @@
                 <ScalarProperty Name="detail_name" ColumnName="detail_name" />
                 <ScalarProperty Name="brand_album_id" ColumnName="brand_album_id" />
                 <ScalarProperty Name="brand_album_detail_id" ColumnName="brand_album_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="news" ColumnName="news" />
+                <ScalarProperty Name="specification" ColumnName="specification" />
+                <ScalarProperty Name="feature" ColumnName="feature" />
+                <ScalarProperty Name="gearshift" ColumnName="gearshift" />
+                <ScalarProperty Name="engine_displacement" ColumnName="engine_displacement" />
+                <ScalarProperty Name="seat" ColumnName="seat" />
+                <ScalarProperty Name="colors" ColumnName="colors" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+                <ScalarProperty Name="brand_category_id" ColumnName="brand_category_id" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

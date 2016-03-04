@@ -603,7 +603,7 @@ namespace Brand {
             this.setState(newState);
         }
         insertType() {
-            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, brand_category_id: this.state.option_category[0].brand_category_id, seat: 0 } });
+            this.setState({ edit_type: 1, fieldData: { i_Hide: false, sort: 0, brand_category_id: this.state.option_category[0].brand_category_id } });
         }
         updateType(id: number | string) {
 
@@ -822,9 +822,9 @@ namespace Brand {
             <div className="form-group">
                 <label className="col-xs-2 control-label">乘客數</label>
                 <div className="col-xs-7">
-                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'seat') } value={fieldData.seat}  />
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'seat') } value={fieldData.seat} maxLength={128} />
                     </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span></small>
+                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排氣量</label>

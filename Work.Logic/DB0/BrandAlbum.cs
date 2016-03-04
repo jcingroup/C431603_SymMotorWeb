@@ -26,8 +26,8 @@ namespace ProcCore.Business.DB0
         public int sort { get; set; }
     
     	[JsonIgnore]
-        public virtual Brand Brand { get; set; }
-    	[JsonIgnore]
         public virtual ICollection<BrandAlbumDetail> BrandAlbumDetail { get; set; }
+    	[JsonIgnore]
+        public virtual Brand Brand { get; set; }
     }
 }

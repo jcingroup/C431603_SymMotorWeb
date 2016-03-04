@@ -25,7 +25,7 @@ namespace ProcCore.Business.DB0
         public string brand_name { get; set; }
         public string price { get; set; }
         public string colors { get; set; }
-        public Nullable<int> seat { get; set; }
+        public string seat { get; set; }
         public string engine_displacement { get; set; }
         public string gearshift { get; set; }
         public string feature { get; set; }
