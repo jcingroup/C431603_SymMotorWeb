@@ -260,8 +260,8 @@ namespace Event {
                 let GridNavPage = CommCmpt.GridNavPage;
 
                 outHtml =
-                    (
-                        <div>
+                (
+                    <div>
                     <h3 className="title">
                         {this.props.caption}
                         </h3>
@@ -332,8 +332,8 @@ namespace Event {
                         deleteSubmit={this.deleteSubmit}
                         />
                         </form>
-                            </div>
-                    );
+                        </div>
+                );
             }
             else if (this.state.edit_type == 1 || this.state.edit_type == 2) {
                 let fieldData = this.state.fieldData;
@@ -344,13 +344,17 @@ namespace Event {
     <h4 className="title"> {this.props.caption} 基本資料維護</h4>
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className="col-xs-10">
-
+                              <div className="alert alert-warning">
+                                    1. 如有上傳 Banner 輪播圖，請務必確認所有活動資料的輪播圖尺寸皆相同 (建議尺寸: 1920*528 px) <br/>
+                                  2. 如未上傳 Banner 輪播圖，請將【輪播圖顯示於列表】設為【隱藏】
+                                  </div>
+                                
             <div className="form-group">
                 <label className="col-xs-2 control-label">輪播圖</label>
                 <div className="col-xs-8">
                    <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'}
                        url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 1920*725 px, 每張圖最大不可超過2MB</small>
+                    <small className="help-block">最多1張圖，建議尺寸 1920*528 px, 每張圖最大不可超過2MB</small>
                     </div>
                 </div>
             <div className="form-group">
@@ -358,7 +362,7 @@ namespace Event {
                 <div className="col-xs-8">
                    <CommCmpt.MasterImageUpload FileKind="List" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'}
                        url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 400*200  px, 每張圖最大不可超過2MB</small>
+                    <small className="help-block">最多1張圖，檔案最大不可超過2MB</small>
                     </div>
                 </div>
             <div className="form-group">

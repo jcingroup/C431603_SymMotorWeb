@@ -416,6 +416,7 @@
     <Content Include="Content\js\bootstrap\collapse.js" />
     <Content Include="Content\js\bootstrap\tab.js" />
     <Content Include="Content\js\bootstrap\util.js" />
+    <Content Include="Content\js\gmap-custom.js" />
     <Content Include="Content\js\magnific\jquery.magnific-popup.min.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
