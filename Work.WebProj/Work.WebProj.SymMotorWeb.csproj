@@ -641,7 +641,6 @@
     <Content Include="Scripts\build\app\m_event_type.js" />
     <Content Include="Scripts\build\app\m_faq.js" />
     <Content Include="Scripts\build\app\m_faq_category.js" />
-    <Content Include="Scripts\build\app\m_issue.js" />
     <Content Include="Scripts\build\app\m_location.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
     <Content Include="Scripts\build\app\m_news.js" />
