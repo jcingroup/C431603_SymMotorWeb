@@ -367,11 +367,11 @@ namespace Brand {
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className="col-xs-6">
             <div className="form-group">
-                <label className="col-xs-2 control-label">首頁輪播圖</label>
+                <label className="col-xs-2 control-label">代表圖</label>
                 <div className="col-xs-8">
                    <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.brand_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
                        url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 500*200 px, 每張圖最大不可超過2MB</small>
+                    <small className="help-block">最多1張圖，檔案最大不可超過2MB</small>
                     </div>
                 </div>
             <div className="form-group">
