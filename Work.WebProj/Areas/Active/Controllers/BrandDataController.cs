@@ -52,9 +52,9 @@ namespace DotWeb.Areas.Active.Controllers
                     handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
                 //album
                 if (filekind == "Album")
-                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
+                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "Album");
                 if (filekind == "AlbumList")
-                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
+                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "AlbumList");
 
 
                 r.result = true;
@@ -78,8 +78,18 @@ namespace DotWeb.Areas.Active.Controllers
         public string aj_FList(string id, string filekind)
         {
             SerializeFileList r = new SerializeFileList();
+            if (filekind == "Banner")
+            {
+                r.files = listImgFiles(id, filekind, "Active", "BrandData");
+            }
+            else if (filekind == "AlbumList")
+            {
+                r.files = listImgFiles(id, filekind, "Active", "AlbumList");
+            }
+            else {
+                r.files = listImgFiles(id, filekind, "Active", "Album");
+            }
 
-            r.files = listImgFiles(id, filekind, "Active", "BrandData");
             r.result = true;
             return defJSON(r);
         }
@@ -88,7 +98,16 @@ namespace DotWeb.Areas.Active.Controllers
         public string aj_FDelete(string id, string filekind, string filename)
         {
             ResultInfo r = new ResultInfo();
-            DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "BrandData");
+            if (filekind == "Banner")
+            {
+                DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "BrandData");
+            }
+            else if (filekind == "AlbumList") {
+                DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "AlbumList");
+            }
+            else {
+                DeleteSysFile(id, filekind, filename, ImageFileUpParm.NewsBasicSingle, "Active", "Album");
+            }
             r.result = true;
             return defJSON(r);
         }

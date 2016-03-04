@@ -166,6 +166,15 @@ namespace ProcCore.Business.DB0
     {
         public string category_name { get; set; }
         public string imgsrc { get; set; }
+        public List<BrandAlbum> albums { get; set; }
+    }
+    public partial class BrandAlbum
+    {
+        public string imgsrc { get; set; }
+    }
+    public partial class BrandAlbumDetail
+    {
+        public string imgsrc { get; set; }
     }
     public class PutPurchaseCheckPram
     {

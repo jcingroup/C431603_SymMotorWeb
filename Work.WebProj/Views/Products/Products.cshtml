@@ -9,32 +9,37 @@
     <link href="~/Content/css/swiper.min.css" rel="stylesheet">
     <style>
         .swiper-container {
-        width: 100%;
-        height: 300px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .swiper-slide {
-        background-size: cover;
-        background-position: center;
-    }
-    .gallery-top {
-        height: 80%;
-        width: 100%;
-    }
-    .gallery-thumbs {
-        height: 20%;
-        box-sizing: border-box;
-        padding: 10px 0;
-    }
-    .gallery-thumbs .swiper-slide {
-        width: auto;
-        height: 100%;
-        opacity: 0.4;
-    }
-    .gallery-thumbs .swiper-slide-active {
-        opacity: 1;
-    }
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-top {
+            height: 80%;
+            width: 100%;
+        }
+
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+            .gallery-thumbs .swiper-slide {
+                width: auto;
+                height: 100%;
+                opacity: 0.4;
+            }
+
+            .gallery-thumbs .swiper-slide-active {
+                opacity: 1;
+            }
     </style>
 }
 @section Scripts {
@@ -89,7 +94,7 @@
 
             <section id="tab1" class="tab-pane active" role="tabpanel">
                 <h3 class="sr-only">特色</h3>
-                
+
                 @* 編輯器 *@
                 <div class="editor">@Html.Raw(Model.feature)</div>
 
@@ -99,39 +104,17 @@
                 <h3 class="sr-only">內裝/外觀</h3>
 
                 <ol class="album row list-unstyled">
-                    <li>
-                        <a class="popup" href="~/Products/Album">
-                            <img src="https://image.u-car.com.tw/carheadlinethumb1_16719.jpg" alt="">
-                            <span>外觀外觀外觀外觀外觀外觀外觀外觀外觀</span>
-                        </a>
-                    </li><li>
-                        <a class="popup" href="~/Products/Album">
-                            <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li><li>
-                        <a class="popup" href="~/Products/Album">
-                            <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li><li>
-                        <a class="popup" href="~/Products/Album">
-                            <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li><li>
-                        <a class="popup" href="~/Products/Album">
-                            <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li><li>
-                        <a class="popup" href="~/Products/Album">
-                            <img src="https://image.u-car.com.tw/carspecialthumb_108.jpg" alt="">
-                            <span>外觀</span>
-                        </a>
-                    </li>
+                    @foreach (var i in Model.albums)
+                    {
+                        <li>
+                            <a class="popup" href="~/Products/Album?id=@i.brand_album_id">
+                                <img src="@i.imgsrc" alt="@i.album_name">
+                                <span>@i.album_name</span>
+                            </a>
+                        </li>
+                    }
                 </ol>
-                
+
             </section>
 
             <section id="tab3" class="tab-pane" role="tabpanel">
@@ -139,7 +122,7 @@
 
                 @* 編輯器 *@
                 <div class="editor">@Html.Raw(Model.specification)</div>
-                
+
             </section>
 
             <section id="tab4" class="tab-pane" role="tabpanel">
@@ -147,7 +130,7 @@
 
                 @* 編輯器 *@
                 <div class="editor">@Html.Raw(Model.news)</div>
-                
+
             </section>
 
         </div>
