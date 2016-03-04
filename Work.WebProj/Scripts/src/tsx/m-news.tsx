@@ -6,7 +6,7 @@ import ReactBootstrap = require("react-bootstrap");
 import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
-import "Pikaday/css/pikaday.css";
+//import "Pikaday/css/pikaday.css";
 
 namespace News {
     interface Rows {

@@ -50,6 +50,11 @@ namespace DotWeb.Areas.Active.Controllers
                 //banner
                 if (filekind == "Banner")
                     handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
+                //album
+                if (filekind == "Album")
+                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
+                if (filekind == "AlbumList")
+                    handleImageSave(fileName, id, ImageFileUpParm.BrandRotator, filekind, "Active", "BrandData");
 
 
                 r.result = true;
