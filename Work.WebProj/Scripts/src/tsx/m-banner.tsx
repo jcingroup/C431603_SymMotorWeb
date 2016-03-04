@@ -254,6 +254,10 @@ namespace Banner {
                     <h3 className="title">
                         {this.props.caption}
                         </h3>
+
+                    <div className="alert alert-warning">
+                            <i className="fa-info-circle"></i> 請務必確認每張圖片的尺寸皆相同 (建議尺寸: 1920*725 px)
+                    </div>
                     <form onSubmit={this.handleSearch}>
                         <div className="table-responsive">
                             <div className="table-header">
