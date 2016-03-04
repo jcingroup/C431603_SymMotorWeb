@@ -20,36 +20,33 @@
     <div class="popup-content">
 
         <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
             @foreach (var i in Model)
             {
                 if (i.imgsrc != null)
                 {
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-
-                            <img src="@i.imgsrc" alt="">
-
-                            @* 如果有圖說 *@
-                            <span class="caption">@i.detail_name</span>
-
-                        </div>
+                    <div class="swiper-slide">
+                        <img src="@i.imgsrc" alt="">
+                        @* 如果有圖說 *@
+                        <span class="caption">@i.detail_name</span>
                     </div>
                 }
             }
+            </div>
             <div class="swiper-button-next swiper-button-white"></div>
             <div class="swiper-button-prev swiper-button-white"></div>
         </div>
 
         <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
             @foreach (var i in Model)
             {
                 if (i.imgsrc != null)
                 {
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="@i.imgsrc" alt="@i.detail_name"></div>
-                    </div>
+                    <div class="swiper-slide"><img src="@i.imgsrc" alt="@i.detail_name"></div>
                 }
             }
+            </div>
         </div>
 
     </div>
@@ -66,6 +63,7 @@
             centeredSlides: true,
             slidesPerView: 'auto',
             slideToClickedSlide: true,
+            keyboardControl: true,
         });
         galleryTop.params.control = galleryThumbs;
         galleryThumbs.params.control = galleryTop;

@@ -81,21 +81,21 @@ namespace Brand {
         }
         submit() {
             if (this.state.albums.length >= 6) {
-                alert('超過新增上限,最多新增六個相簿!');
+                alert('超過數量上限,最多可新增六個相簿！');
                 return;
             }
             if (this.state.album_name != null) {
                 if (this.state.album_name.trim() == '') {
-                    alert('相簿名稱未填寫!');
+                    alert('相簿名稱未填寫！');
                     return;
                 }
             } else if (this.state.album_name == null) {
-                alert('相簿名稱未填寫!');
+                alert('相簿名稱未填寫！');
                 return;
             }
 
             if (this.props.parent_edit_type == 1) {
-                alert('請先儲存確認產品新增完畢後，再新增相簿!');
+                alert('請先按最下方【儲存】後，再新增相簿！');
                 return;
             }
             let sort: number = 1;
@@ -128,7 +128,7 @@ namespace Brand {
             CommFunc.jqPut(this.props.apiPath, item)
                 .done((data, textStatus, jqXHRdata) => {
                     if (data.result) {
-                        CommFunc.tosMessage(null, '相簿內容修改完成!', 1);
+                        CommFunc.tosMessage(null, '相簿內容修改完成！', 1);
                         this.query();
                     } else {
                         alert(data.message);
@@ -165,20 +165,26 @@ namespace Brand {
         render() {
             return (
                 <div>
-    <div className="input-group col-xs-4 col-xs-offset-1">
-        <input type="text" className="form-control" value={this.state.album_name} onChange={this.onChange} placeholder="請輸入相簿名稱..." />
-        <span className="input-group-btn">
-            <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增相簿</button>
-            </span>
-        </div>
-    <div className="help-block list-inline">
-        {this.state.albums.map((item, i) => {
-            return <GridAlbumField key={i + '-' + item.brand_album_id} iKey={i} fieldData={item}
-                setSubInputValue={this.setSubInputValue} DeleteItem={this.delItem} updateSubmit={this.updateSubmit}/>
-        }) }
-        </div>
+                    <div className="form-group">
+                        <label className="col-xs-1">新增相簿</label>
+                        <div className="col-xs-8">
+                            <div className="input-group">
+                                <input type="text" className="form-control" value={this.state.album_name} onChange={this.onChange} placeholder="請輸入相簿名稱..." />
+                                <span className="input-group-btn">
+                                    <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增</button>
+                                </span>
+                            </div>
+                            <small className="help-block">最多可新增6組相簿，每組相簿最多可新增12張圖片，每張圖檔案最大不可超過2MB</small>
+                        </div>
                     </div>
-
+                    <hr className="condensed" />
+                    <div>
+                        {this.state.albums.map((item, i) => {
+                            return <GridAlbumField key={i + '-' + item.brand_album_id} iKey={i} fieldData={item}
+                            setSubInputValue={this.setSubInputValue} DeleteItem={this.delItem} updateSubmit={this.updateSubmit}/>
+                        }) }
+                    </div>
+                </div>
             );
         }
     }
@@ -236,56 +242,52 @@ namespace Brand {
             let Collapse = ReactBootstrap.Collapse;
 
             outHtml = (
-                <div className="panel col-xs-10 col-xs-offset-1" data-id={this.props.iKey}>
+                <div className="panel" data-id={this.props.iKey}>
                     <div className="panel-heading">
                         <h4 className="panel-title">
                             <a className="draggable" href="#">
                                 <i className="fa-bars"></i>
-                                #{this.props.iKey}
+                                #{this.props.iKey} {fieldData.album_name}
                                 <ul className="widget">
                                     <li><button onClick={() => this.setState({ open: !this.state.open }) } type="button" title="收合/展開" className="btn-link text-default"><i className="fa-chevron-down"></i></button></li>
                                     <li><button className="btn-link text-danger" type="button" title="刪除" onClick={this.deleteItem.bind(this, this.props.iKey) }><i className="fa-times"></i></button></li>
-                                    </ul>
-                                </a>
-                            </h4>
-                        </div>
-                    <Collapse in={this.state.open}>
-                        <div className="panel-body">
-                            <div className="form-group">
-                             <label className="col-xs-1 control-label">代表圖</label>
-                             <div className="col-xs-6">
-                                <CommCmpt.MasterImageUpload FileKind="Album" MainId={this.props.fieldData.brand_album_id} ParentEditType={2} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
-                                    url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
-                                 </div>
-                                </div>
-                            <div className="form-group">
-                                <label className="col-xs-1 control-label">相簿名稱</label>
-                                <div className="col-xs-3">
-                                    <input className="form-control" type="text" value={fieldData.album_name} onChange={this.changeFDValue.bind(this, 'album_name') } maxLength={64} required/>
-                                    </div>
-                                <small className="col-xs-2 help-inline">最多64字</small>
-                                <label className="col-xs-1 control-label">排序</label>
-                                <div className="col-xs-3">
-                                    <input className="form-control" type="number" value={fieldData.sort} onChange={this.changeFDValue.bind(this, 'sort') } required/>
-                                    </div>
-                                <small className="col-xs-2 help-inline">由大到小排序</small>
-                                </div>
-                            <div className="form-group">
-                                 <label className="col-xs-1 control-label">圖片</label>
-                                <HandleAlbumDetail ref="AlbumDetail" brand_album_id={this.props.fieldData.brand_album_id} parent_edit_type={2}/>
-                                </div>
-                            <div className="form-group">
-                                <div className="col-xs-2 pull-right">
-                                 <button type="button" onClick={this.updateSubmit.bind(this, this.props.iKey) } className="btn-primary"><i className="fa-check"></i> 相簿儲存</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Collapse>
-
-
+                                </ul>
+                            </a>
+                        </h4>
                     </div>
+                    <Collapse in={this.state.open}>
+                        <div>
+                            <div className="panel-body">
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">代表圖</label>
+                                    <div className="col-xs-4">
+                                        <CommCmpt.MasterImageUpload FileKind="Album" MainId={this.props.fieldData.brand_album_id} ParentEditType={2} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
+                                            url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
+                                    </div>
+                                    <label className="col-xs-1 control-label">排序</label>
+                                    <div className="col-xs-1">
+                                        <input className="form-control" type="number" value={fieldData.sort} onChange={this.changeFDValue.bind(this, 'sort') } required/>
+                                    </div>
+                                    <small className="col-xs-2 help-inline">數字大在前面</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">相簿名稱</label>
+                                    <div className="col-xs-4">
+                                        <input className="form-control" type="text" value={fieldData.album_name} onChange={this.changeFDValue.bind(this, 'album_name') } maxLength={64} required/>
+                                    </div>
+                                    <small className="col-xs-2 help-inline">最多64字</small>
+                                </div>
+                                <HandleAlbumDetail ref="AlbumDetail" brand_album_id={this.props.fieldData.brand_album_id} parent_edit_type={2}/>
+                            </div>
+                            <div className="panel-footer">
+                                <button type="button" onClick={this.updateSubmit.bind(this, this.props.iKey) } className="btn-primary"><i className="fa-check"></i> 相簿存檔</button>
+                                <small className="text-muted">　如有修改此相簿的相簿名稱或圖說，請記得按【相簿存檔】</small>
+                            </div>
+                        </div>
+                    </Collapse>
+                </div>
             );
-
+            
             return outHtml;
         }
     }
@@ -334,11 +336,11 @@ namespace Brand {
         }
         submit() {
             if (this.state.details.length >= 12) {
-                alert('超過新增上限,每個相簿最多新增12張圖片!');
+                alert('超過數量上限，每個相簿最多新增12張圖片!');
                 return;
             }
             if (this.props.parent_edit_type == 1) {
-                alert('請先儲存確認相簿新增完畢後，再新新增!');
+                alert('請先按相簿存檔後，再新增！');
                 return;
             }
             let sort: number = 1;
@@ -378,26 +380,22 @@ namespace Brand {
         render() {
             return (
                 <div>
-            <div className="form-group">
-                <div className="col-xs-4">
-                    <button type="button" className="btn-success" onClick={this.submit}><i className="fa-plus"></i> 新增</button>
+                    <h5>
+                        <button type="button" className="btn-link text-success text-lg" onClick={this.submit}><i className="fa-plus-circle"></i> 新增圖片</button>
+                    </h5>
+                    <div className="list-unstyled row">
+                        {this.state.details.map((item, i) => {
+                            return <div key={item.brand_album_detail_id} className="col-xs-4">
+                                <div className="thumbnail" style={{ "height": "167px", "margin-bottom": "10px" }}>
+                                    <button type="button" className="pull-right btn-link text-danger" onClick={this.delItem.bind(this, i) }><i className="fa-trash-o"></i> 刪除</button>
+                                    <input type="text" className="form-control" style={{"margin-bottom": "5px"}} value={item.detail_name} onChange={this.setSubInputValue.bind(this, i, 'detail_name') } placeholder="請輸入圖片說明..." />
+                                    <CommCmpt.MasterImageUpload FileKind="AlbumList" MainId={item.brand_album_detail_id} ParentEditType={this.props.parent_edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
+                                    url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
+                                </div>
+                            </div>
+                        }) }
                     </div>
                 </div>
-
-        {this.state.details.map((item, i) => {
-            return <div key={item.brand_album_detail_id} className="col-xs-6">
-                 <label className="col-xs-4">
-                    <input type="text" className="form-control" value={item.detail_name} onChange={this.setSubInputValue.bind(this, i, 'detail_name') } placeholder="請輸入圖片說明..." />
-                     </label>
-                 <div className="col-xs-6">
-                    <CommCmpt.MasterImageUpload FileKind="AlbumList" MainId={item.brand_album_detail_id} ParentEditType={this.props.parent_edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
-                        url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
-                     </div>
-                    <button type="button" className="btn-danger col-xs-2" onClick={this.delItem.bind(this, i) }><i className="fa-times"></i></button>
-                </div>
-        }) }
-                    </div>
-
             );
         }
     }
@@ -654,8 +652,8 @@ namespace Brand {
                 let GridNavPage = CommCmpt.GridNavPage;
 
                 outHtml =
-                    (
-                        <div>
+                (
+                    <div>
                     <h3 className="title">
                         {this.props.caption}
                         </h3>
@@ -727,8 +725,8 @@ namespace Brand {
                         deleteSubmit={this.deleteSubmit}
                         />
                         </form>
-                            </div>
-                    );
+                        </div>
+                );
             }
             else if (this.state.edit_type == 1 || this.state.edit_type == 2) {
                 let fieldData = this.state.fieldData;
@@ -738,140 +736,143 @@ namespace Brand {
 
                 outHtml = (
                     <div>
-    <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-6">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">代表圖</label>
-                <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.brand_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
-                       url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，檔案最大不可超過2MB</small>
+                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
+                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                            <div className="col-xs-6">
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">代表圖</label>
+                                    <div className="col-xs-8">
+                                       <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.brand_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/BrandData/aj_FUpload'} url_list={gb_approot + 'Active/BrandData/aj_FList'}
+                                           url_delete={gb_approot + 'Active/BrandData/aj_FDelete'} />
+                                        <small className="help-block">最多1張圖，檔案最大不可超過2MB</small>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">車款名稱</label>
+                                    <div className="col-xs-7">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'brand_name') } value={fieldData.brand_name} maxLength={64} required />
+                                    </div>
+                                    <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">分類</label>
+                                    <div className="col-xs-7">
+                                        <select className="form-control" id="field-category"
+                                            onChange={this.changeFDValue.bind(this, 'brand_category_id') }
+                                            value={fieldData.brand_category_id}>
+                                                {
+                                                option.map((itemData, i) => <option key={i} value={itemData.brand_category_id}>{itemData.category_name}</option>)
+                                                }
+                                        </select>
+                                    </div>
+                                    <small className="help-inline col-xs-2 text-danger">(必填) </small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">排序</label>
+                                    <div className="col-xs-7">
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
+                                    </div>
+                                    <small className="col-xs-3 help-inline">數字越大越前面</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">狀態</label>
+                                    <div className="col-xs-4">
+                                        <div className="radio-inline">
+                                            <label>
+                                                <input type="radio"
+                                                       name="i_Hide"
+                                                       value={true}
+                                                       checked={fieldData.i_Hide === true}
+                                                       onChange={this.changeFDValue.bind(this, 'i_Hide') }
+                                                       />
+                                                <span>隱藏</span>
+                                            </label>
+                                        </div>
+                                        <div className="radio-inline">
+                                            <label>
+                                                <input type="radio"
+                                                        name="i_Hide"
+                                                        value={false}
+                                                        checked={fieldData.i_Hide === false}
+                                                        onChange={this.changeFDValue.bind(this, 'i_Hide') }
+                                                        />
+                                                <span>顯示</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xs-6">
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">車價</label>
+                                    <div className="col-xs-7">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'price') } value={fieldData.price} maxLength={64}  />
+                                    </div>
+                                    <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多64字</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">車色</label>
+                                    <div className="col-xs-7">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'colors') } value={fieldData.colors} maxLength={128}  />
+                                    </div>
+                                    <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">乘客數</label>
+                                    <div className="col-xs-7">
+                                        <div className="input-group">
+                                            <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'seat') } value={fieldData.seat} maxLength={128} />
+                                            <span className="input-group-addon">人座</span>
+                                        </div>
+                                    </div>
+                                    <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">排氣量</label>
+                                    <div className="col-xs-7">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'engine_displacement') } value={fieldData.engine_displacement} maxLength={128}  />
+                                    </div>
+                                    <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-xs-2 control-label">排檔方式</label>
+                                    <div className="col-xs-7">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'gearshift') } value={fieldData.gearshift} maxLength={128}  />
+                                    </div>
+                                    <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
+                                </div>
+                            </div>
+                            <div className="col-xs-12">
+                                <div className="item-box">
+                                    <div className="item-title"><h5>內裝/外觀</h5></div>
+                                    <div className="panel-body">
+                                        <HandleBrandAlbum brand_id={this.state.fieldData.brand_id} parent_edit_type={this.state.edit_type} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xs-12">
+                                <Tabs defaultActiveKey={1} animation={false}>
+                                    <Tab eventKey={1} title="特色">
+                                        <textarea type="date" className="form-control" id="feature" name="feature" value={fieldData.feature} onChange={this.changeFDValue.bind(this, 'feature') } />
+                                        </Tab>
+                                    <Tab eventKey={2} title="規格表">
+                                        <textarea type="date" className="form-control" id="specification" name="specification" value={fieldData.specification} onChange={this.changeFDValue.bind(this, 'specification') } />
+                                        </Tab>
+                                    <Tab eventKey={3} title="媒體報導">
+                                        <textarea type="date" className="form-control" id="news" name="news" value={fieldData.news} onChange={this.changeFDValue.bind(this, 'news') } />
+                                        </Tab>
+                                </Tabs>
+                            </div>
+                            <div className="col-xs-12">
+                                <div className="form-action">
+                                    <div className="col-xs-4 col-xs-offset-2">
+                                        <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                                        <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">車款</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'brand_name') } value={fieldData.brand_name} maxLength={64} required />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">分類</label>
-                <div className="col-xs-7">
-                    <select className="form-control" id="field-category"
-                        onChange={this.changeFDValue.bind(this, 'brand_category_id') }
-                        value={fieldData.brand_category_id}>
-                            {
-                            option.map((itemData, i) => <option key={i} value={itemData.brand_category_id}>{itemData.category_name}</option>)
-                            }
-                        </select>
-                    </div>
-                <small className="help-inline col-xs-2 text-danger">(必填) </small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排序</label>
-                <div className="col-xs-7">
-                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
-                    </div>
-                <small className="col-xs-3 help-inline">數字越大越前面</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">狀態</label>
-                <div className="col-xs-4">
-                    <div className="radio-inline">
-                        <label>
-                               <input type="radio"
-                                   name="i_Hide"
-                                   value={true}
-                                   checked={fieldData.i_Hide === true}
-                                   onChange={this.changeFDValue.bind(this, 'i_Hide') }
-                                   />
-                                <span>隱藏</span>
-                            </label>
-                        </div>
-                      <div className="radio-inline">
-                          <label>
-                                <input type="radio"
-                                    name="i_Hide"
-                                    value={false}
-                                    checked={fieldData.i_Hide === false}
-                                    onChange={this.changeFDValue.bind(this, 'i_Hide') }
-                                    />
-                                <span>顯示</span>
-                              </label>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        <div className="col-xs-6">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">車價</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'price') } value={fieldData.price} maxLength={64}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多64字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">車色</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'colors') } value={fieldData.colors} maxLength={128}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">乘客數</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'seat') } value={fieldData.seat} maxLength={128} />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排氣量</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'engine_displacement') } value={fieldData.engine_displacement} maxLength={128}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排檔方式</label>
-                <div className="col-xs-7">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'gearshift') } value={fieldData.gearshift} maxLength={128}  />
-                    </div>
-                <small className="col-xs-3 help-inline"><span className="text-danger"></span>最多128字</small>
-                </div>
-            </div>
-
-        <div className="col-xs-12">
-            <div className="form-group clear bg-warning">
-            <label className="col-xs-1 control-label">內裝/外觀</label>
-            <small className="col-xs-9 help-block">每車款「內裝/外觀」相簿最多新增6個，每個相簿最多新增12張圖片, 每張最大不可超過2MB</small>
-            <div className="form-group">
-                    <HandleBrandAlbum brand_id={this.state.fieldData.brand_id} parent_edit_type={this.state.edit_type} />
-                </div>
-                </div>
-            </div>
-        <div className="col-xs-12">
-        <Tabs defaultActiveKey={1} animation={false}>
-                <Tab eventKey={1} title="特色">
-                    <textarea type="date" className="form-control" id="feature" name="feature" value={fieldData.feature} onChange={this.changeFDValue.bind(this, 'feature') } />
-                    </Tab>
-                <Tab eventKey={2} title="規格表">
-                    <textarea type="date" className="form-control" id="specification" name="specification" value={fieldData.specification} onChange={this.changeFDValue.bind(this, 'specification') } />
-                    </Tab>
-                <Tab eventKey={3} title="媒體報導">
-                    <textarea type="date" className="form-control" id="news" name="news" value={fieldData.news} onChange={this.changeFDValue.bind(this, 'news') } />
-                    </Tab>
-            </Tabs>
-            <div className="form-action">
-                <div className="col-xs-4 col-xs-offset-2">
-                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                    <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-                        </div >
                 );
             }
 
