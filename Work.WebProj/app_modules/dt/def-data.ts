@@ -482,6 +482,14 @@ export var EventType: Array<server.StateTemplate> = [
     { id: 1, label: '精彩活動回顧', classNameforG: 'label label-success' },
     { id: 2, label: '購車優惠', classNameforG: 'label label-info' }
 ];
+export var LocationArea: Array<server.StateTemplate> = [
+    { id: '台北區', label: '台北區', classNameforG: 'label label-primary' },
+    { id: '桃苗區', label: '桃苗區', classNameforG: 'label label-success' },
+    { id: '中區', label: '中區', classNameforG: 'label label-info' },
+    { id: '嘉南區', label: '嘉南區', classNameforG: 'label label-warning' },
+    { id: '高屏區', label: '高屏區', classNameforG: 'label label-danger' },
+    { id: '離島區', label: '離島區', classNameforG: 'label label-default' }
+];
 export var PurchaseStateType: Array<server.StateTemplate> = [
     { id: 0, label: '現場付款', classNameforG: 'label label-primary' },
     { id: 1, label: '待繳款', className: 'text-error', classNameforG: 'label label-warning' },

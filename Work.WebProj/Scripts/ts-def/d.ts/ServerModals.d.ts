@@ -207,18 +207,17 @@
     }
     interface Location extends BaseEntityTable {
         location_id?: number;
+        area?: string;
+        zip?: string;
         city?: string;
         country?: string;
-        location_name?: string;
         address?: string;
+        location_name?: string;
         tel?: string;
+        fax?: string;
         is_sales?: boolean;
         is_repair?: boolean;
-        engine?: boolean;
-        spray_sheet?: boolean;
-        night?: boolean;
-        holiday?: boolean;
-        fast_insurance?: boolean;
+        business_hours?: string;
         north_coordinate?: number;
         east_coordinate?: number;
         sort?: number;

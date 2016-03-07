@@ -12,15 +12,20 @@ namespace Location {
         location_id?: string;
         check_del?: boolean,
         location_name?: string;
+        area?: string;
         city?: string;
         country?: string;
         address?: string;
+        is_sales?: boolean;
+        is_repair?: boolean;
         sort?: number;
         i_Hide?: boolean;
     }
     interface FormState<G, F> extends BaseDefine.GirdFormStateBase<G, F> {
         searchData?: {
-            keyword: string
+            keyword: string,
+            area: string,
+            type: number
         }
         country_list?: any[]
     }
@@ -50,11 +55,12 @@ namespace Location {
             return <tr>
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
-                       <td>{this.props.itemData.city}</td>
-                       <td>{this.props.itemData.country}</td>
+                       <td><StateForGird id={this.props.itemData.area} stateData={DT.LocationArea} /></td>
                        <td>{this.props.itemData.location_name}</td>
                        <td>{this.props.itemData.address}</td>
                        <td>{this.props.itemData.sort }</td>
+                       <td>{this.props.itemData.is_sales ? <span className="label label-info">是</span> : <span className="label label-default">否</span>}</td>
+                       <td>{this.props.itemData.is_repair ? <span className="label label-success">是</span> : <span className="label label-default">否</span>}</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
                 </tr>;
 
@@ -80,6 +86,7 @@ namespace Location {
             this.handleSearch = this.handleSearch.bind(this);
             this.onCityChange = this.onCityChange.bind(this);
             this.listCountry = this.listCountry.bind(this);
+            this.setFDValue = this.setFDValue.bind(this);
             this.render = this.render.bind(this);
 
 
@@ -87,7 +94,7 @@ namespace Location {
                 fieldData: {},
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
-                searchData: { keyword: null },
+                searchData: { keyword: null, area: null, type: null },
                 country_list: []
             }
         }
@@ -214,13 +221,11 @@ namespace Location {
                     i_Hide: false,
                     sort: 0,
                     city: "",
+                    area: "",
+                    zip: "",
                     is_sales: false,
                     is_repair: false,
-                    engine: false,
-                    spray_sheet: false,
-                    night: false,
-                    holiday: false,
-                    fast_insurance: false
+                    business_hours: ""
                 }
             });
         }
@@ -228,6 +233,7 @@ namespace Location {
 
             CommFunc.jqGet(this.props.apiPath, { id: id })
                 .done((data, textStatus, jqXHRdata) => {
+                    this.listCountry(data.data.city);
                     this.setState({ edit_type: 2, fieldData: data.data });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
@@ -261,6 +267,9 @@ namespace Location {
                 obj[name] = input.value;
             }
             this.setState({ fieldData: obj });
+            if (collentName == this.props.gdName) {
+                this.queryGridData(0);
+            }
         }
         onCityChange(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
@@ -268,7 +277,6 @@ namespace Location {
             this.listCountry(input.value);
             obj['city'] = input.value;
             this.setState({ fieldData: obj });
-            this.queryGridData(0);
         }
         listCountry(value) {
             for (var i in DT.twDistrict) {
@@ -278,6 +286,12 @@ namespace Location {
                     break;
                 }
             }
+        }
+        setFDValue(fieldName, value) {
+            //此function提供給次元件調用，所以要以屬性往下傳。
+            var obj = this.state[this.props.fdName];
+            obj[fieldName] = value;
+            this.setState({ fieldData: obj });
         }
         render() {
 
@@ -299,11 +313,28 @@ namespace Location {
                                 <div className="table-filter">
                                     <div className="form-inline">
                                         <div className="form-group">
-                                            <label>標題</label> { }
+                                            <label>據點名稱/地址</label> { }
                                             <input type="text" className="form-control"
                                                 onChange={this.changeGDValue.bind(this, 'keyword') }
                                                 value={searchData.keyword}
                                                 placeholder="請輸入關鍵字..." /> { }
+                                            <label>據點</label> { }
+                                            <select className="form-control"
+                                                onChange={this.changeGDValue.bind(this, 'type') }
+                                                value={searchData.type}>
+                                                    <option value="">全部</option>
+                                                    <option value="1">展示中心</option>
+                                                    <option value="2">維修據點</option>
+                                                </select> { }
+                                            <label>區域</label> { }
+                                            <select className="form-control"
+                                                onChange={this.changeGDValue.bind(this, 'area') }
+                                                value={searchData.area}>
+                                                    <option value="">全部</option>
+                                                    {
+                                                    DT.LocationArea.map((item, i) => <option key={i} value={item.id}>{item.label}</option>)
+                                                    }
+                                                </select> { }
                                             <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                             </div>
                                         </div>
@@ -319,11 +350,12 @@ namespace Location {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-1">縣市</th>
                                         <th className="col-xs-1">區域</th>
-                                        <th className="col-xs-2">據點名稱</th>
-                                        <th className="col-xs-4">地址</th>
+                                        <th className="col-xs-1">據點名稱</th>
+                                        <th className="col-xs-3">地址</th>
                                         <th className="col-xs-1">排序</th>
+                                        <th className="col-xs-1">展示中心</th>
+                                        <th className="col-xs-1">維修據點</th>
                                         <th className="col-xs-1">狀態</th>
                                         </tr>
                                     </thead>
@@ -360,146 +392,6 @@ namespace Location {
                 let fieldData = this.state.fieldData;
                 let InputDate = CommCmpt.InputDate;
                 let country_list = this.state.country_list;
-                let repair_html: JSX.Element = null;
-
-                if (fieldData.is_repair) {
-                    repair_html = (
-                        <div className="form-group clear bg-warning">
-            <div className="form-group">
-                <label className="col-xs-2 control-label">引擎維修</label>
-                <div className="col-xs-2">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="engine"
-                                value={true}
-                                checked={fieldData.engine === true}
-                                onChange={this.changeFDValue.bind(this, 'engine') }
-                                />
-                            <span>有</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="engine"
-                                value={false}
-                                checked={fieldData.engine === false}
-                                onChange={this.changeFDValue.bind(this, 'engine') }
-                                />
-                            <span>無</span>
-                           </label>
-                       </div>
-                    </div>
-                <label className="col-xs-1 control-label">鈑噴維修</label>
-                <div className="col-xs-2">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="spray_sheet"
-                                value={true}
-                                checked={fieldData.spray_sheet === true}
-                                onChange={this.changeFDValue.bind(this, 'spray_sheet') }
-                                />
-                            <span>有</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="spray_sheet"
-                                value={false}
-                                checked={fieldData.spray_sheet === false}
-                                onChange={this.changeFDValue.bind(this, 'spray_sheet') }
-                                />
-                            <span>無</span>
-                           </label>
-                       </div>
-                    </div>
-                <label className="col-xs-1 control-label">夜間預約</label>
-                <div className="col-xs-2">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="night"
-                                value={true}
-                                checked={fieldData.night === true}
-                                onChange={this.changeFDValue.bind(this, 'night') }
-                                />
-                            <span>有</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="night"
-                                value={false}
-                                checked={fieldData.night === false}
-                                onChange={this.changeFDValue.bind(this, 'night') }
-                                />
-                            <span>無</span>
-                           </label>
-                       </div>
-                    </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">假日服務</label>
-                <div className="col-xs-2">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="holiday"
-                                value={true}
-                                checked={fieldData.holiday === true}
-                                onChange={this.changeFDValue.bind(this, 'holiday') }
-                                />
-                            <span>有</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="holiday"
-                                value={false}
-                                checked={fieldData.holiday === false}
-                                onChange={this.changeFDValue.bind(this, 'holiday') }
-                                />
-                            <span>無</span>
-                           </label>
-                       </div>
-                    </div>
-                <label className="col-xs-1 control-label">雙人快保</label>
-                <div className="col-xs-2">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="fast_insurance"
-                                value={true}
-                                checked={fieldData.fast_insurance === true}
-                                onChange={this.changeFDValue.bind(this, 'fast_insurance') }
-                                />
-                            <span>有</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="fast_insurance"
-                                value={false}
-                                checked={fieldData.fast_insurance === false}
-                                onChange={this.changeFDValue.bind(this, 'fast_insurance') }
-                                />
-                            <span>無</span>
-                           </label>
-                       </div>
-                    </div>
-                </div>
-                            </div>
-                    );
-                }
-
-
-
 
                 outHtml = (
                     <div>
@@ -508,19 +400,11 @@ namespace Location {
         <div className="col-xs-10">
             <div className="form-group">
                 <label className="col-xs-2 control-label">區域</label>
-                <div className="col-xs-4">
-                    <select className="form-control" onChange={this.onCityChange.bind(this, this.props.fdName, 'city') } value={fieldData.city} required>
-                        <option value="" defaultValue="" disabled>請選擇縣市</option>
+                <div className="col-xs-8">
+                    <select className="form-control" onChange={this.changeFDValue.bind(this, 'area') } value={fieldData.area} required>
+                        <option value="" defaultValue="" disabled>請選擇區域</option>
                         {
-                        DT.twDistrict.map((itemData, i) => <option key={i} value={itemData.city}>{itemData.city}</option>)
-                        }
-                        </select>
-                    </div>
-                <div className="col-xs-4">
-                    <select className="form-control" onChange={this.changeFDValue.bind(this, 'country') } value={fieldData.country} required>
-                        <option value="" defaultValue="" disabled>請選擇鄉鎮區</option>
-                        {
-                        country_list.map((itemData, i) => <option key={i} value={itemData.county}>{itemData.county}</option>)
+                        DT.LocationArea.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.label}</option>)
                         }
                         </select>
                     </div>
@@ -528,10 +412,20 @@ namespace Location {
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">地址</label>
-                <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'address') } value={fieldData.address} maxLength={256}  required/>
-                    </div>
-                <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多256字</small>
+                <CommCmpt.TwAddress ver={1}
+                    onChange={this.changeFDValue}
+                    setFDValue={this.setFDValue}
+                    zip_value={fieldData.zip}
+                    city_value={fieldData.city}
+                    country_value={fieldData.country}
+                    address_value={fieldData.address}
+                    required={true}
+                    zip_field="zip"
+                    city_field="city"
+                    country_field="country"
+                    address_field="address"
+                    />
+                <small className="col-xs-1 help-inline"><span className="text-danger">(必填) </span></small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">據點名稱</label>
@@ -546,11 +440,10 @@ namespace Location {
                     <input type="tel" className="form-control" onChange={this.changeFDValue.bind(this, 'tel') } value={fieldData.tel}  required/>
                     </div>
                 <small className="col-xs-1 help-inline"><span className="text-danger">(必填) </span></small>
-                <label className="col-xs-2 control-label">排序</label>
-                <div className="col-xs-2">
-                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
+                <label className="col-xs-1 control-label">傳真</label>
+                <div className="col-xs-3">
+                    <input type="tel" className="form-control" onChange={this.changeFDValue.bind(this, 'fax') } value={fieldData.fax}/>
                     </div>
-                <small className="col-xs-2 help-inline">數字越大越前面</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">為展示中心</label>
@@ -604,18 +497,6 @@ namespace Location {
                        </div>
                     </div>
                 </div>
-                {repair_html}
-            <div className="form-group">
-                <label className="col-xs-2 control-label">北_座標(North) </label>
-                <div className="col-xs-3">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'north_coordinate') } value={fieldData.north_coordinate}  required/>
-                    </div>
-                <label className="col-xs-2 control-label">東_座標(East) </label>
-                <div className="col-xs-3">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'east_coordinate') } value={fieldData.east_coordinate} required />
-                    </div>
-                <small className="col-xs-2 help-inline"><span className="text-danger">(座標皆必填) </span></small>
-                </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">狀態</label>
                 <div className="col-xs-4">
@@ -642,6 +523,29 @@ namespace Location {
                            </label>
                        </div>
                     </div>
+                <label className="col-xs-2 control-label">排序</label>
+                <div className="col-xs-2">
+                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
+                    </div>
+                <small className="col-xs-2 help-inline">數字越大越前面</small>
+                </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">北_座標(North) </label>
+                <div className="col-xs-3">
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'north_coordinate') } value={fieldData.north_coordinate}  required/>
+                    </div>
+                <label className="col-xs-2 control-label">東_座標(East) </label>
+                <div className="col-xs-3">
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'east_coordinate') } value={fieldData.east_coordinate} required />
+                    </div>
+                <small className="col-xs-2 help-inline"><span className="text-danger">(座標皆必填) </span></small>
+                </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">營業時間</label>
+                <div className="col-xs-8">
+                    <textarea type="text" className="form-control" rows={3} value={fieldData.business_hours} onChange={this.changeFDValue.bind(this, 'business_hours') } maxLength={256} />
+                    </div>
+                <small className="col-xs-2 help-inline">最多256字</small>
                 </div>
             <div className="form-action">
                 <div className="col-xs-4 col-xs-offset-2">

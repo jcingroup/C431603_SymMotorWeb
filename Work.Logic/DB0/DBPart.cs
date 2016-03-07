@@ -39,6 +39,11 @@ namespace ProcCore.Business.DB0
         OldActivity = 1,//精彩活動回顧
         NewActivity = 2//購車優惠
     }
+    public enum LocationType
+    {
+        is_sales = 1,//展示中心
+        is_repair = 2//維修中心
+    }
     #region set CodeSheet
 
     public static class CodeSheet
