@@ -475,6 +475,9 @@
     <Content Include="Content\font\themify-icons\themify.svg" />
     <Content Include="Content\font\themify-icons\themify.ttf" />
     <Content Include="Content\font\themify-icons\themify.woff" />
+    <Content Include="Content\sass\helper\_classes.scss" />
+    <Content Include="Content\sass\helper\_extend.scss" />
+    <Content Include="Content\sass\helper\_function.scss" />
     <None Include="Content\sass\index.scss" />
     <Content Include="Content\sass\layout\_grid.scss" />
     <Content Include="Content\sass\module\_alert.scss" />
