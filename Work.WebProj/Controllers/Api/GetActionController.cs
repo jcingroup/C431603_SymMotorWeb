@@ -131,7 +131,31 @@ namespace DotWeb.Api
         }
 
 
+        public IHttpActionResult GetLocation([FromUri]LocationParm q)
+        {
+            List<Location> sales = new List<Location>();
+            List<Location> repair = new List<Location>();
+            using (var db0 = getDB0())
+            {
+                var temp_s = db0.Location.Where(x => !x.i_Hide & x.is_sales).OrderByDescending(x => x.sort).AsQueryable();
+                var temp_r = db0.Location.Where(x => !x.i_Hide & x.is_repair).OrderByDescending(x => x.sort).AsQueryable();
 
+                if (q.city != null)
+                {
+                    temp_s = temp_s.Where(x => x.city == q.city);
+                    temp_r = temp_r.Where(x => x.city == q.city);
+                }
+
+                if (q.country != null)
+                {
+                    temp_s = temp_s.Where(x => x.country == q.country);
+                    temp_r = temp_r.Where(x => x.country == q.country);
+                }
+                sales = temp_s.ToList();
+                repair = temp_r.ToList();
+            }
+            return Ok(new { sales = sales, repair = repair });
+        }
         #region 後台-參數設定
         public ResultInfo PostParamData([FromBody]Param md)
         {
@@ -167,6 +191,11 @@ namespace DotWeb.Api
         public int records { get; set; }
         public int startcount { get; set; }
         public int endcount { get; set; }
+    }
+    public class LocationParm
+    {
+        public string city { get; set; }
+        public string country { get; set; }
     }
     #endregion
 }

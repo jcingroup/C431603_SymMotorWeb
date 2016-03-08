@@ -25,3 +25,7 @@ const enum EventType {
     OldActivity = 1,//精彩活動回顧
     NewActivity = 2//購車優惠
 }
+const enum LocationType {
+    sales = 1,
+    repair = 2
+}
