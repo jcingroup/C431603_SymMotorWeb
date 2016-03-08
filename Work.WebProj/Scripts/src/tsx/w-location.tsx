@@ -65,7 +65,6 @@ namespace W_Location {
         }
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
-            this.state.fieldData.response = grecaptcha.getResponse(widgetId);
 
             CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                 .done((data: EmailResult, textStatus, jqXHRdata) => {
