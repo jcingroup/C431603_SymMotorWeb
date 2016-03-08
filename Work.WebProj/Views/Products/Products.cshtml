@@ -73,14 +73,12 @@
 
                 <ol class="album row list-unstyled">
                     @foreach (var i in Model.albums)
-                    {
-                        <li>
+                    {<li>
                             <a class="popup" href="~/Products/Album?id=@i.brand_album_id">
                                 <img src="@i.imgsrc" alt="@i.album_name">
                                 <span>@i.album_name</span>
                             </a>
-                        </li>
-                    }
+                        </li>}
                 </ol>
 
             </section>
