@@ -69,8 +69,7 @@ namespace W_Location {
 
             CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                 .done((data: EmailResult, textStatus, jqXHRdata) => {
-                    alert(data.message);
-                    grecaptcha.reset(widgetId);
+                    console.log(data);
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
                     CommFunc.showAjaxError(errorThrown);
