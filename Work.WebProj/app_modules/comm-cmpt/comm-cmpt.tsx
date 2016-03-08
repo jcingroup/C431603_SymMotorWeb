@@ -712,7 +712,7 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
                             onChange={this.onCityChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value=""></option>
+                                 <option value="" defaultValue="" disabled>請選擇縣市</option>
                                 {
                                 DT.twDistrict.map(function (itemData, i) {
                                     return <option key={itemData.city} value={itemData.city}>{itemData.city}</option>;
@@ -726,7 +726,7 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
                             onChange={this.onCountryChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value=""></option>
+                                <option value="" defaultValue="" disabled>請選擇鄉鎮區</option>
                                 {
                                 this.state.country_list.map(function (itemData, i) {
                                     return <option key={itemData.county} value={itemData.county}>{itemData.county}</option>;
@@ -741,7 +741,8 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
                             onChange={this.valueChange.bind(this, this.props.address_field) }
                             maxLength={128}
                             required={this.props.required}
-                            disabled={this.props.disabled}/>
+                            disabled={this.props.disabled}
+                            placeholder="請輸入地址..."/>
                         </div>
                     </div>
             );
@@ -849,7 +850,7 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
     }
 }
 
-export class StateForGird extends React.Component<{ stateData: Array<server.StateTemplate>, id: number, ver?: number }, { setClass: string, label: string }>{
+export class StateForGird extends React.Component<{ stateData: Array<server.StateTemplate>, id: number | string, ver?: number }, { setClass: string, label: string }>{
     constructor() {
 
         super();

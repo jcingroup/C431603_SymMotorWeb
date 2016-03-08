@@ -13,18 +13,17 @@ namespace ProcCore.Business.DB0
     using System.Collections.Generic;
     public partial class m_Location :BaseEntityTable {
     public int location_id { get; set; }
+    public string area { get; set; }
+    public string zip { get; set; }
     public string city { get; set; }
     public string country { get; set; }
-    public string location_name { get; set; }
     public string address { get; set; }
+    public string location_name { get; set; }
     public string tel { get; set; }
+    public string fax { get; set; }
     public bool is_sales { get; set; }
     public bool is_repair { get; set; }
-    public bool engine { get; set; }
-    public bool spray_sheet { get; set; }
-    public bool night { get; set; }
-    public bool holiday { get; set; }
-    public bool fast_insurance { get; set; }
+    public string business_hours { get; set; }
     public double north_coordinate { get; set; }
     public double east_coordinate { get; set; }
     public int sort { get; set; }

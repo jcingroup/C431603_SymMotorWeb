@@ -650,6 +650,7 @@
     <Content Include="Scripts\build\app\m_parm.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\w_loan_email.js" />
+    <Content Include="Scripts\build\app\w_location.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -839,6 +840,7 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-location.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-loan_email.tsx" />
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />

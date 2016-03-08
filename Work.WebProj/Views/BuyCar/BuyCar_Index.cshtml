@@ -39,7 +39,8 @@
             }
         });
     </script>
-
+    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="~/Content/js/gmap-custom.js"></script>
 }
@@ -50,162 +51,41 @@
 
 <section id="content">
 
-<section id="banner" class="swiper-container">
-    <h2 class="sr-only">最新購車優惠</h2>
-    <ul class="swiper-wrapper list-unstyled">
+    <section id="banner" class="swiper-container">
+        <h2 class="sr-only">最新購車優惠</h2>
+        <ul class="swiper-wrapper list-unstyled">
             @foreach (var i in Model)
             {
                 if (i.show_banner & i.banner_imgsrc != null)
                 {
-        <li class="swiper-slide">
-                        <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
-        </li>
+            <li class="swiper-slide">
+                <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
+            </li>
                 }
             }
-    </ul>
-</section>
+        </ul>
+    </section>
     <div class="grid-gallery bg2">
         <div class="wrap">
-    <div id="banner-thumb" class="swiper-container">
-        <ul class="swiper-wrapper list-unstyled">
+            <div id="banner-thumb" class="swiper-container">
+                <ul class="swiper-wrapper list-unstyled">
                     @foreach (var i in Model)
                     {
-            <li class="swiper-slide">
-                            <img src="@i.list_imgsrc" alt="@i.event_title">
-            </li>
+                    <li class="swiper-slide">
+                        <img src="@i.list_imgsrc" alt="@i.event_title">
+                    </li>
                     }
-        </ul>
-        <a class="prev swiper-button-prev" href=""></a>
-        <a class="next swiper-button-next" href=""></a>
-    </div>
+                </ul>
+                <a class="prev swiper-button-prev" href=""></a>
+                <a class="next swiper-button-next" href=""></a>
+            </div>
         </div>
     </div>
+
 
 
     <div id="location" class="grid-location">
-        <div class="wrap">
-
-    <section class="search">
-        <h2 class="h1">營業據點查詢</h2>
-
-        <form class="form" action="">
-            <div class="form-group text-xs-center">
-
-                @* 被按到的按鈕要加 class="active" *@
-                <button class="btn btn-primary btn-lg">展示中心查詢</button>
-                <button class="btn btn-primary btn-lg">維修據點查詢</button>
-
-            </div>
-            <div class="form-group">
-                <label for="" class="sr-only">選擇縣市</label>
-                <select name="" id="" class="form-control c-select">
-                    <option value="" selected disabled>選擇縣市</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="" class="sr-only">選擇區域</label>
-                <select name="" id="" class="form-control c-select">
-                    <option value="" selected disabled>選擇區域</option>
-                </select>
-            </div>
-        </form>
-    </section>
-
-    <section class="map">
-        <h2 class="sr-only">地圖</h2>
-
-        <div id="map"></div>
-
-    </section>
-
-    <section class="location">
-        <h2 class="sr-only">據點列表</h2>
-
-        @* 展示中心 *@
-        <h3 class="h3">展示中心</h3>
-        <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width:10%;">縣市</th>
-                    <th style="width:10%;">區域</th>
-                    <th style="width:25%;">地址</th>
-                    <th style="width:20%;">電話</th>
-                    <th style="width:35%;">營業時間</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>台北市</td>
-                    <td>內湖區</td>
-                    <td>台北市內湖區民權東路六段13-15號</td>
-                    <td>(02)2795-4532</td>
-                    <td>
-                        週一至週五：上午08:00～下午21:00<br>
-                        週六：上午08:00～下午19:30<br>
-                        週日&夜間保養維修；敬請事先預約。
-                    </td>
-                </tr>
-                <tr>
-                    <td>台北市</td>
-                    <td>內湖區</td>
-                    <td>台北市內湖區民權東路六段13-15號</td>
-                    <td>(02)2795-4532</td>
-                    <td>
-                        週一至週五：上午08:00～下午21:00<br>
-                        週六：上午08:00～下午19:30<br>
-                        週日&夜間保養維修；敬請事先預約。
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        @* end of 展示中心 *@
-
-        @* 維修據點 *@
-        <h3 class="h3">維修據點</h3>
-        <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width:10%;">縣市</th>
-                    <th style="width:10%;">區域</th>
-                    <th style="width:25%;">地址</th>
-                    <th style="width:20%;">電話</th>
-                    <th style="width:35%;">營業時間</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>台北市</td>
-                    <td>內湖區</td>
-                    <td>台北市內湖區民權東路六段13-15號</td>
-                    <td>(02)2795-4532</td>
-                    <td>
-                        週一至週五：上午08:00～下午21:00<br>
-                        週六：上午08:00～下午19:30<br>
-                        週日&夜間保養維修；敬請事先預約。
-                    </td>
-                </tr>
-                <tr>
-                    <td>台北市</td>
-                    <td>內湖區</td>
-                    <td>台北市內湖區民權東路六段13-15號</td>
-                    <td>(02)2795-4532</td>
-                    <td>
-                        週一至週五：上午08:00～下午21:00<br>
-                        週六：上午08:00～下午19:30<br>
-                        週日&夜間保養維修；敬請事先預約。
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        @* end of 維修據點 *@
-
-    </section>
-
-        </div>
+       
     </div>
 
 </section>
