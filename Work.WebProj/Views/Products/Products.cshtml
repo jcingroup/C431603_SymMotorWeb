@@ -5,42 +5,10 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section css {
-    <link href="~/Content/css/magnific-popup.css" rel="stylesheet">
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
-    <style>
-        .swiper-container {
-            width: 100%;
-            height: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .swiper-slide {
-            background-size: cover;
-            background-position: center;
-        }
-
-        .gallery-top {
-            height: 80%;
-            width: 100%;
-        }
-
-        .gallery-thumbs {
-            height: 20%;
-            box-sizing: border-box;
-            padding: 10px 0;
-        }
-
-            .gallery-thumbs .swiper-slide {
-                width: auto;
-                height: 100%;
-                opacity: 0.4;
-            }
-
-            .gallery-thumbs .swiper-slide-active {
-                opacity: 1;
-            }
-    </style>
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/swiper.min.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/popup.css">
 }
 @section Scripts {
     <script src="~/Content/js/bootstrap/tab.js"></script>
@@ -49,7 +17,7 @@
         $('.popup').magnificPopup({
             type: 'ajax',
             closeOnBgClick: false,
-            closeMarkup: '<button class="mfp-close"></button>'
+            // closeMarkup: '<button class="mfp-close"></button>'
         });
     </script>
 }
@@ -105,14 +73,12 @@
 
                 <ol class="album row list-unstyled">
                     @foreach (var i in Model.albums)
-                    {
-                        <li>
+                    {<li>
                             <a class="popup" href="~/Products/Album?id=@i.brand_album_id">
                                 <img src="@i.imgsrc" alt="@i.album_name">
                                 <span>@i.album_name</span>
                             </a>
-                        </li>
-                    }
+                        </li>}
                 </ol>
 
             </section>

@@ -9,7 +9,11 @@
 @import "helper/mixins/breakpoints";
 
 
+button.mfp-close {
+    background: #999;
+}
 .popup-content {
+    background: #eee;
     height: 100%;
 }
 
@@ -39,7 +43,7 @@
 
         .caption {
             display: block;
-            background: hsla(0,0,0,0.85);
+            background: hsla(0,0,0,.3);
             color: #fff;
             font-weight: bold;
 
@@ -56,6 +60,7 @@
 }
 
 .gallery-thumbs {
+    background: #ccc;
     height: 20%;
     box-sizing: border-box;
     padding: $spacer 0;
@@ -70,7 +75,9 @@
         &:hover {opacity: 1;}
 
         img {
-            width: 100%;
+            // width: 100%;
+            // width: auto;
+            height: 100%;
             max-height: 100%;
         }
     }
@@ -78,4 +85,13 @@
     .swiper-slide-active {
         opacity: 1;
     }
+}
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z' fill='%23999999'/></svg>");
+}
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z' fill='%23999999'/></svg>");
 }
