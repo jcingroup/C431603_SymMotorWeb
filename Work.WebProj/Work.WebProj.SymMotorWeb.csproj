@@ -398,6 +398,8 @@
     <Content Include="Content\images\BuyCar\banner2-thumb.jpg" />
     <Content Include="Content\images\BuyCar\banner2.jpg" />
     <Content Include="Content\images\iconCheck.gif" />
+    <Content Include="Content\images\iconMap-1.png" />
+    <Content Include="Content\images\iconMap-2.png" />
     <Content Include="Content\images\iconQuality.gif" />
     <Content Include="Content\images\iconSelect.jpg" />
     <Content Include="Content\images\iconSelect2.gif" />
