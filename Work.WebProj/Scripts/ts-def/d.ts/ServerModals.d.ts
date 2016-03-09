@@ -223,6 +223,14 @@
         sort?: number;
         i_Hide?: boolean;
     }
+
+    interface MapData {
+        title: string;
+        north: number;
+        east: number;
+        memo: string;
+        index: number;
+    }
     interface L1 extends BaseEntityTable {
         l1_id?: number;
         l1_name?: string;

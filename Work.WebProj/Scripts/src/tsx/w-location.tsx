@@ -38,6 +38,7 @@ namespace W_Location {
             this.onCityChange = this.onCityChange.bind(this);
             this.listCountry = this.listCountry.bind(this);
             this.onChangeType = this.onChangeType.bind(this);
+            this.setMapData = this.setMapData.bind(this);
             this.render = this.render.bind(this);
 
 
@@ -52,7 +53,7 @@ namespace W_Location {
         }
         static defaultProps: Formprops = {
             apiPath: gb_approot + 'Loan/sendMail',
-            apiInitPath: gb_approot + 'api/GetAction/GetLocation',
+            apiInitPath: gb_approot + 'BuyCar/GetLocation',
             styles: {
                 width_10: {
                     width: '10%'
@@ -69,6 +70,7 @@ namespace W_Location {
             }
         }
         componentDidMount() {
+            this.queryInitData();
             this.state.type = gb_type;
             if (this.state.type == LocationType.sales) {
                 this.setState({ class_string: { sales: "btn btn-primary btn-lg active", repair: "btn btn-primary btn-lg" }, type: gb_type });
@@ -77,11 +79,11 @@ namespace W_Location {
             } else {
                 this.setState({ class_string: { sales: "btn btn-primary btn-lg", repair: "btn btn-primary btn-lg" }, type: null });
             }
-            this.queryInitData();
         }
         queryInitData() {
             CommFunc.jqGet(this.props.apiInitPath, this.state.searchData)
                 .done((data, textStatus, jqXHRdata) => {
+                    this.setMapData(this.state.type, data.sales, data.repair);
                     this.setState({ sales: data.sales, repair: data.repair });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
@@ -127,6 +129,17 @@ namespace W_Location {
             } else {
                 this.setState({ class_string: { sales: "btn btn-primary btn-lg", repair: "btn btn-primary btn-lg" }, type: null });
             }
+            this.setMapData(type, this.state.sales, this.state.repair);
+        }
+        setMapData(type: number, sales: server.Location[], repair: server.Location[]) {
+            let data: server.MapData[] = [];
+            if (type == LocationType.sales) {
+                sales.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.address, index: item.location_id }));
+            } else if (type == LocationType.repair) {
+                repair.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.address, index: item.location_id }));
+            }
+            gb_map_data = data;
+            setNewMapMarker();
         }
         render() {
 
