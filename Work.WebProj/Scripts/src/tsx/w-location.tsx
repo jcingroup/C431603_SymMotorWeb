@@ -177,7 +177,7 @@ namespace W_Location {
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
                                             <td>{item.tel}</td>
-                                            <td>{item.business_hours}</td>
+                                            <td>{item.business_hours.split("\n").map((item, i) => <span key={i}>{item}<br /></span>) }</td>
                                </tr>)
                            }
                             </tbody>
@@ -210,7 +210,7 @@ namespace W_Location {
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
                                             <td>{item.tel}</td>
-                                            <td>{item.business_hours}</td>
+                                            <td>{item.business_hours.split("\n").map((item, i) => <span key={i}>{item}<br /></span>) }</td>
                                </tr>)
                            }
                             </tbody>
@@ -243,7 +243,7 @@ namespace W_Location {
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
                                             <td>{item.tel}</td>
-                                            <td>{item.business_hours}</td>
+                                            <td>{item.business_hours.split("\n").map((item, i) => <span key={i}>{item}<br /></span>) }</td>
                                </tr>)
                            }
                             </tbody>
@@ -270,7 +270,7 @@ namespace W_Location {
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
                                             <td>{item.tel}</td>
-                                            <td>{item.business_hours}</td>
+                                            <td>{item.business_hours.split("\n").map((item, i) => <span key={i}>{item}<br /></span>) }</td>
                                </tr>)
                            }
                             </tbody>
