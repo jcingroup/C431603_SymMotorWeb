@@ -134,12 +134,12 @@ namespace W_Location {
         setMapData(type: number, sales: server.Location[], repair: server.Location[]) {
             let data: server.MapData[] = [];
             if (type == LocationType.sales) {
-                sales.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.address, index: item.location_id }));
+                sales.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.city + item.country + item.address, index: item.location_id }));
             } else if (type == LocationType.repair) {
-                repair.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.address, index: item.location_id }));
+                repair.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.city + item.country + item.address, index: item.location_id }));
             }
             gb_map_data = data;
-            setNewMapMarker();
+            setNewMapMarker(type);
         }
         render() {
 
