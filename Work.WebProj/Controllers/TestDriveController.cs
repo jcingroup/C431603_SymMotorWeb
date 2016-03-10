@@ -76,6 +76,16 @@ namespace DotWeb.Controllers
                         r.message = Resources.Res.Log_Err_MailAddressBlank;
                         return defJSON(r);
                     }
+                    if (md.type == (int)EmailState.TestDrive)
+                    {
+                        ResultInfo info = addTestDrive(md);
+                        if (!info.result)
+                        {
+                            r.result = false;
+                            r.message = info.message;
+                            return defJSON(r);
+                        }
+                    }
                     #region 信件發送
                     string Body = getMailBody("TestDriveEmail", md);//套用信件版面
                     Boolean mail;
@@ -109,7 +119,7 @@ namespace DotWeb.Controllers
     public class TestDriveMailContent : BasicMailContent
     {
         public int type { get; set; }//分 試乘:2 賞車:4
-        public string car_models { get; set; }//試乘車款 賞車車款
+        public int car_models { get; set; }//試乘車款 賞車車款
         public string car_models_name { get; set; }
         public string contact_time { get; set; }//聯繫時間
         //看車時間

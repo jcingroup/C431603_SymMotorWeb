@@ -44,6 +44,14 @@ namespace ProcCore.Business.DB0
         is_sales = 1,//展示中心
         is_repair = 2//維修中心
     }
+    public enum EmailState
+    {
+        FAQ = 1,//FAQ 聯絡我們
+        TestDrive = 2,//預約試乘
+        UsedCar = 3,//認證中古車 協尋找車
+        BuyCar = 4,//購車服務 預約賞車
+        Loan = 5//貸款專區 線上申貸表格
+    }
     #region set CodeSheet
 
     public static class CodeSheet
@@ -180,6 +188,11 @@ namespace ProcCore.Business.DB0
     public partial class BrandAlbumDetail
     {
         public string imgsrc { get; set; }
+    }
+    public partial class TestDrive
+    {
+        public string location_name { get; set; }
+        public string location_address { get; set; }
     }
     public class PutPurchaseCheckPram
     {

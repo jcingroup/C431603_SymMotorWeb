@@ -196,6 +196,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
     <Compile Include="Areas\Active\Controllers\BrandDataController.cs" />
+    <Compile Include="Areas\Active\Controllers\TestDriveDataController.cs" />
     <Compile Include="Areas\Active\Controllers\LocationController.cs" />
     <Compile Include="Areas\Active\Controllers\EditorController.cs" />
     <Compile Include="Areas\Active\Controllers\FaqDataController.cs" />
@@ -244,6 +245,7 @@
     <Content Include="Areas\Active\Views\BrandData\Main.cshtml" />
     <Content Include="Areas\Active\Views\Location\Main.cshtml" />
     <Content Include="Areas\Active\Views\BrandData\Category.cshtml" />
+    <Content Include="Areas\Active\Views\TestDriveData\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
@@ -297,6 +299,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\TestDriveController.cs" />
     <Compile Include="Controllers\Api\BrandAlbumDetailController.cs" />
     <Compile Include="Controllers\Api\BrandAlbumController.cs" />
     <Compile Include="Controllers\Api\LocationController.cs" />
@@ -652,6 +655,7 @@
     <Content Include="Scripts\build\app\m_news.js" />
     <Content Include="Scripts\build\app\m_parm.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
+    <Content Include="Scripts\build\app\m_test_drive.js" />
     <Content Include="Scripts\build\app\w_loan_email.js" />
     <Content Include="Scripts\build\app\w_location.js" />
     <Content Include="Scripts\build\app\w_testdrive_email.js" />
@@ -827,6 +831,7 @@
     <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand_category.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-test_drive.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-location.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-event_type.tsx" />
@@ -927,6 +932,7 @@
     <Content Include="Areas\Active\Views\Editor\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\BrandData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Location\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\TestDriveData\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
