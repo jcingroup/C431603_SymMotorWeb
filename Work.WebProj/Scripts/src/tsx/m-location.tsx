@@ -27,7 +27,8 @@ namespace Location {
             area: string,
             type: number
         }
-        country_list?: any[]
+        country_list?: any[],
+        is_admin?: boolean
     }
     interface FormResult extends IResultBase {
         id: string
@@ -95,7 +96,8 @@ namespace Location {
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
                 searchData: { keyword: null, area: null, type: null },
-                country_list: []
+                country_list: [],
+                is_admin: false
             }
         }
         static defaultProps: BaseDefine.GridFormPropsBase = {
@@ -105,6 +107,7 @@ namespace Location {
         }
         componentDidMount() {
             this.queryGridData(1);
+            if (gb_roles == "Admins") { this.setState({ is_admin: true }); }
         }
         gridData(page: number) {
 
@@ -383,6 +386,7 @@ namespace Location {
                         onQueryGridData={this.queryGridData}
                         InsertType={this.insertType}
                         deleteSubmit={this.deleteSubmit}
+                        showAdd={this.state.is_admin}
                         />
                         </form>
                             </div>
@@ -392,6 +396,22 @@ namespace Location {
                 let fieldData = this.state.fieldData;
                 let InputDate = CommCmpt.InputDate;
                 let country_list = this.state.country_list;
+                let coordinate_html: JSX.Element = null;//座標
+                if (this.state.is_admin) {
+                    coordinate_html = (
+                        <div className="form-group">
+                <label className="col-xs-2 control-label">北_座標(North) </label>
+                <div className="col-xs-3">
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'north_coordinate') } value={fieldData.north_coordinate}  required/>
+                    </div>
+                <label className="col-xs-2 control-label">東_座標(East) </label>
+                <div className="col-xs-3">
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'east_coordinate') } value={fieldData.east_coordinate} required />
+                    </div>
+                <small className="col-xs-2 help-inline"><span className="text-danger">(座標皆必填) </span></small>
+                            </div>);
+                }
+
 
                 outHtml = (
                     <div>
@@ -529,17 +549,7 @@ namespace Location {
                     </div>
                 <small className="col-xs-2 help-inline">數字越大越前面</small>
                 </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">北_座標(North) </label>
-                <div className="col-xs-3">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'north_coordinate') } value={fieldData.north_coordinate}  required/>
-                    </div>
-                <label className="col-xs-2 control-label">東_座標(East) </label>
-                <div className="col-xs-3">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'east_coordinate') } value={fieldData.east_coordinate} required />
-                    </div>
-                <small className="col-xs-2 help-inline"><span className="text-danger">(座標皆必填) </span></small>
-                </div>
+            {coordinate_html}
             <div className="form-group">
                 <label className="col-xs-2 control-label">營業時間</label>
                 <div className="col-xs-8">
