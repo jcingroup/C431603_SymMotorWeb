@@ -1,0 +1,84 @@
+﻿@model DotWeb.Controllers.TestDriveMailContent
+@{
+    ViewBag.Title = "Email";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    @if (Model.type == 2)
+    {
+        <title>【順益汽車股份有限公司】 - 預約試乘</title>
+    }
+    else {
+        <title>【順益汽車股份有限公司】 - 預約賞車</title>
+    }
+</head>
+<body style="font: .8em/140% '微軟正黑體', 'Microsoft JhengHei', Helvetica, sans-serif;">
+    @if (Model.type == 2)
+    {
+        <h1 style="font-size:1.5em;">【順益汽車股份有限公司】 - 預約試乘</h1>
+    }
+    else {
+        <h1 style="font-size:1.5em;">【順益汽車股份有限公司】 - 預約賞車</h1>
+    }
+
+    <table border="1" bordercolor="#ddd" style="border:1px solid #ccc">
+        <caption style="background:#FCF8E3; color:#9C7163; font-size:1.2em; font-weight:bold; padding:5px; text-align:center;">
+            以下為聯絡人資料
+        </caption>
+
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">姓名</td>
+            <td style="width:50px; padding:5px; border:1px solid #ccc">@Model.name</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">性別</td>
+            <td style="width:50px; padding:5px; border:1px solid #ccc">
+                @if (Model.sex)
+            { <span>男</span>}
+            else { <span>女</span>}
+            </td>
+        </tr>
+        <tr>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">E-mail</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.email</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">連絡電話</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.tel</td>
+        </tr>
+        <tr>
+            @if (Model.type == 2)
+            {
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">試乘車款</td>
+            }
+            else {
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">賞車車款</td>
+            }
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.car_models_name</td>
+            <td style="color:#9C7163; padding:5px; border:1px solid #ccc">客服人員聯繫時間</td>
+            <td style="width:100px; padding:5px; border:1px solid #ccc">@Model.contact_time</td>
+        </tr>
+        <tr>
+            @if (Model.type == 2)
+            {
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">希望試乘日期</td>
+            }
+            else {
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">希望賞車日期</td>
+            }
+            <td colspan="3" style="width:100px; padding:5px; border:1px solid #ccc">@Model.view_year / @Model.view_month / @Model.view_day @Model.view_time</td>
+        </tr>
+        <tr>
+            @if (Model.type == 2)
+            {
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">試乘據點</td>
+            }
+            else {
+                <td style="color:#9C7163; padding:5px; border:1px solid #ccc">賞車據點</td>
+            }
+            <td colspan="3" style="width:150px; padding:5px; border:1px solid #ccc">
+                @Model.view_city - @Model.view_location_name
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

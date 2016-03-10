@@ -25,6 +25,7 @@ module.exports = {
         m_location: path.resolve(__dirname, 'Scripts/src/tsx/m-location.js'),
         //前台
         w_loan_email: path.resolve(__dirname, 'Scripts/src/tsx/w-loan_email.js'),
+        w_testdrive_email: path.resolve(__dirname, 'Scripts/src/tsx/w-testdrive_email.js'),
         w_location: path.resolve(__dirname, 'Scripts/src/tsx/w-location.js'),
 
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']

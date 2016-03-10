@@ -202,6 +202,12 @@ namespace ProcCore.Business.DB0
         public int val { get; set; }
         public string Lname { get; set; }
     }
+    public class GroupOption
+    {
+        public string key { get; set; }
+        public List<option> items { get; set; }
+        public List<m_Location> locations { get; set; }
+    }
     public class L1
     {
         public int l1_id { get; set; }

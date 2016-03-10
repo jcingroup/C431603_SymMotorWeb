@@ -43,7 +43,7 @@
     <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
     <script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script src="~/Content/js/gmap-custom.js"></script>
+    <script src="~/Content/js/gmap-location.js"></script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
@@ -59,9 +59,9 @@
             {
                 if (i.show_banner & i.banner_imgsrc != null)
                 {
-            <li class="swiper-slide">
-                <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
-            </li>
+                    <li class="swiper-slide">
+                        <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
+                    </li>
                 }
             }
         </ul>
@@ -72,9 +72,9 @@
                 <ul class="swiper-wrapper list-unstyled">
                     @foreach (var i in Model)
                     {
-                    <li class="swiper-slide">
-                        <img src="@i.list_imgsrc" alt="@i.event_title">
-                    </li>
+                        <li class="swiper-slide">
+                            <img src="@i.list_imgsrc" alt="@i.event_title">
+                        </li>
                     }
                 </ul>
                 <a class="prev swiper-button-prev" href=""></a>
@@ -86,7 +86,7 @@
 
 
     <div id="location" class="grid-location">
-       
+
     </div>
 
 </section>

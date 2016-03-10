@@ -419,6 +419,7 @@
     <Content Include="Content\js\bootstrap\tab.js" />
     <Content Include="Content\js\bootstrap\util.js" />
     <Content Include="Content\js\gmap-custom.js" />
+    <Content Include="Content\js\gmap-location.js" />
     <Content Include="Content\js\magnific\jquery.magnific-popup.min.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
@@ -653,6 +654,7 @@
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\w_loan_email.js" />
     <Content Include="Scripts\build\app\w_location.js" />
+    <Content Include="Scripts\build\app\w_testdrive_email.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -760,6 +762,7 @@
     <Content Include="Views\Products\Products.cshtml" />
     <Content Include="Views\Products\Album.cshtml" />
     <Content Include="Views\Products\NoData.cshtml" />
+    <Content Include="Views\TestDrive\TestDriveEmail.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -842,6 +845,7 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-testdrive_email.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-location.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-loan_email.tsx" />
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />

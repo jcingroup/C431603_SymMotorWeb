@@ -85,6 +85,11 @@
         val?: number;
         Lname?: string;
     }
+    interface GroupOption {
+        key?: number | string;
+        items?: server.Option[];
+        locations?: server.Location[];
+    }
     interface Sales extends BaseEntityTable {
         //sales_id?: number;
         sales_no?: string;

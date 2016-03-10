@@ -9,6 +9,13 @@
 
 @section Scripts {
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="~/Scripts/googleReCAPTCHA.js"></script>
+    <script>
+        var gb_type = 2;
+    </script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_testdrive_email.js?v=@CommWebSetup.CacheVer"></script>
     <script src="~/Content/js/gmap-custom.js"></script>
 }
 
@@ -19,9 +26,9 @@
     <section id="content">
 
         <h2 class="sr-only">預約試乘申請表</h2>
-        
-        @Html.Partial("~/Views/Shared/Form.cshtml")
+        <div id="email_content"></div>
+        @*@Html.Partial("~/Views/Shared/Form.cshtml")*@
 
     </section><!-- content //-->
-    
+
 </div>
