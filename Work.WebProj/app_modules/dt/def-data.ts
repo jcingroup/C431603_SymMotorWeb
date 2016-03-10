@@ -490,6 +490,12 @@ export var LocationArea: Array<server.StateTemplate> = [
     { id: '高屏區', label: '高屏區', classNameforG: 'label label-danger' },
     { id: '離島區', label: '離島區', classNameforG: 'label label-default' }
 ];
+export var TestDriveTime: Array<server.StateTemplate> = [
+    { id: '8:00~10:00', label: '8:00~10:00', classNameforG: 'label label-primary' },
+    { id: '10:00~12:00', label: '10:00~12:00', className: 'text-error', classNameforG: 'label label-warning' },
+    { id: '13:00~15:00', label: '13:00~15:00', className: 'text-error', classNameforG: 'label label-danger' },
+    { id: '15:00~17:00', label: '15:00~17:00', className: 'text-warning', classNameforG: 'label label-info' },
+];
 export var PurchaseStateType: Array<server.StateTemplate> = [
     { id: 0, label: '現場付款', classNameforG: 'label label-primary' },
     { id: 1, label: '待繳款', className: 'text-error', classNameforG: 'label label-warning' },

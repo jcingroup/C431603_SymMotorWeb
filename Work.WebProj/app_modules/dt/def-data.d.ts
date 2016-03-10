@@ -4,4 +4,5 @@
     var PurchaseStateType: Array<server.StateTemplate>;
     var EventType: Array<server.StateTemplate>;
     var LocationArea: Array<server.StateTemplate>;
+    var TestDriveTime: Array<server.StateTemplate>;
 }

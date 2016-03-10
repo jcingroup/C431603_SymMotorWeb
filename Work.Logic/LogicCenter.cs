@@ -19,7 +19,8 @@ namespace ProcCore.Business
         FaqCategory, Faq,
         Editor, EditorDetail,
         Brand, BrandCategory, BrandAlbum, BrandAlbumDetail,
-        Location
+        Location,
+        TestDrive
     }
     public enum SNType
     {

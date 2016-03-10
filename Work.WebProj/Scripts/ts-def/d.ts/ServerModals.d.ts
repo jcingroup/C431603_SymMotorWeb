@@ -85,6 +85,11 @@
         val?: number;
         Lname?: string;
     }
+    interface GroupOption {
+        key?: number | string;
+        items?: server.Option[];
+        locations?: server.Location[];
+    }
     interface Sales extends BaseEntityTable {
         //sales_id?: number;
         sales_no?: string;
@@ -223,7 +228,28 @@
         sort?: number;
         i_Hide?: boolean;
     }
-
+    interface TestDrive extends BaseEntityTable {
+        test_drive_id?: number;
+        name?: string;
+        sex?: boolean;
+        email?: string;
+        tel?: string;
+        car_models?: number;
+        car_models_name?: string;
+        contact_time?: string;
+        view_year?: number;
+        view_month?: number;
+        view_day?: number;
+        view_time?: string;
+        view_city?: string;
+        view_location?: number;
+        is_edm?: boolean;
+        is_agree?: boolean;
+        i_Hide?: boolean;
+        location_name?: string;
+        location_address?: string;
+        Location?: server.Location;
+    }
     interface MapData {
         title: string;
         north: number;

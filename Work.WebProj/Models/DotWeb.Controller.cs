@@ -15,6 +15,7 @@ using ProcCore.WebCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -27,7 +28,6 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Filters;
 using System.Web.Routing;
 
 namespace DotWeb.Controller
@@ -1400,6 +1400,55 @@ namespace DotWeb.Controller
             }
 
             return result;
+        }
+        #endregion
+        #region 新增預約試乘
+        public ResultInfo addTestDrive(TestDriveMailContent md)
+        {
+            ResultInfo r = new ResultInfo();
+            try
+            {
+                using (var db0 = getDB0())
+                {
+                    TestDrive item = new TestDrive()
+                    {
+                        test_drive_id = GetNewId(CodeTable.TestDrive),
+                        name = md.name,
+                        sex = md.sex,
+                        email = md.email,
+                        tel = md.tel,
+                        car_models = md.car_models,
+                        car_models_name = md.car_models_name,
+                        contact_time = md.contact_time,
+                        view_year = md.view_year,
+                        view_month = md.view_month,
+                        view_day = md.view_day,
+                        view_time = md.view_time,
+                        view_city = md.view_city,
+                        view_location = md.view_location,
+                        is_agree = md.is_agree,
+                        is_edm = md.is_edm,
+                        i_InsertDateTime = DateTime.Now,
+                        i_Lang = "zh-TW"
+                    };
+
+                    db0.TestDrive.Add(item);
+                    db0.SaveChanges();
+
+                    r.result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                r.result = false;
+                r.message = ex.ToString();
+            }
+            return r;
+        }
+
+        private string getDbEntityValidationException(DbEntityValidationException ex)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

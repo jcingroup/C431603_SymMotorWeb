@@ -13,14 +13,24 @@ namespace ProcCore.Business.DB0
     using System.Collections.Generic;
     
     using Newtonsoft.Json;
-    public partial class News : BaseEntityTable
+    public partial class TestDrive : BaseEntityTable
     {
-        public int news_id { get; set; }
-        public string news_title { get; set; }
-        public System.DateTime day { get; set; }
-        public string news_info { get; set; }
-        public string news_content { get; set; }
-        public int sort { get; set; }
+        public int test_drive_id { get; set; }
+        public string name { get; set; }
+        public bool sex { get; set; }
+        public string email { get; set; }
+        public string tel { get; set; }
+        public int car_models { get; set; }
+        public string car_models_name { get; set; }
+        public string contact_time { get; set; }
+        public int view_year { get; set; }
+        public int view_month { get; set; }
+        public int view_day { get; set; }
+        public string view_time { get; set; }
+        public string view_city { get; set; }
+        public int view_location { get; set; }
+        public bool is_edm { get; set; }
+        public bool is_agree { get; set; }
         public bool i_Hide { get; set; }
         public string i_InsertUserID { get; set; }
         public Nullable<int> i_InsertDeptID { get; set; }
@@ -29,5 +39,9 @@ namespace ProcCore.Business.DB0
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
+    
+    	[JsonIgnore]
+        public virtual Location Location { get; set; }
     }
 }
+
