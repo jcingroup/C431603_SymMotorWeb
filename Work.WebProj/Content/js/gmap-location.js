@@ -64,10 +64,10 @@ function init() {
         anchor: new google.maps.Point(14, 34) // The anchor for this image is the base of the flagpole at (16, 16).
     };
     img_self = {
-        url: '../Content/images/iconCheck.gif',
-        size: new google.maps.Size(32, 32), // This marker is 32 pixels wide by 32 pixels high.
+        url: '../Content/images/iconMap-3.png',
+        size: new google.maps.Size(24, 54), // This marker is 32 pixels wide by 32 pixels high.
         origin: new google.maps.Point(0, 0), // The origin for this image is (0, 0).
-        anchor: new google.maps.Point(14, 34) // The anchor for this image is the base of the flagpole at (16, 16).
+        anchor: new google.maps.Point(12, 54) // The anchor for this image is the base of the flagpole at (16, 16).
     };
     // multi positions
     for (var i = 0; i < gb_map_data.length; i++) {
