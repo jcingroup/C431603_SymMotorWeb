@@ -1,17 +1,21 @@
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
-var map, img_repair;
+var map, img_sales, img_self;
 var markers = [];
 
 function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+    var latlng = new google.maps.LatLng(25.0161618, 121.299573);
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
         zoom: 10,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(25.0161618, 121.299573) // center
+        //center: new google.maps.LatLng(25.0161618, 121.299573) // center
+        center: latlng // center
+        //24.442775	118.4146849
+
     };
 
     // Get the HTML DOM element that will contain your map
@@ -21,21 +25,15 @@ function init() {
     // Create the Google Map using our element and options defined above
     map = new google.maps.Map(mapElement, mapOptions);
 
-
-
-    // Data for the markers consisting of a name, a LatLng and a zIndex for the
-    // order in which these markers should display on top of each other.
-    var stores = [
-    ['store 1', 25.000931, 121.313221, 'store 1<br>test', 1],
-    ['store 2', 25.039490, 121.282920, 'store 2<br>test', 2],
-    ['store 3', 25.050344, 121.288070, 'store 3<br>test', 3],
-    ['store 4', 24.953543, 121.204643, 'store 4<br>test', 4],
-    ['store 5', 24.950709, 121.296996, 'store 5<br>test', 5]
-    ];
-
     // Customized icon
     img_sales = {
         url: '../Content/images/iconMap-1.png',
+        size: new google.maps.Size(32, 32), // This marker is 32 pixels wide by 32 pixels high.
+        origin: new google.maps.Point(0, 0), // The origin for this image is (0, 0).
+        anchor: new google.maps.Point(14, 34) // The anchor for this image is the base of the flagpole at (16, 16).
+    };
+    img_self = {
+        url: '../Content/images/iconCheck.gif',
         size: new google.maps.Size(32, 32), // This marker is 32 pixels wide by 32 pixels high.
         origin: new google.maps.Point(0, 0), // The origin for this image is (0, 0).
         anchor: new google.maps.Point(14, 34) // The anchor for this image is the base of the flagpole at (16, 16).
@@ -54,26 +52,35 @@ function init() {
         });
 
         // open different info window
-        var infowindow = new google.maps.InfoWindow({
+        var infowindow_first = new google.maps.InfoWindow({
             content: "loading..."
         });
         marker.addListener('click', function () {
-            infowindow.setContent(this.info);
-            infowindow.open(map, this);
+            infowindow_first.setContent(this.info);
+            infowindow_first.open(map, this);
         });
         markers.push(marker);
     }
-    // Try HTML5 geolocation.
+     //Try HTML5 geolocation.
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+        var geolocation = window.navigator.geolocation;
+        geolocation.getCurrentPosition(function (position) {
+            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('±zªº¦ì¸m');
-            map.setCenter(pos);
+            var marker_self = new google.maps.Marker({
+                position: initialLocation,
+                map: map,
+                icon: img_self,
+                title: 'you current position'
+            });
+            var infoWindow = new google.maps.InfoWindow({
+                content: "loading..."
+            });
+            marker_self.addListener('click', function () {
+                infoWindow.setContent(this.title);
+                infoWindow.open(map, this);
+            });
+            map.setCenter(initialLocation);
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -100,12 +107,12 @@ function setNewMapMarker(type) {
             zIndex: store.index
         });
         // open different info window
-        var infowindow = new google.maps.InfoWindow({
+        var infowindow_loop = new google.maps.InfoWindow({
             content: "loading..."
         });
         marker.addListener('click', function () {
-            infowindow.setContent(this.info);
-            infowindow.open(map, this);
+            infowindow_loop.setContent(this.info);
+            infowindow_loop.open(map, this);
         });
         markers.push(marker);
     }
