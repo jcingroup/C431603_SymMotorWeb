@@ -17,6 +17,7 @@ namespace W_Location {
         country_list?: any[],
         class_string?: { sales: string; repair: string; }
         type?: number;
+        pos?: any;
     }
     interface EmailResult {
         result: boolean;
@@ -48,7 +49,8 @@ namespace W_Location {
                 searchData: { city: "", country: "" },
                 country_list: [],
                 class_string: { sales: "btn btn-primary btn-lg", repair: "btn btn-primary btn-lg" },
-                type: null
+                type: null,
+                pos: null
             }
         }
         static defaultProps: Formprops = {
@@ -116,7 +118,7 @@ namespace W_Location {
             for (var i in DT.twDistrict) {
                 var item = DT.twDistrict[i];
                 if (item.city == value) {
-                    this.setState({ country_list: item.contain });
+                    this.setState({ country_list: item.contain, pos: item.pos });
                     break;
                 }
             }
@@ -139,7 +141,7 @@ namespace W_Location {
                 repair.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.city + item.country + item.address, index: item.location_id }));
             }
             gb_map_data = data;
-            setNewMapMarker(type);
+            setNewMapMarker(type, this.state.pos);
         }
         render() {
 

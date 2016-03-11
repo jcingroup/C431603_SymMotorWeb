@@ -4,6 +4,9 @@ export var twDistrict =
     [
         {
             city: '基隆市',
+            pos: {
+                lat: 25.1276033, lng: 121.7391833
+            },
             contain: [
                 { zip: '200', county: '仁愛區' },
                 { zip: '201', county: '信義區' },
@@ -16,6 +19,9 @@ export var twDistrict =
         },
         {
             city: '臺北市',
+            pos: {
+                lat: 25.0329636, lng: 121.5654268
+            },
             contain: [
                 { zip: '100', county: '中正區' },
                 { zip: '103', county: '大同區' },
@@ -33,6 +39,9 @@ export var twDistrict =
         },
         {
             city: '新北市',
+            pos: {
+                lat: 25.0169826, lng: 121.4627868
+            },
             contain: [
                 { zip: '207', county: '萬里區' },
                 { zip: '208', county: '金山區' },
@@ -67,6 +76,9 @@ export var twDistrict =
         },
         {
             city: '桃園市',
+            pos: {
+                lat: 24.9936281, lng: 121.3009798
+            },
             contain: [
                 { zip: '320', county: '中壢區' },
                 { zip: '324', county: '平鎮區' },
@@ -85,12 +97,18 @@ export var twDistrict =
         },
         {
             city: '新竹市',
+            pos: {
+                lat: 24.8138297, lng: 120.9674752
+            },
             contain: [
                 { zip: '300', county: '新竹市' }
             ]
         },
         {
             city: '新竹縣',
+            pos: {
+                lat: 24.8387226, lng: 121.0177246
+            },
             contain: [
                 { zip: '302', county: '竹北市' },
                 { zip: '303', county: '湖口鄉' },
@@ -109,6 +127,9 @@ export var twDistrict =
         },
         {
             city: '苗栗縣',
+            pos: {
+                lat: 24.560159, lng: 120.8214265
+            },
             contain: [
                 { zip: '350', county: '竹南鎮' },
                 { zip: '351', county: '頭份鎮' },
@@ -132,6 +153,9 @@ export var twDistrict =
         },
         {
             city: '臺中市',
+            pos: {
+                lat: 24.1477358, lng: 120.6736482
+            },
             contain: [
                 { zip: '400', county: '中區' },
                 { zip: '401', county: '東區' },
@@ -166,6 +190,9 @@ export var twDistrict =
         },
         {
             city: '彰化縣',
+            pos: {
+                lat: 24.0517963, lng: 120.5161352
+            },
             contain: [
                 { zip: '500', county: '彰化市' },
                 { zip: '502', county: '芬園鄉' },
@@ -197,6 +224,9 @@ export var twDistrict =
         },
         {
             city: '南投縣',
+            pos: {
+                lat: 23.9609981, lng: 120.9718638
+            },
             contain: [
                 { zip: '540', county: '南投市' },
                 { zip: '541', county: '中寮鄉' },
@@ -215,6 +245,9 @@ export var twDistrict =
         },
         {
             city: '雲林縣',
+            pos: {
+                lat: 23.7092033, lng: 120.4313373
+            },
             contain: [
                 { zip: '630', county: '斗南鎮' },
                 { zip: '631', county: '大埤鄉' },
@@ -239,12 +272,18 @@ export var twDistrict =
         },
         {
             city: '嘉義市',
+            pos: {
+                lat: 23.4800751, lng: 120.4491113
+            },
             contain: [
                 { zip: '600', county: '嘉義市' }
             ]
         },
         {
             city: '嘉義縣',
+            pos: {
+                lat: 23.4518428, lng: 120.2554615
+            },
             contain: [
                 { zip: '602', county: '番路鄉' },
                 { zip: '603', county: '梅山鄉' },
@@ -268,6 +307,9 @@ export var twDistrict =
         },
         {
             city: '臺南市',
+            pos: {
+                lat: 22.9998999, lng: 120.2268758
+            },
             contain: [
                 { zip: '700', county: '中西區' },
                 { zip: '701', county: '東區' },
@@ -310,6 +352,9 @@ export var twDistrict =
         },
         {
             city: '高雄市',
+            pos: {
+                lat: 22.6272784, lng: 120.3014353
+            },
             contain: [
                 { zip: '800', county: '新興區' },
                 { zip: '801', county: '前金區' },
@@ -353,6 +398,9 @@ export var twDistrict =
         },
         {
             city: '屏東縣',
+            pos: {
+                lat: 22.5519759, lng: 120.5487597
+            },
             contain: [
                 { zip: '900', county: '屏東市' },
                 { zip: '901', county: '三地門鄉' },
@@ -391,6 +439,9 @@ export var twDistrict =
         },
         {
             city: '宜蘭縣',
+            pos: {
+                lat: 24.7021073, lng: 121.7377502
+            },
             contain: [
                 { zip: '260', county: '宜蘭市' },
                 { zip: '261', county: '頭城鎮' },
@@ -408,6 +459,9 @@ export var twDistrict =
         },
         {
             city: '花蓮縣',
+            pos: {
+                lat: 23.9871589, lng: 121.6015714
+            },
             contain: [
                 { zip: '970', county: '花蓮市' },
                 { zip: '971', county: '新城鄉' },
@@ -426,6 +480,9 @@ export var twDistrict =
         },
         {
             city: '臺東縣',
+            pos: {
+                lat: 22.7972447, lng: 121.0713702
+            },
             contain: [
                 { zip: '950', county: '台東市' },
                 { zip: '951', county: '綠島鄉' },
@@ -447,6 +504,9 @@ export var twDistrict =
         },
         {
             city: '澎湖縣',
+            pos: {
+                lat: 23.5711899, lng: 119.5793157
+            },
             contain: [
                 { zip: '880', county: '馬公市' },
                 { zip: '881', county: '西嶼鄉' },
@@ -458,6 +518,9 @@ export var twDistrict =
         },
         {
             city: '金門縣',
+            pos: {
+                lat: 24.4493726, lng: 118.3766352
+            },
             contain: [
                 { zip: '890', county: '金沙鎮' },
                 { zip: '891', county: '金湖鎮' },
@@ -469,6 +532,9 @@ export var twDistrict =
         },
         {
             city: '連江縣',
+            pos: {
+                lat: 26.197364, lng: 119.5397040
+            },
             contain: [
                 { zip: '209', county: '南竿鄉' },
                 { zip: '210', county: '北竿鄉' },
