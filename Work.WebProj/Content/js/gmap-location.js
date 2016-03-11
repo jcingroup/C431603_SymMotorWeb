@@ -98,7 +98,10 @@ function init() {
 
 }
 
-function setNewMapMarker(type) {
+function setNewMapMarker(type, city) {
+    if (city != null)//依搜尋縣市改變地圖中心點
+        map.setCenter(city);
+
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }

@@ -28,4 +28,4 @@ var google: any;
 
 //google map api
 var gb_map_data: server.MapData[];
-var setNewMapMarker: (type: number) => void;
+var setNewMapMarker: (type: number, city_pos: any) => void;

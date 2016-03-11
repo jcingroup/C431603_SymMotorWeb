@@ -61,7 +61,7 @@ function init() {
         });
         markers.push(marker);
     }
-     //Try HTML5 geolocation.
+    //Try HTML5 geolocation.
     if (navigator.geolocation) {
         var geolocation = window.navigator.geolocation;
         geolocation.getCurrentPosition(function (position) {
@@ -89,7 +89,10 @@ function init() {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
-function setNewMapMarker(type) {
+function setNewMapMarker(type, city) {
+    if (city != null)//依搜尋縣市改變地圖中心點
+        map.setCenter(city);
+
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }

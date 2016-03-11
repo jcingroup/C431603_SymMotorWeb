@@ -44,7 +44,8 @@ namespace TestDriveEmail {
         all_location?: server.GroupOption[],
         view_location?: server.Location[],
         year_rang?: server.Option[],
-        days_rang?: server.Option[]
+        days_rang?: server.Option[],
+        pos?: any;
     }
     interface Formprops {
         apiPath?: string;
@@ -75,7 +76,8 @@ namespace TestDriveEmail {
                 view_location: [],
                 year_rang: [{ val: (new Date()).getFullYear(), Lname: (new Date()).getFullYear() + '年' },
                     { val: (new Date()).getFullYear() + 1, Lname: ((new Date()).getFullYear() + 1) + '年' }],
-                days_rang: []
+                days_rang: [],
+                pos: null
             }
         }
         static defaultProps: Formprops = {
@@ -103,7 +105,7 @@ namespace TestDriveEmail {
         queryInitData() {
             CommFunc.jqGet(this.props.apiInitPath, {})
                 .done((data, textStatus, jqXHRdata) => {
-                    this.setMapData(1, data.locations);
+                    this.setMapData(1, data.locations, this.state.pos);
                     this.setState({ car_models: data.brands, all_location: data.locations });
                 })
                 .fail((jqXHR, textStatus, errorThrown) => {
@@ -148,6 +150,7 @@ namespace TestDriveEmail {
         onCityChange(name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
             let obj = this.state.fieldData;
+            let pos: any = null;
             let locations: server.Location[] = [];
             for (var i in this.state.all_location) {
                 var item = this.state.all_location[i];
@@ -158,10 +161,14 @@ namespace TestDriveEmail {
             }
 
             obj['view_city'] = input.value;
-            obj['view_location'] = locations[0].location_id;
-            obj['view_location_name'] = locations[0].location_name;
-            this.setMapData(2, locations);
-            this.setState({ fieldData: obj, view_location: locations });
+            if (locations.length > 0) {
+                obj['view_location'] = locations[0].location_id;
+                obj['view_location_name'] = locations[0].location_name;
+                pos = { lat: locations[0].north_coordinate, lng: locations[0].east_coordinate };
+            }
+
+            this.setMapData(2, locations, pos);
+            this.setState({ fieldData: obj, view_location: locations, pos: pos });
         }
         onMonthChange(name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
@@ -198,7 +205,7 @@ namespace TestDriveEmail {
                 return false;
             }
         }
-        setMapData(type: number, all: any[]) {
+        setMapData(type: number, all: any[], pos: any) {
             let data: server.MapData[] = [];
             if (type == 1) {//all
                 all.forEach((all_item, i) => {
@@ -210,7 +217,7 @@ namespace TestDriveEmail {
             } else if (type == 2) {//location
                 all.forEach((item, i) => data.push({ title: item.location_name, north: item.north_coordinate, east: item.east_coordinate, memo: item.city + item.country + item.address, index: item.location_id }));
                 gb_map_data = data;
-                setNewMapMarker(0);
+                setNewMapMarker(0, pos);
             }
         }
         changeCheckBoxVal(name: string, e: React.SyntheticEvent) {
