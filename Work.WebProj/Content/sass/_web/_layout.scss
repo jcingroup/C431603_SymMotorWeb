@@ -77,18 +77,17 @@ a {
     .topNav {
         font-size: $font-size-sm;
         position: absolute;
-        right: 0;
+        right: $grid-gutter-width/2;
         top: $spacer*0.5;
         z-index: $zindex-navbar+1;
 
         li:not(:last-child) { margin-right: $spacer; }
-        a {
-            color: #999;
-            &:hover, &:active { color: $brand-primary; }
-        }
+        a {color: #ababab;}
+
         @each $item in $pages2 {
             $i: index($pages2, $item);
-            .#{$item} & li:nth-of-type(#{$i+1}) a {color: $brand-primary;}
+            a:hover, a:active,
+            .#{$item} & li:nth-of-type(#{$i+1}) a {color: $link-hover-color;}
         }
     }
 
@@ -182,7 +181,7 @@ a {
             .menu {
                 padding-left: $spacer*6;
 
-                > li:not(:last-child) { margin-right:$spacer*1.55; }
+                > li:not(:last-child) { margin-right:$spacer*1.5; }
             }
             .collapse-toggle {
                 &::after {
@@ -274,18 +273,22 @@ a {
 }
 
 #menu {
-    padding-left: 260px;
+    padding-left: $logo-width + $logo-spacing;
 
     .navbar-nav {
         li {margin:0;}
     }
+
     a {
         color: #fff;
         font-size: em(17px);
 
-        padding-left: $spacer*1.85;
-        padding-right: $spacer*1.85;
+        padding-left: $spacer*1.9;
+        padding-right: $spacer*1.9;
     }
+
+    li:nth-of-type(1) {margin-left: -$spacer*1.9;}
+
     $selector: ();
     @each $item in $pages {
         $i: index($pages, $item);
@@ -309,17 +312,20 @@ a {
     a:hover, #{$selector}, .Offer & li:nth-of-type(3) a {
         color: $link-hover-color;
     }
+
     @include media-breakpoint-only(lg) {
-        padding-left: 249px;
+        padding-left: $logo-width;
 
         a {
             font-size: 1.05em;
-            padding-left: $spacer*0.75;
-            padding-right: $spacer*0.75;
+            padding-left: $spacer*0.8;
+            padding-right: $spacer*0.8;
         }
         #{$selector} {
             &::after {bottom: -27px;}
         }
+
+        li:nth-of-type(1) {margin-left: -$spacer*0.8;}
     }
     @include media-breakpoint-down(md) {
         padding:0;
@@ -331,11 +337,12 @@ a {
                 border-bottom: 1px solid #6E6661;
             }
         }
+        li:nth-of-type(1) {margin-left: 0;}
+
         a {
             padding: $spacer*0.6 $spacer;
             border-left: 3px solid $brand-secondary;
         }
-
         #{$selector}, .Offer & li:nth-of-type(3) a {
             background: #393129;
 
@@ -436,6 +443,7 @@ a {
 
         > li {
             text-align: center;
+            overflow: hidden;
 
             img {
                 width: 100%;
@@ -466,6 +474,8 @@ a {
 
         li {
             margin-left: -$spacer*0.5;
+
+            &:nth-of-type(1) {margin-left: $spacer*0.3;}
 
             a {
                 display: inline-block;
@@ -512,10 +522,11 @@ a {
 
     @include media-breakpoint-only(lg) {
         .submenu {
+            padding-left: $logo-width;
+
             li {
-                a {
-                    padding: $spacer*0.5 $spacer*0.25;
-                }
+                &:nth-of-type(1) {margin-left: $spacer*0.8;}
+                a {padding: $spacer*0.5 $spacer*0.25;}
             }
         }
     }
@@ -529,7 +540,7 @@ a {
             padding-left: $grid-gutter-width/2;
 
             li {
-
+                &:nth-of-type(1) {margin-left: 0;}
                 a {padding: $spacer*0.3;}
             }
         }

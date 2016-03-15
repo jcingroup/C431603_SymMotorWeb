@@ -12,6 +12,13 @@
 @section Scripts {
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
+        var heights = $("#banner .swiper-slide").map(function ()
+        {
+            return $(this).height();
+        }).get(),
+        minHeight = Math.min.apply(null, heights);
+        $("#banner .swiper-slide").height(minHeight);
+        
         var banner = new Swiper('#banner', {
             effect: 'fade',
             autoplay: 2500,

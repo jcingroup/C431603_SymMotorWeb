@@ -13,6 +13,14 @@
 @section Scripts {
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
+        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        var heights = $("#banner .swiper-slide").map(function ()
+        {
+            return $(this).height();
+        }).get(),
+        minHeight = Math.min.apply(null, heights);
+        $("#banner .swiper-slide").height(minHeight);
+
         var swiper = new Swiper('#banner', {
             effect: 'fade',
             autoplay: 2500,
@@ -22,7 +30,8 @@
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             slidesPerView: 4,
-            autoplay: 1000,
+            autoplay: 2000,
+            speed: 2000,
             autoplayDisableOnInteraction: false,
             loop: true
         });
