@@ -36,7 +36,7 @@ namespace DotWeb.Controllers
                                          }).Take(3).ToList();
                 #endregion
                 #region banner
-                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => new { main_sort = x.BrandCategory.sort, x.sort })
+                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
                                          .Select(x => new m_Brand()
                                          {
                                              brand_category_id = x.brand_category_id,
