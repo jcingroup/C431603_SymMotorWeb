@@ -64,30 +64,30 @@ $content-spacing-xs:    $content-spacing;
 #banner {
 	background: #2E2A27;
 
-	> ul {
-		> li {
-			&::before {
-				@include make-container();
-				@include make-container-max-widths();
+	// > ul {
+	// 	> li {
+	// 		&::before {
+	// 			@include make-container();
+	// 			@include make-container-max-widths();
 
-				content:" ";
-				display: block;
-				width: 100%;
-				height: 56px;
-				background: url(#{$img-path2}/watermark.png) no-repeat $grid-gutter-width 0 / contain;
+	// 			content:" ";
+	// 			display: block;
+	// 			width: 100%;
+	// 			height: 56px;
+	// 			background: url(#{$img-path2}/watermark.png) no-repeat $grid-gutter-width 0 / contain;
 
-				position: absolute;
-				left: 50%;
-				top: 17px;
-				transform: translateX(-50%);
-				z-index: $zindex-popover;
-			}
-		}
-	}
+	// 			position: absolute;
+	// 			left: 50%;
+	// 			top: 17px;
+	// 			transform: translateX(-50%);
+	// 			z-index: $zindex-popover;
+	// 		}
+	// 	}
+	// }
 
-	@include media-breakpoint-down(xs) {
-		> ul > li::before {height: 40px; top: 10px;}
-	}
+	// @include media-breakpoint-down(xs) {
+	// 	> ul > li::before {height: 40px; top: 10px;}
+	// }
 }
 
 #main {
