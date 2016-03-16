@@ -112,19 +112,21 @@ namespace DotWeb.Areas.Base.Controllers
 #if DEBUG
             getLoginResult.vildate = true;
 #else
-            if (string.IsNullOrEmpty(Session["CheckCode"].ToString()))
-            {
-                Session["CheckCode"] = Guid.NewGuid();
-                getLoginResult.result = false;
-                getLoginResult.message = Resources.Res.Log_Err_ImgValideNotEquel;
-                return defJSON(getLoginResult);
-            }
+            //if (string.IsNullOrEmpty(Session["CheckCode"].ToString()))
+            //{
+            //    Session["CheckCode"] = Guid.NewGuid();
+            //    getLoginResult.result = false;
+            //    getLoginResult.message = Resources.Res.Log_Err_ImgValideNotEquel;
+            //    return defJSON(getLoginResult);
+            //}
 
-            getLoginResult.vildate = Session["CheckCode"].Equals(model.validate) ? true : false;
+            //getLoginResult.vildate = Session["CheckCode"].Equals(model.validate) ? true : false;
+            ValidateResponse Validate = ValidateCaptcha(model.validate);
+            getLoginResult.vildate = Validate.Success;
 #endif
             if (!getLoginResult.vildate)
             {
-                Session["CheckCode"] = Guid.NewGuid(); //只要有錯先隨意產生唯一碼 以防暴力破解，新的CheckCode會在Validate產生。
+                //Session["CheckCode"] = Guid.NewGuid(); //只要有錯先隨意產生唯一碼 以防暴力破解，新的CheckCode會在Validate產生。
                 getLoginResult.result = false;
                 getLoginResult.message = Resources.Res.Log_Err_ImgValideNotEquel;
                 return defJSON(getLoginResult);
