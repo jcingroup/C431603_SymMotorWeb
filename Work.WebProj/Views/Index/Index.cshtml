@@ -29,9 +29,9 @@
         });
 
         // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
-        $(window).load(function(){
+        $(window).load(function () {
             var h = $("#banner .swiper-slide:first-child img").height();
-            $("#banner img").each(function(){
+            $("#banner img").each(function () {
                 if ($(this).height() < h) { h = $(this).height(); }
             });
             $("#banner").height(h);
@@ -117,7 +117,7 @@
 <section class="grid-count">
     <div class="wrap">
         <h2 class="h2">
-            <span>歡迎您的蒞臨，您是第 <strong>00648589</strong> 位訪客</span>
+            <span>歡迎您的蒞臨，您是第 <strong>@string.Format("{0:00000000}", Model.isClickIndex_Count)</strong> 位訪客</span>
         </h2>
     </div>
 </section>

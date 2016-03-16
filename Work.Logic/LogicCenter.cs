@@ -53,7 +53,7 @@ namespace ProcCore.Business.LogicConect
     #region Parm Section
     public enum ParmDefine
     {
-        Open, Email, FacebookUrl
+        Open, Email, FacebookUrl, Count
     }
     #endregion
 

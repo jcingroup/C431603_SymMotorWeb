@@ -1,5 +1,6 @@
 ﻿using DotWeb.CommSetup;
 using DotWeb.Controller;
+using GooglereCAPTCHa.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -108,6 +109,7 @@ namespace DotWeb.Areas.Base.Controllers
             //}
 
             #region 驗證碼檢查程序
+
 
 #if DEBUG
             getLoginResult.vildate = true;

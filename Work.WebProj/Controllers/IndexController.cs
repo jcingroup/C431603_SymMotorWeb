@@ -11,6 +11,7 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            Page_Load();//人次計數
             IndexInfo info = new IndexInfo();
             using (var db0 = getDB0())
             {
@@ -54,6 +55,7 @@ namespace DotWeb.Controllers
                 #region facebook
                 var open = openLogic();
                 info.facebook_url = (string)open.getParmValue(ParmDefine.FacebookUrl);
+                info.isClickIndex_Count = (int)open.getParmValue(ParmDefine.Count);
                 #endregion
             }
             return View("Index", info);
@@ -69,5 +71,6 @@ namespace DotWeb.Controllers
         public List<m_News> news { get; set; }
         public List<m_Brand> brands { get; set; }
         public string facebook_url { get; set; }
+        public int isClickIndex_Count { get; set; }
     }
 }

@@ -1451,6 +1451,21 @@ namespace DotWeb.Controller
             throw new NotImplementedException();
         }
         #endregion
+        #region 首頁人次計數(Session)
+        protected void Page_Load()
+        {
+            if (Session["isClick_Index"] == null)//若此文章沒被點閱過，則
+            {
+                //寫DB 此文章人氣+1
+                var open = openLogic();
+                var count = (int)open.getParmValue(ParmDefine.Count);
+                open.setParmValue(ParmDefine.Count, count + 1);
+                //並標記此文章已點閱過
+                Session["isClick_Index"] = true;
+
+            }
+        }
+        #endregion
     }
     #endregion
 
