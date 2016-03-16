@@ -9,6 +9,7 @@ import CommFunc = require('comm-func');
 namespace Parm {
     interface ParamData {
         Email?: string;
+        FacebookUrl?: string;
     }
     export class GridForm extends React.Component<any, { param?: ParamData }>{
 
@@ -23,7 +24,8 @@ namespace Parm {
             this.render = this.render.bind(this);
             this.state = {
                 param: {
-                    Email: null
+                    Email: null,
+                    FacebookUrl: null
                 }
             }
         }
@@ -97,8 +99,8 @@ namespace Parm {
                             </ol>
                         </div>
                     <div className="form-group">
-                       <label className="col-xs-1 control-label">收件信箱</label>
-                       <div className="col-xs-9">
+                       <label className="col-xs-2 control-label">收件信箱</label>
+                       <div className="col-xs-8">
                                 <input className="form-control" type="text"
                                     value={param.Email}
                                     onChange={this.setInputValue.bind(this, 'Email') }
@@ -108,7 +110,28 @@ namespace Parm {
                         </div>
                 {/*--email end--*/}
                 </div>
-
+            <div className="item-box">
+                {/*--facebook--*/}
+                <div className="item-title text-center">
+                <h5>首頁FaceBook連結設定</h5>
+                    </div>
+                    <div className="alert alert-warning" role="alert">
+                        <ol>
+                            <li>請輸入完整http://連結</li>
+                            </ol>
+                        </div>
+                    <div className="form-group">
+                       <label className="col-xs-2 control-label">FaceBook連結</label>
+                       <div className="col-xs-8">
+                                <input className="form-control" type="text"
+                                    value={param.FacebookUrl}
+                                    onChange={this.setInputValue.bind(this, 'FacebookUrl') }
+                                    maxLength={500}
+                                    required/>
+                           </div>
+                        </div>
+                {/*--facebook end--*/}
+                </div>
 
 
             <div className="form-action">

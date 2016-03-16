@@ -46,6 +46,7 @@
           </Key>
           <Property Name="banner_id" Type="int" Nullable="false" />
           <Property Name="banner_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="banner_url" Type="varchar" MaxLength="256" />
           <Property Name="sort" Type="int" Nullable="false" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
           <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
@@ -600,22 +601,6 @@
           <Property Name="sort" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="Banner">
-          <Key>
-            <PropertyRef Name="banner_id" />
-          </Key>
-          <Property Name="banner_id" Type="Int32" Nullable="false" />
-          <Property Name="banner_name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="department_id" />
@@ -716,7 +701,6 @@
         <EntityContainer Name="C34A1_SYM_MotorEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="Banner" EntityType="Self.Banner" />
           <EntitySet Name="Department" EntityType="Self.Department" />
           <EntitySet Name="i_Currency" EntityType="Self.i_Currency" />
           <EntitySet Name="i_IDX" EntityType="Self.i_IDX" />
@@ -769,6 +753,7 @@
             <End Role="Location" EntitySet="Location" />
             <End Role="TestDrive" EntitySet="TestDrive" />
           </AssociationSet>
+          <EntitySet Name="Banner" EntityType="C34A1_SYM_MotorModel.Banner" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -1077,6 +1062,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="banner_id" />
+          </Key>
+          <Property Name="banner_id" Type="Int32" Nullable="false" />
+          <Property Name="banner_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="banner_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1109,23 +1111,6 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="user_name_c" ColumnName="user_name_c" />
                 <ScalarProperty Name="sort" ColumnName="sort" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Banner">
-            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Banner">
-              <MappingFragment StoreEntitySet="Banner">
-                <ScalarProperty Name="banner_id" ColumnName="banner_id" />
-                <ScalarProperty Name="banner_name" ColumnName="banner_name" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1473,6 +1458,24 @@
                 <ScalarProperty Name="sex" ColumnName="sex" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="test_drive_id" ColumnName="test_drive_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banner">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.Banner">
+              <MappingFragment StoreEntitySet="Banner">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="banner_url" ColumnName="banner_url" />
+                <ScalarProperty Name="banner_name" ColumnName="banner_name" />
+                <ScalarProperty Name="banner_id" ColumnName="banner_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

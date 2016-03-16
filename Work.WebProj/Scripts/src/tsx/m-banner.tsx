@@ -12,6 +12,7 @@ namespace Banner {
         banner_id?: string;
         check_del?: boolean,
         banner_name?: string;
+        banner_url?: string;
         sort?: number;
         i_Hide?: boolean;
     }
@@ -47,6 +48,7 @@ namespace Banner {
                        <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                        <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
                        <td>{this.props.itemData.banner_name}</td>
+                       <td>{this.props.itemData.banner_url}</td>
                        <td>{this.props.itemData.sort }</td>
                        <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
                 </tr>;
@@ -257,7 +259,7 @@ namespace Banner {
 
                     <div className="alert alert-warning">
                             <i className="fa-info-circle"></i> 請務必確認每張圖片的尺寸皆相同 (建議尺寸: 1920*725 px)
-                    </div>
+                        </div>
                     <form onSubmit={this.handleSearch}>
                         <div className="table-responsive">
                             <div className="table-header">
@@ -284,9 +286,10 @@ namespace Banner {
                                                 </label>
                                             </th>
                                         <th className="col-xs-1 text-center">修改</th>
-                                        <th className="col-xs-4">名稱</th>
-                                        <th className="col-xs-2">排序</th>
-                                        <th className="col-xs-2">狀態</th>
+                                        <th className="col-xs-3">名稱</th>
+                                        <th className="col-xs-3">網址</th>
+                                        <th className="col-xs-1">排序</th>
+                                        <th className="col-xs-1">狀態</th>
                                         </tr>
                                     </thead>
                                 <tbody>
@@ -342,6 +345,13 @@ namespace Banner {
                     <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'banner_name') } value={fieldData.banner_name} maxLength={64}  />
                     </div>
                 <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
+                </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">連結網址</label>
+                <div className="col-xs-8">
+                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'banner_url') } value={fieldData.banner_url} maxLength={256}  />
+                    </div>
+                <small className="col-xs-10 help-inline col-xs-offset-2"><span className="text-danger"></span>請輸入完整 http:// 連結, 最多265字</small>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">排序</label>

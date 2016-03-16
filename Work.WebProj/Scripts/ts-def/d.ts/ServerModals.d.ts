@@ -126,6 +126,7 @@
     interface Banner extends BaseEntityTable {
         banner_id?: number;
         banner_name?: string;
+        banner_url?: string;
         sort?: number;
         i_Hide?: boolean;
     }

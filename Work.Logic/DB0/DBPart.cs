@@ -235,6 +235,7 @@ namespace ProcCore.Business.DB0
     public class Param
     {
         public string Email { get; set; }
+        public string FacebookUrl { get; set; }
     }
     #endregion
 

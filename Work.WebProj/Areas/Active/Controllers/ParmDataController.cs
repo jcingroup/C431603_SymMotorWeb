@@ -40,6 +40,7 @@ namespace DotWeb.Areas.Active.Controllers
             using (var db0 = getDB0())
             {
                 item.Email = (string)open.getParmValue(ParmDefine.Email);
+                item.FacebookUrl = (string)open.getParmValue(ParmDefine.FacebookUrl);
 
                 return defJSON(item);
             }

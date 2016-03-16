@@ -7,7 +7,6 @@
       <Diagram DiagramId="1b6c765966bb455a9cb4b8286edc46e8" Name="Diagram1">
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Banner" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Department" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.i_Currency" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.i_IDX" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
@@ -36,6 +35,7 @@
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Location" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.TestDrive" Width="1.5" PointX="14.625" PointY="18.125" />
         <AssociationConnector Association="C34A1_SYM_MotorModel.FK_TestDrive_Location" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Banner" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

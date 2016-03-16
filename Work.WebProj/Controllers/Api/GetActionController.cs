@@ -139,6 +139,7 @@ namespace DotWeb.Api
                 var open = openLogic();
 
                 open.setParmValue(ParmDefine.Email, md.Email);
+                open.setParmValue(ParmDefine.FacebookUrl, md.FacebookUrl);
 
                 rAjaxResult.result = true;
             }

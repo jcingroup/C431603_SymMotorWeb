@@ -3,6 +3,7 @@ using DotWeb.Controller;
 using System.Collections.Generic;
 using ProcCore.Business.DB0;
 using System.Linq;
+using ProcCore.Business.LogicConect;
 
 namespace DotWeb.Controllers
 {
@@ -18,7 +19,8 @@ namespace DotWeb.Controllers
                                          .Select(x => new m_Banner()
                                          {
                                              banner_id = x.banner_id,
-                                             banner_name = x.banner_name
+                                             banner_name = x.banner_name,
+                                             banner_url = x.banner_url
                                          }).ToList();
                 foreach (var i in info.banners)
                 {
@@ -49,6 +51,10 @@ namespace DotWeb.Controllers
                     i.imgsrc = GetImg(i.brand_id.ToString(), "Banner", "Active", "BrandData", null, true);
                 }
                 #endregion
+                #region facebook
+                var open = openLogic();
+                info.facebook_url = (string)open.getParmValue(ParmDefine.FacebookUrl);
+                #endregion
             }
             return View("Index", info);
         }
@@ -62,5 +68,6 @@ namespace DotWeb.Controllers
         public List<m_Banner> banners { get; set; }
         public List<m_News> news { get; set; }
         public List<m_Brand> brands { get; set; }
+        public string facebook_url { get; set; }
     }
 }
