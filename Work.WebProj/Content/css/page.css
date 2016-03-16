@@ -4753,8 +4753,9 @@ a:focus {
 #header .showcase {
   position: relative;
   padding-left: 280px;
-  padding-top: 47px;
-  padding-bottom: 25px;
+  padding-top: 60px;
+  padding-bottom: 12px;
+  background: url(../images/Index/watermark.png) no-repeat 280px 10px;
 }
 #header .showcase .h2 {
   font-family: "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -4779,7 +4780,7 @@ a:focus {
   color: #ccc;
   position: absolute;
   left: 280px;
-  top: 45px;
+  top: 58px;
 }
 #header .showcase .h2::after {
   content: "/";
@@ -4813,7 +4814,7 @@ a:focus {
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   margin-right: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0.3rem 1rem;
 }
 #header .showcase .collapse-toggle {
@@ -4845,8 +4846,13 @@ a:focus {
   border-top-color: #ffedba;
 }
 @media (min-width: 992px) and (max-width: 1259px) {
+  #header .topNav li:not(:last-child) {
+    margin-right: 0.6rem;
+  }
   #header .showcase {
     padding-left: 255px;
+    background-position: 255px 12px;
+    background-size: auto 35px;
   }
   #header .showcase .h2 {
     left: 255px;
@@ -4891,6 +4897,7 @@ a:focus {
     margin: 0 0.3rem;
   }
   #header .showcase {
+    background: none;
     border-bottom: 1px solid #6E6661;
     padding: 0.6rem 1rem;
     order: 2;

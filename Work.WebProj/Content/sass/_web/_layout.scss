@@ -94,8 +94,9 @@ a {
     .showcase {
         position: relative;
         padding-left: $logo-width + $logo-spacing;
-        padding-top: 47px;
-        padding-bottom: 25px;
+        padding-top: 60px;
+        padding-bottom: 12px;
+        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
 
         .h2 {
             @include reset-text;
@@ -106,7 +107,7 @@ a {
             color: #ccc;
             position: absolute;
             left: $logo-width + $logo-spacing;
-            top: 45px;
+            top: 58px;
 
             &::after {
                 content: "/";
@@ -142,7 +143,7 @@ a {
                 letter-spacing: 0.05em;
 
                 margin-right: $spacer*0.5;
-                margin-top: $spacer;
+                margin-top: $spacer*0.5;
                 padding:$spacer*0.3 $spacer;
             }
         }
@@ -174,8 +175,14 @@ a {
         }
     }
     @include media-breakpoint-only(lg) {
+        .topNav {
+            li:not(:last-child) { margin-right: $spacer*0.6; }
+        }
         .showcase {
             padding-left: $logo-width;
+
+            background-position: $logo-width 12px;
+            background-size: auto 35px;
 
             .h2 {left: $logo-width;}
             .menu {
@@ -221,6 +228,7 @@ a {
             }
         }
         .showcase {
+            background: none;
             border-bottom: 1px solid #6E6661;
             padding: $spacer*0.6 $spacer;
             order: 2;
