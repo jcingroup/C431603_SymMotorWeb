@@ -87,7 +87,7 @@ a {
         @each $item in $pages2 {
             $i: index($pages2, $item);
             a:hover, a:active,
-            .#{$item} & li:nth-of-type(#{$i+1}) a {color: $link-hover-color;}
+            .#{$item} & li:nth-of-type(#{$i}) a {color: $link-hover-color;}
         }
     }
 
@@ -623,13 +623,25 @@ a {
     font-size: em(13px);
 
     margin-top: 20px;
+
+    a {
+        margin-left: 5px;
+        padding-left: 7px;
+
+        color: #8C9294;
+        border-left: 1px solid #8C9294;
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
 }
 
 .goTop {
     @include size(54px);
     
     color: hsla(0, 0%, 100%, 0.5);
-    line-height: 3.35rem;
+    line-height: em(54px);
     background: hsla(45, 100%, 36%, 0.5);
     border-radius: 50%;
 
@@ -641,4 +653,9 @@ a {
 
     &:focus, &:hover {color: hsla(0, 0%, 100%, 1);}
     &:hover {background: hsla(45, 100%, 36%, 1);}
+
+    @include media-breakpoint-down(sm) {
+        @include size(40px);
+        line-height: em(40px);
+    }
 }

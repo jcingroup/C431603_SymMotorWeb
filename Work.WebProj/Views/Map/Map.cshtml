@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "營業據點";
+    ViewBag.BodyClass = "Map";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@section Scripts {
+    <script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="~/Content/js/gmap-location.js"></script>
+}
+
+<h1 class="sr-only">@ViewBag.Title</h1>
+
+<div class="wrap">
+
+    <section id="content">
+        <h2 class="h1">全台營業據點</h2>
+
+        <div id="location" class="grid-location"></div>
+        
+    </section><!-- content //-->
+
+</div>

@@ -2646,6 +2646,9 @@ a:focus {
 #header .topNav a {
   color: #ababab;
 }
+#header .topNav a:hover, #header .topNav a:active, .Map #header .topNav li:nth-of-type(1) a {
+  color: #ffbf07;
+}
 #header .topNav a:hover, #header .topNav a:active, .AboutUs #header .topNav li:nth-of-type(2) a {
   color: #ffbf07;
 }
@@ -3182,12 +3185,21 @@ a:focus {
   font-size: 0.8125em;
   margin-top: 20px;
 }
+.copyright a {
+  margin-left: 5px;
+  padding-left: 7px;
+  color: #8C9294;
+  border-left: 1px solid #8C9294;
+}
+.copyright a:hover {
+  color: #ffbf07;
+}
 
 .goTop {
   width: 54px;
   height: 54px;
   color: rgba(255, 255, 255, 0.5);
-  line-height: 3.35rem;
+  line-height: 3.375em;
   background: rgba(184, 138, 0, 0.5);
   border-radius: 50%;
   position: fixed;
@@ -3200,6 +3212,13 @@ a:focus {
 }
 .goTop:hover {
   background: #b88a00;
+}
+@media (max-width: 767px) {
+  .goTop {
+    width: 40px;
+    height: 40px;
+    line-height: 2.5em;
+  }
 }
 
 #footer {

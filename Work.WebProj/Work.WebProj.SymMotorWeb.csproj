@@ -325,6 +325,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\InsuranceController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -768,6 +769,7 @@
     <Content Include="Views\Products\Album.cshtml" />
     <Content Include="Views\Products\NoData.cshtml" />
     <Content Include="Views\TestDrive\TestDriveEmail.cshtml" />
+    <Content Include="Views\Map\Map.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

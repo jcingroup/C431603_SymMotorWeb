@@ -13,14 +13,6 @@
 @section Scripts {
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
-        var heights = $("#banner .swiper-slide").map(function ()
-        {
-            return $(this).height();
-        }).get(),
-        minHeight = Math.min.apply(null, heights);
-        $("#banner .swiper-slide").height(minHeight);
-
         var swiper = new Swiper('#banner', {
             effect: 'fade',
             autoplay: 2500,
@@ -35,6 +27,15 @@
             autoplayDisableOnInteraction: false,
             loop: true
         });
+
+        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        $(window).load(function(){
+            var h = $("#banner .swiper-slide:first-child img").height();
+            $("#banner img").each(function(){
+                if ($(this).height() < h) { h = $(this).height(); }
+            });
+            $("#banner").height(h);
+        });
     </script>
 }
 
@@ -47,7 +48,7 @@
             if (i.imgsrc != null)
             {
                 <li class="swiper-slide">
-                    <img src="@i.imgsrc" alt="@i.banner_name">
+                    <a href="" target="new"><img src="@i.imgsrc" alt="@i.banner_name"></a>
                 </li>
             }
         }
