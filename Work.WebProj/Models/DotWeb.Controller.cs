@@ -478,7 +478,7 @@ namespace DotWeb.Controller
                 if (im.Height < new_hight)
                     new_hight = im.Height;
 
-                EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
+                EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 80L);
                 EncoderParameters myEncoderParameter = new EncoderParameters(1);
                 myEncoderParameter.Param[0] = qualityParam;
 
