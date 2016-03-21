@@ -157,8 +157,7 @@ namespace W_Location {
 
             if (this.state.type == LocationType.sales) {
                 table_html = (
-                    <section className="location">
-                <h2 className="sr-only">據點列表</h2>
+                    <div>
                 {/*----展示中心start----*/}
                 <h3 className="h3">展示中心</h3>
                 <div className="table-responsive">
@@ -186,12 +185,11 @@ namespace W_Location {
                         </table>
                     </div>
                 {/*----展示中心end----*/}
-                        </section>
+                        </div>
                 );
             } else if (this.state.type == LocationType.repair) {
                 table_html = (
-                    <section className="location">
-                <h2 className="sr-only">據點列表</h2>
+                    <div>
                 {/*----維修據點start----*/}
                 <h3 className="h3">維修據點</h3>
                 <div className="table-responsive">
@@ -219,7 +217,7 @@ namespace W_Location {
                         </table>
                     </div>
                 {/*----維修據點end----*/}
-                        </section>
+                        </div>
                 );
             } else {
                 table_html = (
@@ -286,46 +284,38 @@ namespace W_Location {
 
             outHtml = (
                 <div>
-                <div className="wrap">
 
-            <section className="search">
-                <h2 className="h1">營業據點查詢</h2>
+                    <form className="form-inline text-xs-center" action="">
+                        <div className="form-group">
 
-                <form className="form" action="">
-                    <div className="form-group text-xs-center">
-
-                        <button type="button" onClick={this.onChangeType.bind(this, LocationType.sales) } className={class_string.sales}>展示中心查詢</button>
-                        <button type="button" onClick={this.onChangeType.bind(this, LocationType.repair) } className={class_string.repair}>維修據點查詢</button>
+                            <button type="button" onClick={this.onChangeType.bind(this, LocationType.sales) } className={class_string.sales}>展示中心查詢</button> { }
+                            <button type="button" onClick={this.onChangeType.bind(this, LocationType.repair) } className={class_string.repair}>維修據點查詢</button>
 
                         </div>
-                    <div className="form-group">
-                        <label className="sr-only">選擇縣市</label>
-                        <select name="" id="" className="form-control c-select" value={searchData.city} onChange={this.onCityChange.bind(this, 'city') }>
-                            <option value="" defaultValue="">選擇縣市</option>
-                            {
-                            DT.twDistrict.map((item, i) => <option key={i} value={item.city}>{item.city}</option>)
-                            }
+                        <div className="form-group">
+                            <label className="sr-only">選擇縣市</label>
+                            <select name="" id="" className="form-control c-select" value={searchData.city} onChange={this.onCityChange.bind(this, 'city') }>
+                                <option value="" defaultValue="">選擇縣市</option>
+                                {
+                                DT.twDistrict.map((item, i) => <option key={i} value={item.city}>{item.city}</option>)
+                                }
                             </select>
                         </div>
-                    <div className="form-group">
-                        <label className="sr-only">選擇區域</label>
-                        <select name="" id="" className="form-control c-select" value={searchData.country} onChange={this.changeInputVal.bind(this, 'country') }>
-                            <option value="" defaultValue="">選擇區域</option>
-                            {
-                            country_list.map((item, i) => <option key={i} value={item.county}>{item.county}</option>)
-                            }
+                        <div className="form-group">
+                            <label className="sr-only">選擇區域</label>
+                            <select name="" id="" className="form-control c-select" value={searchData.country} onChange={this.changeInputVal.bind(this, 'country') }>
+                                <option value="" defaultValue="">選擇區域</option>
+                                {
+                                country_list.map((item, i) => <option key={i} value={item.county}>{item.county}</option>)
+                                }
                             </select>
                         </div>
                     </form>
-                </section>
 
-            <section className="map">
-                <h2 className="sr-only">地圖</h2>
-                <div id="map"></div>
-                </section>
-                {table_html}
-                    </div>
-                    </div>
+                    <div id="map"></div>
+                    {table_html}
+
+                </div>
             );
             return outHtml;
         }

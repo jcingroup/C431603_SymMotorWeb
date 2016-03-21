@@ -142,7 +142,8 @@ $content-spacing-xs:    40px !default;
 }
 
 .grid-location {
-    padding-top: 80px;
+
+    .BuyCar & {padding-top: 80px;}
 
     .search {
         @extend .col-xs-4;
