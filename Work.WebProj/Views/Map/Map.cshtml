@@ -4,8 +4,9 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section Scripts {
+    <script>var gb_type = '@Request.QueryString["type"]';</script>
     <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
-<script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="~/Content/js/gmap-location.js"></script>
 }
@@ -18,7 +19,7 @@
         <h2 class="h1">全台營業據點</h2>
 
         <div id="location" class="grid-location"></div>
-        
+
     </section><!-- content //-->
 
 </div>
