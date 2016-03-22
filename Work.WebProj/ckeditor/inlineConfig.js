@@ -56,13 +56,11 @@ CKEDITOR.stylesSet.add('default', [
     // { name: '文字 - 裝飾2', element: 'span', attributes: { 'class': 'arrow-right' } },
 
     // Object Styles
-    { name: '列表 - 項目符號、分隔線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
-    { name: '列表 - 項目符號', element: 'ul', attributes: { 'class': 'list-icon' } },
-    { name: '列表 - 分隔線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
-    { name: '列表 - 無項目符號', element: 'ul', attributes: { 'class': 'list-unstyled' } },
-    // { name: '列表 - 樣式1', element: 'ol', attributes: { 'class': 'list-styled list-underline' } },
-    { name: '列表 - 分隔線', element: 'ol', attributes: { 'class': 'list-underline' } },
-    // { name: '列表 - 樣式3', element: 'ol', attributes: { 'class': 'list-styled' } },
+    { name: '列表-圖示&線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
+    { name: '列表-圖示', element: 'ul', attributes: { 'class': 'list-icon' } },
+    { name: '列表-線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
+    { name: '列表-無圖示', element: 'ul', attributes: { 'class': 'list-unstyled' } },
+    { name: '數字列表-線', element: 'ol', attributes: { 'class': 'list-underline' } },
     { name: '表格樣式', element: 'table', attributes: { 'class': 'table' } },
     // { name: '圖片 - 加框', element: 'img', attributes: { 'class': 'thumb' } }
 ]);

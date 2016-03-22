@@ -3246,6 +3246,54 @@ a:focus {
 #banner {
   background: #2E2A27;
 }
+@media (max-width: 543px) {
+  #banner > ul > li::before {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    content: " ";
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: url(../images/Index/watermark.png) no-repeat 1.875rem 0/contain;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    z-index: 1060;
+  }
+  #banner > ul > li::before::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media (max-width: 543px) and (min-width: 544px) {
+  #banner > ul > li::before {
+    max-width: 576px;
+  }
+}
+@media (max-width: 543px) and (min-width: 768px) {
+  #banner > ul > li::before {
+    max-width: 720px;
+  }
+}
+@media (max-width: 543px) and (min-width: 992px) {
+  #banner > ul > li::before {
+    max-width: 940px;
+  }
+}
+@media (max-width: 543px) and (min-width: 1260px) {
+  #banner > ul > li::before {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 543px) and (min-width: 1440px) {
+  #banner > ul > li::before {
+    max-width: 1400px;
+  }
+}
 
 #main {
   background: url(../images/bgDot.png), #1a1a1a url(../images/bgFooter.jpg) repeat-y center top;
@@ -3277,6 +3325,9 @@ a:focus {
   margin: 50px auto;
   padding: 0 60px;
 }
+.grid-series #marquee ol {
+  margin: 0;
+}
 .grid-series #marquee li {
   padding-bottom: 2.5rem;
 }
@@ -3304,7 +3355,7 @@ a:focus {
   width: 28px;
   height: 46px;
   background: url(../images/arrows.png) no-repeat;
-  top: 30%;
+  top: 40%;
   margin-top: -23px;
   opacity: 0.5;
   transition: opacity 0.3s;
@@ -3366,6 +3417,24 @@ a:focus {
     display: none;
   }
 }
+@media (max-width: 543px) {
+  .grid-series {
+    padding-top: 20px;
+  }
+  .grid-series .h2 {
+    font-size: 2em;
+  }
+  .grid-series .h3 {
+    font-size: 0.875rem;
+  }
+  .grid-series #marquee {
+    margin: 1rem auto;
+  }
+  .grid-series #marquee li a {
+    height: 60px;
+    line-height: 60px;
+  }
+}
 
 .grid-news {
   position: relative;
@@ -3415,6 +3484,9 @@ a:focus {
   }
   .grid-news .article-list, .grid-news .fb {
     padding: 0 0.9375rem;
+  }
+  .grid-news .article-list .h2 {
+    font-size: 3.5em;
   }
 }
 
