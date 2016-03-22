@@ -3485,6 +3485,9 @@ a:focus {
   .grid-news .article-list, .grid-news .fb {
     padding: 0 0.9375rem;
   }
+  .grid-news .article-list .h2 {
+    font-size: 3.5em;
+  }
 }
 
 .grid-count .h2 {

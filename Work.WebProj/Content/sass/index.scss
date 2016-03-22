@@ -305,6 +305,7 @@ $content-spacing-xs:    $content-spacing;
     	padding: 40px 0;
 
     	.article-list, .fb {padding:0 $grid-gutter-width/2;}
+    	.article-list .h2 {font-size: 3.5em;}
     }
 }
 
