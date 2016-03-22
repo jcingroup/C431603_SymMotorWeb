@@ -370,6 +370,7 @@
     <Content Include="Content\css\component\fontAwesome\font-awesome.css" />
     <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\learn.css" />
     <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\popup.css" />
@@ -788,6 +789,9 @@
     <Content Include="Scripts\src\jsx\m-Users.jsx" />
     <Content Include="Scripts\src\jsx\m-Roles.jsx" />
     <Content Include="Scripts\src\xformat.jsx" />
+    <Content Include="_Code\SysDoc\editor_insert.html" />
+    <Content Include="_Code\SysDoc\editor_table.html" />
+    <Content Include="_Code\SysDoc\editor_text.html" />
     <Content Include="_Code\SysUpFiles\member_apply.docx" />
   </ItemGroup>
   <ItemGroup>
