@@ -1,16 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <document>
+  
+  <file>
+    <sort>1</sort>
+    <name>editor_text.html</name>
+    <memo>【文章編輯】文字段落編排</memo>
+  </file>
   <file>
     <sort>2</sort>
-    <name>申報進度與統計.docx</name>
-    <!--須和檔名相同*/-->
-    <memo>文件說明，補充說明2。</memo>
+    <name>editor_insert.html</name>
+    <memo>【文章編輯】插入圖片/影片</memo>
   </file>
-
   <file>
-    <name>資料庫使用說明.docx</name>
-    <sort>1</sort>
-    <memo>文件說明，補充說明1testtest。</memo>
+    <sort>3</sort>
+    <name>editor_table.html</name>
+    <memo>【文章編輯】表格 增加/刪除列</memo>
   </file>
 
 </document>

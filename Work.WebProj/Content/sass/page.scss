@@ -24,7 +24,7 @@ $content-spacing-xs:    40px !default;
 
 // Elements
 @import "element/type";
-@import "element/images";
+// @import "element/images";
 @import "element/tables";
 @import "element/forms";
 @import "element/buttons";
@@ -41,7 +41,7 @@ $content-spacing-xs:    40px !default;
 @import "module/nav";
 @import "module/navbar";
 @import "module/card";
-@import "module/breadcrumb";
+// @import "module/breadcrumb";
 // @import "module/pagination";
 // @import "module/pager";
 @import "module/labels";
@@ -111,7 +111,6 @@ $content-spacing-xs:    40px !default;
 // ----------------------------------------------------------------------
 
 .grid-gallery {
-    @extend %bg2;
     padding: 35px 0;
 
     #banner-thumb {
@@ -143,7 +142,8 @@ $content-spacing-xs:    40px !default;
 }
 
 .grid-location {
-    padding-top: 80px;
+
+    .BuyCar & {padding-top: 80px;}
 
     .search {
         @extend .col-xs-4;
@@ -172,6 +172,8 @@ $content-spacing-xs:    40px !default;
         margin-left: 28.5%;
         padding-left: $grid-gutter-width/2;
     }
+
+    .table {min-width:700px;}
 
     @include media-breakpoint-down(lg) {
         padding-top: 50px;
@@ -257,7 +259,6 @@ $content-spacing-xs:    40px !default;
             }
 
             .info {
-                @extend .list-unstyled;
                 color: #E6E6E6;
 
                 margin-bottom: $spacer;
@@ -266,8 +267,7 @@ $content-spacing-xs:    40px !default;
                     border-bottom: 1px solid #4D4D4D;
 
                     text-indent: -2.5em;
-                    padding: $spacer*0.5 0;
-                    padding-left: 2.5em;
+                    padding: $spacer*0.5 0 $spacer*0.5 2.5em;
 
                     em {
                         font-style: normal;
@@ -336,8 +336,7 @@ $content-spacing-xs:    40px !default;
                 .info {
                     li {
                         margin-bottom: $spacer*0.3;
-                        padding: 0 0 $spacer*0.3 0;
-                        padding-left: 2.5em;
+                        padding: 0 0 $spacer*0.3 2.5em;
 
                         strong {
                             font-size: $font-size-h5;
@@ -359,7 +358,6 @@ $content-spacing-xs:    40px !default;
 
             .btn {
                 font-size: 0.9em;
-                margin-bottom: $spacer*0.5;
                 padding: $spacer*0.3 $spacer*0.5;
             }
         }
@@ -424,8 +422,6 @@ $content-spacing-xs:    40px !default;
                 .detail {display: none;}
             }
         }
-
-        .btn {margin-bottom: $spacer*0.5;}
 
         .form-inline {
 
@@ -704,8 +700,7 @@ $content-spacing-xs:    40px !default;
 
             margin-top: -50px;
             margin-bottom: 0;
-            padding: $spacer;
-            padding-top: 66px;
+            padding: 66px $spacer $spacer $spacer;
 
             ul {margin-bottom: 0}
 
@@ -1005,6 +1000,7 @@ $content-spacing-xs:    40px !default;
 // Products
 // ----------------------------------------------------------------------
 .pro-intro {
+    margin: 0 0 $spacer*2 0;
 
     .thumb {
         @extend .col-lg-5;
@@ -1044,6 +1040,7 @@ $content-spacing-xs:    40px !default;
 }
 
 .album {
+    text-align: center;
     margin-bottom: -$spacer*2;
 
     li {
@@ -1051,6 +1048,9 @@ $content-spacing-xs:    40px !default;
         @extend .col-md-4;
         @extend .col-sm-6;
         @extend .col-xs-12;
+
+        float: none;
+        display: inline-block;
         
         margin-bottom: $spacer*2;
 
@@ -1078,6 +1078,9 @@ $content-spacing-xs:    40px !default;
                 min-width: 100%;
                 min-height: 100%;
                 max-width: 150%;
+                position: absolute;
+                left: 50%; top: 50%;
+                transform: translate(-50%,-50%);
             }
 
             span {

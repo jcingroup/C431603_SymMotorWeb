@@ -24,7 +24,7 @@ namespace DotWeb.Controllers
                                          }).ToList();
                 foreach (var i in items)
                 {
-                    i.imgsrc = GetImg(i.news_id.ToString(), "List", "Active", "News", null);
+                    i.imgsrc = GetImg(i.news_id.ToString(), "List", "Active", "News", null, true);
                 }
                 #endregion
             }

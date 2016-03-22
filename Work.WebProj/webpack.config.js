@@ -23,8 +23,11 @@ module.exports = {
         m_brand: path.resolve(__dirname, 'Scripts/src/tsx/m-brand.js'),
         m_brand_category: path.resolve(__dirname, 'Scripts/src/tsx/m-brand_category.js'),
         m_location: path.resolve(__dirname, 'Scripts/src/tsx/m-location.js'),
+        m_test_drive: path.resolve(__dirname, 'Scripts/src/tsx/m-test_drive.js'),
         //前台
         w_loan_email: path.resolve(__dirname, 'Scripts/src/tsx/w-loan_email.js'),
+        w_testdrive_email: path.resolve(__dirname, 'Scripts/src/tsx/w-testdrive_email.js'),
+        w_location: path.resolve(__dirname, 'Scripts/src/tsx/w-location.js'),
 
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
     },

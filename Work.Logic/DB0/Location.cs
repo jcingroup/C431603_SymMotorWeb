@@ -15,19 +15,23 @@ namespace ProcCore.Business.DB0
     using Newtonsoft.Json;
     public partial class Location : BaseEntityTable
     {
+        public Location()
+        {
+            this.TestDrive = new HashSet<TestDrive>();
+        }
+    
         public int location_id { get; set; }
+        public string area { get; set; }
+        public string zip { get; set; }
         public string city { get; set; }
         public string country { get; set; }
-        public string location_name { get; set; }
         public string address { get; set; }
+        public string location_name { get; set; }
         public string tel { get; set; }
+        public string fax { get; set; }
         public bool is_sales { get; set; }
         public bool is_repair { get; set; }
-        public bool engine { get; set; }
-        public bool spray_sheet { get; set; }
-        public bool night { get; set; }
-        public bool holiday { get; set; }
-        public bool fast_insurance { get; set; }
+        public string business_hours { get; set; }
         public double north_coordinate { get; set; }
         public double east_coordinate { get; set; }
         public int sort { get; set; }
@@ -39,5 +43,8 @@ namespace ProcCore.Business.DB0
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
+    
+    	[JsonIgnore]
+        public virtual ICollection<TestDrive> TestDrive { get; set; }
     }
 }

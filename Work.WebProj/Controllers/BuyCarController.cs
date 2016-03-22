@@ -3,6 +3,7 @@ using DotWeb.Controller;
 using ProcCore.Business.DB0;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace DotWeb.Controllers
 {
@@ -25,8 +26,8 @@ namespace DotWeb.Controllers
                                          }).ToList();
                 foreach (var i in items)
                 {
-                    i.list_imgsrc = GetImg(i.event_id.ToString(), "List", "Active", "EventData", null);
-                    i.banner_imgsrc = GetImg(i.event_id.ToString(), "Banner", "Active", "EventData", null);
+                    i.list_imgsrc = GetImg(i.event_id.ToString(), "List", "Active", "EventData", null, true);
+                    i.banner_imgsrc = GetImg(i.event_id.ToString(), "Banner", "Active", "EventData", null, false);
                 }
                 #endregion
             }
@@ -61,5 +62,38 @@ namespace DotWeb.Controllers
             ajax_GetEditorSidebar((int)EditorState.BuyCar);
             return View("BuyCar_Form");
         }
+
+        [HttpGet]
+        public string GetLocation(LocationParm q)
+        {
+            List<Location> sales = new List<Location>();
+            List<Location> repair = new List<Location>();
+            using (var db0 = getDB0())
+            {
+                var temp_s = db0.Location.Where(x => !x.i_Hide & x.is_sales).OrderByDescending(x => x.sort).AsQueryable();
+                var temp_r = db0.Location.Where(x => !x.i_Hide & x.is_repair).OrderByDescending(x => x.sort).AsQueryable();
+
+                if (q.city != null)
+                {
+                    temp_s = temp_s.Where(x => x.city == q.city);
+                    temp_r = temp_r.Where(x => x.city == q.city);
+                }
+
+                if (q.country != null)
+                {
+                    temp_s = temp_s.Where(x => x.country == q.country);
+                    temp_r = temp_r.Where(x => x.country == q.country);
+                }
+                sales = temp_s.ToList();
+                repair = temp_r.ToList();
+            }
+
+            return defJSON(new { sales = sales, repair = repair });
+        }
+    }
+    public class LocationParm
+    {
+        public string city { get; set; }
+        public string country { get; set; }
     }
 }

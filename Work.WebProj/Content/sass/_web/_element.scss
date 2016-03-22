@@ -4,36 +4,40 @@
 // type
 // ----------------------------------------------------------------------
 .h1 {
-    border-bottom: 3px solid #dedede;
-    text-align: center;
-    color: #4D4D4D;
-
     margin: $spacer*3 0;
     padding-bottom: $spacer;
 
+    border-bottom: 3px solid #dedede;
+
+    text-align: center;
+    color: #4D4D4D;
+
     small {
         display: block;
+        margin-bottom: $spacer*0.5;
+
         color: $gray;
         font-size: 0.5em;
-        margin-bottom: $spacer*0.5;
     }
 
     @include media-breakpoint-down(sm) {
-        font-size: 2em;
         margin: $spacer*1.5 0;
+
+        font-size: 2em;
     }
 }
 
 .h2 {
-    border-left: 3px solid $brand-secondary;
     margin-bottom: $spacer*1.5;
     padding-left: $spacer*0.7;
+    border-left: 3px solid $brand-secondary;
 
     small {
         display: block;
+        margin-bottom: $spacer*0.5;
+
         color: $gray;
         font-size: 0.5em;
-        margin-bottom: $spacer*0.5;
     }
 
     a {
@@ -51,19 +55,18 @@
 
 	background: transparent;
 
-    td {
-    	border: $table-border-width solid $table-border-color;
-    }
+    td {border: $table-border-width solid $table-border-color;}
 
     thead {
 
     	th {
     		background: $thead-bg;
     		border: $table-border-width solid $table-border-color;
+
+            vertical-align: middle;
     		color: #3D3935;
     		font-size: em(18px);
     		font-weight: normal;
-            vertical-align: middle;
     	}
     }
 
@@ -87,9 +90,10 @@
 
     &:hover, &.active {
         background: linear-gradient(#5f5f5f, #2d2d2d);
+        border-color: #fff;
+
         color: #fff;
         text-shadow: 1px 1px 0 #333;
-        border-color: #fff;
     }
 }
 
@@ -101,13 +105,11 @@
     &:hover {background: lighten($btn-danger-bg,10%);}
 }
 
-.btn-muted {
-    @include button-variant($btn-muted-color, $btn-muted-bg, $btn-muted-border);
-}
+.btn-muted {@include button-variant($btn-muted-color, $btn-muted-bg, $btn-muted-border);}
 
 .btn-lg {
-    font-size: em(17px);
     border-radius: $btn-border-radius-lg;
+    font-size: em(17px);
 }
 
 
@@ -115,8 +117,5 @@
 // ----------------------------------------------------------------------
 .form-inline {
 
-    .form-group {
-        margin-right: $spacer;
-        margin-bottom: $spacer;
-    }
+    .form-group {margin: 0 $spacer $spacer 0;}
 }

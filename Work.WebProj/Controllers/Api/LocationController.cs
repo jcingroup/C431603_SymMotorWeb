@@ -36,16 +36,35 @@ namespace DotWeb.Api
                     .Select(x => new m_Location()
                     {
                         location_id = x.location_id,
+                        area = x.area,
                         city = x.city,
                         country = x.country,
                         address = x.address,
                         location_name = x.location_name,
+                        is_sales = x.is_sales,
+                        is_repair = x.is_repair,
                         sort = x.sort,
                         i_Hide = x.i_Hide
                     });
                 if (q.keyword != null)
                 {
-                    items = items.Where(x => x.location_name.Contains(q.keyword));
+                    items = items.Where(x => x.location_name.Contains(q.keyword) || x.address.Contains(q.keyword) ||
+                                             x.area.Contains(q.keyword) || x.city.Contains(q.keyword) || x.country.Contains(q.keyword));
+                }
+                if (q.area != null)
+                {
+                    items = items.Where(x => x.area == q.area);
+                }
+                if (q.type != null)
+                {
+                    if (q.type == (int)LocationType.is_sales)
+                    {
+                        items = items.Where(x => x.is_sales == true);
+                    }
+                    else if (q.type == (int)LocationType.is_repair)
+                    {
+                        items = items.Where(x => x.is_repair == true);
+                    }
                 }
                 int page = (q.page == null ? 1 : (int)q.page);
                 int startRecord = PageCount.PageInfo(page, this.defPageSize, items.Count());
@@ -72,6 +91,8 @@ namespace DotWeb.Api
 
                 item = await db0.Location.FindAsync(md.location_id);
 
+
+                item.zip = md.zip;//郵遞區號
                 item.city = md.city;//縣市
                 item.country = md.country;//區域
                 item.address = md.address;//地址
@@ -80,11 +101,8 @@ namespace DotWeb.Api
                 item.is_repair = md.is_repair;//維修據點
                 item.is_sales = md.is_sales;//營業所
 
-                item.engine = md.engine;//引擎維修
-                item.spray_sheet = md.spray_sheet;//鈑噴維修
-                item.night = md.night;//夜間預約
-                item.holiday = md.holiday;//假日服務
-                item.fast_insurance = md.fast_insurance;//雙人快保
+                item.area = md.area;//區域
+                item.business_hours = md.business_hours;//營業時間
 
                 item.north_coordinate = md.north_coordinate;//北座標
                 item.east_coordinate = md.east_coordinate;//東座標
@@ -198,5 +216,7 @@ namespace DotWeb.Api
     public class q_Location : QueryBase
     {
         public string keyword { get; set; }
+        public string area { get; set; }
+        public int? type { get; set; }
     }
 }

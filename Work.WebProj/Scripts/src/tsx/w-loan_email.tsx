@@ -98,13 +98,13 @@ namespace LoanEmail {
 
             if (fieldData.loan_project == "新車購車分期") {
                 project_html = (<div>
-                    <div className="col-xs-6">
+                    <div className="col-xs-12 col-sm-6">
                         <div className="form-group">
                             <label  className="control-label">購買車型 <small className="text-danger">*</small></label>
                             <input type="text" className="form-control c-input" value={fieldData.car_models} onChange={this.changeInputVal.bind(this, 'car_models') } required />
                             </div>
                         </div>
-                    <div className="col-xs-6">
+                    <div className="col-xs-12 col-sm-6">
                         <div className="form-group">
                             <label className="control-label">車輛牌價</label>
                             <div className="input-group">
@@ -114,7 +114,7 @@ namespace LoanEmail {
                                 </div>
                             </div>
                         </div>
-                    <div className="col-xs-3">
+                    <div className="col-xs-6 col-sm-3">
                         <div className="form-group">
                             <label className="control-label">頭款 <small className="text-danger">*</small></label>
                             <div className="input-group">
@@ -123,7 +123,7 @@ namespace LoanEmail {
                                 </div>
                             </div>
                         </div>
-                    <div className="col-xs-3">
+                    <div className="col-xs-6 col-sm-3">
                         <div className="form-group">
                             <label className="control-label">貸款金額</label>
                             <div className="input-group">
@@ -133,7 +133,7 @@ namespace LoanEmail {
                             </div>
                         </div>
 
-                    <div className="col-xs-2">
+                    <div className="col-xs-6 col-sm-2">
                         <div className="form-group">
                             <label  className="control-label">期繳 <small className="text-danger">*</small></label>
                             <div className="input-group">
@@ -143,7 +143,7 @@ namespace LoanEmail {
                             </div>
                         </div>
 
-                    <div className="col-xs-2">
+                    <div className="col-xs-6 col-sm-2">
                         <div className="form-group">
                             <label className="control-label">利率 <small className="text-danger">*</small></label>
                             <div className="input-group">
@@ -153,40 +153,40 @@ namespace LoanEmail {
                             </div>
                         </div>
 
-                    <div className="col-xs-2">
+                    <div className="col-xs-12 col-sm-2">
                         <div className="form-group">
                             <label  className="control-label">月付款</label>
                             <div className="input-group">
                                 <span className="input-group-addon">$</span>
-                                <input type="text" className="form-control c-input" value={fieldData.monthly_payment} onChange={this.changeInputVal.bind(this, 'monthly_payment') } />
+                                <input type="number" className="form-control c-input" value={fieldData.monthly_payment} onChange={this.changeInputVal.bind(this, 'monthly_payment') } />
                                 </div>
                             </div>
                         </div>
                     </div>);
             } else if (fieldData.loan_project == "中古車貸款申請") {
                 project_html = (<div>
-                    <div className="col-xs-3">
+                    <div className="col-xs-6 col-sm-3">
                         <div className="form-group">
                             <label className="control-label">車牌號碼 <small className="text-danger">*</small></label>
                             <input type="text" className="form-control c-input" value={fieldData.license_plate_number} onChange={this.changeInputVal.bind(this, 'license_plate_number') } required/>
                             </div>
                         </div>
 
-                    <div className="col-xs-3">
+                    <div className="col-xs-6 col-sm-3">
                         <div className="form-group">
                             <label className="control-label">車輛廠牌 <small className="text-danger">*</small></label>
                             <input type="text" className="form-control c-input" value={fieldData.car_brand} onChange={this.changeInputVal.bind(this, 'car_brand') } required/>
                             </div>
                         </div>
 
-                    <div className="col-xs-3">
+                    <div className="col-xs-12 col-sm-3">
                         <div className="form-group">
                             <label className="control-label">車型 <small className="text-danger">*</small></label>
                             <input type="text" className="form-control c-input" value={fieldData.car_models} onChange={this.changeInputVal.bind(this, 'car_models') } required/>
                             </div>
                         </div>
 
-                    <div className="col-xs-3">
+                    <div className="col-xs-12 col-sm-3">
                         <div className="form-group">
                             <label  className="control-label">出廠年份</label>
                             <div className="row">

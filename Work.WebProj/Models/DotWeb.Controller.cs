@@ -15,6 +15,7 @@ using ProcCore.WebCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -27,7 +28,6 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Filters;
 using System.Web.Routing;
 
 namespace DotWeb.Controller
@@ -478,7 +478,7 @@ namespace DotWeb.Controller
                 if (im.Height < new_hight)
                     new_hight = im.Height;
 
-                EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 100L);
+                EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 80L);
                 EncoderParameters myEncoderParameter = new EncoderParameters(1);
                 myEncoderParameter.Param[0] = qualityParam;
 
@@ -1195,11 +1195,16 @@ namespace DotWeb.Controller
                 return imgs;
             }
         }
-        public string GetImg(string id, string file_kind, string category1, string category2, string size)
+        public string GetImg(string id, string file_kind, string category1, string category2, string size, bool have_replase)
         {
             string tpl_path = string.Format(getImg_path_tpl, category1, category2, id, file_kind);
             if (size != null) { tpl_path = tpl_path + "/" + size; }//有size才增加資料夾目錄
             string img_folder = Server.MapPath(tpl_path);
+            string result = null;
+            if (have_replase)
+            {
+                result = Url.Content("~/Content/images/no-pic.gif");
+            }
 
             if (Directory.Exists(img_folder))
             {
@@ -1215,12 +1220,12 @@ namespace DotWeb.Controller
                 else
                 {
                     //return Url.Content("~/Content/images/no-pic.gif");
-                    return null;
+                    return result;
                 }
             }
             else
             {
-                return null;
+                return result;
             }
         }
         #endregion
@@ -1351,13 +1356,13 @@ namespace DotWeb.Controller
 
         #endregion
         #region google驗證碼
-        public ValidateResponse ValidateCaptcha(string response, string secret)
+        public ValidateResponse ValidateCaptcha(string response)
         {
             ValidateResponse result = new ValidateResponse();
             var client = new WebClient();
             var reply =
                 client.DownloadString(
-                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", "6LcC2hkTAAAAAMtuAxmARTqQv10iFVaXBzyO6uxZ", response));
 
             var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
 
@@ -1395,6 +1400,70 @@ namespace DotWeb.Controller
             }
 
             return result;
+        }
+        #endregion
+        #region 新增預約試乘
+        public ResultInfo addTestDrive(TestDriveMailContent md)
+        {
+            ResultInfo r = new ResultInfo();
+            try
+            {
+                using (var db0 = getDB0())
+                {
+                    TestDrive item = new TestDrive()
+                    {
+                        test_drive_id = GetNewId(CodeTable.TestDrive),
+                        name = md.name,
+                        sex = md.sex,
+                        email = md.email,
+                        tel = md.tel,
+                        car_models = md.car_models,
+                        car_models_name = md.car_models_name,
+                        contact_time = md.contact_time,
+                        view_year = md.view_year,
+                        view_month = md.view_month,
+                        view_day = md.view_day,
+                        view_time = md.view_time,
+                        view_city = md.view_city,
+                        view_location = md.view_location,
+                        is_agree = md.is_agree,
+                        is_edm = md.is_edm,
+                        i_InsertDateTime = DateTime.Now,
+                        i_Lang = "zh-TW"
+                    };
+
+                    db0.TestDrive.Add(item);
+                    db0.SaveChanges();
+
+                    r.result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                r.result = false;
+                r.message = ex.ToString();
+            }
+            return r;
+        }
+
+        private string getDbEntityValidationException(DbEntityValidationException ex)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+        #region 首頁人次計數(Session)
+        protected void Page_Load()
+        {
+            if (Session["isClick_Index"] == null)//若此文章沒被點閱過，則
+            {
+                //寫DB 此文章人氣+1
+                var open = openLogic();
+                var count = (int)open.getParmValue(ParmDefine.Count);
+                open.setParmValue(ParmDefine.Count, count + 1);
+                //並標記此文章已點閱過
+                Session["isClick_Index"] = true;
+
+            }
         }
         #endregion
     }

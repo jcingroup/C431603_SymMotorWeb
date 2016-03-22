@@ -198,12 +198,15 @@ namespace EditorDetail {
             let input: HTMLInputElement = e.target as HTMLInputElement;
             let gridData = this.state.gridData;
             let obj = gridData[i];
-            if (input.value == 'true') {
-                obj[name] = true;
-            } else if (input.value == 'false') {
-                obj[name] = false;
-            } else {
-                obj[name] = input.value;
+            //if (input.value == 'true') {
+            //    obj[name] = true;
+            //} else if (input.value == 'false') {
+            //    obj[name] = false;
+            //} else {
+            //    obj[name] = input.value;
+            //}
+            if (name == "detail_content") {
+                obj[name] = CKEDITOR.instances['content-' + i].getData();
             }
             this.setState({ gridData: gridData });
         }
@@ -218,7 +221,7 @@ namespace EditorDetail {
                         <Tabs defaultActiveKey={0} animation={false}>
                     {
                     this.state.gridData.map((itemData, i) =>
-                            <Tab eventKey={i} title={itemData.detail_name} key={itemData.editor_detail_id}>
+                        <Tab eventKey={i} title={itemData.detail_name} key={itemData.editor_detail_id}>
                                 <GridDetailField key={i + '-' + itemData.editor_detail_id} iKey={i} fieldData={itemData}
                                     setSubInputValue={this.setSubInputValue} />
                             </Tab>
@@ -280,10 +283,10 @@ namespace EditorDetail {
             //editorObj = CKEDITOR.inline(editorName, cfg2);
             editorObj = CKEDITOR.replace(editorName, cfg2);
             editorObj.setData(content);//一開始載入會沒資料
-
+            let _this = this;
             editorObj.on('change', function (evt) {
-                this.state.fieldData.detail_content = editorObj.getData();
-            }.bind(this));
+                _this.changeFDValue('detail_content', evt);
+            });
         }
         render() {
 

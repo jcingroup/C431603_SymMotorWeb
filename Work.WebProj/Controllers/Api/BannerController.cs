@@ -31,11 +31,12 @@ namespace DotWeb.Api
 
             using (db0 = getDB0())
             {
-                var items = db0.Banner             
-                    .OrderByDescending(x=>x.sort)
+                var items = db0.Banner
+                    .OrderByDescending(x => x.sort)
                     .Select(x => new m_Banner()
                     {
                         banner_id = x.banner_id,
+                        banner_url = x.banner_url,
                         banner_name = x.banner_name,
                         sort = x.sort,
                         i_Hide = x.i_Hide
@@ -70,6 +71,7 @@ namespace DotWeb.Api
                 item = await db0.Banner.FindAsync(md.banner_id);
 
                 item.banner_name = md.banner_name;
+                item.banner_url = md.banner_url;
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
 

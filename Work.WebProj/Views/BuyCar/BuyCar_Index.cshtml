@@ -6,7 +6,7 @@
 }
 
 @section css {
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    @* <link href="~/Content/css/swiper.min.css" rel="stylesheet"> *@
 }
 
 @section Scripts {
@@ -30,6 +30,15 @@
         banner.params.control = bannerThumb;
         bannerThumb.params.control = banner;
 
+        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        $(window).load(function(){
+            var h = $("#banner .swiper-slide:first-child img").height();
+            $("#banner img").each(function(){
+                if ($(this).height() < h) { h = $(this).height(); }
+            });
+            $("#banner").height(h);
+        });
+
         $(window).scroll(function () {
             var h = $('#header').height();
             if ($(this).scrollTop() > h) {
@@ -38,96 +47,12 @@
                 $('#sidebar, #content').removeClass('fixed');
             }
         });
+        var gb_type = '@Request.QueryString["type"]';
     </script>
-
+    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script type="text/javascript">
-        // When the window has finished loading create our google map below
-        google.maps.event.addDomListener(window, 'load', init);
-
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 14,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(25.0161618, 121.299573) // center
-            };
-
-            // Get the HTML DOM element that will contain your map
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('map');
-
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-
-
-            // Data for the markers consisting of a name, a LatLng and a zIndex for the
-            // order in which these markers should display on top of each other.
-            var stores = [
-                ['store 1', 25.000931, 121.313221, 'store 1<br>test', 1],
-                ['store 2', 25.039490, 121.282920, 'store 2<br>test', 2],
-                ['store 3', 25.050344, 121.288070, 'store 3<br>test', 3],
-                ['store 4', 24.953543, 121.204643, 'store 4<br>test', 4],
-                ['store 5', 24.950709, 121.296996, 'store 5<br>test', 5]
-            ];
-
-            // Customized icon
-            // var image = {
-            //     url: 'car189.png',
-            //     size: new google.maps.Size(32, 32), // This marker is 32 pixels wide by 32 pixels high.
-            //     origin: new google.maps.Point(0, 0), // The origin for this image is (0, 0).
-            //     anchor: new google.maps.Point(16, 16) // The anchor for this image is the base of the flagpole at (16, 16).
-            // };
-
-            // for geolocation
-            var infoWindow = new google.maps.InfoWindow({ map: map });
-
-            // multi positions
-            for (var i = 0; i < stores.length; i++) {
-                var store = stores[i];
-                var marker = new google.maps.Marker({
-                    position: { lat: store[1], lng: store[2] },
-                    map: map,
-                    // icon: image,
-                    title: store[0],
-                    info: store[3],
-                    zIndex: store[4]
-                });
-
-                // open different info window
-                var infowindow = new google.maps.InfoWindow({
-                    content: "loading..."
-                });
-                marker.addListener('click', function () {
-                    infowindow.setContent(this.info);
-                    infowindow.open(map, this);
-                });
-            }
-
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent('您的位置');
-                    map.setCenter(pos);
-                }, function () {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
-            } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        }
-    </script>
+    <script src="~/Content/js/gmap-location.js"></script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
@@ -136,174 +61,41 @@
 
 <section id="content">
 
-<section id="banner" class="swiper-container">
-    <h2 class="sr-only">最新購車優惠</h2>
-    <ul class="swiper-wrapper list-unstyled">
+    <section id="banner" class="swiper-container">
+        <h2 class="sr-only">最新購車優惠</h2>
+        <ul class="swiper-wrapper list-unstyled">
             @foreach (var i in Model)
             {
                 if (i.show_banner & i.banner_imgsrc != null)
                 {
-        <li class="swiper-slide">
+                    <li class="swiper-slide">
                         <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
-        </li>
+                    </li>
                 }
             }
-    </ul>
-</section>
-    <div class="grid-gallery">
+        </ul>
+    </section>
+    <div class="grid-gallery bg2">
         <div class="wrap">
-    <div id="banner-thumb" class="swiper-container">
-        <ul class="swiper-wrapper list-unstyled">
+            <div id="banner-thumb" class="swiper-container">
+                <ul class="swiper-wrapper list-unstyled">
                     @foreach (var i in Model)
                     {
-            <li class="swiper-slide">
+                        <li class="swiper-slide">
                             <img src="@i.list_imgsrc" alt="@i.event_title">
-            </li>
+                        </li>
                     }
-        </ul>
-        <a class="prev swiper-button-prev" href=""></a>
-        <a class="next swiper-button-next" href=""></a>
-    </div>
+                </ul>
+                <a class="prev swiper-button-prev" href=""></a>
+                <a class="next swiper-button-next" href=""></a>
+            </div>
         </div>
     </div>
+
 
 
     <div id="location" class="grid-location">
-        <div class="wrap">
 
-    <section class="search">
-        <h2 class="h1">營業據點查詢</h2>
-
-        <form class="form" action="">
-            <div class="form-group text-xs-center">
-
-                @* 被按到的按鈕要加 class="active" *@
-                <button class="btn btn-primary btn-lg">展示中心查詢</button>
-                <button class="btn btn-primary btn-lg">維修據點查詢</button>
-
-            </div>
-            <div class="form-group">
-                <label for="" class="sr-only">選擇縣市</label>
-                <select name="" id="" class="form-control c-select">
-                    <option value="" selected disabled>選擇縣市</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="" class="sr-only">選擇區域</label>
-                <select name="" id="" class="form-control c-select">
-                    <option value="" selected disabled>選擇區域</option>
-                </select>
-            </div>
-        </form>
-    </section>
-
-    <section class="map">
-        <h2 class="sr-only">地圖</h2>
-
-        <div id="map"></div>
-
-    </section>
-
-    <section class="location">
-        <h2 class="sr-only">據點列表</h2>
-
-        @* 展示中心 *@
-        <p><strong>營業時間：</strong>上午 08:30 ~ 下午 21:00 (週一至週日)</p>
-        <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width:10%;">區域</th>
-                    <th style="width:20%;">據點名稱</th>
-                    <th style="width:50%;">地址</th>
-                    <th style="width:20%;">電話</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>XXX</td>
-                    <td>123</td>
-                    <td>ABCDEFG</td>
-                    <td>03-4567890</td>
-                </tr>
-                <tr>
-                    <td>XXX</td>
-                    <td>123</td>
-                    <td>ABCDEFG</td>
-                    <td>03-4567890</td>
-                </tr>
-                <tr>
-                    <td>XXX</td>
-                    <td>123</td>
-                    <td>ABCDEFG</td>
-                    <td>03-4567890</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        @* end of 展示中心 *@
-
-        @* 維修據點 *@
-        <p>
-            <strong>營業時間：</strong><br>
-            上午 08:00 ~ 下午 21:00 (週一至週五)、
-            上午 08:00 ~ 下午 19:30 (週六)、
-            上午 08:00 ~ 下午 17:30 (週日)<br>
-            <strong>夜間 (17:30之後) 保養維修；敬請事先預約。</strong>
-        </p>
-        <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width:8%;">區域</th>
-                    <th style="width:38%;">地址</th>
-                    <th style="width:14%;">電話</th>
-                    <th class="text-xs-center" style="width:8%;">引擎維修</th>
-                    <th class="text-xs-center" style="width:8%;">鈑噴維修</th>
-                    <th class="text-xs-center" style="width:8%;">夜間預約</th>
-                    <th class="text-xs-center" style="width:8%;">假日服務</th>
-                    <th class="text-xs-center" style="width:8%;">雙人快保</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>XXX</td>
-                    <td>ABCDEFG</td>
-                    <td>02-2795-4532</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                </tr>
-                <tr>
-                    <td>XXX</td>
-                    <td>ABCDEFG</td>
-                    <td>03-4567890</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center"></td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center"></td>
-                </tr>
-                <tr>
-                    <td>XXX</td>
-                    <td>ABCDEFG</td>
-                    <td>03-4567890</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center"></td>
-                    <td class="text-xs-center">V</td>
-                    <td class="text-xs-center">V</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-        @* end of 維修據點 *@
-
-    </section>
-
-        </div>
     </div>
 
 </section>

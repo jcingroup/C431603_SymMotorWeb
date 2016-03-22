@@ -12,7 +12,6 @@ $logo-width:            255px !default;
 $logo-spacing:          25px !default;
 $submenu-pages:         6;
 
-
 // base
 //
 
@@ -22,8 +21,6 @@ body {
     position: relative;
     left: 0;
     transition: left 0.35s;
-
-    // &.push {overflow: hidden;}
 }
 
 a {
@@ -39,9 +36,7 @@ a {
 #wrapper {
     @if $enable-lte7 { _height: 100%; }
     min-height: 100%;
-
     background: #F5F5F5 url(#{$img-path}/bg.jpg) repeat-x left bottom $footer-height;
-
     padding-bottom: $footer-height + $content-spacing; // 內容與footer間距
 
     @include media-breakpoint-down(sm) {
@@ -50,15 +45,12 @@ a {
 }
 
 .wrap {
-    @extend .container;
-
+    @include make-container();
+    @include make-container-max-widths();
     position: relative;
-    // padding: 0;
 }
 
 #header, #footer, #main {
-    // @extend %container;
-    // @extend %contain;
     position: relative;
 }
 
@@ -69,66 +61,53 @@ a {
     background:
         url(#{$img-path}/bgHeader.gif) repeat-x center bottom,
         #403734 url(#{$img-path}/bgHeader2.jpg) repeat-y center top;
-
     z-index: $zindex-navbar;
 
     .logo {
         @include reset-text;
         margin: 0;
-        
         position: absolute;
         left: 0;
         top: -8px;
-
         z-index: $zindex-navbar+10;
 
         a {@include text-pic('logo.png', 257px, 180px);}
     }
 
     .topNav {
-        @extend .list-inline;
         font-size: $font-size-sm;
-
         position: absolute;
-        right: 0;
+        right: $grid-gutter-width/2;
         top: $spacer*0.5;
-
         z-index: $zindex-navbar+1;
 
         li:not(:last-child) { margin-right: $spacer; }
-
-        a {
-            color: #999;
-            &:hover, &:active { color: $brand-primary; }
-        }
+        a {color: #ababab;}
 
         @each $item in $pages2 {
             $i: index($pages2, $item);
-            .#{$item} & li:nth-of-type(#{$i+1}) a {color: $brand-primary;}
+            a:hover, a:active,
+            .#{$item} & li:nth-of-type(#{$i}) a {color: $link-hover-color;}
         }
     }
 
     .showcase {
         position: relative;
-
         padding-left: $logo-width + $logo-spacing;
-        padding-top: 47px;
-        padding-bottom: 25px;
+        padding-top: 60px;
+        padding-bottom: 12px;
+        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
 
         .h2 {
             @include reset-text;
-            @extend .hidden-md-down;
-
             border: 0;
             margin: 0;
             padding: 0;
-
             font-size: em(17px);
             color: #ccc;
-
             position: absolute;
             left: $logo-width + $logo-spacing;
-            top: 45px;
+            top: 58px;
 
             &::after {
                 content: "/";
@@ -141,12 +120,10 @@ a {
         a {
             color: #fff;
             font-size: em(18px);
-
             &:hover {color: $link-hover-color;}
         }
 
         .menu, .submenu {
-            @extend .list-inline;
             margin-bottom: 0;
         }
 
@@ -157,9 +134,7 @@ a {
         }
 
         .submenu {
-
             li {display: inline-block;}
-
             a {
                 display: inline-block;
                 background: #866F5F;
@@ -168,13 +143,12 @@ a {
                 letter-spacing: 0.05em;
 
                 margin-right: $spacer*0.5;
-                margin-top: $spacer;
+                margin-top: $spacer*0.5;
                 padding:$spacer*0.3 $spacer;
             }
         }
 
         .collapse-toggle {
-            @extend .hidden-md-down;
             color: $link-hover-color;
 
             &::after {
@@ -198,24 +172,24 @@ a {
                 &::after {border-top-color: #82744B;}
                 &:hover::after {border-top-color: lighten($link-hover-color, 35%);}
             }
-
-            
         }
-
     }
-
     @include media-breakpoint-only(lg) {
+        .topNav {
+            li:not(:last-child) { margin-right: $spacer*0.6; }
+        }
         .showcase {
             padding-left: $logo-width;
 
-            .h2 {left: $logo-width;}
+            background-position: $logo-width 12px;
+            background-size: auto 35px;
 
+            .h2 {left: $logo-width;}
             .menu {
                 padding-left: $spacer*6;
 
-                > li:not(:last-child) { margin-right:$spacer*1.55; }
+                > li:not(:last-child) { margin-right:$spacer*1.5; }
             }
-
             .collapse-toggle {
                 &::after {
                     margin-left: $spacer*0.5;
@@ -224,7 +198,6 @@ a {
             }
         }
     }
-
     @include media-breakpoint-down(md) {
         background: linear-gradient(135deg, #e22f1a 0%,#992121 100%);
         box-shadow: 0 2px 2px hsla(0,0,0,0.5);
@@ -239,7 +212,6 @@ a {
                 background: url(#{$img-path}/logo2.gif) no-repeat;
             }
         }
-
         .topNav {
             padding: $spacer*0.5;
             position: static;
@@ -255,13 +227,11 @@ a {
                 }
             }
         }
-
         .showcase {
+            background: none;
             border-bottom: 1px solid #6E6661;
             padding: $spacer*0.6 $spacer;
             order: 2;
-
-            .h2 {position: static;}
 
             .menu {
                 padding: 0;
@@ -290,7 +260,6 @@ a {
                     }
                 }
             }
-
             a {
                 letter-spacing: 0.1em;
 
@@ -312,9 +281,7 @@ a {
 }
 
 #menu {
-    @extend .navbar;
-
-    padding-left: 260px;
+    padding-left: $logo-width + $logo-spacing;
 
     .navbar-nav {
         li {margin:0;}
@@ -324,16 +291,18 @@ a {
         color: #fff;
         font-size: em(17px);
 
-        padding-left: $spacer*1.85;
-        padding-right: $spacer*1.85;
+        padding-left: $spacer*1.9;
+        padding-right: $spacer*1.9;
     }
+
+    li:nth-of-type(1) {margin-left: -$spacer*1.9;}
 
     $selector: ();
     @each $item in $pages {
         $i: index($pages, $item);
         $selector: append($selector, unquote(".#{$item} & li:nth-of-type(#{$i}) a"), comma);
     }
-    #{$selector} {
+    #{$selector}, .Offer & li:nth-of-type(3) a {
         position: relative;
 
         &::after {
@@ -348,24 +317,24 @@ a {
             bottom:-30px;
         }
     }
-    a:hover, #{$selector} {
+    a:hover, #{$selector}, .Offer & li:nth-of-type(3) a {
         color: $link-hover-color;
     }
 
     @include media-breakpoint-only(lg) {
-        padding-left: 249px;
+        padding-left: $logo-width;
 
         a {
             font-size: 1.05em;
-            padding-left: $spacer*0.75;
-            padding-right: $spacer*0.75;
+            padding-left: $spacer*0.8;
+            padding-right: $spacer*0.8;
         }
-
         #{$selector} {
             &::after {bottom: -27px;}
         }
-    }
 
+        li:nth-of-type(1) {margin-left: -$spacer*0.8;}
+    }
     @include media-breakpoint-down(md) {
         padding:0;
         order: 1;
@@ -376,13 +345,13 @@ a {
                 border-bottom: 1px solid #6E6661;
             }
         }
+        li:nth-of-type(1) {margin-left: 0;}
 
         a {
             padding: $spacer*0.6 $spacer;
             border-left: 3px solid $brand-secondary;
         }
-
-        #{$selector} {
+        #{$selector}, .Offer & li:nth-of-type(3) a {
             background: #393129;
 
             &::after {display: none;}
@@ -391,7 +360,6 @@ a {
 }
 
 .menu-trigger {
-    @extend .hidden-lg-up;
     @include text-hide;
     @include size(50px);
 
@@ -483,6 +451,7 @@ a {
 
         > li {
             text-align: center;
+            overflow: hidden;
 
             img {
                 width: 100%;
@@ -508,14 +477,13 @@ a {
     }
 
     .submenu {
-        @extend .wrap;
-        @extend .list-inline;
-
         margin-bottom: 0;
         padding-left: $logo-width + $logo-spacing;
 
         li {
             margin-left: -$spacer*0.5;
+
+            &:nth-of-type(1) {margin-left: $spacer*0.3;}
 
             a {
                 display: inline-block;
@@ -562,10 +530,11 @@ a {
 
     @include media-breakpoint-only(lg) {
         .submenu {
+            padding-left: $logo-width;
+
             li {
-                a {
-                    padding: $spacer*0.5 $spacer*0.25;
-                }
+                &:nth-of-type(1) {margin-left: $spacer*0.8;}
+                a {padding: $spacer*0.5 $spacer*0.25;}
             }
         }
     }
@@ -579,7 +548,7 @@ a {
             padding-left: $grid-gutter-width/2;
 
             li {
-
+                &:nth-of-type(1) {margin-left: 0;}
                 a {padding: $spacer*0.3;}
             }
         }
@@ -662,13 +631,25 @@ a {
     font-size: em(13px);
 
     margin-top: 20px;
+
+    a {
+        margin-left: 5px;
+        padding-left: 7px;
+
+        color: #8C9294;
+        border-left: 1px solid #8C9294;
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
 }
 
 .goTop {
     @include size(54px);
     
     color: hsla(0, 0%, 100%, 0.5);
-    line-height: 3.35rem;
+    line-height: em(54px);
     background: hsla(45, 100%, 36%, 0.5);
     border-radius: 50%;
 
@@ -680,4 +661,9 @@ a {
 
     &:focus, &:hover {color: hsla(0, 0%, 100%, 1);}
     &:hover {background: hsla(45, 100%, 36%, 1);}
+
+    @include media-breakpoint-down(sm) {
+        @include size(40px);
+        line-height: em(40px);
+    }
 }

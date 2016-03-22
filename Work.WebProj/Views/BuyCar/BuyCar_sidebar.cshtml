@@ -4,7 +4,7 @@
 }
 <aside id="sidebar">
     <h2 class="sr-only">子選單</h2>
-    <ul class="submenu">
+    <ul class="submenu wrap list-inline">
 
         @if (@ViewBag.BodyClass.IndexOf("page_content") >= 0)
         {
@@ -12,7 +12,7 @@
         }
 
         <li><a href="~/Offer/List">購車優惠</a></li>
-        <li><a href="~/BuyCar#location">全台營業據點</a></li>
+        <li><a href="~/Map?type=1">全台展示中心</a></li>
 
         @* current page: <a> + class="current" *@
         @foreach (var i in sidebar)

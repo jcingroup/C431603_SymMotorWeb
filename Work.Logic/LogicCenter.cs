@@ -19,7 +19,8 @@ namespace ProcCore.Business
         FaqCategory, Faq,
         Editor, EditorDetail,
         Brand, BrandCategory, BrandAlbum, BrandAlbumDetail,
-        Location
+        Location,
+        TestDrive
     }
     public enum SNType
     {
@@ -52,7 +53,7 @@ namespace ProcCore.Business.LogicConect
     #region Parm Section
     public enum ParmDefine
     {
-        Open, Email
+        Open, Email, FacebookUrl, Count
     }
     #endregion
 

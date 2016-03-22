@@ -196,6 +196,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
     <Compile Include="Areas\Active\Controllers\BrandDataController.cs" />
+    <Compile Include="Areas\Active\Controllers\TestDriveDataController.cs" />
     <Compile Include="Areas\Active\Controllers\LocationController.cs" />
     <Compile Include="Areas\Active\Controllers\EditorController.cs" />
     <Compile Include="Areas\Active\Controllers\FaqDataController.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Areas\Active\Controllers\BannerDataController.cs" />
     <Compile Include="Areas\Active\Controllers\ParmDataController.cs" />
     <Compile Include="Areas\Active\Controllers\NewsDataController.cs" />
+    <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\ExcelReportController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
     <Content Include="AspApi\api.asp" />
@@ -245,6 +247,7 @@
     <Content Include="Areas\Active\Views\BrandData\Main.cshtml" />
     <Content Include="Areas\Active\Views\Location\Main.cshtml" />
     <Content Include="Areas\Active\Views\BrandData\Category.cshtml" />
+    <Content Include="Areas\Active\Views\TestDriveData\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
@@ -298,6 +301,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\TestDriveController.cs" />
     <Compile Include="Controllers\Api\BrandAlbumDetailController.cs" />
     <Compile Include="Controllers\Api\BrandAlbumController.cs" />
     <Compile Include="Controllers\Api\LocationController.cs" />
@@ -323,6 +327,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\InsuranceController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -367,6 +372,7 @@
     <Content Include="Content\css\component\fontAwesome\font-awesome.css" />
     <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\learn.css" />
     <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\popup.css" />
@@ -399,16 +405,19 @@
     <Content Include="Content\images\BuyCar\banner2-thumb.jpg" />
     <Content Include="Content\images\BuyCar\banner2.jpg" />
     <Content Include="Content\images\iconCheck.gif" />
+    <Content Include="Content\images\iconMap-1.png" />
+    <Content Include="Content\images\iconMap-2.png" />
+    <Content Include="Content\images\iconMap-3.png" />
     <Content Include="Content\images\iconQuality.gif" />
     <Content Include="Content\images\iconSelect.jpg" />
     <Content Include="Content\images\iconSelect2.gif" />
-    <Content Include="Content\images\Index\banner1.jpg" />
-    <Content Include="Content\images\Index\banner2.jpg" />
     <Content Include="Content\images\Index\car1.png" />
     <Content Include="Content\images\Index\car2.png" />
     <Content Include="Content\images\Index\car3.png" />
     <Content Include="Content\images\Index\car4.png" />
+    <Content Include="Content\images\Index\watermark.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo2.gif" />
     <Content Include="Content\images\menuActive.png" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Content\images\UsedCar\featured.jpg" />
@@ -417,6 +426,8 @@
     <Content Include="Content\js\bootstrap\collapse.js" />
     <Content Include="Content\js\bootstrap\tab.js" />
     <Content Include="Content\js\bootstrap\util.js" />
+    <Content Include="Content\js\gmap-custom.js" />
+    <Content Include="Content\js\gmap-location.js" />
     <Content Include="Content\js\magnific\jquery.magnific-popup.min.js" />
     <Content Include="Content\sass\base\_normalize.scss" />
     <Content Include="Content\sass\base\_print.scss" />
@@ -475,6 +486,9 @@
     <Content Include="Content\font\themify-icons\themify.svg" />
     <Content Include="Content\font\themify-icons\themify.ttf" />
     <Content Include="Content\font\themify-icons\themify.woff" />
+    <Content Include="Content\sass\helper\_classes.scss" />
+    <Content Include="Content\sass\helper\_extend.scss" />
+    <Content Include="Content\sass\helper\_function.scss" />
     <None Include="Content\sass\index.scss" />
     <Content Include="Content\sass\layout\_grid.scss" />
     <Content Include="Content\sass\module\_alert.scss" />
@@ -502,6 +516,7 @@
     <Content Include="Content\sass\module\_tooltip.scss" />
     <None Include="Content\sass\page.scss" />
     <Content Include="Content\sass\sys.scss" />
+    <Content Include="Content\sass\popup.scss" />
     <None Include="Content\sass\_admin\bs\bootstrap.scss" />
     <None Include="Content\sass\_admin\bs\mixins\_alerts.scss" />
     <None Include="Content\sass\_admin\bs\mixins\_background-variant.scss" />
@@ -638,13 +653,15 @@
     <Content Include="Scripts\build\app\m_event_type.js" />
     <Content Include="Scripts\build\app\m_faq.js" />
     <Content Include="Scripts\build\app\m_faq_category.js" />
-    <Content Include="Scripts\build\app\m_issue.js" />
     <Content Include="Scripts\build\app\m_location.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
     <Content Include="Scripts\build\app\m_news.js" />
     <Content Include="Scripts\build\app\m_parm.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
+    <Content Include="Scripts\build\app\m_test_drive.js" />
     <Content Include="Scripts\build\app\w_loan_email.js" />
+    <Content Include="Scripts\build\app\w_location.js" />
+    <Content Include="Scripts\build\app\w_testdrive_email.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -752,6 +769,8 @@
     <Content Include="Views\Products\Products.cshtml" />
     <Content Include="Views\Products\Album.cshtml" />
     <Content Include="Views\Products\NoData.cshtml" />
+    <Content Include="Views\TestDrive\TestDriveEmail.cshtml" />
+    <Content Include="Views\Map\Map.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -770,6 +789,9 @@
     <Content Include="Scripts\src\jsx\m-Users.jsx" />
     <Content Include="Scripts\src\jsx\m-Roles.jsx" />
     <Content Include="Scripts\src\xformat.jsx" />
+    <Content Include="_Code\SysDoc\editor_insert.html" />
+    <Content Include="_Code\SysDoc\editor_table.html" />
+    <Content Include="_Code\SysDoc\editor_text.html" />
     <Content Include="_Code\SysUpFiles\member_apply.docx" />
   </ItemGroup>
   <ItemGroup>
@@ -816,6 +838,7 @@
     <TypeScriptCompile Include="ckfinder\app_modules\react-datepicker.d\react-datepicker.d.ts" />
     <TypeScriptCompile Include="ckfinder\app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand_category.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-test_drive.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-location.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-event_type.tsx" />
@@ -834,6 +857,8 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-testdrive_email.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-location.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-loan_email.tsx" />
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
@@ -914,6 +939,7 @@
     <Content Include="Areas\Active\Views\Editor\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\BrandData\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Location\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\TestDriveData\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

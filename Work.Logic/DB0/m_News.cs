@@ -28,4 +28,3 @@ namespace ProcCore.Business.DB0
     public string i_Lang { get; set; }
     }
 }
-

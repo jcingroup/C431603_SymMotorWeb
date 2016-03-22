@@ -130,8 +130,6 @@ namespace DotWeb.Api
             return t3.ToList();
         }
 
-
-
         #region 後台-參數設定
         public ResultInfo PostParamData([FromBody]Param md)
         {
@@ -141,6 +139,7 @@ namespace DotWeb.Api
                 var open = openLogic();
 
                 open.setParmValue(ParmDefine.Email, md.Email);
+                open.setParmValue(ParmDefine.FacebookUrl, md.FacebookUrl);
 
                 rAjaxResult.result = true;
             }

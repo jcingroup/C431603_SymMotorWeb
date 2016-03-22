@@ -3,6 +3,7 @@ using DotWeb.Controller;
 using System.Collections.Generic;
 using ProcCore.Business.DB0;
 using System.Linq;
+using ProcCore.Business.LogicConect;
 
 namespace DotWeb.Controllers
 {
@@ -10,6 +11,7 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            Page_Load();//人次計數
             IndexInfo info = new IndexInfo();
             using (var db0 = getDB0())
             {
@@ -18,11 +20,12 @@ namespace DotWeb.Controllers
                                          .Select(x => new m_Banner()
                                          {
                                              banner_id = x.banner_id,
-                                             banner_name = x.banner_name
+                                             banner_name = x.banner_name,
+                                             banner_url = x.banner_url
                                          }).ToList();
                 foreach (var i in info.banners)
                 {
-                    i.imgsrc = GetImg(i.banner_id.ToString(), "Banner", "Active", "BannerData", null);
+                    i.imgsrc = GetImg(i.banner_id.ToString(), "Banner", "Active", "BannerData", null, false);
                 }
                 #endregion
                 #region news
@@ -36,7 +39,7 @@ namespace DotWeb.Controllers
                                          }).Take(3).ToList();
                 #endregion
                 #region banner
-                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => new { main_sort = x.BrandCategory.sort, x.sort })
+                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
                                          .Select(x => new m_Brand()
                                          {
                                              brand_category_id = x.brand_category_id,
@@ -46,8 +49,13 @@ namespace DotWeb.Controllers
                                          }).ToList();
                 foreach (var i in info.brands)
                 {
-                    i.imgsrc = GetImg(i.brand_id.ToString(), "Banner", "Active", "BrandData", null);
+                    i.imgsrc = GetImg(i.brand_id.ToString(), "Banner", "Active", "BrandData", null, true);
                 }
+                #endregion
+                #region facebook
+                var open = openLogic();
+                info.facebook_url = (string)open.getParmValue(ParmDefine.FacebookUrl);
+                info.isClickIndex_Count = (int)open.getParmValue(ParmDefine.Count);
                 #endregion
             }
             return View("Index", info);
@@ -62,5 +70,7 @@ namespace DotWeb.Controllers
         public List<m_Banner> banners { get; set; }
         public List<m_News> news { get; set; }
         public List<m_Brand> brands { get; set; }
+        public string facebook_url { get; set; }
+        public int isClickIndex_Count { get; set; }
     }
 }

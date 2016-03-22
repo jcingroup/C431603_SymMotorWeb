@@ -85,6 +85,11 @@
         val?: number;
         Lname?: string;
     }
+    interface GroupOption {
+        key?: number | string;
+        items?: server.Option[];
+        locations?: server.Location[];
+    }
     interface Sales extends BaseEntityTable {
         //sales_id?: number;
         sales_no?: string;
@@ -121,6 +126,7 @@
     interface Banner extends BaseEntityTable {
         banner_id?: number;
         banner_name?: string;
+        banner_url?: string;
         sort?: number;
         i_Hide?: boolean;
     }
@@ -190,24 +196,67 @@
         i_Hide?: boolean;
         BrandCategory?: server.BrandCategory;
     }
+    interface BrandAlbum extends BaseEntityTable {
+        brand_album_id?: number;
+        brand_id?: number;
+        album_name?: string;
+        sort?: number;
+        Brand?: server.Brand;
+        BrandAlbumDetail?: server.BrandAlbumDetail[];
+    }
+    interface BrandAlbumDetail extends BaseEntityTable {
+        brand_album_detail_id?: number;
+        brand_album_id?: number;
+        detail_name?: string;
+        sort?: number;
+        BrandAlbum?: server.BrandAlbum;
+    }
     interface Location extends BaseEntityTable {
         location_id?: number;
+        area?: string;
+        zip?: string;
         city?: string;
         country?: string;
-        location_name?: string;
         address?: string;
+        location_name?: string;
         tel?: string;
+        fax?: string;
         is_sales?: boolean;
         is_repair?: boolean;
-        engine?: boolean;
-        spray_sheet?: boolean;
-        night?: boolean;
-        holiday?: boolean;
-        fast_insurance?: boolean;
+        business_hours?: string;
         north_coordinate?: number;
         east_coordinate?: number;
         sort?: number;
         i_Hide?: boolean;
+    }
+    interface TestDrive extends BaseEntityTable {
+        test_drive_id?: number;
+        name?: string;
+        sex?: boolean;
+        email?: string;
+        tel?: string;
+        car_models?: number;
+        car_models_name?: string;
+        contact_time?: string;
+        view_year?: number;
+        view_month?: number;
+        view_day?: number;
+        view_time?: string;
+        view_city?: string;
+        view_location?: number;
+        is_edm?: boolean;
+        is_agree?: boolean;
+        i_Hide?: boolean;
+        location_name?: string;
+        location_address?: string;
+        Location?: server.Location;
+    }
+    interface MapData {
+        title: string;
+        north: number;
+        east: number;
+        memo: string;
+        index: number;
     }
     interface L1 extends BaseEntityTable {
         l1_id?: number;

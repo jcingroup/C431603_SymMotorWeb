@@ -39,6 +39,19 @@ namespace ProcCore.Business.DB0
         OldActivity = 1,//精彩活動回顧
         NewActivity = 2//購車優惠
     }
+    public enum LocationType
+    {
+        is_sales = 1,//展示中心
+        is_repair = 2//維修中心
+    }
+    public enum EmailState
+    {
+        FAQ = 1,//FAQ 聯絡我們
+        TestDrive = 2,//預約試乘
+        UsedCar = 3,//認證中古車 協尋找車
+        BuyCar = 4,//購車服務 預約賞車
+        Loan = 5//貸款專區 線上申貸表格
+    }
     #region set CodeSheet
 
     public static class CodeSheet
@@ -166,6 +179,20 @@ namespace ProcCore.Business.DB0
     {
         public string category_name { get; set; }
         public string imgsrc { get; set; }
+        public List<BrandAlbum> albums { get; set; }
+    }
+    public partial class BrandAlbum
+    {
+        public string imgsrc { get; set; }
+    }
+    public partial class BrandAlbumDetail
+    {
+        public string imgsrc { get; set; }
+    }
+    public partial class TestDrive
+    {
+        public string location_name { get; set; }
+        public string location_address { get; set; }
     }
     public class PutPurchaseCheckPram
     {
@@ -188,6 +215,12 @@ namespace ProcCore.Business.DB0
         public int val { get; set; }
         public string Lname { get; set; }
     }
+    public class GroupOption
+    {
+        public string key { get; set; }
+        public List<option> items { get; set; }
+        public List<m_Location> locations { get; set; }
+    }
     public class L1
     {
         public int l1_id { get; set; }
@@ -202,6 +235,7 @@ namespace ProcCore.Business.DB0
     public class Param
     {
         public string Email { get; set; }
+        public string FacebookUrl { get; set; }
     }
     #endregion
 
