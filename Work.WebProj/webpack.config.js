@@ -28,7 +28,7 @@ module.exports = {
         w_loan_email: path.resolve(__dirname, 'Scripts/src/tsx/w-loan_email.js'),
         w_testdrive_email: path.resolve(__dirname, 'Scripts/src/tsx/w-testdrive_email.js'),
         w_location: path.resolve(__dirname, 'Scripts/src/tsx/w-location.js'),
-
+        w_usedcar_list: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-list.jsx'),
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
     },
     output: {
@@ -37,7 +37,7 @@ module.exports = {
     },
     module: {
         loaders: [
-          { test: /\.jsx$/, loader: 'babel' },
+          { test: /\.jsx$/, loader: 'babel', query: { presets: ['react', 'es2015'] } },
           { test: /\.css$/, loader: "style-loader!css-loader" }
         ]
     },
@@ -51,6 +51,6 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ]
 };
