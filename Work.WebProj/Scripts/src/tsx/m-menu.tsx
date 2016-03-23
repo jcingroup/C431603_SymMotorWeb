@@ -119,9 +119,9 @@ namespace Menu {
                 <div>
                     <h3 className="title">
                         <span className="icon">
-                            <i className="fa-square text-success"></i>
-                            <i className="fa-square text-info"></i>
-                            <i className="fa-square text-warning"></i>
+                            <i className="fa-square text-success"></i> { }
+                            <i className="fa-square text-info"></i> { }
+                            <i className="fa-square text-warning"></i> { }
                             <i className="fa-square text-danger"></i>
                             </span>
                         功能選單 MENU

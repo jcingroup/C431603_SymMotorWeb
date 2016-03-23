@@ -347,25 +347,31 @@ namespace TestDrive {
 
                 outHtml = (
                     <div>
-    <h4 className="title"> {this.props.caption} 基本資料維護</h4>
+    <h4 className="title"> {this.props.caption} 資料檢視</h4>
     <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className="col-xs-10">
             <div className="form-group">
                 <label className="col-xs-2 control-label">姓名</label>
                 <div className="col-xs-4">{fieldData.name}</div>
+            </div>
+            <div className="form-group">
                 <label className="col-xs-2 control-label">性別</label>
                 <div className="col-xs-4">{fieldData.sex ? <span className="label label-primary">男</span> : <span className="label label-danger">女</span>}</div>
-                </div>
+            </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">email</label>
                 <div className="col-xs-4">{fieldData.email}</div>
+            </div>
+            <div className="form-group">
                 <label className="col-xs-2 control-label">電話</label>
                 <div className="col-xs-4">{fieldData.tel}</div>
                 </div>
             <div className="form-group">
                 <label className="col-xs-2 control-label">試乘車款</label>
                 <div className="col-xs-4">{fieldData.car_models_name}</div>
-                <label className="col-xs-2 control-label">客服人員聯繫時間</label>
+            </div>
+            <div className="form-group">
+                <label className="col-xs-2 control-label">客服聯繫時間</label>
                 <div className="col-xs-4">{fieldData.contact_time}</div>
                 </div>
             <div className="form-group">

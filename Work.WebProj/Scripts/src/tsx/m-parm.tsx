@@ -89,8 +89,8 @@ namespace Parm {
         <div className="col-xs-12">
             <div className="item-box">
                 {/*--email--*/}
-                <div className="item-title text-center">
-                <h5>Email信箱設定</h5>
+                <div className="item-title">
+                <h5>E-mail 信箱設定</h5>
                     </div>
                     <div className="alert alert-warning" role="alert">
                         <ol>
@@ -112,16 +112,14 @@ namespace Parm {
                 </div>
             <div className="item-box">
                 {/*--facebook--*/}
-                <div className="item-title text-center">
-                <h5>首頁FaceBook連結設定</h5>
+                <div className="item-title">
+                <h5>首頁 Facebook 粉絲專頁設定</h5>
                     </div>
                     <div className="alert alert-warning" role="alert">
-                        <ol>
-                            <li>請輸入完整http://連結</li>
-                            </ol>
-                        </div>
+                        請輸入完整包含 http:// 網址
+                    </div>
                     <div className="form-group">
-                       <label className="col-xs-2 control-label">FaceBook連結</label>
+                       <label className="col-xs-2 control-label">Facebook 網址</label>
                        <div className="col-xs-8">
                                 <input className="form-control" type="text"
                                     value={param.FacebookUrl}
@@ -135,7 +133,7 @@ namespace Parm {
 
 
             <div className="form-action">
-                <div className="col-xs-4 col-xs-offset-5">
+                <div className="col-xs-4 col-xs-offset-2">
                     <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button>
                     </div>
                 </div>

@@ -953,11 +953,12 @@ $content-spacing-xs:    40px !default;
         overflow: hidden;
 
         img {
-            height: 100%;
+            width: 100%;
+            min-height: 100%;
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
         }
     }
 
