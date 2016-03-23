@@ -225,6 +225,7 @@
     <Content Include="app_modules\Pikaday\pikaday.js" />
     <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.js" />
     <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.min.js" />
+    <Content Include="AspApi\api_modal.asp" />
     <Content Include="AspApi\api_brand.asp" />
     <Content Include="AspApi\apilet.html" />
     <None Include="AspApi\JSON_2.0.4.asp" />

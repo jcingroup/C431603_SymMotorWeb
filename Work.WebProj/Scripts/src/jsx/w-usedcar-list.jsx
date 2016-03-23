@@ -9,7 +9,8 @@ var ListCars = React.createClass({
             search:{
                 h_obj_brand:null
             },
-            options_brand:[]
+            options_brand:[],
+            options_modal:[]
         };
     },
     getDefaultProps: function () {
@@ -30,11 +31,20 @@ var ListCars = React.createClass({
         }.bind(this));
 
     },
-    changeSearch:function(n,e){
+    setSearchField:function(n,e){
         var obj = this.state.search;
         var v = e.target.value;
         obj[n]=v;
         this.setState({ search: obj });
+    },
+    onChangeBrand:function(e){
+        var v = e.target.value;
+        $.get(this.props.sym_web_api + 'api_modal.asp',{brandno:v})
+            .done(function(data){
+                var obj = this.state.search;
+                obj.h_obj_brand=v;
+                this.setState({ search: obj,options_modal:data });
+            }.bind(this))
     },
     render:function() {
         let outHtml = null;
@@ -52,20 +62,26 @@ var ListCars = React.createClass({
                                 <label htmlFor="brand">廠牌</label> {}
                                 <select id="h_obj_brand" className="form-control c-select style2"
                                         value={this.state.search.h_obj_brand}
-                                        onchange={this.changeSearch.bind(this,'h_obj_brand')}>
+                                        onChange={this.onChangeBrand}>
                                     <option value="">廠牌</option>
                                     {
-                                    this.state.options_brand.map(function(item,i){
-                                        return (
-                                        <option value={item.value} key={item.value}>{item.name}</option>);
-                                    }.bind(this))
+                                        this.state.options_brand.map(function(item,i){
+                                            return (
+                                            <option value={item.value} key={item.value}>{item.name}</option>);
+                                        })
                                     }
                                 </select>
                             </div>
                             <div className="form-group">
                                 <label for="">車型</label> {}
-                                <select name="" id="" className="form-control c-select style2">
+                                <select id="h_obj_type" onChange={this.setSearchField.bind(this,'h_obj_type')} className="form-control c-select style2">
                                     <option value="" selected disabled>車型</option>
+                                    {
+                                        this.state.options_modal.map(function(item,i){
+                                            return (
+                                            <option value={item.value} key={item.value}>{item.name}</option>);
+                                        })
+                                    }
                                 </select> {}
                             </div>
                             <div className="form-group">
