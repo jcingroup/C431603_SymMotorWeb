@@ -5,7 +5,11 @@ var moment = require('moment');
 var ListCars = React.createClass({
     getInitialState: function () {
         return {
-            lists:[]
+            lists:[],
+            search:{
+                h_obj_brand:null
+            },
+            options_brand:[]
         };
     },
     getDefaultProps: function () {
@@ -19,12 +23,24 @@ var ListCars = React.createClass({
         .done(function(data){
             this.setState({lists:data});
         }.bind(this));
+
+        $.get(this.props.sym_web_api + 'api_brand.asp',{})
+        .done(function(data){
+            this.setState({options_brand:data});
+        }.bind(this));
+
+    },
+    changeSearch:function(n,e){
+        var obj = this.state.search;
+        var v = e.target.value;
+        obj[n]=v;
+        this.setState({ search: obj });
     },
     render:function() {
         let outHtml = null;
         outHtml =
         <div className="wrap">
-            <h1 className="h1">{ this.props.caption }</h1>
+            <h1 className="h1">{this.props.caption}</h1>
             <section id="content">
 
                     <h2 className="sr-only">全部中古車一覽表</h2>
@@ -34,8 +50,16 @@ var ListCars = React.createClass({
                         <form className="form-inline text-sm-center text-xs-left" action="">
                             <div className="form-group">
                                 <label htmlFor="brand">廠牌</label> {}
-                                <select id="brand" className="form-control c-select style2">
-                                    <option value="" selected disabled>廠牌</option>
+                                <select id="h_obj_brand" className="form-control c-select style2"
+                                        value={this.state.search.h_obj_brand}
+                                        onchange={this.changeSearch.bind(this,'h_obj_brand')}>
+                                    <option value="">廠牌</option>
+                                    {
+                                    this.state.options_brand.map(function(item,i){
+                                        return (
+                                        <option value={item.value} key={item.value}>{item.name}</option>);
+                                    }.bind(this))
+                                    }
                                 </select>
                             </div>
                             <div className="form-group">

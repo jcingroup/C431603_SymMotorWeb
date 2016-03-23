@@ -1,7 +1,8 @@
 ﻿<%@  codepage="65001" language="VBScript" %>
 <%
-    response.addHeader "Access-Control-Allow-Origin", "http://sym.fly.idv.tw"
+    response.addHeader "Access-Control-Allow-Origin", "*"
     response.contentType = "application/json"
+    response.charset="utf-8"
      %>
 <!--#include file="JSON_2.0.4.asp"-->
 <%
@@ -64,6 +65,9 @@
 		rs.movenext
 	loop
 
-	
+	rs.Close
+    conn.Close
+    set rs = nothing
+    set conn = nothing
 	jsonArray.Flush
 %>
