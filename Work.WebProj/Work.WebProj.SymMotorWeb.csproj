@@ -828,6 +828,7 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <TypeScriptCompile Include="AspApi\sym_webapi.d.ts" />
     <TypeScriptCompile Include="ckfinder\app_modules\comm-cmpt\comm-cmpt.d.ts" />
     <TypeScriptCompile Include="ckfinder\app_modules\comm-cmpt\comm-cmpt.tsx" />
     <TypeScriptCompile Include="ckfinder\app_modules\comm-cmpt\react.cmpt.prop.ts" />
