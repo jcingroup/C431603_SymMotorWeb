@@ -207,9 +207,10 @@
     <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\ExcelReportController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
-    <Content Include="AspApi\api.asp" />
-    <Content Include="AspApi\JSON_2.0.4.asp" />
-    <Content Include="AspApi\Ref\wau_013.asp" />
+    <None Include="AspApi\api.asp" />
+    <Content Include="AspApi\apilet.html" />
+    <None Include="AspApi\JSON_2.0.4.asp" />
+    <None Include="AspApi\Ref\wau_013.asp" />
     <Content Include="ckfinder\app_modules\comm-cmpt\package.js" />
     <Content Include="ckfinder\app_modules\comm-func\package.js" />
     <Content Include="ckfinder\app_modules\comm-typeahead\typeahead.css" />

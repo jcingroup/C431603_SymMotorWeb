@@ -1,4 +1,8 @@
 ﻿<%@  codepage="65001" language="VBScript" %>
+<%
+    response.addHeader "Access-Control-Allow-Origin", "http://sym.fly.idv.tw"
+    response.contentType = "application/json"
+     %>
 <!--#include file="JSON_2.0.4.asp"-->
 <%
 
@@ -15,13 +19,12 @@
     sql_txt="                 select a.obj_no,a.obj_brand,             "
     sql_txt=sql_txt+        "        a.obj_type,a.obj_model,a.obj_color,substr(a.obj_born_date,1,4) ori_year,                   "
     sql_txt=sql_txt+        "        a.issue_date,a.place_dept_no,a.list_price/10000 list_price,c.dept_cname,a.auc_no, d.end_date,d.end_time,d.now_price/10000 now_price,d.d_price/10000 d_price "
-    sql_txt=sql_txt+        " from wau_001 a,prm06 c,wau_006 d where 1=1 and "
+    sql_txt=sql_txt+        " from wau_001 a,prm06 c,wau_006 d where 1=1 "
     'if request("first_use")<>"n" then   '--第一次 show 以最近 20 天為條件
 	'	 sql_txt=sql_txt+     "  where 1=1                                                                            "
     'else
     '     sql_txt=sql_txt+     "  where 1=1                                                                            "
     'end if
-
     sql_txt=sql_txt+        "        and a.place_dept_no=c.dept_no and a.obj_no=d.obj_no   "   
     sql_txt=sql_txt+        "        and to_char(sysdate,'yyyymmddhh24miss') between d.start_date||d.start_time and d.end_date||d.end_time              "
     sql_txt=sql_txt+        "        and a.status='1' and d.end_yn is null                                          "
