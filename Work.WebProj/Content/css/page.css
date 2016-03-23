@@ -6025,11 +6025,12 @@ a:focus {
   overflow: hidden;
 }
 .article-list .thumb img {
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 @media (max-width: 991px) {
   .article-list .thumb {
