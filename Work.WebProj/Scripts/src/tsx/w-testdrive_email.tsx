@@ -115,10 +115,10 @@ namespace TestDriveEmail {
         handleSubmit(e: React.FormEvent) {
             e.preventDefault();
             this.state.fieldData.response = grecaptcha.getResponse(widgetId);
-            if (this.state.fieldData.type == EmailState.TestDrive && !this.state.fieldData.is_agree) {
-                alert("需同意試乘條款之內容，才可預約試乘！");
-                return;
-            }
+            //if (this.state.fieldData.type == EmailState.TestDrive && !this.state.fieldData.is_agree) {
+            //    alert("需同意試乘條款之內容，才可預約試乘！");
+            //    return;
+            //}
 
             CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                 .done((data: EmailResult, textStatus, jqXHRdata) => {
@@ -424,7 +424,7 @@ namespace TestDriveEmail {
                          <div className="col-xs-12">
                             <div className="form-group c-inputs-stacked">
 
-                                  {is_argee_html}
+                                  {/*is_argee_html*/}
 
                                   <label className="c-input c-checkbox">
                                     <input id="checkbox2" name="checkbox" type="checkbox"

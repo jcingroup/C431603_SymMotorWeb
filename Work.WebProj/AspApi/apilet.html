@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+<body>
+    <div id="list"></div>
+
+    <script>
+        $(document).ready(function () {
+            $.get('http://symb2b.sym-motor.com.tw/Wau_New/api.asp', {})
+                .done(function (data) {
+
+                    for (var i in data) {
+                        var item = data[i];
+                        console.log(item);
+                        $('<div>').html(item.obj_color).appendTo($('#list'));
+                    }
+                })
+        })
+    </script>
+</body>
+</html>

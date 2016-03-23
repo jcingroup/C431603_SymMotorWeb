@@ -27,7 +27,7 @@
     <SccProvider>SAK</SccProvider>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -207,24 +207,28 @@
     <Compile Include="Areas\Base\Controllers\DocController.cs" />
     <Compile Include="Areas\Base\Controllers\ExcelReportController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
-    <Content Include="app_modules\comm-cmpt\package.js" />
-    <Content Include="app_modules\comm-func\package.js" />
-    <Content Include="app_modules\comm-typeahead\typeahead.css" />
-    <Content Include="app_modules\Pikaday\css\pikaday.css" />
-    <Content Include="app_modules\Pikaday\css\site.css" />
-    <Content Include="app_modules\Pikaday\css\theme.css" />
-    <Content Include="app_modules\Pikaday\css\triangle.css" />
-    <Content Include="app_modules\Pikaday\pikaday.js" />
-    <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.js" />
-    <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.min.js" />
-    <Content Include="app_modules\comm-cmpt\package.json" />
-    <Content Include="app_modules\comm-func\package.json" />
-    <Content Include="app_modules\Pikaday\package.json" />
-    <Content Include="app_modules\simple-ajax-uploader\bower.json" />
-    <Content Include="app_modules\simple-ajax-uploader\package.json" />
-    <Content Include="app_modules\dt\package.json" />
+    <None Include="AspApi\api.asp" />
+    <Content Include="AspApi\apilet.html" />
+    <None Include="AspApi\JSON_2.0.4.asp" />
+    <None Include="AspApi\Ref\wau_013.asp" />
+    <Content Include="ckfinder\app_modules\comm-cmpt\package.js" />
+    <Content Include="ckfinder\app_modules\comm-func\package.js" />
+    <Content Include="ckfinder\app_modules\comm-typeahead\typeahead.css" />
+    <Content Include="ckfinder\app_modules\Pikaday\css\pikaday.css" />
+    <Content Include="ckfinder\app_modules\Pikaday\css\site.css" />
+    <Content Include="ckfinder\app_modules\Pikaday\css\theme.css" />
+    <Content Include="ckfinder\app_modules\Pikaday\css\triangle.css" />
+    <Content Include="ckfinder\app_modules\Pikaday\pikaday.js" />
+    <Content Include="ckfinder\app_modules\simple-ajax-uploader\SimpleAjaxUploader.js" />
+    <Content Include="ckfinder\app_modules\simple-ajax-uploader\SimpleAjaxUploader.min.js" />
+    <Content Include="ckfinder\app_modules\comm-cmpt\package.json" />
+    <Content Include="ckfinder\app_modules\comm-func\package.json" />
+    <Content Include="ckfinder\app_modules\Pikaday\package.json" />
+    <Content Include="ckfinder\app_modules\simple-ajax-uploader\bower.json" />
+    <Content Include="ckfinder\app_modules\simple-ajax-uploader\package.json" />
+    <Content Include="ckfinder\app_modules\dt\package.json" />
     <Content Include="Areas\Active\Views\NewsData\Main.cshtml" />
-    <Content Include="app_modules\comm-typeahead\package.json" />
+    <Content Include="ckfinder\app_modules\comm-typeahead\package.json" />
     <Content Include="Areas\Active\Views\ParmData\AboutUS.cshtml" />
     <Content Include="Areas\Active\Views\ParmData\Parm.cshtml" />
     <Content Include="Areas\Active\Views\BannerData\Main.cshtml" />
@@ -620,8 +624,6 @@
     <Content Include="Content\sass\_web\_layout.scss" />
     <Content Include="Content\sass\_web\_module.scss" />
     <Content Include="Content\sass\_web\_var.scss" />
-    <Content Include="Content\sass\_web\_editor.scss" />
-    <None Include="gulpfile.js" />
     <Content Include="Content\images\noIE\bg.gif" />
     <Content Include="Content\images\noIE\brow.gif" />
     <Content Include="Content\images\noIE\brow2.gif" />
@@ -826,18 +828,19 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.d.ts" />
-    <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.tsx" />
-    <TypeScriptCompile Include="app_modules\comm-cmpt\react.cmpt.prop.ts" />
-    <TypeScriptCompile Include="app_modules\comm-func\comm-func.d.ts" />
-    <TypeScriptCompile Include="app_modules\comm-func\comm-func.tsx" />
-    <None Include="app_modules\comm.r.tsx.bak" />
-    <TypeScriptCompile Include="app_modules\comm-typeahead\comm-typeahead.d.ts" />
-    <TypeScriptCompile Include="app_modules\comm-typeahead\main.tsx" />
-    <TypeScriptCompile Include="app_modules\dt\def-data.d.ts" />
-    <TypeScriptCompile Include="app_modules\Pikaday\pikadaydef.ts" />
-    <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
-    <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
+    <TypeScriptCompile Include="AspApi\sym_webapi.d.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-cmpt\comm-cmpt.d.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-cmpt\comm-cmpt.tsx" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-cmpt\react.cmpt.prop.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-func\comm-func.d.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-func\comm-func.tsx" />
+    <None Include="ckfinder\app_modules\comm.r.tsx.bak" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-typeahead\comm-typeahead.d.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\comm-typeahead\main.tsx" />
+    <TypeScriptCompile Include="ckfinder\app_modules\dt\def-data.d.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\Pikaday\pikadaydef.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\react-datepicker.d\react-datepicker.d.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand_category.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-test_drive.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-location.tsx" />
@@ -873,7 +876,7 @@
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IKeyValue.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\PutGetId.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\ServerModals.d.ts" />
-    <TypeScriptCompile Include="app_modules\dt\def-data.ts" />
+    <TypeScriptCompile Include="ckfinder\app_modules\dt\def-data.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\widegt\gridInfo.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap.v3.datetimepicker\bootstrap.v3.datetimepicker.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\ckeditor\ckeditor.d.ts" />
@@ -890,11 +893,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="app_modules\Pikaday\plugins\" />
-    <Folder Include="app_modules\Pikaday\scss\" />
-    <Folder Include="app_modules\Pikaday\tests\" />
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
+    <Folder Include="ckfinder\app_modules\Pikaday\plugins\" />
+    <Folder Include="ckfinder\app_modules\Pikaday\scss\" />
+    <Folder Include="ckfinder\app_modules\Pikaday\tests\" />
     <Folder Include="Content\sass\vendor\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="_Code\CReport\" />
@@ -947,6 +950,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -992,7 +998,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3185</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

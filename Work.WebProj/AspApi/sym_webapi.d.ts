@@ -1,0 +1,17 @@
+﻿interface listObjRow {
+    obj_no: string,
+    obj_brand: string,
+    obj_type: string,
+    obj_model: string,
+    obj_color: string,
+    ori_year: string,
+    issue_date: string,
+    place_dept_no: string,
+    list_price: number,
+    dept_cname: string,
+    auc_no: string,
+    end_date: string,
+    end_time: string,
+    now_price: number,
+    d_price: number,
+}
