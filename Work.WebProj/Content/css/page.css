@@ -6159,3 +6159,14 @@ a:focus {
     height: 150px;
   }
 }
+
+@media (max-width: 1259px) {
+  .Map .grid-location {
+    padding-top: 0;
+  }
+}
+@media (max-width: 767px) {
+  .Map .grid-location .form-group:first-of-type {
+    display: block;
+  }
+}

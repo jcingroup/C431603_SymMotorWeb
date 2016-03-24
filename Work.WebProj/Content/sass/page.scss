@@ -172,9 +172,6 @@ $content-spacing-xs:    40px !default;
         padding-right: 0;
     }
 
-    .location {
-    }
-
     .table {min-width:700px;}
 
     @include media-breakpoint-down(lg) {
@@ -1131,5 +1128,22 @@ $content-spacing-xs:    40px !default;
 
     @include media-breakpoint-down(lg) {
         li a {height: 150px;}
+    }
+}
+
+
+// Products
+// ----------------------------------------------------------------------
+.Map {
+    .grid-location {
+
+        @include media-breakpoint-down(lg) {
+            padding-top: 0;
+        }
+
+        @include media-breakpoint-down(sm) {
+            .form-group:first-of-type {display: block;}
+        }
+
     }
 }
