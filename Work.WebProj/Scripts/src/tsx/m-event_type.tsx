@@ -393,7 +393,7 @@ namespace EventByType {
                                         </label>
                                     </div>
                                 </div>
-                                <small className="col-xs-6 help-inline">如【購車優惠】勾選顯示，會顯示於【購車服務】的畫面</small>
+                                <small className="col-xs-6 help-inline">【購車優惠】的輪播圖會顯示於【購車服務】的畫面</small>
                             </div>
                             <div className="form-group">
                                 <label className="col-xs-2 control-label">狀態</label>
