@@ -37,7 +37,7 @@ namespace DotWeb.Api
                     {
                         brand_id = x.brand_id,
                         brand_category_id = x.brand_category_id,
-                        category_name=x.BrandCategory.category_name,
+                        category_name = x.BrandCategory.category_name,
                         brand_name = x.brand_name,
                         sort = x.sort,
                         i_Hide = x.i_Hide
@@ -156,6 +156,12 @@ namespace DotWeb.Api
                 r = new ResultInfo<Brand>();
                 foreach (var id in ids)
                 {
+                    var get_a = db0.BrandAlbum.Where(x => x.brand_id == id).ToList();
+                    foreach (var i in get_a)
+                    {
+                        db0.BrandAlbumDetail.RemoveRange(i.BrandAlbumDetail);
+                    }
+                    db0.BrandAlbum.RemoveRange(get_a);
                     item = new Brand() { brand_id = id };
                     db0.Brand.Attach(item);
                     db0.Brand.Remove(item);
