@@ -48,12 +48,50 @@ var CarContent = React.createClass({
         //return x1 + x2;
         return x1;
     },
+    showEquip: function () {
+        var equip = {
+            EQ_18: '鋁圈',
+            EQ_19: '電動窗',
+            //OBJ_NO: '車牌號碼',
+            EQ_1: '天窗',
+            EQ_2: 'CD音響',
+            EQ_3: '衛星導航',
+            EQ_4: '定速',
+            EQ_5: '電動後視鏡',
+            EQ_6: '安全氣囊',
+            EQ_7: '4WD',
+            EQ_8: '皮椅',
+            EQ_9: 'VCD',
+            EQ_10: '恆溫',
+            EQ_11: 'ABS',
+            EQ_12: '倒車雷達',
+            EQ_13: '霧燈',
+            EQ_14: '電動座椅',
+            EQ_15: 'DVD',
+            EQ_16: '防盜',
+            EQ_17: 'TCS'
+        }
+        var obj = this.state.field.base;
+        var hasEquip = [];
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop) && equip.hasOwnProperty(prop)) {
+                var v = obj[prop];
+                if (v == 'Y') {
+                    var n = equip[prop];
+                    hasEquip.push(n);
+                }
+            }
+        }
+        var r = hasEquip.join('、')
+
+        return r;
+    },
     render: function () {
         let outHtml = null;
 
         var base = this.state.field.base;
         var pic = this.state.field.pic;
-
+        var equips = this.showEquip();
         outHtml =
         <div>
             <div className="grid-info">
@@ -135,7 +173,7 @@ var CarContent = React.createClass({
                         </dl>
                         <dl className="detail">
                             <dt>配備：</dt>
-                            <dd>天窗、CD音響、衛星導航、定速、電動後視鏡、安全氣囊、4WD、皮椅、VCD、恆溫、ABS、倒車雷達、霧燈、電動座椅、DVD、防盜、TCS、鋁圈、電動窗</dd>
+                            <dd>{equips}</dd>
                         </dl>
                     </div>
                 </div>
