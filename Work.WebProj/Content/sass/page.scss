@@ -640,8 +640,21 @@ $content-spacing-xs:    40px !default;
     .h1 {
         margin: 0 0 $spacer*2 0;
 
+        .label {
+            font-size: 100%;
+            font-weight: normal;
+        }
+
+        .title {
+            font-size: 0.8em;
+            margin-bottom: 0;
+        }
+
         .price {margin-left: $spacer;}
+
     }
+
+    dl.row {margin-bottom: 0;}
 
     .article {
         @include center-block;
@@ -661,68 +674,6 @@ $content-spacing-xs:    40px !default;
             }
         }
     }
-
-    .info {
-        @extend .col-lg-4;
-        @extend .col-md-12;
-        background: url(#{$img-path}/bgCard.png) no-repeat center bottom;
-        margin-bottom: $spacer*2;
-        padding-bottom: 26px;
-
-        .icon {
-            width: 105px;
-            background: #554B46;
-            border-radius: 50%;
-            
-            text-align: center;
-            line-height: 105px;
-            font-size: em(50px);
-            color: #fff;
-
-            position: relative;
-            z-index: 10;
-
-            margin: 0 auto;
-        }
-        &:first-of-type {
-            .icon {
-                line-height: 95px;
-                padding-bottom: 10px;
-            }
-        }
-
-        dd {
-            min-height: 311px;
-            text-align: center;
-            background: #f5f5f5;
-            color: $gray;
-
-            margin-top: -50px;
-            margin-bottom: 0;
-            padding: 66px $spacer $spacer $spacer;
-
-            ul {margin-bottom: 0}
-
-            li {
-                border-bottom: 1px solid #dfdfdf;
-                margin-bottom: 8px;
-                padding-bottom: 8px;
-
-                &:last-of-type {
-                    border: 0;
-                    margin: 0;
-                    padding: 0;
-                }
-
-                em {
-                    font-style: normal;
-                    font-weight: bold;
-                }
-            }
-        }
-    }
-
-    .detail {@extend .col-xs-12;}
 
     @include media-breakpoint-down(lg) {
         .article {width: 100%;}
@@ -791,10 +742,10 @@ $content-spacing-xs:    40px !default;
 }
 
 .gallery {
+    @extend .col-lg-6;
+    @extend .col-xs-12;
 
     #banner {
-        @extend .col-lg-8;
-        @extend .col-xs-12;
         background:none;
         height: auto;
         
@@ -824,23 +775,11 @@ $content-spacing-xs:    40px !default;
     }
 
     #banner-thumb {
-        @extend .col-lg-4;
-        @extend .col-xs-12;
 
-        padding-left: $spacer;
-
-        ul {
-            @include clearfix;
-            margin: -5px;
-        }
+        ul {margin-bottom: 0;}
 
         li {
-            width: 120px;
-            height: 120px;
-            border: 5px solid transparent;
-
-            float: left;
-            position: relative;
+            height: 80px;
             overflow: hidden;
 
             opacity: 1;
@@ -852,10 +791,10 @@ $content-spacing-xs:    40px !default;
             img {
                 min-width: 100%;
                 height: 100%;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
+                // position: absolute;
+                // left: 50%;
+                // top: 50%;
+                // transform: translate(-50%, -50%);
             }
         }
     }
