@@ -28,6 +28,7 @@ module.exports = {
         w_loan_email: path.resolve(__dirname, 'Scripts/src/tsx/w-loan_email.js'),
         w_testdrive_email: path.resolve(__dirname, 'Scripts/src/tsx/w-testdrive_email.js'),
         w_location: path.resolve(__dirname, 'Scripts/src/tsx/w-location.js'),
+        w_location_v2: path.resolve(__dirname, 'Scripts/src/tsx/w-location_v2.js'),
         w_usedcar_list: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-list.jsx'),
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
     },
