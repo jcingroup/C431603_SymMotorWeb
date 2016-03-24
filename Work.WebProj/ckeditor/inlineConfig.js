@@ -5,7 +5,7 @@
 
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
-    config.height = 500
+    config.height = 500;
     config.language = 'zh';
     // config.uiColor = '#AADC6E';
     config.extraPlugins = 'youtube';
@@ -42,19 +42,19 @@ CKEDITOR.editorConfig = function (config) {
 
 CKEDITOR.stylesSet.add('default', [
     // Block Styles
-    // { name: '標題 - 樣式1', element: 'h1', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式1', element: 'h2', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式2', element: 'h3', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式3', element: 'h4', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式4', element: 'h5', attributes: { 'class': 'colored' } },
-    // { name: '標題 - 樣式4', element: 'h6', attributes: { 'class': 'colored' } },
-    // { name: '段落 - 引言', element: 'p', attributes: { 'class': 'leading' } },
+    // { name: '標題-樣式1', element: 'h1', attributes: { 'class': 'colored' } },
+    { name: '標題-樣式1', element: 'h2', attributes: { 'class': 'colored' } },
+    { name: '標題-樣式2', element: 'h3', attributes: { 'class': 'colored' } },
+    { name: '標題-樣式3', element: 'h4', attributes: { 'class': 'colored' } },
+    { name: '標題-樣式4', element: 'h5', attributes: { 'class': 'colored' } },
+    // { name: '標題-樣式4', element: 'h6', attributes: { 'class': 'colored' } },
+    // { name: '段落-引言', element: 'p', attributes: { 'class': 'leading' } },
 
     // Inline Styles
-    // { name: '文字 - 強調1', element: 'strong', attributes: { 'class': 'strong2' } },
-    // { name: '文字 - 強調2', element: 'strong', attributes: { 'class': 'strong3' } },
-    // { name: '文字 - 裝飾1', element: 'span', attributes: { 'class': 'underline' } },
-    // { name: '文字 - 裝飾2', element: 'span', attributes: { 'class': 'arrow-right' } },
+    // { name: '文字-強調1', element: 'strong', attributes: { 'class': 'strong2' } },
+    // { name: '文字-強調2', element: 'strong', attributes: { 'class': 'strong3' } },
+    // { name: '文字-裝飾1', element: 'span', attributes: { 'class': 'underline' } },
+    // { name: '文字-裝飾2', element: 'span', attributes: { 'class': 'arrow-right' } },
 
     // Object Styles
     { name: '列表-圖示&線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
@@ -63,5 +63,5 @@ CKEDITOR.stylesSet.add('default', [
     { name: '列表-無圖示', element: 'ul', attributes: { 'class': 'list-unstyled' } },
     { name: '數字列表-線', element: 'ol', attributes: { 'class': 'list-underline' } },
     { name: '表格樣式', element: 'table', attributes: { 'class': 'table' } },
-    // { name: '圖片 - 加框', element: 'img', attributes: { 'class': 'thumb' } }
+    // { name: '圖-加框', element: 'img', attributes: { 'class': 'thumb' } }
 ]);

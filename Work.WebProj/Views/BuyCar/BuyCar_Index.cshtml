@@ -6,7 +6,7 @@
 }
 
 @section css {
-    @* <link href="~/Content/css/swiper.min.css" rel="stylesheet"> *@
+    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
 }
 
 @section Scripts {
@@ -20,15 +20,16 @@
         });
         var bannerThumb = new Swiper('#banner-thumb', {
             spaceBetween: 10,
-            centeredSlides: true,
+            // centeredSlides: true,
             slidesPerView: 3,
+            autoplay: 2500,
             touchRatio: 0.2,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
-            slideToClickedSlide: true
+            // slideToClickedSlide: true
         });
-        banner.params.control = bannerThumb;
-        bannerThumb.params.control = banner;
+        // banner.params.control = bannerThumb;
+        // bannerThumb.params.control = banner;
 
         // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
         $(window).load(function(){
@@ -50,7 +51,7 @@
         var gb_type = '@Request.QueryString["type"]';
     </script>
     <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="~/Scripts/build/app/w_location.js?v=@CommWebSetup.CacheVer"></script>
+    <script src="~/Scripts/build/app/w_location_v2.js?v=@CommWebSetup.CacheVer"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="~/Content/js/gmap-location.js"></script>
 }
@@ -75,15 +76,19 @@
             }
         </ul>
     </section>
+    @if (Model.Any(x => x.list_imgsrc != null))
+    {
     <div class="grid-gallery bg2">
         <div class="wrap">
             <div id="banner-thumb" class="swiper-container">
                 <ul class="swiper-wrapper list-unstyled">
                     @foreach (var i in Model)
                     {
-                        <li class="swiper-slide">
-                            <img src="@i.list_imgsrc" alt="@i.event_title">
-                        </li>
+                        
+                            <li class="swiper-slide">
+                                <a href="~/Offer/Content?id=@i.event_id"><img src="@i.list_imgsrc" alt="@i.event_title"></a>
+                            </li>
+                        
                     }
                 </ul>
                 <a class="prev swiper-button-prev" href=""></a>
@@ -91,11 +96,8 @@
             </div>
         </div>
     </div>
+    }
 
-
-
-    <div id="location" class="grid-location">
-
-    </div>
+    <div id="location" class="grid-location"></div>
 
 </section>

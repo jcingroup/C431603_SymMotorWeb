@@ -146,8 +146,8 @@ namespace DotWeb.Api
                 r.result = false;
                 if (ex.InnerException != null)
                 {
-                    r.message = Resources.Res.Log_Err_Delete_DetailExist
-                        + "\r\n" + getErrorMessage(ex);
+                    r.message = Resources.Res.Log_Err_Delete_DetailExist;
+                    // + "\r\n" + getErrorMessage(ex);
                 }
                 else
                 {
