@@ -117,9 +117,14 @@ $content-spacing-xs:    40px !default;
 
         ul {margin:0;}
 
+        li {
+            height: 215px;
+            overflow: hidden;
+        }
+
         img {
-            max-width: 100%;
-            max-height: 215px;
+            width: 100%;
+            min-height: 100%;
             cursor: pointer;
         }
 
@@ -168,9 +173,6 @@ $content-spacing-xs:    40px !default;
     }
 
     .location {
-        width: 71.5%;
-        margin-left: 28.5%;
-        padding-left: $grid-gutter-width/2;
     }
 
     .table {min-width:700px;}
@@ -928,6 +930,13 @@ $content-spacing-xs:    40px !default;
     .card-text {
         height: 3em;
         overflow: hidden;
+    }
+}
+
+.Events {
+    .h2 {
+        margin-top: $spacer*3;
+        @include media-breakpoint-down(md) {margin-top: $spacer*2;}
     }
 }
 

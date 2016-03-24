@@ -5340,9 +5340,13 @@ a:focus {
 .grid-gallery #banner-thumb ul {
   margin: 0;
 }
+.grid-gallery #banner-thumb li {
+  height: 215px;
+  overflow: hidden;
+}
 .grid-gallery #banner-thumb img {
-  max-width: 100%;
-  max-height: 215px;
+  width: 100%;
+  min-height: 100%;
   cursor: pointer;
 }
 .grid-gallery #banner-thumb .prev, .grid-gallery #banner-thumb .next {
@@ -5382,11 +5386,6 @@ a:focus {
 .grid-location .map {
   width: 71.5%;
   padding-right: 0;
-}
-.grid-location .location {
-  width: 71.5%;
-  margin-left: 28.5%;
-  padding-left: 0.9375rem;
 }
 .grid-location .table {
   min-width: 700px;
@@ -6001,6 +6000,15 @@ a:focus {
 .Events .card-text, .Offer .card-text {
   height: 3em;
   overflow: hidden;
+}
+
+.Events .h2 {
+  margin-top: 3rem;
+}
+@media (max-width: 991px) {
+  .Events .h2 {
+    margin-top: 2rem;
+  }
 }
 
 .article-list {
