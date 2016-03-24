@@ -330,120 +330,121 @@ namespace EventByType {
 
                 outHtml = (
                     <div>
-    <h4 className="title"> {this.props.caption} 基本資料維護</h4>
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className="col-xs-10">
+                        <h4 className="title"> {this.props.caption} 基本資料維護</h4>
+                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+                            <div className="col-xs-10">
                                 <div className="alert alert-warning">
-                                    1. 如有上傳 Banner 輪播圖，請務必確認所有優惠資料的輪播圖尺寸皆相同 (建議尺寸: 1920*528 px) <br/>
+                                    1. 如有上傳 Banner 輪播圖，請務必確認每一張輪播圖尺寸皆相同 (建議尺寸: 1920*528 px) <br/>
                                     2. 如未上傳 Banner 輪播圖，請將【輪播圖顯示於列表】設為【隱藏】
+                                </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">輪播圖</label>
+                                <div className="col-xs-8">
+                                    <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'} 
+                                    url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
+                                    <small className="help-block">最多1張圖，建議尺寸 1920*528 px, 每張圖最大不可超過2MB</small>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">代表圖</label>
+                                <div className="col-xs-8">
+                                    <CommCmpt.MasterImageUpload FileKind="List" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'} 
+                                    url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
+                                    <small className="help-block">最多1張圖，檔案最大不可超過2MB</small>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">標題</label>
+                                <div className="col-xs-8">
+                                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'event_title') } value={fieldData.event_title} maxLength={64} required />
                                     </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">輪播圖</label>
-                <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="Banner" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'}
-                       url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，建議尺寸 1920*528 px, 每張圖最大不可超過2MB</small>
+                                <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">排序</label>
+                                <div className="col-xs-8">
+                                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
+                                    </div>
+                                <small className="col-xs-2 help-inline">數字越大越前面</small>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">輪播圖顯示於列表</label>
+                                <div className="col-xs-2">
+                                    <div className="radio-inline">
+                                        <label>
+                                            <input type="radio"
+                                                name="show_banner"
+                                                value={false}
+                                                checked={fieldData.show_banner === false}
+                                                onChange={this.changeFDValue.bind(this, 'show_banner') }
+                                                />
+                                            <span>隱藏</span>
+                                        </label>
+                                    </div>
+                                    <div className="radio-inline">
+                                        <label>
+                                            <input type="radio"
+                                                name="show_banner"
+                                                value={true}
+                                                checked={fieldData.show_banner === true}
+                                                onChange={this.changeFDValue.bind(this, 'show_banner') }
+                                                />
+                                            <span>顯示</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <small className="col-xs-6 help-inline">【購車優惠】的輪播圖會顯示於【購車服務】的畫面</small>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">狀態</label>
+                                <div className="col-xs-4">
+                                    <div className="radio-inline">
+                                        <label>
+                                            <input type="radio"
+                                                name="i_Hide"
+                                                value={true}
+                                                checked={fieldData.i_Hide === true}
+                                                onChange={this.changeFDValue.bind(this, 'i_Hide') }
+                                                />
+                                            <span>隱藏</span>
+                                        </label>
+                                    </div>
+                                    <div className="radio-inline">
+                                        <label>
+                                        <input type="radio"
+                                            name="i_Hide"
+                                            value={false}
+                                            checked={fieldData.i_Hide === false}
+                                            onChange={this.changeFDValue.bind(this, 'i_Hide') }
+                                            />
+                                        <span>顯示</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">簡介</label>
+                                <div className="col-xs-8">
+                                    <textarea type="text" className="form-control" rows={3} value={fieldData.event_info} onChange={this.changeFDValue.bind(this, 'event_info') } maxLength={128} />
+                                    </div>
+                                <small className="col-xs-2 help-inline">最多128字</small>
+                            </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">內容</label>
+                                <div className="col-xs-10">
+                                    <textarea type="date" className="form-control" id="event_content" name="event_content"
+                                        value={fieldData.event_content} onChange={this.changeFDValue.bind(this, 'event_content') }/>
+                                    </div>
+                            </div>
+                            <div className="form-action">
+                                <div className="col-xs-4 col-xs-offset-2">
+                                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
+                                    <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">代表圖</label>
-                <div className="col-xs-8">
-                   <CommCmpt.MasterImageUpload FileKind="List" MainId={fieldData.event_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/EventData/aj_FUpload'} url_list={gb_approot + 'Active/EventData/aj_FList'}
-                       url_delete={gb_approot + 'Active/EventData/aj_FDelete'} />
-                    <small className="help-block">最多1張圖，檔案最大不可超過2MB</small>
-                    </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">標題</label>
-                <div className="col-xs-8">
-                    <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'event_title') } value={fieldData.event_title} maxLength={64} required />
-                    </div>
-                <small className="col-xs-2 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">排序</label>
-                <div className="col-xs-8">
-                    <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
-                    </div>
-                <small className="col-xs-2 help-inline">數字越大越前面</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">輪播圖顯示於列表</label>
-                <div className="col-xs-4">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="show_banner"
-                                value={false}
-                                checked={fieldData.show_banner === false}
-                                onChange={this.changeFDValue.bind(this, 'show_banner') }
-                                />
-                            <span>隱藏</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="show_banner"
-                                value={true}
-                                checked={fieldData.show_banner === true}
-                                onChange={this.changeFDValue.bind(this, 'show_banner') }
-                                />
-                            <span>顯示</span>
-                           </label>
-                       </div>
-                    </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">狀態</label>
-                <div className="col-xs-4">
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="i_Hide"
-                                value={true}
-                                checked={fieldData.i_Hide === true}
-                                onChange={this.changeFDValue.bind(this, 'i_Hide') }
-                                />
-                            <span>隱藏</span>
-                           </label>
-                       </div>
-                   <div className="radio-inline">
-                       <label>
-                            <input type="radio"
-                                name="i_Hide"
-                                value={false}
-                                checked={fieldData.i_Hide === false}
-                                onChange={this.changeFDValue.bind(this, 'i_Hide') }
-                                />
-                            <span>顯示</span>
-                           </label>
-                       </div>
-                    </div>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">簡介</label>
-                <div className="col-xs-8">
-                    <textarea type="text" className="form-control" rows={3} value={fieldData.event_info} onChange={this.changeFDValue.bind(this, 'event_info') } maxLength={128} />
-                    </div>
-                <small className="col-xs-2 help-inline">最多128字</small>
-                </div>
-            <div className="form-group">
-                <label className="col-xs-2 control-label">內容</label>
-                <div className="col-xs-10">
-                    <textarea type="date" className="form-control" id="event_content" name="event_content"
-                        value={fieldData.event_content} onChange={this.changeFDValue.bind(this, 'event_content') }/>
-                    </div>
-                </div>
-            <div className="form-action">
-                <div className="col-xs-4 col-xs-offset-2">
-                    <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
-                    <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-                        </div>
                 );
             }
 

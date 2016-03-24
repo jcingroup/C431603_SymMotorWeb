@@ -165,6 +165,7 @@ namespace Brand {
         render() {
             return (
                 <div>
+                    <div className="alert alert-warning">要刪除相簿之前，請先將相簿內的圖片全部刪除才可刪除相簿。</div>
                     <div className="form-group">
                         <label className="col-xs-1">新增相簿</label>
                         <div className="col-xs-8">
@@ -281,7 +282,7 @@ namespace Brand {
                             </div>
                             <div className="panel-footer">
                                 <button type="button" onClick={this.updateSubmit.bind(this, this.props.iKey) } className="btn-primary"><i className="fa-check"></i> 相簿存檔</button>
-                                <small className="text-muted">　如有修改此相簿的相簿名稱或圖說，請記得按【相簿存檔】</small>
+                                <small className="text-muted">　如有修改此相簿的相簿名稱或圖說，請記得先按【相簿存檔】再上傳圖片。</small>
                             </div>
                         </div>
                     </Collapse>

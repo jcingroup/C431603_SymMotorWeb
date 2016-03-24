@@ -3,18 +3,48 @@
   
   <file>
     <sort>1</sort>
-    <name>editor_text.html</name>
-    <memo>【文章編輯】文字段落編排</memo>
+    <name>A01_news.html</name>
+    <memo>【最新消息】新增、修改、刪除</memo>
   </file>
   <file>
     <sort>2</sort>
-    <name>editor_insert.html</name>
-    <memo>【文章編輯】插入圖片/影片</memo>
+    <name>A02_faq.html</name>
+    <memo>【FAQ】新增、修改、刪除</memo>
   </file>
   <file>
     <sort>3</sort>
-    <name>editor_table.html</name>
+    <name>B01_events.html</name>
+    <memo>【精彩活動回顧】新增、刪除、修改</memo>
+  </file>
+  <file>
+    <sort>4</sort>
+    <name>B02_offer.html</name>
+    <memo>【購車優惠】新增、刪除、修改</memo>
+  </file>
+  <file>
+    <sort>5</sort>
+    <name>D01_editor_text.html</name>
+    <memo>【文章編輯】文字段落編排</memo>
+  </file>
+  <file>
+    <sort>6</sort>
+    <name>D02_editor_insert.html</name>
+    <memo>【文章編輯】插入圖片/影片</memo>
+  </file>
+  <file>
+    <sort>7</sort>
+    <name>D03_editor_table.html</name>
     <memo>【文章編輯】表格 增加/刪除列</memo>
+  </file>
+  <file>
+    <sort>8</sort>
+    <name>F01_banner.html</name>
+    <memo>【首頁 Banner 圖】新增、刪除、修改</memo>
+  </file>
+  <file>
+    <sort>9</sort>
+    <name>F03_location.html</name>
+    <memo>【營業所 / 維修點】修改</memo>
   </file>
 
 </document>

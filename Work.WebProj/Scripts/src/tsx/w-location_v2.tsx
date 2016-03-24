@@ -283,37 +283,47 @@ namespace W_Location_v2 {
 
 
             outHtml = (
-                <div>
+                <div className="wrap">
 
-                    <form className="form-inline text-xs-center" action="">
-                        <div className="form-group">
+                    <section className="search">
+                        <h2 className="h1">營業據點查詢</h2>
+                        <form className="form" action="">
+                            <div className="form-group  text-xs-center">
 
-                            <button type="button" onClick={this.onChangeType.bind(this, LocationType.sales) } className={class_string.sales}>展示中心查詢</button> { }
-                            <button type="button" onClick={this.onChangeType.bind(this, LocationType.repair) } className={class_string.repair}>維修據點查詢</button>
+                                <button type="button" onClick={this.onChangeType.bind(this, LocationType.sales) } className={class_string.sales}>展示中心查詢</button> { }
+                                <button type="button" onClick={this.onChangeType.bind(this, LocationType.repair) } className={class_string.repair}>維修據點查詢</button>
 
-                        </div>
-                        <div className="form-group">
-                            <label className="sr-only">選擇縣市</label>
-                            <select name="" id="" className="form-control c-select" value={searchData.city} onChange={this.onCityChange.bind(this, 'city') }>
-                                <option value="" defaultValue="">選擇縣市</option>
-                                {
-                                DT.twDistrict.map((item, i) => <option key={i} value={item.city}>{item.city}</option>)
-                                }
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <label className="sr-only">選擇區域</label>
-                            <select name="" id="" className="form-control c-select" value={searchData.country} onChange={this.changeInputVal.bind(this, 'country') }>
-                                <option value="" defaultValue="">選擇區域</option>
-                                {
-                                country_list.map((item, i) => <option key={i} value={item.county}>{item.county}</option>)
-                                }
-                            </select>
-                        </div>
-                    </form>
+                            </div>
+                            <div className="form-group">
+                                <label className="sr-only">選擇縣市</label>
+                                <select name="" id="" className="form-control c-select" value={searchData.city} onChange={this.onCityChange.bind(this, 'city') }>
+                                    <option value="" defaultValue="">選擇縣市</option>
+                                    {
+                                    DT.twDistrict.map((item, i) => <option key={i} value={item.city}>{item.city}</option>)
+                                    }
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label className="sr-only">選擇區域</label>
+                                <select name="" id="" className="form-control c-select" value={searchData.country} onChange={this.changeInputVal.bind(this, 'country') }>
+                                    <option value="" defaultValue="">選擇區域</option>
+                                    {
+                                    country_list.map((item, i) => <option key={i} value={item.county}>{item.county}</option>)
+                                    }
+                                </select>
+                            </div>
+                        </form>
+                    </section>
 
-                    <div id="map"></div>
-                    {table_html}
+                    <section className="map">
+                        <h2 className="sr-only">地圖</h2>
+                        <div id="map"></div>
+                    </section>
+
+                    <section className="location">
+                        <h2 className="sr-only">據點列表</h2>
+                        {table_html}
+                    </section>
 
                 </div>
             );
