@@ -22,15 +22,6 @@
     <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        var banner = new Swiper('#banner .swiper-container', {
-            autoplay: 2500,
-            autoplayDisableOnInteraction: 'true',
-            speed: 500
-        });
-        $("#banner-thumb").on('click', 'li', function(){
-            banner.slideTo($(this).index(), 500);
-        });
-
         $(window).scroll(function () {
             var h = $('#header').height();
             if ($(this).scrollTop() > h) {

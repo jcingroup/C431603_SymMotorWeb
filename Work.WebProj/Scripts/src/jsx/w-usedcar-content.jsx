@@ -6,7 +6,8 @@ var CarContent = React.createClass({
     getInitialState: function () {
         return {
             field: {
-                base: {}
+                base: {},
+                pic: []
             }
         };
     },
@@ -20,12 +21,38 @@ var CarContent = React.createClass({
         $.get(this.props.sym_web_api + 'api_content.asp', { h_auc_no: this.props.h_auc_no, h_obj_no: this.props.h_obj_no })
         .done(function (data) {
             this.setState({ field: data });
+
+            var banner = new Swiper('#banner .swiper-container', {
+                autoplay: 2500,
+                autoplayDisableOnInteraction: 'true',
+                speed: 500
+            });
+            $("#banner-thumb").on('click', 'li', function () {
+                banner.slideTo($(this).index(), 500);
+            });
+
         }.bind(this));
+    },
+    formatNumber: function (number) {
+        if (number == undefined || number == null) {
+            return '';
+        }
+        var number = number.toFixed(2) + '';
+        var x = number.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        //return x1 + x2;
+        return x1;
     },
     render: function () {
         let outHtml = null;
 
         var base = this.state.field.base;
+        var pic = this.state.field.pic;
 
         outHtml =
         <div>
@@ -35,35 +62,31 @@ var CarContent = React.createClass({
                         <small>結束時間：{base.end_date} {base.end_time}</small>
                         拍賣編號
                         <strong>{base.auc_no}</strong>
-                        <span className="price text-danger">直購價：${base.d_price}</span>
+                        <span className="price text-danger">直購價：${this.formatNumber(base.d_price)}</span>
                     </h2>
                     <div className="gallery row">
                         <div id="banner">
                             <div className="swiper-container">
                                 <ul className="swiper-wrapper list-unstyled">
-                                    <li className="swiper-slide"><img src="/Content/images/Index/banner1.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                    <li className="swiper-slide"><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
+                                    {
+                                        pic.map(function (item, i) {
+                                            return (
+                                            <li className="swiper-slide">
+                                                <img src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" />
+                                            </li>);
+                                        }.bind(this))
+                                    }
                                 </ul>
                             </div>
                         </div>
                         <div id="banner-thumb">
                             <ul className="list-unstyled">
-                                <li><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-2.jpg" alt="" /></li>
-                                <li><img src="/Content/images/UsedCar/pro1-1.jpg" alt="" /></li>
+                                {
+                                    pic.map(function (item, i) {
+                                        return (
+                                        <li><img src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" /></li>);
+                                    }.bind(this))
+                                }
                             </ul>
                         </div>
                     </div>

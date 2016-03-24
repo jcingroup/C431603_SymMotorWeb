@@ -215,7 +215,7 @@ var ListCars = React.createClass({
                                         <li className="card-wrap" key={item.obj_no}>
                                             <dl className="card">
                                                 <dt className="card-img-top">
-                                                    <a href={gb_approot+'UsedCar/Content?h_auc_no' + item.auc_no + '&h_obj_no=' + item.obj_no} title="SEE MORE">
+                                                    <a href={gb_approot+'UsedCar/Content?h_auc_no=' + item.auc_no + '&h_obj_no=' + item.obj_no} title="SEE MORE">
                                                         <img src={this.props.sym_Web_pic + item.obj_no + '_1.jpg'} alt="" />
                                                         <span className="label label-danger">結束時間：{item.end_date} {item.end_time}</span>
                                                     </a>
@@ -224,7 +224,7 @@ var ListCars = React.createClass({
                                                     <article>
                                                         <h3 className="card-title">
                                                             拍賣編號
-                                                            <a href={gb_approot+'UsedCar/Content?h_auc_no' + item.auc_no + '&h_obj_no=' + item.obj_no}>{item.auc_no}</a>
+                                                            <a href={gb_approot+'UsedCar/Content?h_auc_no=' + item.auc_no + '&h_obj_no=' + item.obj_no}>{item.auc_no}</a>
                                                         </h3>
                                                         <div className="card-text">
                                                             <ul className="info list-unstyled">
