@@ -2,6 +2,11 @@
     ViewBag.Title = "認證中古車";
     ViewBag.BodyClass = "UsedCar page_content";
     Layout = "~/Views/Shared/Layout.cshtml";
+
+    //Parameter
+    //ViewBag.h_auc_no
+    //ViewBag.h_obj_no
+
 }
 @section css {
     <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
@@ -9,28 +14,14 @@
 }
 
 @section Scripts {
+    <script>
+        var h_auc_no = '@ViewBag.h_auc_no';
+        var h_obj_no = '@ViewBag.h_obj_no';
+    </script>
+    <script src="~/Scripts/build/app/vendors.js"></script>
+    <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-        var banner = new Swiper('#banner .swiper-container', {
-            autoplay: 2500,
-            autoplayDisableOnInteraction: 'false',
-            speed: 1000,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-        });
-        var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
-            spaceBetween: 10,
-            slidesPerView: 5,
-            autoplay: 2500,
-            autoplayDisableOnInteraction: 'false',
-            speed: 1000,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-        });
-        $("#banner-thumb").on('click', 'li', function(){
-            banner.slideTo($(this).index(), 1000);
-        });
-
         $(window).scroll(function () {
             var h = $('#header').height();
             if ($(this).scrollTop() > h) {
@@ -52,106 +43,4 @@
 
 @Html.Partial("~/Views/UsedCar/UsedCar_sidebar.cshtml")
 
-<section id="content">
-
-    <div class="grid-info"><div class="wrap">
-
-        <h2 class="h1 text-xs-left">
-            <small class="meta">
-                <span class="label label-danger">拍賣編號：A08037</span>
-                <span class="text-muted">結束時間：2016/1/1 18:00:59</span>
-            </small>
-            <ul class="title list-inline">
-                <li>Mitsubishi</li>@* 廠牌 *@
-                <li>COLTPLUS 1.6L</li>@* 車型 *@
-                <li>2013 年</li>@* 年份 *@
-                <li class="price text-danger">直購價：$41.8萬</li>
-            </ul>
-        </h2>
-
-        <dl class="row">
-            <dt class="gallery">
-                <div id="banner">
-                    <div class="swiper-container">
-                        <ul class="swiper-wrapper list-unstyled">
-                            <li class="swiper-slide"><img src="~/Content/images/Index/banner1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                        </ul>
-                        <a class="prev swiper-button-prev" href=""></a>
-                        <a class="next swiper-button-next" href=""></a>
-                    </div>
-                </div>
-                <div id="banner-thumb">
-                    <div class="swiper-container">
-                        <ul class="swiper-wrapper list-unstyled">
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                            <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                        </ul>
-                        <a class="prev swiper-button-prev" href=""></a>
-                        <a class="next swiper-button-next" href=""></a>
-                    </div>
-                </div>
-            </dt>
-            <dd class="info">
-                <ul class="list-unstyled">
-                    <li><strong>拍賣編號：</strong>A08288</li>
-                    <li><strong>廠牌：</strong>Mitsubishi</li>
-                    <li><strong>車型：</strong>COLTPLUS 1.6L</li>
-                    <li><strong>細車型：</strong>NB0S0</li>
-                    <li><strong>顏色：</strong>黑</li>
-                    <li><strong>排氣量：</strong>1584</li>
-                    <li><strong>年份：</strong>2013</li>
-                    <li><strong>里程數：</strong>約 42330 <small>(數據僅供參考)</small></li>
-                    <li><strong>排檔：</strong>自排</li>
-                    <li><strong>存放地：</strong>台北廠</li>
-                    <li><strong>胎深：</strong>1.8mm</li>
-                    <li><strong>原廠證件：</strong>牌照登記書『繳銷過戶』</li>
-                    <li><strong>監理站：</strong>-</li>
-                    <li><strong>引擎號碼：</strong>-</li>
-                    <li><strong>領牌日：</strong>-</li>
-                    <li><strong>原車價：</strong>$585000</li>
-                    <li><strong>直購價：</strong>$418000</li>
-                </ul>
-            </dd>
-        </dl>
-
-    </div></div>
-
-    <div class="grid-info"><div class="wrap">
-        <h3 class="h3">配備</h3>
-        <ul class="accessory list-inline">
-            <li>天窗</li>
-            <li class="active">天窗</li>@* 有此配備要加 class="active" *@
-            <li>天窗</li>
-            <li>天窗</li>
-            <li>天窗</li>
-            <li>天窗</li>
-            <li>天窗</li>
-        </ul>
-    </div></div>
-
-    <div class="grid-info"><div class="wrap">
-        <h2 class="h1">購買須知</h2>
-        <ul class="notice list-unstyled">
-            <li><em>配備說明</em>車輛相關資料請由整備表中下載，實況交車</li>
-            <li><em>車　　況</em>本車為購入中古車，詳細車況請參考整備表或與存放廠確認</li>
-            <li><em>備　　註</em>車牌已繳銷須重新驗車領牌。如須異動監理站車籍至其他監理站，請自行以新車主名義申請，須一個工作天。</li>
-            <li><em>注意事項</em>1. 請於完款後三天內至監理站為過戶登記，相關費用需自行承擔。2. 若需托運，其運費依規定辦理。</li>
-        </ul>
-    </div></div>
-
-</section>
+<section id="content"></section>

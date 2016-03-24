@@ -30,6 +30,7 @@ module.exports = {
         w_location: path.resolve(__dirname, 'Scripts/src/tsx/w-location.js'),
         w_location_v2: path.resolve(__dirname, 'Scripts/src/tsx/w-location_v2.js'),
         w_usedcar_list: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-list.jsx'),
+        w_usedcar_content: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-content.jsx'),
         vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
     },
     output: {
@@ -52,6 +53,6 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
-      //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ]
 };
