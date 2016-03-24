@@ -4,13 +4,28 @@ var moment = require('moment');
 
 var ListCars = React.createClass({
     getInitialState: function () {
+
+        var now = new Date();
+        var opt_year = [];
+        for(var i=0; i < 5; i++ ) {
+            opt_year.push(now.getFullYear()-i);
+        }
+
         return {
             lists:[],
             search:{
-                h_obj_brand:null
+                h_obj_brand:null,
+                h_obj_type:null,
+                h_obj_color:null,
+                h_obj_born_date:null,
+                h_place_dept_no:null,
+                h_list_price:null,
+                h_low_price:null
             },
             options_brand:[],
-            options_modal:[]
+            options_modal:[],
+            options_year:opt_year,
+            options_place:[]
         };
     },
     getDefaultProps: function () {
@@ -20,7 +35,7 @@ var ListCars = React.createClass({
         };
     },
     componentDidMount: function () {
-        $.get(this.props.sym_web_api + 'api.asp',{})
+        $.get(this.props.sym_web_api + 'api_list.asp',{})
         .done(function(data){
             this.setState({lists:data});
         }.bind(this));
@@ -30,6 +45,10 @@ var ListCars = React.createClass({
             this.setState({options_brand:data});
         }.bind(this));
 
+        $.get(this.props.sym_web_api + 'api_place_dept_no.asp',{})
+        .done(function(data){
+            this.setState({options_place:data});
+        }.bind(this));
     },
     setSearchField:function(n,e){
         var obj = this.state.search;
@@ -46,18 +65,39 @@ var ListCars = React.createClass({
                 this.setState({ search: obj,options_modal:data });
             }.bind(this))
     },
+    onSubmit:function(e){
+        e.preventDefault();
+        //console.log(this.state.search);
+        $.get(this.props.sym_web_api + 'api_list.asp',this.state.search)
+        .done(function(data){
+            this.setState({lists:data});
+        }.bind(this));
+
+        return;
+    },
+    clearSearch:function(e){
+        var obj = this.state.search;
+        obj = {
+            h_obj_brand:'',
+            h_obj_type:'',
+            h_obj_color:'',
+            h_obj_born_date:'',
+            h_place_dept_no:'',
+            h_list_price:'',
+            h_low_price:''
+        };
+        this.setState({search:obj});
+    },
     render:function() {
         let outHtml = null;
         outHtml =
-        <div className="wrap">
+        <div>
             <h1 className="h1">{this.props.caption}</h1>
             <section id="content">
-
                     <h2 className="sr-only">全部中古車一覽表</h2>
-
                     <section className="grid-search">
                         <h3 className="sr-only">搜尋條件</h3>
-                        <form className="form-inline text-sm-center text-xs-left" action="">
+                        <form className="form-inline text-sm-center text-xs-left" onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <label htmlFor="brand">廠牌</label> {}
                                 <select id="h_obj_brand" className="form-control c-select style2"
@@ -67,15 +107,18 @@ var ListCars = React.createClass({
                                     {
                                         this.state.options_brand.map(function(item,i){
                                             return (
-                                            <option value={item.value} key={item.value}>{item.name}</option>);
+                                                <option value={item.value} key={item.value}>{item.name}</option>);
                                         })
                                     }
                                 </select>
                             </div>
                             <div className="form-group">
                                 <label for="">車型</label> {}
-                                <select id="h_obj_type" onChange={this.setSearchField.bind(this,'h_obj_type')} className="form-control c-select style2">
-                                    <option value="" selected disabled>車型</option>
+                                <select id="h_obj_type"
+                                        value={this.state.search.h_obj_type}
+                                        onChange={this.setSearchField.bind(this,'h_obj_type')}
+                                        className="form-control c-select style2">
+                                    <option value="">車型</option>
                                     {
                                         this.state.options_modal.map(function(item,i){
                                             return (
@@ -86,37 +129,78 @@ var ListCars = React.createClass({
                             </div>
                             <div className="form-group">
                                 <label for="">車色</label> {}
-                                <select name="" id="" className="form-control c-select style2">
-                                    <option value="" selected disabled>車色</option>
+                                <select id="h_obj_color"
+                                        value={this.state.search.h_obj_color}
+                                        className="form-control c-select style2"
+                                        onChange={this.setSearchField.bind(this,'h_obj_color')}>
+                                    <option value="">車色</option>
+                                    <option value='黑'>黑</option>
+                                    <option value='白'>白</option>
+                                    <option value='紅'>紅</option>
+                                    <option value='橙'>橙</option>
+                                    <option value='黃'>黃</option>
+                                    <option value='綠'>綠</option>
+                                    <option value='藍'>藍</option>
+                                    <option value='靛'>靛</option>
+                                    <option value='紫'>紫</option>
+                                    <option value='金'>金</option>
+                                    <option value='銀'>銀</option>
+                                    <option value='灰'>灰</option>
+                                    <option value='棕'>棕</option>
+                                    <option value='粉紅'>粉紅</option>
+                                    <option value='咖啡'>咖啡</option>
                                 </select> {}
                             </div>
                             <div className="form-group">
                                 <label for="">年份</label> {}
-                                <select name="" id="" className="form-control c-select style2">
-                                    <option value="" selected disabled>年份</option>
+                                <select id="h_obj_born_date"
+                                        value={this.state.search.h_obj_born_date}
+                                        className="form-control c-select style2"
+                                        onChange={this.setSearchField.bind(this,'h_obj_born_date')}>
+                                    <option value="">年份</option>
+                                    {
+                                        this.state.options_year.map(function(item,i){
+                                            return (
+                                                <option value={item} key={item}>{item}</option>);
+                                        })
+                                    }
+
                                 </select> {}
                             </div>
                             <div className="form-group">
                                 <label for="">地點</label> {}
-                                <select name="" id="" className="form-control c-select style2">
-                                    <option value="" selected disabled>地點</option>
+                                <select id="h_place_dept_no"
+                                        value={this.state.search.h_place_dept_no}
+                                        onChange={this.setSearchField.bind(this,'h_place_dept_no')}
+                                        className="form-control c-select style2">
+                                    <option value="">地點</option>
+                                    {
+                                        this.state.options_place.map(function(item,i){
+                                            return (
+                                                <option value={item.value} key={item.value}>{item.name}</option>);
+                                        })
+                                    }
                                 </select> {}
                             </div>
                             <div className="form-group">
                                 <label for="">價格</label> {}
-                                <select name="" id="" className="form-control c-select style2">
-                                    <option value="" selected>$0</option>
+                                <select value={this.state.search.h_low_price}
+                                        onChange={this.setSearchField.bind(this,'h_low_price')}
+                                        className="form-control c-select style2">
+                                    <option value="">$0</option>
                                 </select> {}
                                 <label for="">~</label> {}
-                                <select name="" id="" className="form-control c-select style2">
-                                    <option value="" selected>不限</option>
+                                <select value={this.state.search.h_list_price}
+                                        onChange={this.setSearchField.bind(this,'h_list_price')}
+                                        className="form-control c-select style2">
+                                    <option value="">不限</option>
                                     <option value="">$1,000,000</option>
                                 </select> {}
                             </div>
                             <div className="form-group">
-                                <button className="btn btn-secondary">找車</button> {}
-                                <button className="btn btn-muted">清除搜尋條件</button> {}
-                                <a href="~/UsedCar/Form" className="btn btn-muted gutter-xs-down">填寫更多需求 (協助找車)</a>
+                                <button className="btn btn-secondary" type="submit">找車</button> {}
+                                <button className="btn btn-muted" type="button" onClick={this.clearSearch}>清除搜尋條件</button> {}
+                                <a href={gb_approot+ 'UsedCar/Form'} className="btn btn-muted gutter-xs-down">填寫更多需求 (協助找車)</a>
                             </div>
                         </form>
                     </section>
@@ -131,7 +215,7 @@ var ListCars = React.createClass({
                                         <li className="card-wrap" key={item.obj_no}>
                                             <dl className="card">
                                                 <dt className="card-img-top">
-                                                    <a href={gb_approot+'UsedCar/Content'} title="SEE MORE">
+                                                    <a href={gb_approot+'UsedCar/Content?h_auc_no' + item.auc_no + '&h_obj_no=' + item.obj_no} title="SEE MORE">
                                                         <img src={this.props.sym_Web_pic + item.obj_no + '_1.jpg'} alt="" />
                                                         <span className="label label-danger">結束時間：{item.end_date} {item.end_time}</span>
                                                     </a>
@@ -140,7 +224,7 @@ var ListCars = React.createClass({
                                                     <article>
                                                         <h3 className="card-title">
                                                             拍賣編號
-                                                            <a href="~/UsedCar/Content">{item.obj_no}</a>
+                                                            <a href={gb_approot+'UsedCar/Content?h_auc_no' + item.auc_no + '&h_obj_no=' + item.obj_no}>{item.auc_no}</a>
                                                         </h3>
                                                         <div className="card-text">
                                                             <ul className="info list-unstyled">

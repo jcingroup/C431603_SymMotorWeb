@@ -214,7 +214,7 @@
     <Content Include="app_modules\Pikaday\package.json" />
     <Content Include="app_modules\simple-ajax-uploader\bower.json" />
     <Content Include="app_modules\simple-ajax-uploader\package.json" />
-    <None Include="AspApi\api.asp" />
+    <None Include="AspApi\api_list.asp" />
     <Content Include="app_modules\comm-cmpt\package.js" />
     <Content Include="app_modules\comm-func\package.js" />
     <Content Include="app_modules\comm-typeahead\typeahead.css" />
@@ -225,6 +225,8 @@
     <Content Include="app_modules\Pikaday\pikaday.js" />
     <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.js" />
     <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.min.js" />
+    <Content Include="AspApi\api_content.asp" />
+    <Content Include="AspApi\api_place_dept_no.asp" />
     <Content Include="AspApi\api_modal.asp" />
     <Content Include="AspApi\api_brand.asp" />
     <Content Include="AspApi\apilet.html" />
@@ -258,6 +260,7 @@
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\UsersController.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
+    <Content Include="AspApi\Ref\wau_014.asp" />
     <Content Include="ckeditor\inlineConfig.js" />
     <Content Include="ckfinder\ckfinder.js" />
     <Content Include="ckfinder\ckfinder_v1.js" />
@@ -399,6 +402,7 @@
     <Content Include="Scripts\build\app\w_loan_email.js" />
     <Content Include="Scripts\build\app\w_location.js" />
     <Content Include="Scripts\build\app\w_testdrive_email.js" />
+    <Content Include="Scripts\build\app\w_usedcar_content.js" />
     <Content Include="Scripts\build\app\w_usedcar_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
@@ -510,6 +514,7 @@
     <Content Include="Views\TestDrive\TestDriveEmail.cshtml" />
     <Content Include="Views\Map\Map.cshtml" />
     <Content Include="Scripts\src\jsx\w-usedcar-list.jsx" />
+    <Content Include="Scripts\src\jsx\w-usedcar-content.jsx" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -532,6 +537,7 @@
     <Content Include="_Code\SysDoc\A02_faq.html" />
     <Content Include="_Code\SysDoc\B01_events.html" />
     <Content Include="_Code\SysDoc\B02_offer.html" />
+    <Content Include="_Code\SysDoc\C01_product.html" />
     <Content Include="_Code\SysDoc\D01_editor_text.html" />
     <Content Include="_Code\SysDoc\D02_editor_insert.html" />
     <Content Include="_Code\SysDoc\D03_editor_table.html" />

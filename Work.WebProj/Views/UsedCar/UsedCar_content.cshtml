@@ -2,6 +2,11 @@
     ViewBag.Title = "認證中古車";
     ViewBag.BodyClass = "UsedCar page_content";
     Layout = "~/Views/Shared/Layout.cshtml";
+
+    //Parameter
+    //ViewBag.h_auc_no
+    //ViewBag.h_obj_no
+
 }
 @section css {
     <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
@@ -9,6 +14,12 @@
 }
 
 @section Scripts {
+    <script>
+        var h_auc_no = '@ViewBag.h_auc_no';
+        var h_obj_no = '@ViewBag.h_obj_no';
+    </script>
+    <script src="~/Scripts/build/app/vendors.js"></script>
+    <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
         var banner = new Swiper('#banner .swiper-container', {
@@ -41,103 +52,4 @@
 
 @Html.Partial("~/Views/UsedCar/UsedCar_sidebar.cshtml")
 
-<section id="content">
-
-    <div class="grid-info"><div class="wrap">
-        <h2 class="h1 text-xs-left">
-            <small>結束時間：2016/1/1 18:00:59</small>
-            拍賣編號
-            <strong>A08037</strong>
-            <span class="price text-danger">直購價：$668,000</span>
-        </h2>
-        <div class="gallery row">
-            <div id="banner">
-                <div class="swiper-container">
-                    <ul class="swiper-wrapper list-unstyled">
-                        <li class="swiper-slide"><img src="~/Content/images/Index/banner1.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                        <li class="swiper-slide"><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="banner-thumb">
-                <ul class="list-unstyled">
-                    <li><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-2.jpg" alt=""></li>
-                    <li><img src="~/Content/images/UsedCar/pro1-1.jpg" alt=""></li>
-                </ul>
-            </div>
-        </div>
-    </div></div>
-
-    <div class="grid-info"><div class="wrap">
-        <h3 class="sr-only">車況介紹</h3>
-        <div class="row">
-            <dl class="info">
-                <dt class="icon"><i class="ti-car"></i></dt>
-                <dd>
-                    <ul class="list-unstyled">
-                        <li><em>廠牌：</em> Mitsubishi</li>
-                        <li><em>車型：</em> COLTPLUS1 6LNB030</li>
-                        <li><em>車色：</em> 銀</li>
-                        <li><em>年份：</em> 2013</li>
-                        <li><em>地點：</em> 蘆洲廠</li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="info">
-                <dt class="icon"><i class="ti-settings"></i></dt>
-                <dd>
-                    <ul class="list-unstyled">
-                        <li><em>排氣量：</em>2977</li>
-                        <li><em>里程數(數據僅供參考)：</em>約 120000</li>
-                        <li><em>排檔：</em>手排</li>
-                        <li><em>胎深：</em>1mm</li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="info">
-                <dt class="icon"><i class="ti-notepad"></i></dt>
-                <dd>
-                    <ul class="list-unstyled">
-                        <li><em>原廠證件：</em>牌照登記書『繳銷過戶』</li>
-                        <li><em>監理站：</em>暫無資料</li>
-                        <li><em>引擎號碼：</em>暫無資料</li>
-                        <li><em>領牌日：</em>暫無資料</li>
-                        <li><em>原車價：</em>$995000</li>
-                        <li><em>車輛整備表下載：</em>暫無資料</li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="detail">
-                <dt>配備：</dt>
-                <dd>天窗、CD音響、衛星導航、定速、電動後視鏡、安全氣囊、4WD、皮椅、VCD、恆溫、ABS、倒車雷達、霧燈、電動座椅、DVD、防盜、TCS、鋁圈、電動窗</dd>
-            </dl>
-        </div>
-    </div></div>
-
-    <div class="grid-info"><div class="wrap">
-        <article class="article">
-            <h2 class="h1">購買須知</h2>
-            <ul class="notice list-unstyled">
-                <li><em>配備說明</em>車輛相關資料請由整備表中下載，實況交車</li>
-                <li><em>車　　況</em>本車為購入中古車，詳細車況請參考整備表或與存放廠確認</li>
-                <li><em>備　　註</em>車牌已繳銷須重新驗車領牌。如須異動監理站車籍至其他監理站，請自行以新車主名義申請，須一個工作天。</li>
-                <li><em>注意事項</em>1. 請於完款後三天內至監理站為過戶登記，相關費用需自行承擔。<br>2. 若需托運，其運費依規定辦理。</li>
-            </ul>
-        </article>
-    </div></div>
-
-</section>
+<section id="content"></section>

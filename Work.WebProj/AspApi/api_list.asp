@@ -13,6 +13,7 @@
     h_obj_born_date=request("h_obj_born_date")
     h_place_dept_no=request("h_place_dept_no")
     h_list_price=request("h_list_price")
+    h_low_price=request("h_low_price")
 
 	Set conn = Server.CreateObject("ADODB.Connection") 
       	conn.open "driver={Microsoft ODBC for Oracle};server=wau;uid=web;pwd=gjp4u4"
@@ -33,7 +34,9 @@
     if h_obj_color<>"" then sql_txt=sql_txt+" and a.obj_color ='"+trim(h_obj_color)+"' "
     if h_obj_born_date<>"" then sql_txt=sql_txt+" and substr(a.obj_born_date,1,4)='"+trim(h_obj_born_date)+"' "         
     if h_place_dept_no<>"" then sql_txt=sql_txt+" and a.place_dept_no='"+trim(h_place_dept_no)+"' "     
-    if h_list_price<>"" then sql_txt=sql_txt+" and a.list_price<="+trim(h_list_price)     
+    if h_list_price<>"" then sql_txt=sql_txt+" and a.list_price<="+trim(h_list_price)
+    if h_low_price<>"" then sql_txt=sql_txt+" and a.list_price>="+trim(h_low_price)
+
     sql_txt=sql_txt+        " order by a.auc_no desc   "
 
 	Set rs = Server.CreateObject("ADODB.Recordset")
