@@ -24,11 +24,22 @@ var CarContent = React.createClass({
 
             var banner = new Swiper('#banner .swiper-container', {
                 autoplay: 2500,
-                autoplayDisableOnInteraction: 'true',
-                speed: 500
+                autoplayDisableOnInteraction: 'false',
+                speed: 1000,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+            var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
+                spaceBetween: 10,
+                slidesPerView: 5,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: 'false',
+                speed: 1000,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
             });
             $("#banner-thumb").on('click', 'li', function () {
-                banner.slideTo($(this).index(), 500);
+                banner.slideTo($(this).index(), 1000);
             });
 
         }.bind(this));
@@ -82,9 +93,7 @@ var CarContent = React.createClass({
                 }
             }
         }
-        var r = hasEquip.join('、')
-
-        return r;
+        return hasEquip;
     },
     render: function () {
         let outHtml = null;
@@ -92,6 +101,7 @@ var CarContent = React.createClass({
         var base = this.state.field.base;
         var pic = this.state.field.pic;
         var equips = this.showEquip();
+
         outHtml =
         <div>
             <div className="grid-info">
@@ -130,7 +140,6 @@ var CarContent = React.createClass({
                     </div>
                 </div>
             </div>
-
             <div className="grid-info">
                 <div className="wrap">
                     <h3 className="sr-only">車況介紹</h3>
@@ -178,7 +187,6 @@ var CarContent = React.createClass({
                     </div>
                 </div>
             </div>
-
             <div className="grid-info">
                 <div className="wrap">
                     <article className="article">
@@ -193,6 +201,114 @@ var CarContent = React.createClass({
                 </div>
             </div>
         </div>;
+
+        outHtml = (
+        <div>
+            <div className="grid-info">
+                <div className="wrap">
+
+            <h2 className="h1 text-xs-left">
+                <small className="meta">
+                    <span className="label label-danger">拍賣編號：{base.auc_no}</span>
+                    <span className="text-muted">結束時間：{base.end_date} {base.end_time}</span>
+                </small>
+                <ul className="title list-inline">
+                    <li>{base.obj_brand}</li>
+                    <li>{base.obj_type}</li>
+                    <li>{base.ori_year} 年</li>
+                    <li className="price text-danger">直購價：${this.formatNumber(base.d_price)}萬</li>
+                </ul>
+            </h2>
+
+            <dl className="row">
+                <dt className="gallery">
+                    <div id="banner">
+                        <div className="swiper-container">
+                            <ul className="swiper-wrapper list-unstyled">
+                                {
+                                pic.map(function (item, i) {
+                                    return (
+                                            <li className="swiper-slide">
+                                                <img src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" />
+                                            </li>);
+                                }.bind(this))
+                                }
+                            </ul>
+                            <a className="prev swiper-button-prev" href=""></a>
+                            <a className="next swiper-button-next" href=""></a>
+                        </div>
+                    </div>
+                    <div id="banner-thumb">
+                        <div className="swiper-container">
+                            <ul className="swiper-wrapper list-unstyled">
+                                {
+                                pic.map(function (item, i) {
+                                    return (
+                                        <li className="swiper-slide"><img src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" /></li>);
+                                }.bind(this))
+                                }
+                            </ul>
+                            <a className="prev swiper-button-prev" href=""></a>
+                            <a className="next swiper-button-next" href=""></a>
+                        </div>
+                    </div>
+                </dt>
+                <dd className="info">
+                    <ul className="list-unstyled">
+                        <li><strong>拍賣編號：</strong>{base.auc_no}</li>
+                        <li><strong>廠牌：</strong>{base.obj_brand}</li>
+                        <li><strong>車型：</strong>{base.obj_type}</li>
+                        <li><strong>細車型：</strong>{base.obj_model}</li>
+                        <li><strong>顏色：</strong>{base.obj_color}</li>
+                        <li><strong>排氣量：</strong>{base.obj_cc}</li>
+                        <li><strong>年份：</strong>{base.ori_year}</li>
+                        <li><strong>里程數：</strong>約 {base.run_km} <small>(數據僅供參考)</small></li>
+                        <li><strong>排檔：</strong><RunType value={base.run_type}></RunType></li>
+                        <li><strong>存放地：</strong>{base.dept_cname}</li>
+                        <li><strong>胎深：</strong>{base.tire_deep}</li>
+                        <li><strong>原廠證件：</strong>{base.obj_dou_txt}</li>
+                        <li><strong>監理站：</strong>-</li>
+                        <li><strong>引擎號碼：</strong>-</li>
+                        <li><strong>領牌日：</strong>-</li>
+                        <li><strong>原車價：</strong>${this.formatNumber(base.list_ori_price)}</li>
+                        <li><strong>直購價：</strong>${this.formatNumber(base.d_price)}</li>
+                    </ul>
+                </dd>
+            </dl>
+
+                </div>
+            </div>
+
+            <div className="grid-info">
+                <div className="wrap">
+                <h3 className="h3">配備</h3>
+                <ul className="accessory list-inline">
+                    {
+                        equips.map(function (item, i) {
+                            if (item == '天窗') {
+                                return
+                                <li className="active">天窗</li>;
+                            } else {
+                                return <li>{item}</li>;
+                            }
+                        })
+                    }
+                </ul>
+                </div>
+            </div>
+
+            <div className="grid-info">
+                <div className="wrap">
+                <h2 className="h1">購買須知</h2>
+                <ul className="notice list-unstyled">
+                    <li><em>配備說明</em>{base.memo}</li>
+                    <li><em>車　　況</em>{base.descri}</li>
+                    <li><em>備　　註</em>{base.memo1}</li>
+                    <li><em>注意事項</em>1. 請於完款後三天內至監理站為過戶登記，相關費用需自行承擔。2. 若需托運，其運費依規定辦理。</li>
+                </ul>
+                </div>
+            </div>
+        </div>);
         return outHtml;
     }
 })

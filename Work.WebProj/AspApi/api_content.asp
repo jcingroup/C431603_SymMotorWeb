@@ -31,6 +31,7 @@
     jsonObject("base")("eng_no") = rs.fields("eng_no").value
     jsonObject("base")("list_ori_price") = rs.fields("list_ori_price").value
     jsonObject("base")("obj_type") = rs.fields("obj_type").value
+    jsonObject("base")("obj_model") = rs.fields("obj_model").value
     jsonObject("base")("obj_no") = rs.fields("obj_no").value
     jsonObject("base")("dept_cname") = rs.fields("dept_cname").value 
     jsonObject("base")("list_price") = rs.fields("list_price").value 
