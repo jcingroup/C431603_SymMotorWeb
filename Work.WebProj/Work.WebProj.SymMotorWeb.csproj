@@ -532,6 +532,7 @@
     <Content Include="_Code\SysDoc\A02_faq.html" />
     <Content Include="_Code\SysDoc\B01_events.html" />
     <Content Include="_Code\SysDoc\B02_offer.html" />
+    <Content Include="_Code\SysDoc\C01_product.html" />
     <Content Include="_Code\SysDoc\D01_editor_text.html" />
     <Content Include="_Code\SysDoc\D02_editor_insert.html" />
     <Content Include="_Code\SysDoc\D03_editor_table.html" />

@@ -23,26 +23,31 @@
   </file>
   <file>
     <sort>5</sort>
+    <name>C01_product.html</name>
+    <memo>【車款展示】新增、刪除、修改</memo>
+  </file>
+  <file>
+    <sort>6</sort>
     <name>D01_editor_text.html</name>
     <memo>【文章編輯】文字段落編排</memo>
   </file>
   <file>
-    <sort>6</sort>
+    <sort>7</sort>
     <name>D02_editor_insert.html</name>
     <memo>【文章編輯】插入圖片/影片</memo>
   </file>
   <file>
-    <sort>7</sort>
+    <sort>8</sort>
     <name>D03_editor_table.html</name>
     <memo>【文章編輯】表格 增加/刪除列</memo>
   </file>
   <file>
-    <sort>8</sort>
+    <sort>9</sort>
     <name>F01_banner.html</name>
     <memo>【首頁 Banner 圖】新增、刪除、修改</memo>
   </file>
   <file>
-    <sort>9</sort>
+    <sort>10</sort>
     <name>F03_location.html</name>
     <memo>【營業所 / 維修點】修改</memo>
   </file>
