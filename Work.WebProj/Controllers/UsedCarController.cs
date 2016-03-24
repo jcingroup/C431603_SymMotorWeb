@@ -22,6 +22,9 @@ namespace DotWeb.Controllers
 
         public ActionResult Content()
         {
+            ViewBag.h_auc_no = Request.QueryString["h_auc_no"];
+            ViewBag.h_obj_no = Request.QueryString["h_obj_no"];
+
             return View("UsedCar_content");
         }
 
