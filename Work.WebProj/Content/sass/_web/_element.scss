@@ -20,6 +20,10 @@
         font-size: 0.5em;
     }
 
+    @include media-breakpoint-down(md) {
+        margin: $spacer*2 0;
+    }
+
     @include media-breakpoint-down(sm) {
         margin: $spacer*1.5 0;
 
@@ -44,6 +48,10 @@
         color: $body-color;
 
         &:hover {color: darken($brand-primary,15%);}
+    }
+
+    @include media-breakpoint-down(md) {
+        margin-bottom: $spacer*0.8;
     }
 }
 

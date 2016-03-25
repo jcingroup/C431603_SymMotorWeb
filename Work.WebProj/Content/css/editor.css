@@ -853,6 +853,11 @@ mark,
   color: #55595c;
   font-size: 0.5em;
 }
+@media (max-width: 991px) {
+  .h1 {
+    margin: 2rem 0;
+  }
+}
 @media (max-width: 767px) {
   .h1 {
     margin: 1.5rem 0;
@@ -876,6 +881,11 @@ mark,
 }
 .h2 a:hover {
   color: #6e5100;
+}
+@media (max-width: 991px) {
+  .h2 {
+    margin-bottom: 0.8rem;
+  }
 }
 
 .table {

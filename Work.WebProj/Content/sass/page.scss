@@ -74,6 +74,24 @@ $content-spacing-xs:    40px !default;
 
 // Elements
 // ----------------------------------------------------------------------
+.h1 {
+    .label {
+        font-size: 100%;
+        font-weight: normal;
+    }
+    .title {
+        font-size: 0.8em;
+        margin-bottom: 0;
+    }
+    .price {margin-left: $spacer;}
+
+    @include media-breakpoint-down(lg) {
+        .price {
+            display: block;
+            margin: $spacer*0.5 0 0 0;
+        }
+    }
+}
 
 #map {
     height: 300px;
@@ -213,6 +231,8 @@ $content-spacing-xs:    40px !default;
 
 // UsedCar
 // ----------------------------------------------------------------------
+
+
 .grid-search {
     padding-bottom: $spacer*2;
     
@@ -637,42 +657,9 @@ $content-spacing-xs:    40px !default;
         padding-bottom: $content-spacing;
     }
 
-    .h1 {
-        margin: 0 0 $spacer*2 0;
-
-        .label {
-            font-size: 100%;
-            font-weight: normal;
-        }
-
-        .title {
-            font-size: 0.8em;
-            margin-bottom: 0;
-        }
-
-        .price {margin-left: $spacer;}
-
-    }
-
-    dl.row {margin-bottom: 0;}
-
     .article {
         @include center-block;
         width: 65%;
-    }
-
-    .notice {
-
-        > li {
-            text-indent: -4.5em;
-            margin-left: 4.5em;
-
-            em {
-                font-style: normal;
-                font-weight: bold;
-                margin-right: 0.5em;
-            }
-        }
     }
 
     @include media-breakpoint-down(lg) {
@@ -741,106 +728,199 @@ $content-spacing-xs:    40px !default;
     }
 }
 
-.gallery {
-    @extend .col-lg-6;
-    @extend .col-xs-12;
+.car-info {
+    margin-bottom: 0;
 
-    #banner {
-        background:none;
-        height: auto;
+    .gallery, .info {
+        @extend .col-lg-6;
+        @extend .col-xs-12;
+    }
+
+    .gallery {
         
-        .swiper-container {
-            height: 350px;
-            background: lighten($gray-light,35%);
+        #banner {
+            background:none;
+            border: 1px solid #ddd;
+            height: auto;
+            margin-bottom: $spacer;
+            
+            .swiper-container {
+                height: 350px;
+                background: #F5F5F5;
 
-            > ul {
+                > ul {
 
-                > li {
-                    overflow: hidden;
+                    > li {
+                        overflow: hidden;
 
-                    img {
-                        width: auto;
-                        height: auto;
-                        max-height: 100%;
+                        img {
+                            width: auto;
+                            height: auto;
+                            max-height: 100%;
 
-                        margin: 0;
+                            margin: 0;
 
-                        position: absolute;
-                        left: 50%; top: 50%;
-                        transform: translate(-50%, -50%);
+                            position: absolute;
+                            left: 50%; top: 50%;
+                            transform: translate(-50%, -50%);
+                        }
                     }
+                }
+            }
+
+            .prev, .next {
+                width: 28px;
+                height: 46px;
+                background: url(#{$img-path}/arrows.png) no-repeat;
+
+                top:50%;
+                margin-top: -23px;
+
+                opacity: 0.5;
+                transition: opacity 0.3s;
+
+                &:hover {opacity: 1;}
+                &.swiper-button-disabled {opacity:0.2;}
+            }
+
+            .prev {left: 15px;}
+
+            .next {
+                right: 15px;
+                background-position: right top;
+            }
+        }
+
+        #banner-thumb {
+            position: relative;
+
+            ul {margin-bottom: 0;}
+
+            li {
+                height: 72px;
+                overflow: hidden;
+
+                opacity: 0.5;
+                transition: opacity 0.3s;
+                cursor: pointer;
+
+                &:hover,
+                &.swiper-slide-active {opacity: 1;}
+
+                img {
+                    min-width: 100%;
+                    height: 100%;
                 }
             }
         }
     }
 
-    #banner-thumb {
-
-        ul {margin-bottom: 0;}
+    .info {
 
         li {
-            height: 80px;
-            overflow: hidden;
+            margin-bottom: 3px;
+            padding-bottom: 3px;
+            border-bottom: 1px dotted #ccc;
 
-            opacity: 1;
-            transition: opacity 0.3s;
-            cursor: pointer;
-
-            &:hover {opacity: 0.5;}
-
-            img {
-                min-width: 100%;
-                height: 100%;
-                // position: absolute;
-                // left: 50%;
-                // top: 50%;
-                // transform: translate(-50%, -50%);
+            strong {
+                display: inline-block;
+                width: 5em;
+                margin-right: $spacer*0.5;
+                text-align: right;
+                color: $brand-primary;
             }
-        }
-    }
 
-    @include media-breakpoint-down(lg) {
-
-        #banner {
-            .swiper-container {height: 285px;}
-        }
-
-        #banner-thumb {
-            li {
-                width: 97px;
-                height: 97px;
-                border-width: 3px;
+            .text-danger {
+                font-size: $font-size-lg;
+                font-weight: bold;
             }
         }
     }
 
     @include media-breakpoint-down(md) {
-        #banner-thumb {
-            margin-top: $spacer;
 
-            li {
-                width: 77px;
-                height: 77px;
-            }
+        .gallery {
+            margin-bottom: $spacer*1.5;
         }
     }
 
     @include media-breakpoint-down(sm) {
-
-        #banner {
-            .swiper-container {height: 250px;}
+        .gallery {
+            #banner {
+                .swiper-container {height: 280px;}
+            }
         }
+    }
 
-        #banner-thumb {
-
-            li {
-                width: 61px;
-                height: 61px;
-                border-width: 2px;
+    @include media-breakpoint-down(xs) {
+        .gallery {
+            #banner {
+                .swiper-container {height: 220px;}
+            }
+            #banner-thumb {
+                li {height: 50px;}
             }
         }
     }
 }
+
+.detail {
+    margin-bottom: 0;
+
+    .accessory, .notice {
+        @extend .col-lg-6;
+        @extend .col-xs-12;
+
+        ul {margin-bottom: 0;}
+    }
+
+    .accessory {
+        font-weight: normal;
+
+        ul {
+            padding: $spacer;
+            border: 1px solid #ccc;
+        }
+
+        li {
+            margin: 4px 0;
+            color: #666;
+
+            &.active {
+                padding: 0 5px;
+                color: #fff;
+                font-weight: bold;
+                background: $brand-primary;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .notice {
+        li {
+            text-indent: -4.5em;
+            padding-left: 4.5em;
+
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        em {
+            margin-right: $spacer*0.5;
+            font-style: normal;
+            font-weight: bold;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+
+        .accessory {
+            margin-bottom: $spacer*1.5;
+        }
+    }
+}
+
 
 
 // Events & Offer

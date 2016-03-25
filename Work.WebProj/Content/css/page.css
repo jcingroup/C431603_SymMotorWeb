@@ -1635,14 +1635,14 @@ input[type="button"].btn-block {
   clear: both;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .gallery, .pro-intro .thumb, .pro-intro dd, .album li, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice, .pro-intro .thumb, .pro-intro dd, .album li, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
   position: relative;
   min-height: 1px;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .gallery, .pro-intro .thumb, .pro-intro dd, .album li {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .grid-location .search, .grid-search .search, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice, .pro-intro .thumb, .pro-intro dd, .album li {
   float: left;
 }
 
@@ -1690,7 +1690,7 @@ input[type="button"].btn-block {
   width: 91.66667%;
 }
 
-.col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .gallery, .pro-intro .thumb, .pro-intro dd, .album li {
+.col-xs-12, .grid-products .card-wrap, .grid-quality .detail li, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice, .pro-intro .thumb, .pro-intro dd, .album li {
   width: 100%;
 }
 
@@ -2269,7 +2269,7 @@ input[type="button"].btn-block {
   }
 }
 @media (min-width: 992px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .album li, .col-lg-4, .grid-products .card-wrap, .col-lg-5, .pro-intro .thumb, .col-lg-6, .gallery, .col-lg-7, .pro-intro dd, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .album li, .col-lg-4, .grid-products .card-wrap, .col-lg-5, .pro-intro .thumb, .col-lg-6, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice, .col-lg-7, .pro-intro dd, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left;
   }
 
@@ -2293,7 +2293,7 @@ input[type="button"].btn-block {
     width: 41.66667%;
   }
 
-  .col-lg-6, .gallery {
+  .col-lg-6, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice {
     width: 50%;
   }
 
@@ -4231,6 +4231,11 @@ a.text-danger:focus, a.text-danger:hover {
   color: #55595c;
   font-size: 0.5em;
 }
+@media (max-width: 991px) {
+  .h1 {
+    margin: 2rem 0;
+  }
+}
 @media (max-width: 767px) {
   .h1 {
     margin: 1.5rem 0;
@@ -4254,6 +4259,11 @@ a.text-danger:focus, a.text-danger:hover {
 }
 .h2 a:hover {
   color: #6e5100;
+}
+@media (max-width: 991px) {
+  .h2 {
+    margin-bottom: 0.8rem;
+  }
 }
 
 .table {
@@ -5311,6 +5321,24 @@ a:focus {
   }
 }
 
+.h1 .label {
+  font-size: 100%;
+  font-weight: normal;
+}
+.h1 .title {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+.h1 .price {
+  margin-left: 1rem;
+}
+@media (max-width: 1259px) {
+  .h1 .price {
+    display: block;
+    margin: 0.5rem 0 0 0;
+  }
+}
+
 #map {
   height: 300px;
   margin-bottom: 1.2rem;
@@ -5770,37 +5798,11 @@ a:focus {
   margin-bottom: -117px;
   padding-bottom: 117px;
 }
-.grid-info .h1 {
-  margin: 0 0 2rem 0;
-}
-.grid-info .h1 .label {
-  font-size: 100%;
-  font-weight: normal;
-}
-.grid-info .h1 .title {
-  font-size: 0.8em;
-  margin-bottom: 0;
-}
-.grid-info .h1 .price {
-  margin-left: 1rem;
-}
-.grid-info dl.row {
-  margin-bottom: 0;
-}
 .grid-info .article {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 65%;
-}
-.grid-info .notice > li {
-  text-indent: -4.5em;
-  margin-left: 4.5em;
-}
-.grid-info .notice > li em {
-  font-style: normal;
-  font-weight: bold;
-  margin-right: 0.5em;
 }
 @media (max-width: 1259px) {
   .grid-info .article {
@@ -5866,18 +5868,23 @@ a:focus {
   }
 }
 
-.gallery #banner {
+.car-info {
+  margin-bottom: 0;
+}
+.car-info .gallery #banner {
   background: none;
+  border: 1px solid #ddd;
   height: auto;
+  margin-bottom: 1rem;
 }
-.gallery #banner .swiper-container {
+.car-info .gallery #banner .swiper-container {
   height: 350px;
-  background: #e0e2e4;
+  background: #F5F5F5;
 }
-.gallery #banner .swiper-container > ul > li {
+.car-info .gallery #banner .swiper-container > ul > li {
   overflow: hidden;
 }
-.gallery #banner .swiper-container > ul > li img {
+.car-info .gallery #banner .swiper-container > ul > li img {
   width: auto;
   height: auto;
   max-height: 100%;
@@ -5887,50 +5894,122 @@ a:focus {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.gallery #banner-thumb ul {
+.car-info .gallery #banner .prev, .car-info .gallery #banner .next {
+  width: 28px;
+  height: 46px;
+  background: url(../images/arrows.png) no-repeat;
+  top: 50%;
+  margin-top: -23px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.car-info .gallery #banner .prev:hover, .car-info .gallery #banner .next:hover {
+  opacity: 1;
+}
+.car-info .gallery #banner .prev.swiper-button-disabled, .car-info .gallery #banner .next.swiper-button-disabled {
+  opacity: 0.2;
+}
+.car-info .gallery #banner .prev {
+  left: 15px;
+}
+.car-info .gallery #banner .next {
+  right: 15px;
+  background-position: right top;
+}
+.car-info .gallery #banner-thumb {
+  position: relative;
+}
+.car-info .gallery #banner-thumb ul {
   margin-bottom: 0;
 }
-.gallery #banner-thumb li {
-  height: 80px;
+.car-info .gallery #banner-thumb li {
+  height: 72px;
   overflow: hidden;
-  opacity: 1;
+  opacity: 0.5;
   transition: opacity 0.3s;
   cursor: pointer;
 }
-.gallery #banner-thumb li:hover {
-  opacity: 0.5;
+.car-info .gallery #banner-thumb li:hover, .car-info .gallery #banner-thumb li.swiper-slide-active {
+  opacity: 1;
 }
-.gallery #banner-thumb li img {
+.car-info .gallery #banner-thumb li img {
   min-width: 100%;
   height: 100%;
 }
-@media (max-width: 1259px) {
-  .gallery #banner .swiper-container {
-    height: 285px;
-  }
-  .gallery #banner-thumb li {
-    width: 97px;
-    height: 97px;
-    border-width: 3px;
-  }
+.car-info .info li {
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted #ccc;
+}
+.car-info .info li strong {
+  display: inline-block;
+  width: 5em;
+  margin-right: 0.5rem;
+  text-align: right;
+  color: #BA8A00;
+}
+.car-info .info li .text-danger {
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 @media (max-width: 991px) {
-  .gallery #banner-thumb {
-    margin-top: 1rem;
-  }
-  .gallery #banner-thumb li {
-    width: 77px;
-    height: 77px;
+  .car-info .gallery {
+    margin-bottom: 1.5rem;
   }
 }
 @media (max-width: 767px) {
-  .gallery #banner .swiper-container {
-    height: 250px;
+  .car-info .gallery #banner .swiper-container {
+    height: 280px;
   }
-  .gallery #banner-thumb li {
-    width: 61px;
-    height: 61px;
-    border-width: 2px;
+}
+@media (max-width: 543px) {
+  .car-info .gallery #banner .swiper-container {
+    height: 220px;
+  }
+  .car-info .gallery #banner-thumb li {
+    height: 50px;
+  }
+}
+
+.detail {
+  margin-bottom: 0;
+}
+.detail .accessory ul, .detail .notice ul {
+  margin-bottom: 0;
+}
+.detail .accessory {
+  font-weight: normal;
+}
+.detail .accessory ul {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.detail .accessory li {
+  margin: 4px 0;
+  color: #666;
+}
+.detail .accessory li.active {
+  padding: 0 5px;
+  color: #fff;
+  font-weight: bold;
+  background: #BA8A00;
+  border-radius: 3px;
+}
+.detail .notice li {
+  text-indent: -4.5em;
+  padding-left: 4.5em;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #ccc;
+}
+.detail .notice em {
+  margin-right: 0.5rem;
+  font-style: normal;
+  font-weight: bold;
+}
+@media (max-width: 991px) {
+  .detail .accessory {
+    margin-bottom: 1.5rem;
   }
 }
 
