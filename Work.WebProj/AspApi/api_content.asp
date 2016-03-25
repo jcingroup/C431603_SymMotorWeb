@@ -87,6 +87,11 @@
         rs4.movenext
     loop
 
+    sql_act6_1=" insert into wau_006_1 (auc_no,obj_no,view_user,view_dept,view_date,view_time,upd_date,upd_time,upd_user) "
+    sql_act6_1=sql_act6_1+" values ('" & h_auc_no & "','"+h_obj_no+"','" & login_emp_no & "','" & login_dept_no & "','"+trandate(date())+"','"+trantime+"','"+trandate(date())+"','"+trantime+"','" & login_emp_no & "')"         
+
+    conn.execute sql_act6_1 
+
 	rs.Close
     rs4.Close
     conn.Close
