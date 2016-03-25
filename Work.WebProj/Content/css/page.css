@@ -5338,6 +5338,12 @@ a:focus {
     margin: 0.5rem 0 0 0;
   }
 }
+@media (max-width: 543px) {
+  .h1 .time {
+    display: block;
+    margin-top: 0.2rem;
+  }
+}
 
 #map {
   height: 300px;
