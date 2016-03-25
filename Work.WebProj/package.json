@@ -14,7 +14,7 @@
     "gulp-util": "3.0.7",
     "moment": "^2.10.6",
     "path": "^0.12.7",
-    "jquery": "2.1.4",
+    "jquery": "1.12.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-bootstrap": "^0.28.1",

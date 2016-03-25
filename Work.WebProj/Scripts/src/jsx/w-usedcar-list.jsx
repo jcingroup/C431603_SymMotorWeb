@@ -34,7 +34,7 @@ var ListCars = React.createClass({
             sym_Web_pic:'http://symb2b.sym-motor.com.tw/wau/pic/'
         };
     },
-    componentDidMount: function () {
+    componentWillMount:function(){
         $.get(this.props.sym_web_api + 'api_list.asp',{})
         .done(function(data){
             this.setState({lists:data});
@@ -49,6 +49,9 @@ var ListCars = React.createClass({
         .done(function(data){
             this.setState({options_place:data});
         }.bind(this));
+    },
+    componentDidMount: function () {
+
     },
     setSearchField:function(n,e){
         var obj = this.state.search;
