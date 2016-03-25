@@ -40,7 +40,7 @@ namespace DotWeb.Controllers
                 bool Exist = db0.News.Any(x => x.news_id == id && !x.i_Hide);
                 if (id == null || !Exist)
                 {
-                    return Redirect("~/News");
+                    return Redirect("~/News/List");
                 }
                 else
                 {
