@@ -18,11 +18,11 @@
         var h_auc_no = '@ViewBag.h_auc_no';
         var h_obj_no = '@ViewBag.h_obj_no';
     </script>
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script src="~/Scripts/build/app/vendors.js"></script>
     <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
-    <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
-       
+
         $(window).scroll(function () {
             var h = $('#header').height();
             if ($(this).scrollTop() > h) {
@@ -33,7 +33,7 @@
         });
 
         //回上一頁
-        $('a#goBack').click(function(){
+        $('a#goBack').click(function () {
             history.back();
             return false;
         });

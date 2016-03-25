@@ -18,6 +18,8 @@ var CarContent = React.createClass({
         };
     },
     componentWillMount: function () {
+    },
+    componentDidMount: function () {
         $.get(this.props.sym_web_api + 'api_content.asp', { h_auc_no: this.props.h_auc_no, h_obj_no: this.props.h_obj_no })
         .done(function (data) {
             this.setState({ field: data });
@@ -41,11 +43,8 @@ var CarContent = React.createClass({
             $("#banner-thumb").on('click', 'li', function () {
                 banner.slideTo($(this).index(), 1000);
             });
-
+            console.log('componentWillMount ajax');
         }.bind(this));
-    },
-    componentDidMount: function () {
-
     },
     formatNumber: function (number) {
         if (number == undefined || number == null) {
@@ -189,11 +188,9 @@ var CarContent = React.createClass({
                     {
                         equips.map(function (item, i) {
                             if (item == '天窗') {
-                                return
-                                <li className="active" key={item}>天窗</li>;
+                                return (<li className="active" key={item}>天窗</li>);
                             } else {
-                                return
-                                <li key={item}>{item}</li>;
+                                return (<li key={item}>{item}</li>);
                             }
                         })
                     }

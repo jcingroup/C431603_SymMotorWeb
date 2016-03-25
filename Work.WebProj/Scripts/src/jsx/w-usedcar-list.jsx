@@ -35,6 +35,9 @@ var ListCars = React.createClass({
         };
     },
     componentWillMount:function(){
+
+    },
+    componentDidMount: function () {
         $.get(this.props.sym_web_api + 'api_list.asp',{})
         .done(function(data){
             this.setState({lists:data});
@@ -49,9 +52,6 @@ var ListCars = React.createClass({
         .done(function(data){
             this.setState({options_place:data});
         }.bind(this));
-    },
-    componentDidMount: function () {
-
     },
     setSearchField:function(n,e){
         var obj = this.state.search;
