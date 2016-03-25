@@ -7,8 +7,8 @@ var ListCars = React.createClass({
 
         var now = new Date();
         var opt_year = [];
-        for(var i=0; i < 5; i++ ) {
-            opt_year.push(now.getFullYear()-i);
+        for(var i=1; i <= 5; i++ ) {
+            opt_year.push(now.getFullYear() - i);
         }
 
         return {
@@ -58,6 +58,7 @@ var ListCars = React.createClass({
         var v = e.target.value;
         obj[n]=v;
         this.setState({ search: obj });
+        this.onSubmit(e);
     },
     onChangeBrand:function(e){
         var v = e.target.value;
@@ -66,11 +67,12 @@ var ListCars = React.createClass({
                 var obj = this.state.search;
                 obj.h_obj_brand=v;
                 this.setState({ search: obj,options_modal:data });
+                this.onSubmit(e);
             }.bind(this))
+
     },
     onSubmit:function(e){
         e.preventDefault();
-        //console.log(this.state.search);
         $.get(this.props.sym_web_api + 'api_list.asp',this.state.search)
         .done(function(data){
             this.setState({lists:data});
@@ -220,7 +222,7 @@ var ListCars = React.createClass({
                                                 <dt className="card-img-top">
                                                     <a href={gb_approot+'UsedCar/Content?h_auc_no=' + item.auc_no + '&h_obj_no=' + item.obj_no} title="SEE MORE">
                                                         <img src={this.props.sym_Web_pic + item.obj_no + '_1.jpg'} alt="" />
-                                                        <span className="label label-danger">結束時間：{item.end_date} {item.end_time}</span>
+                                                        <span className="label label-danger">結束時間：{moment(item.end_date + ' ' + item.end_time).format('MM-DD HH:mm')}</span>
                                                     </a>
                                                 </dt>
                                                 <dd className="card-block">

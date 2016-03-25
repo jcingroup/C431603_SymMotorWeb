@@ -43,7 +43,7 @@ var CarContent = React.createClass({
             $("#banner-thumb").on('click', 'li', function () {
                 banner.slideTo($(this).index(), 1000);
             });
-            console.log('componentWillMount ajax');
+
         }.bind(this));
     },
     formatNumber: function (number) {
@@ -112,13 +112,13 @@ var CarContent = React.createClass({
             <h2 className="h1 text-xs-left">
                 <small className="meta">
                     <span className="label label-danger">拍賣編號：{base.auc_no}</span>
-                    <span className="text-muted">結束時間：{base.end_date} {base.end_time}</span>
+                    <span className="text-muted">結束時間：{moment(base.end_date + ' ' + base.end_time).format('MM-DD HH:mm')}</span>
                 </small>
                 <ul className="title list-inline">
                     <li>{base.obj_brand}</li>
                     <li>{base.obj_type}</li>
                     <li>{base.ori_year} 年</li>
-                    <li className="price text-danger">直購價：${this.formatNumber(base.d_price)}萬</li>
+                    <li className="price text-danger">直購價：${base.d_price/10000}萬</li>
                 </ul>
             </h2>
 
