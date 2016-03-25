@@ -7,23 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
-    @* <script src="~/Scripts/cdn/BrowerInfo.js"></script> *@
+    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
+    <!--[if lt IE 9]>
+        <script>
+            document.createElement('header');
+            document.createElement('nav');
+            document.createElement('section');
+            document.createElement('article');
+            document.createElement('aside');
+            document.createElement('footer');
+        </script>
+    <![endif]-->
     @if (ViewBag.IsFirstPage)
     {
-        <!--[if lt IE 9]>
-            <script>
-                document.createElement('header');
-                document.createElement('nav');
-                document.createElement('section');
-                document.createElement('article');
-                document.createElement('aside');
-                document.createElement('footer');
-            </script>
-            <link href="@Url.Content("~/Content/css/index-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet">
-        <![endif]-->
+        <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/index-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
         <!--[if gte IE 9]><!--> <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
     }
     else
