@@ -104,7 +104,7 @@ var CarContent = React.createClass({
         var base = this.state.field.base;
         var pic = this.state.field.pic;
         var equips = this.showEquip();
-        //console.log('equip',equips);
+
         outHtml = (
             <section id="content">
                     <h2 className="h1 text-xs-left">
@@ -206,6 +206,9 @@ var CarContent = React.createClass({
                     </dl>
             </section>
         );
+
+
+
         return outHtml;
     }
 })

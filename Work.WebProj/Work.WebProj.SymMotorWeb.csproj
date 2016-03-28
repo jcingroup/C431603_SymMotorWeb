@@ -383,6 +383,7 @@
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\learn.css" />
     <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\page-ie.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\popup.css" />
     <Content Include="Content\css\swiper.min.css" />
@@ -493,6 +494,7 @@
     <Content Include="Scripts\cdn\datetimepicker\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\cdn\freewall.js" />
     <Content Include="Scripts\cdn\fresco.js" />
+    <Content Include="Scripts\cdn\html5shiv.js" />
     <Content Include="Scripts\cdn\jquery.js" />
     <Content Include="Scripts\cdn\jquery.loadmask.js" />
     <Content Include="Scripts\cdn\jquery.loadmask.min.js" />

@@ -29,6 +29,7 @@ var ListCars = React.createClass({
         };
     },
     getDefaultProps: function () {
+
         return {
             sym_web_api:'http://symb2b.sym-motor.com.tw/Wau_New/',
             sym_Web_pic:'http://symb2b.sym-motor.com.tw/wau/pic/'
@@ -38,10 +39,10 @@ var ListCars = React.createClass({
 
     },
     componentDidMount: function () {
-        $.get(this.props.sym_web_api + 'api_list.asp',{})
-        .done(function(data){
+
+        $.get(this.props.sym_web_api + 'api_list.asp',{},function(data){
             this.setState({lists:data});
-        }.bind(this));
+        }.bind(this))
 
         $.get(this.props.sym_web_api + 'api_brand.asp',{})
         .done(function(data){
@@ -52,6 +53,7 @@ var ListCars = React.createClass({
         .done(function(data){
             this.setState({options_place:data});
         }.bind(this));
+
     },
     setSearchField:function(n,e){
         var obj = this.state.search;
@@ -94,6 +96,7 @@ var ListCars = React.createClass({
         this.setState({search:obj});
     },
     render:function() {
+
         let outHtml = null;
         outHtml =
         <div>
@@ -104,7 +107,7 @@ var ListCars = React.createClass({
                         <h3 className="sr-only">搜尋條件</h3>
                         <form className="form-inline text-sm-center text-xs-left" onSubmit={this.onSubmit}>
                             <div className="form-group">
-                                <label htmlFor="brand">廠牌</label> {}
+                                <label>廠牌</label> {}
                                 <select id="h_obj_brand" className="form-control c-select style2"
                                         value={this.state.search.h_obj_brand}
                                         onChange={this.onChangeBrand}>
@@ -118,7 +121,7 @@ var ListCars = React.createClass({
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label for="">車型</label> {}
+                                <label>車型</label> {}
                                 <select id="h_obj_type"
                                         value={this.state.search.h_obj_type}
                                         onChange={this.setSearchField.bind(this,'h_obj_type')}
@@ -133,7 +136,7 @@ var ListCars = React.createClass({
                                 </select> {}
                             </div>
                             <div className="form-group">
-                                <label for="">車色</label> {}
+                                <label>車色</label> {}
                                 <select id="h_obj_color"
                                         value={this.state.search.h_obj_color}
                                         className="form-control c-select style2"
@@ -157,7 +160,7 @@ var ListCars = React.createClass({
                                 </select> {}
                             </div>
                             <div className="form-group">
-                                <label for="">年份</label> {}
+                                <label>年份</label> {}
                                 <select id="h_obj_born_date"
                                         value={this.state.search.h_obj_born_date}
                                         className="form-control c-select style2"
@@ -173,7 +176,7 @@ var ListCars = React.createClass({
                                 </select> {}
                             </div>
                             <div className="form-group">
-                                <label for="">地點</label> {}
+                                <label>地點</label> {}
                                 <select id="h_place_dept_no"
                                         value={this.state.search.h_place_dept_no}
                                         onChange={this.setSearchField.bind(this,'h_place_dept_no')}
@@ -188,13 +191,13 @@ var ListCars = React.createClass({
                                 </select> {}
                             </div>
                             <div className="form-group">
-                                <label for="">價格</label> {}
+                                <label>價格</label> {}
                                 <select value={this.state.search.h_low_price}
                                         onChange={this.setSearchField.bind(this,'h_low_price')}
                                         className="form-control c-select style2">
                                     <option value="">$0</option>
                                 </select> {}
-                                <label for="">~</label> {}
+                                <label>~</label> {}
                                 <select value={this.state.search.h_list_price}
                                         onChange={this.setSearchField.bind(this,'h_list_price')}
                                         className="form-control c-select style2">
@@ -254,6 +257,7 @@ var ListCars = React.createClass({
             </section>
         </div>;
         return outHtml;
+
     }
 })
 
