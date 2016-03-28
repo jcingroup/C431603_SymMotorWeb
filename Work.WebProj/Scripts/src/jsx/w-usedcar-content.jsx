@@ -186,7 +186,7 @@ var CarContent = React.createClass({
                                         if (item.value == 'Y') {
                                             return (<li className="active" key={i}>{item.name}</li>);
                                         } else {
-                                            return (<li key={item.name}>{item.name}</li>);
+                                            return (<li key={item.i}>{item.name}</li>);
                                         }
                                     })
                                 }
