@@ -23,27 +23,30 @@
 <!--[if gte IE 9]><!-->
 <script src="~/Content/js/swiper/swiper.min.js"></script>
 <script>
-            var banner = new Swiper('#banner .swiper-container', {
-                autoplay: 2500,
-                speed: 1000,
-                spaceBetween: 10,
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-            });
-            var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
-                spaceBetween: 10,
-                slidesPerView: 5,
-                speed: 1000,
-                centeredSlides: true,
-                slideToClickedSlide: true
-            });
-            banner.params.control = bannerThumb;
-            bannerThumb.params.control = banner;
+    var banner = new Swiper('#banner .swiper-container', {
+        autoplay: 2500,
+        speed: 1000,
+        spaceBetween: 10,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    });
+    var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        speed: 1000,
+        centeredSlides: true,
+        slideToClickedSlide: true
+    });
+    banner.params.control = bannerThumb;
+    bannerThumb.params.control = banner;
 </script>
 <!--<![endif]-->
-<script src="~/node_modules/es5-shim/es5-shim.js"></script>
-<script src="~/node_modules/es5-shim/es5-sham.js"></script>
-<script src="~/node_modules/console-polyfill/index.js"></script>
+
+<!--[if lt IE 9]>
+    <script src="/node_modules/es5-shim/es5-shim.js"></script>
+    <script src="/node_modules/es5-shim/es5-sham.js"></script>
+    <script src="/node_modules/console-polyfill/index.js"></script>
+<![endif]-->
 <script src="~/Scripts/build/app/vendorsforweb.js"></script>
 <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
 <script>

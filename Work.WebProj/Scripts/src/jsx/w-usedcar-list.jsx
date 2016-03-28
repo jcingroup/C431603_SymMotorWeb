@@ -53,7 +53,6 @@ var ListCars = React.createClass({
         .done(function(data){
             this.setState({options_place:data});
         }.bind(this));
-
     },
     setSearchField:function(n,e){
         var obj = this.state.search;

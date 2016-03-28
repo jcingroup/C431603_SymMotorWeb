@@ -7,9 +7,13 @@
 <script>
     var caption = '@ViewBag.Title';
 </script>
-<script src="~/node_modules/es5-shim/es5-shim.js"></script>
-<script src="~/node_modules/es5-shim/es5-sham.js"></script>
-<script src="~/node_modules/console-polyfill/index.js"></script>
+
+<!--[if lt IE 9]>
+    <script src="/node_modules/es5-shim/es5-shim.js"></script>
+    <script src="/node_modules/es5-shim/es5-sham.js"></script>
+    <script src="/node_modules/console-polyfill/index.js"></script>
+<![endif]-->
+
 <script src="~/Scripts/build/app/vendorsforweb.js"></script>
 <script src="~/Scripts/build/app/w_usedcar_list.js"></script>
 <script>

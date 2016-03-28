@@ -7,13 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
-    @* <script src="~/Scripts/cdn/BrowerInfo.js"></script> *@
-    <!--[if lt IE 9]>
-      <script src="/Scripts/cdn/html5shiv.js"></script>
-    <![endif]-->
-
+    @*
+    <script src="~/Scripts/cdn/BrowerInfo.js"></script> *@
     <script>
         var gb_approot = '@Url.Content("~")';
+        var isIe8 = false;
     </script>
     <!--[if lt IE 9]>
         <script>
@@ -26,17 +24,20 @@
             document.createElement('aside');
             document.createElement('figure');
             document.createElement('figcaption');
+            isIe8 = true;
         </script>
     <![endif]-->
     @if (ViewBag.IsFirstPage)
     {
-        <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/index-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
-        <!--[if gte IE 9]><!--> <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
+    <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/index-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
+    <!--[if gte IE 9]><!-->
+    <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
     }
     else
     {
-        <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/page-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
-        <!--[if gte IE 9]><!--> <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
+    <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/page-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
+    <!--[if gte IE 9]><!-->
+    <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
     }
     @RenderSection("css", false)
 </head>
@@ -71,58 +72,61 @@
                         <li><a href="~/Careers">菁英招募</a></li>
                     </ul>
                     @{
-                        var Brand = (List<ProcCore.Business.DB0.L1>)ViewBag.Brand;
-                    }
-                    <div id="series" class="showcase panel">
-                        <h2 class="h2 hidden-md-down">車款展示</h2>
-                        <ul class="menu list-inline">
-                            @foreach (var i in Brand)
-                            {
+                    var Brand = (List<ProcCore.Business.DB0.L1>
+                        )ViewBag.Brand;
+                        }
+                        <div id="series" class="showcase panel">
+                            <h2 class="h2 hidden-md-down">車款展示</h2>
+                            <ul class="menu list-inline">
+                                @foreach (var i in Brand)
+                                {
                                 if (i.l2_list.Count() == 1)
                                 {
-                                    <li><a href="~/Products?id=@i.l2_list[0].l2_id">@i.l1_name</a></li>
+                                <li><a href="~/Products?id=@i.l2_list[0].l2_id">@i.l1_name</a></li>
                                 }
                                 else if (i.l2_list.Count() > 1)
                                 {
-                                    <li class="collapse-nav">
-                                        @* 有子項目的車款，<a>要加class, 參數 *@
+                                <li class="collapse-nav">
+                                    @* 有子項目的車款，<a>
+                                        要加class, 參數 *@
                                         <a class="collapse-toggle panel-title collapsed hidden-md-down" data-toggle="collapse" data-parent="#series" href="#l1-@i.l1_id" aria-expanded="false">@i.l1_name</a>
-                                    </li>
+                                </li>
                                 }
                                 else {
-                                    <li><a href="~/Products">@i.l1_name</a></li>
+                                <li><a href="~/Products">@i.l1_name</a></li>
                                 }
-                            }
-                        </ul>
+                                }
+                            </ul>
 
-                        @foreach (var i in Brand)
-                        {
+                            @foreach (var i in Brand)
+                            {
                             if (i.l2_list.Count() > 1)
                             {
-                                @* 子項目 *@
-                                <ul id="l1-@i.l1_id" class="submenu list-inline collapse">
-                                    @foreach (var j in i.l2_list)
-                                    {
-                                        <li><a href="~/Products?id=@j.l2_id">@j.l2_name</a></li>
-                                    }
-                                </ul>
+                            @* 子項目 *@
+                            <ul id="l1-@i.l1_id" class="submenu list-inline collapse">
+                                @foreach (var j in i.l2_list)
+                                {
+                                <li><a href="~/Products?id=@j.l2_id">@j.l2_name</a></li>
+                                }
+                            </ul>
                             }
-                        }
-                    </div>
+                            }
+                        </div>
 
-                    <nav id="menu" class="navbar">
-                        <h2 class="sr-only">主選單</h2>
-                        <ul class="nav navbar-nav">
-                            <li><a href="~/TestDrive">預約試乘</a></li>
-                            <li><a href="~/UsedCar">認證中古車</a></li>
-                            <li><a href="~/BuyCar?type=1">購車服務</a></li>
-                            <li><a href="~/Repair">維修服務</a></li>
-                            <li><a href="~/Loan">貸款專區</a></li>
-                            <li><a href="~/Insurance">保險專區</a></li>
-                            @* <li><a href="~/Accessory">配件專區</a></li> *@
-                            <li><a href="~/Eco">綠能專區</a></li>
-                        </ul>
-                    </nav>
+                        <nav id="menu" class="navbar">
+                            <h2 class="sr-only">主選單</h2>
+                            <ul class="nav navbar-nav">
+                                <li><a href="~/TestDrive">預約試乘</a></li>
+                                <li><a href="~/UsedCar">認證中古車</a></li>
+                                <li><a href="~/BuyCar?type=1">購車服務</a></li>
+                                <li><a href="~/Repair">維修服務</a></li>
+                                <li><a href="~/Loan">貸款專區</a></li>
+                                <li><a href="~/Insurance">保險專區</a></li>
+                                @*
+                                <li><a href="~/Accessory">配件專區</a></li> *@
+                                <li><a href="~/Eco">綠能專區</a></li>
+                            </ul>
+                        </nav>
 
                 </div>
 
@@ -132,11 +136,11 @@
         <main id="main">
             @if (ViewBag.IsFirstPage)
             {
-                @RenderBody()
+            @RenderBody()
             }
             else
             {
-                @RenderBody()
+            @RenderBody()
             }
         </main>
 
@@ -149,12 +153,15 @@
             <a href="#header" class="goTop scroll">TOP</a>
         </div>
     </footer><!-- footer -->
+    <!--[if lt IE 9]>
+            <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+            <script src="/Scripts/cdn/jQuery.XDomainRequest.js"></script>
+    <![endif]-->
 
-    <!--[if lt IE 9]><script src="http://code.jquery.com/jquery-1.8.3.min.js"></script><![endif]-->
     <!--[if gte IE 9]><!-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="~/Content/js/bootstrap/util.js"></script>
-        <script src="~/Content/js/bootstrap/collapse.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="~/Content/js/bootstrap/util.js"></script>
+    <script src="~/Content/js/bootstrap/collapse.js"></script>
     <!--<![endif]-->
     <script type="text/javascript">
         // 回頂端
@@ -190,7 +197,6 @@
             });
         </script>
     <![endif]-->
-    
     @RenderSection("Scripts", required: false)
     <script src="~/Scripts/GoogleAnalytics.js"></script>
 </body>

@@ -499,6 +499,7 @@
     <Content Include="Scripts\cdn\jquery.loadmask.js" />
     <Content Include="Scripts\cdn\jquery.loadmask.min.js" />
     <Content Include="Scripts\cdn\jquery.min.js" />
+    <Content Include="Scripts\cdn\jQuery.XDomainRequest.js" />
     <Content Include="Scripts\cdn\js.cookie.js" />
     <Content Include="Scripts\cdn\moment\moment.min.js" />
     <Content Include="Scripts\cdn\react-bootstrap.js" />
