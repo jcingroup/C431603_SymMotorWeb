@@ -13,10 +13,15 @@
         var gb_type = 4;
     </script>
     <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
-    <script src="~/Scripts/build/app/vendorsforweb.js"></script>
-    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="~/Scripts/build/app/w_testdrive_email.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="~/Content/js/gmap-custom.js"></script>
+    @if ((bool)ViewBag.ie8)
+    {
+        <script src="~/Scripts/src/tsx/w-testdrive_email_forie8.js?v=@CommWebSetup.CacheVer"></script>
+    }
+    else {
+        <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+        <script src="~/Scripts/build/app/w_testdrive_email.js?v=@CommWebSetup.CacheVer"></script>
+        <script src="~/Content/js/gmap-custom.js"></script>
+    }
     <script>
         $(window).scroll(function () {
             var h = $('#header').height();
@@ -38,8 +43,165 @@
     <section id="content">
 
         <h2 class="h1">預約賞車</h2>
-        <div id="email_content"></div>
-        @*@Html.Partial("~/Views/Shared/Form.cshtml")*@
+        @if ((bool)ViewBag.ie8)
+        {
+            <h5 class="h5">請填妥以下基本資料，我們將有專人為您處理。</h5>
+
+            <hr>
+
+            <form action="" class="form" id="SendEmail">
+                <div class="row">
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="" class="control-label">姓名 <small class="text-danger">*</small></label>
+                            <input type="text" class="form-control c-input" id="m_name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="" class="control-label">性別 <small class="text-danger">*</small></label>
+                            <div class="c-radio-group">
+                                <label class="c-input c-radio">
+                                    <input id="radio1" name="radio" type="radio" value="true" required>
+                                    <span class="c-indicator">男</span>
+                                </label>
+                                <label class="c-input c-radio">
+                                    <input id="radio2" name="radio" type="radio" value="false" required>
+                                    <span class="c-indicator">女</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="" class="control-label">E-mail <small class="text-danger">*</small></label>
+                            <input type="email" class="form-control c-input" id="m_email" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="" class="control-label">連絡電話 <small class="text-danger">*</small></label>
+                            <input type="tel" class="form-control c-input" id="m_tel" required>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+
+
+                            <label for="" class="control-label">賞車車款 <small class="text-danger">*</small></label>
+
+                            <select name="" id="m_car_models" class="form-control c-select" required>
+                                <option value="" selected disabled>請選擇</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="" class="control-label">客服人員聯繫時間</label>
+                            <select name="" id="m_contact_time" class="form-control c-select">
+                                <option value="" selected disabled>請選擇</option>
+                                <option value="上午 8: 00~12: 00">上午 8: 00~12: 00</option>
+                                <option value="下午 12: 00~16: 00">下午 12: 00~16: 00</option>
+                                <option value="下午 16: 00 以後">下午 16: 00 以後</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+
+                            <label for="" class="control-label">希望賞車日期 <small class="text-danger">*</small></label>
+
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <select name="" id="m_view_year" class="form-control c-select gutter-xs-down" required></select>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <select name="" id="m_view_month" class="form-control c-select" required>
+                                        <option value="1" selected>1月</option>
+                                        <option value="2">2月</option>
+                                        <option value="3">3月</option>
+                                        <option value="4">4月</option>
+                                        <option value="5">5月</option>
+                                        <option value="6">6月</option>
+                                        <option value="7">7月</option>
+                                        <option value="8">8月</option>
+                                        <option value="9">9月</option>
+                                        <option value="10">10月</option>
+                                        <option value="11">11月</option>
+                                        <option value="12">12月</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <select name="" id="m_view_day" class="form-control c-select" required></select>
+                                </div>
+                                <div class="col-md-3 col-xs-12  gutter-sm-down">
+                                    <select name="" id="m_view_time" class="form-control c-select" required>
+                                        <option value="8:00~10:00" selected>08:00~10:00</option>
+                                        <option value="10:00~12:00">10:00~12:00</option>
+                                        <option value="13:00~15:00">13:00~15:00</option>
+                                        <option value="15:00~17:00">15:00~17:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="form-group">
+
+
+                            <label for="" class="control-label">賞車據點 <small class="text-danger">*</small></label>
+
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-12">
+                                    <select name="" id="m_view_city" class="form-control c-select" required>
+                                        <option value="" selected disabled>選擇縣市</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-xs-12 gutter-xs-down">
+                                    <select name="" id="m_view_location" class="form-control c-select" required>
+                                        <option value="" selected disabled>選擇營業所</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group c-inputs-stacked">
+
+
+                            @*<label class="c-input c-checkbox">
+                                    <input id="checkbox1" name="checkbox" type="checkbox">
+                                    <span class="c-indicator"><i class="ti-check"></i></span>
+                                    我已閱讀並同意 <a href="">試乘條款</a>
+                                </label>*@
+                            <label class="c-input c-checkbox">
+                                <input id="checkbox2" name="checkbox" type="checkbox">
+                                <span class="c-indicator"><i class="ti-check"></i></span>
+                                我願意收到EDM
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="sr-only">驗證</label>
+                            <div id="Validate"></div>
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg">填寫完成，送出資料</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+        else {
+            <div id="email_content"></div>
+        }
 
     </section><!-- content //-->
 

@@ -77,12 +77,12 @@
             all_location = result.locations;
             if (car_models.length > 0) {
                 for (var i = 0; i < car_models.length; i++) {
-                    var $group = $('<optgroup />', { label: car_models[i].l1_name, class: 'text-muted' }).appendTo('#m_car_models');
+                    var $group = $('<optgroup />', { label: car_models[i].l1_name, 'class': 'text-muted' }).appendTo('#m_car_models');
                     for (var j = 0; j < car_models[i].l2_list.length; j++) {
                         var option = $('<option />', {
                             text: car_models[i].l2_list[j].l2_name,
                             value: car_models[i].l2_list[j].l2_id,
-                            class: 'text-info'
+                            'class': 'text-info'
                         });
                         option.data('l1', car_models[i].l1_id);
                         $group.append(option);
@@ -145,14 +145,13 @@
 
         $("#SendEmail").submit(function (event) {
             event.preventDefault();
-            let sendMailPath: string = "";
-            let result: any;
+            let sendMailPath: string = gb_approot + 'TestDrive/sendMail';
             let data: TestDriveData = {
                 name: $("#m_name").val().replace(/<|>/g, ""),
                 sex: $("[name='radio']:checked").val(),
                 tel: $("#m_tel").val().replace(/<|>/g, ""),
                 email: $("#m_email").val().replace(/<|>/g, ""),
-                response: '',// grecaptcha.getResponse(widgetId),
+                response: grecaptcha.getResponse(widgetId),
                 car_models: $("#m_car_models option:selected").val(),
                 car_models_name: $("#m_car_models option:selected").text(),
                 contact_time: $("#m_contact_time option:selected").val(),
@@ -163,19 +162,15 @@
                 view_city: $("#m_view_city option:selected").val(),
                 view_location: $("#m_view_location option:selected").val(),
                 view_location_name: $("#m_view_location option:selected").text(),
-                is_edm: false,
-                is_agree: false
+                is_edm: $('#checkbox2').prop("checked"),
+                is_agree: false,
+                type: gb_type
             };
-
-            //if (gb_type == EmailState.TestDrive) {
-            //    //sendMailPath = gb_approot + 'FAQ/sendMail';
-            //    result = data;
-            //}
             if (sendMailPath != "") {
                 $.ajax({
                     type: "POST",
                     url: sendMailPath,
-                    data: result,
+                    data: data,
                     dataType: 'json'
                 }).done(function (result: LoginResult, textStatus, jqXHRdata) {
                     alert(result.message);

@@ -14,6 +14,7 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            checkBrowser();
             return View("TestDrive");
         }
         [HttpGet]
@@ -76,6 +77,7 @@ namespace DotWeb.Controllers
                         r.message = Resources.Res.Log_Err_MailAddressBlank;
                         return defJSON(r);
                     }
+                    md.contact_time = md.contact_time == null ? "" : md.contact_time;
                     if (md.type == (int)EmailState.TestDrive)
                     {
                         ResultInfo info = addTestDrive(md);
