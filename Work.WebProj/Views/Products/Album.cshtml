@@ -36,39 +36,42 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
-
-        <div class="swiper-container gallery-thumbs">
-            <div class="swiper-wrapper">
-            @foreach (var i in Model)
-            {
-                if (i.imgsrc != null)
+        
+        <!--[if gte IE 9]><!-->
+            <div class="swiper-container gallery-thumbs">
+                <div class="swiper-wrapper">
+                @foreach (var i in Model)
                 {
-                    <div class="swiper-slide"><img src="@i.imgsrc" alt="@i.detail_name"></div>
+                    if (i.imgsrc != null)
+                    {
+                        <div class="swiper-slide"><img src="@i.imgsrc" alt="@i.detail_name"></div>
+                    }
                 }
-            }
+                </div>
             </div>
-        </div>
+        <!--<![endif]-->
 
     </div>
-
-    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
-    <script src="~/Content/js/swiper/swiper.min.js"></script>
-    <script>
-        var galleryTop = new Swiper('.gallery-top', {
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            spaceBetween: 10,
-        });
-        var galleryThumbs = new Swiper('.gallery-thumbs', {
-            spaceBetween: 10,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            slideToClickedSlide: true,
-            keyboardControl: true,
-        });
-        galleryTop.params.control = galleryThumbs;
-        galleryThumbs.params.control = galleryTop;
-    </script>
+    
+    <!--[if gte IE 9]><!-->
+        <script src="~/Content/js/swiper/swiper.min.js"></script>
+        <script>
+            var galleryTop = new Swiper('.gallery-top', {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 10,
+            });
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 10,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                slideToClickedSlide: true,
+                keyboardControl: true,
+            });
+            galleryTop.params.control = galleryThumbs;
+            galleryThumbs.params.control = galleryTop;
+        </script>
+    <!--<![endif]-->
 
 @* </body>
 </html> *@

@@ -4289,6 +4289,7 @@ a.text-danger:focus, a.text-danger:hover {
 }
 
 .btn-primary {
+  background: #cfcfcf;
   background: linear-gradient(#71797e, #cfcfcf);
   box-shadow: 0 0 3px #686868;
   letter-spacing: 0.03em;
@@ -4297,6 +4298,7 @@ a.text-danger:focus, a.text-danger:hover {
   text-shadow: 1px 1px 0 #E5E5E5;
 }
 .btn-primary:hover, .btn-primary.active {
+  background: #2d2d2d;
   background: linear-gradient(#5f5f5f, #2d2d2d);
   border-color: #fff;
   color: #fff;
@@ -4480,7 +4482,7 @@ a.text-danger:focus, a.text-danger:hover {
   content: "■";
 }
 
-.c-radio-group .c-indicator, .c-checkbox-group .c-indicator {
+.c-radio-group .c-indicator {
   position: relative;
   display: inline-block;
   width: auto;
@@ -4493,22 +4495,22 @@ a.text-danger:focus, a.text-danger:hover {
   border-radius: 0;
   padding: 0.375rem 0.75rem;
 }
-.c-radio-group .c-radio, .c-radio-group .c-checkbox, .c-checkbox-group .c-radio, .c-checkbox-group .c-checkbox {
+.c-radio-group .c-radio {
   margin: 0;
   padding: 0;
 }
-.c-radio-group .c-radio:first-child .c-indicator, .c-radio-group .c-checkbox:first-child .c-indicator, .c-checkbox-group .c-radio:first-child .c-indicator, .c-checkbox-group .c-checkbox:first-child .c-indicator {
+.c-radio-group .c-radio:first-child .c-indicator {
   border-radius: 0.25rem 0 0 0.25rem;
 }
-.c-radio-group .c-radio:last-child .c-indicator, .c-radio-group .c-checkbox:last-child .c-indicator, .c-checkbox-group .c-radio:last-child .c-indicator, .c-checkbox-group .c-checkbox:last-child .c-indicator {
+.c-radio-group .c-radio:last-child .c-indicator {
   border-radius: 0 0.25rem 0.25rem 0;
 }
-.c-radio-group .c-radio input:checked ~ .c-indicator, .c-radio-group .c-checkbox input:checked ~ .c-indicator, .c-checkbox-group .c-radio input:checked ~ .c-indicator, .c-checkbox-group .c-checkbox input:checked ~ .c-indicator {
+.c-radio-group .c-radio input:checked ~ .c-indicator {
   background: #BA8A00;
   border-color: #BA8A00;
   color: #fff;
 }
-.c-radio-group .c-radio + .c-radio, .c-radio-group .c-checkbox + .c-checkbox, .c-checkbox-group .c-radio + .c-radio, .c-checkbox-group .c-checkbox + .c-checkbox {
+.c-radio-group .c-radio + .c-radio {
   margin-left: -3px;
 }
 
@@ -5349,8 +5351,14 @@ a:focus {
   height: 300px;
   margin-bottom: 1.2rem;
 }
+.Map #map {
+  height: 400px;
+}
 @media (max-width: 767px) {
   #map {
+    height: 250px;
+  }
+  .Map #map {
     height: 250px;
   }
 }

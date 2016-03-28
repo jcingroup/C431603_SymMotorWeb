@@ -147,7 +147,7 @@
     }
 }
 
-.c-radio-group, .c-checkbox-group {
+.c-radio-group {
     .c-indicator {
         position: relative;
         display: inline-block;
@@ -163,7 +163,7 @@
         padding: $input-padding-y $input-padding-x;
     }
 
-    .c-radio, .c-checkbox {
+    .c-radio {
 
         margin: 0;
         padding: 0;
@@ -183,7 +183,7 @@
         }
     }
 
-    .c-radio + .c-radio, .c-checkbox + .c-checkbox {margin-left: -3px;}
+    .c-radio + .c-radio {margin-left: -3px;}
 }
 
 

@@ -101,8 +101,11 @@ $content-spacing-xs:    40px !default;
     height: 300px;
     margin-bottom: $spacer*1.2;
 
+    .Map & {height: 400px;}
+
     @include media-breakpoint-down(sm) {
         height: 250px;
+        .Map & {height: 250px;}
     }
 }
 
@@ -235,7 +238,6 @@ $content-spacing-xs:    40px !default;
 
 // UsedCar
 // ----------------------------------------------------------------------
-
 
 .grid-search {
     padding-bottom: $spacer*2;

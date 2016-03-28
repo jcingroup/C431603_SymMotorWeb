@@ -28,9 +28,6 @@
             autoplayDisableOnInteraction: false,
             loop: true
         });
-    </script>
-    <!--<![endif]-->
-    <script>
         // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
         $(window).load(function () {
             var h = $("#banner .swiper-slide:first-child img").height();
@@ -40,6 +37,7 @@
             $("#banner").height(h);
         });
     </script>
+    <!--<![endif]-->
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
