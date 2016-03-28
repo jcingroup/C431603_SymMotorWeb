@@ -59,6 +59,7 @@ namespace DotWeb.Controllers
 
         public ActionResult Form()
         {
+            checkBrowser();
             ajax_GetEditorSidebar((int)EditorState.BuyCar);
             return View("BuyCar_Form");
         }

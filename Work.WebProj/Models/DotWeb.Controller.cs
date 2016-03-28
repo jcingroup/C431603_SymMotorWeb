@@ -1484,6 +1484,19 @@ namespace DotWeb.Controller
             }
         }
         #endregion
+        #region 瀏覽器ie8判斷
+        public void checkBrowser()
+        {
+            HttpBrowserCapabilitiesBase bc = Request.Browser;
+            if (bc.Browser == "IE" && bc.Type == "IE8")
+            {
+                ViewBag.ie8 = true;
+            }
+            else {
+                ViewBag.ie8 = false;
+            }
+        }
+        #endregion
     }
     #endregion
 
