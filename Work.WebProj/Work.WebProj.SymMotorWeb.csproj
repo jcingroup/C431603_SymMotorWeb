@@ -480,6 +480,7 @@
     <Content Include="Scripts\build\app\m_parm.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_test_drive.js" />
+    <Content Include="Scripts\build\app\vendorsforweb.js" />
     <Content Include="Scripts\build\app\w_loan_email.js" />
     <Content Include="Scripts\build\app\w_location.js" />
     <Content Include="Scripts\build\app\w_testdrive_email.js" />
