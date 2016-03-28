@@ -29,3 +29,6 @@ var google: any;
 //google map api
 var gb_map_data: server.MapData[];
 var setNewMapMarker: (type: number, city_pos: any) => void;
+
+//browerInfo
+var gb_IE8: boolean;

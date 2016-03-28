@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
-    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
+        var gb_IE8 = false;
     </script>
+    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <!--[if lt IE 9]>
         <script>
             document.createElement('header');
