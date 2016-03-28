@@ -11,6 +11,7 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            checkBrowser();
             ajax_GetEditorSidebar((int)EditorState.BuyCar);
             #region 購車優惠list
             List<m_Event> items = new List<m_Event>();

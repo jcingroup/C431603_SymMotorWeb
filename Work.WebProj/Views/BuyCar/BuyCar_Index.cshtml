@@ -11,36 +11,36 @@
 
 @section Scripts {
     <!--[if gte IE 9]><!-->
-        <script src="~/Content/js/swiper/swiper.min.js"></script>
-        <script>
-            var banner = new Swiper('#banner', {
-                effect: 'fade',
-                autoplay: 2500,
-                autoplayDisableOnInteraction: 'true',
-                speed: 500
+    <script src="~/Content/js/swiper/swiper.min.js"></script>
+    <script>
+        var banner = new Swiper('#banner', {
+            effect: 'fade',
+            autoplay: 2500,
+            autoplayDisableOnInteraction: 'true',
+            speed: 500
+        });
+        var bannerThumb = new Swiper('#banner-thumb', {
+            spaceBetween: 10,
+            // centeredSlides: true,
+            slidesPerView: 3,
+            autoplay: 2500,
+            touchRatio: 0.2,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            // slideToClickedSlide: true
+        });
+        // banner.params.control = bannerThumb;
+        // bannerThumb.params.control = banner;
+
+        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        $(window).load(function () {
+            var h = $("#banner .swiper-slide:first-child img").height();
+            $("#banner img").each(function () {
+                if ($(this).height() < h) { h = $(this).height(); }
             });
-            var bannerThumb = new Swiper('#banner-thumb', {
-                spaceBetween: 10,
-                // centeredSlides: true,
-                slidesPerView: 3,
-                autoplay: 2500,
-                touchRatio: 0.2,
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                // slideToClickedSlide: true
-            });
-            // banner.params.control = bannerThumb;
-            // bannerThumb.params.control = banner;
-            
-            // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
-            $(window).load(function(){
-                var h = $("#banner .swiper-slide:first-child img").height();
-                $("#banner img").each(function(){
-                    if ($(this).height() < h) { h = $(this).height(); }
-                });
-                $("#banner").height(h);
-            });
-        </script>
+            $("#banner").height(h);
+        });
+    </script>
     <!--<![endif]-->
     <script>
         $(window).scroll(function () {
@@ -53,10 +53,13 @@
         });
         var gb_type = '@Request.QueryString["type"]';
     </script>
-    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="~/Scripts/build/app/w_location_v2.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script src="~/Content/js/gmap-location.js"></script>
+    @if (!(bool)ViewBag.ie8)
+    {
+        <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+        <script src="~/Scripts/build/app/w_location_v2.js?v=@CommWebSetup.CacheVer"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+            <script src="~/Content/js/gmap-location.js"></script>
+    }
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
@@ -81,24 +84,24 @@
     </section>
     @if (Model.Any(x => x.list_imgsrc != null))
     {
-    <div class="grid-gallery bg2">
-        <div class="wrap">
-            <div id="banner-thumb" class="swiper-container">
-                <ul class="swiper-wrapper list-unstyled">
-                    @foreach (var i in Model)
-                    {
-                        
+        <div class="grid-gallery bg2">
+            <div class="wrap">
+                <div id="banner-thumb" class="swiper-container">
+                    <ul class="swiper-wrapper list-unstyled">
+                        @foreach (var i in Model)
+                        {
+
                             <li class="swiper-slide">
                                 <a href="~/Offer/Content?id=@i.event_id"><img src="@i.list_imgsrc" alt="@i.event_title"></a>
                             </li>
-                        
-                    }
-                </ul>
-                <a class="prev swiper-button-prev" href=""></a>
-                <a class="next swiper-button-next" href=""></a>
+
+                        }
+                    </ul>
+                    <a class="prev swiper-button-prev" href=""></a>
+                    <a class="next swiper-button-next" href=""></a>
+                </div>
             </div>
         </div>
-    </div>
     }
 
     <div id="location" class="grid-location"></div>

@@ -454,6 +454,7 @@
     <Content Include="Content\js\bxslider\jquery.bxslider.min.css" />
     <Content Include="Content\js\bxslider\jquery.bxslider.min.js" />
     <Content Include="Content\js\gmap-custom.js" />
+    <Content Include="Content\js\gmap-location_forie8.js" />
     <Content Include="Content\js\gmap-location.js" />
     <Content Include="Content\js\magnific\jquery.magnific-popup.min.js" />
     <Content Include="Content\js\swiper\swiper.min.js" />
@@ -893,6 +894,7 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-location_forie8.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-location_v2.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-testdrive_email_forie8.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-testdrive_email.tsx" />

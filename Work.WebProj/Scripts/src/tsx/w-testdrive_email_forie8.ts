@@ -1,4 +1,4 @@
-﻿namespace Email {
+﻿namespace TestDrive_forie8 {
     interface BasicData {
         name: string,
         sex: boolean,

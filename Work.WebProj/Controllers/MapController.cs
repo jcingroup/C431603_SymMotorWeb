@@ -9,6 +9,7 @@ namespace DotWeb.Controllers
     {
         public ActionResult Index()
         {
+            checkBrowser();
             return View("Map");
         }
     }
