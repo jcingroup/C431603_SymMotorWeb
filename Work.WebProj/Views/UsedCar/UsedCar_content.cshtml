@@ -9,56 +9,62 @@
 
 }
 @section css {
-    <!--[if gte IE 9]><!-->
-        <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
-        <link href="~/Content/css/swiper.min.css" rel="stylesheet">
-    <!--<![endif]-->
+<!--[if gte IE 9]><!-->
+<link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+<link href="~/Content/css/swiper.min.css" rel="stylesheet">
+<!--<![endif]-->
 }
 
 @section Scripts {
-    <script>
-        var h_auc_no = '@ViewBag.h_auc_no';
-        var h_obj_no = '@ViewBag.h_obj_no';
-    </script>
-    <!--[if gte IE 9]><!-->
-        <script src="~/Content/js/swiper/swiper.min.js"></script>
-        <script>
-            var banner = new Swiper('#banner .swiper-container', {
-                autoplay: 2500,
-                speed: 1000,
-                spaceBetween: 10,
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-            });
-            var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
-                spaceBetween: 10,
-                slidesPerView: 5,
-                speed: 1000,
-                centeredSlides: true,
-                slideToClickedSlide: true
-            });
-            banner.params.control = bannerThumb;
-            bannerThumb.params.control = banner;
-        </script>
-    <!--<![endif]-->
-    <script src="~/Scripts/build/app/vendors.js"></script>
-    <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
-    <script>
-        $(window).scroll(function () {
-            var h = $('#header').height();
-            if ($(this).scrollTop() > h) {
-                $('#sidebar, #content').addClass('fixed');
-            } else {
-                $('#sidebar, #content').removeClass('fixed');
-            }
-        });
+<script>
+    var h_auc_no = '@ViewBag.h_auc_no';
+    var h_obj_no = '@ViewBag.h_obj_no';
+</script>
+<!--[if gte IE 9]><!-->
+<script src="~/Content/js/swiper/swiper.min.js"></script>
+<script>
+    var banner = new Swiper('#banner .swiper-container', {
+        autoplay: 2500,
+        speed: 1000,
+        spaceBetween: 10,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    });
+    var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        speed: 1000,
+        centeredSlides: true,
+        slideToClickedSlide: true
+    });
+    banner.params.control = bannerThumb;
+    bannerThumb.params.control = banner;
+</script>
+<!--<![endif]-->
 
-        //回上一頁
-        $('a#goBack').click(function () {
-            history.back();
-            return false;
-        });
-    </script>
+<!--[if lt IE 9]>
+    <script src="/node_modules/es5-shim/es5-shim.js"></script>
+    <script src="/node_modules/es5-shim/es5-sham.js"></script>
+    <script src="/node_modules/console-polyfill/index.js"></script>
+<![endif]-->
+<script src="~/Scripts/build/app/vendorsforweb.js"></script>
+<script src="~/Scripts/build/app/w_usedcar_content.js"></script>
+<script>
+    $(window).scroll(function () {
+        var h = $('#header').height();
+        if ($(this).scrollTop() > h) {
+            $('#sidebar, #content').addClass('fixed');
+        } else {
+            $('#sidebar, #content').removeClass('fixed');
+        }
+    });
+
+    //回上一頁
+    $('a#goBack').click(function () {
+        history.back();
+        return false;
+    });
+</script>
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>

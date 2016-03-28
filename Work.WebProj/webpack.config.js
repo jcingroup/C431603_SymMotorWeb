@@ -31,7 +31,8 @@ module.exports = {
         w_location_v2: path.resolve(__dirname, 'Scripts/src/tsx/w-location_v2.js'),
         w_usedcar_list: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-list.jsx'),
         w_usedcar_content: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-content.jsx'),
-        vendors: ['jquery', 'react', 'react-bootstrap', 'moment']
+        vendors: ['jquery'],
+        vendorsforweb: ['react', 'react-dom', 'react-bootstrap', 'moment']
     },
     output: {
         path: path.resolve(__dirname, 'Scripts/build/app'),
@@ -51,7 +52,7 @@ module.exports = {
         extensions: ['', '.js', 'jsx', '.json']
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+      new webpack.optimize.CommonsChunkPlugin({ names: ['vendors', 'vendorsforweb'] }),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
       new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ]
