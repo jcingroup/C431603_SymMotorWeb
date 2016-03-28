@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
-    <script src="~/Scripts/cdn/BrowerInfo.js"></script>
+    @* <script src="~/Scripts/cdn/BrowerInfo.js"></script> *@
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
@@ -40,6 +40,13 @@
 <body class="@ViewBag.BodyClass">
 
     <div id="wrapper">
+
+        <!--[if lt IE 9]>
+            <div class="warning-bar">
+                【注意】您使用的瀏覽器過於老舊，無法使用本網站的部分功能。建議您升級瀏覽器，或使用其他瀏覽器軟體如
+                <a href="https://www.google.com.tw/intl/zh-TW/chrome/" target="new">Google Chrome</a>，以獲得最佳瀏覽體驗。
+            </div>
+        <![endif]-->
 
         <header id="header">
             <div class="wrap">
@@ -141,11 +148,10 @@
 
     <!--[if lt IE 9]><script src="http://code.jquery.com/jquery-1.8.3.min.js"></script><![endif]-->
     <!--[if gte IE 9]><!-->
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="~/Content/js/bootstrap/util.js"></script>
         <script src="~/Content/js/bootstrap/collapse.js"></script>
     <!--<![endif]-->
-
     <script type="text/javascript">
         // 回頂端
         $(window).scroll(function () {
@@ -170,6 +176,17 @@
             event.preventDefault();
         });
     </script>
+
+    @* Bootstrap collapse 特效 for ie8 *@
+    <!--[if lt IE 9]>
+        <script type="text/javascript">
+            $('.collapse-toggle').click(function (event) {
+                $($.attr(this, 'href')).slideToggle();
+                event.preventDefault();
+            });
+        </script>
+    <![endif]-->
+    
     @RenderSection("Scripts", required: false)
     <script src="~/Scripts/GoogleAnalytics.js"></script>
 </body>
