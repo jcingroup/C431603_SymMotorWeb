@@ -464,6 +464,9 @@
     <Content Include="ckeditor\config.js" />
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
+    <Content Include="node_modules\console-polyfill\index.js" />
+    <Content Include="node_modules\es5-shim\es5-sham.js" />
+    <Content Include="node_modules\es5-shim\es5-shim.js" />
     <Content Include="Scripts\build\app\m_banner.js" />
     <Content Include="Scripts\build\app\m_brand.js" />
     <Content Include="Scripts\build\app\m_brand_category.js" />
