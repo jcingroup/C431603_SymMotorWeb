@@ -7,10 +7,11 @@
 }
 
 @section css {
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <!--[if gte IE 9]><!--><link href="~/Content/css/swiper.min.css" rel="stylesheet"><!--<![endif]-->
 }
 
 @section Scripts {
+    <!--[if gte IE 9]><!-->
     <script src="~/Content/js/swiper/swiper.min.js"></script>
     <script>
         var swiper = new Swiper('#banner', {
@@ -27,7 +28,9 @@
             autoplayDisableOnInteraction: false,
             loop: true
         });
-
+    </script>
+    <!--<![endif]-->
+    <script>
         // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
         $(window).load(function () {
             var h = $("#banner .swiper-slide:first-child img").height();
