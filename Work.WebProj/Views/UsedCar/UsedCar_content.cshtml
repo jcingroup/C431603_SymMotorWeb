@@ -9,8 +9,10 @@
 
 }
 @section css {
-    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <!--[if gte IE 9]><!-->
+        <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+        <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <!--<![endif]-->
 }
 
 @section Scripts {
@@ -18,27 +20,30 @@
         var h_auc_no = '@ViewBag.h_auc_no';
         var h_obj_no = '@ViewBag.h_obj_no';
     </script>
-    <script src="~/Content/js/swiper/swiper.min.js"></script>
+    <!--[if gte IE 9]><!-->
+        <script src="~/Content/js/swiper/swiper.min.js"></script>
+        <script>
+            var banner = new Swiper('#banner .swiper-container', {
+                autoplay: 2500,
+                speed: 1000,
+                spaceBetween: 10,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+            var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
+                spaceBetween: 10,
+                slidesPerView: 5,
+                speed: 1000,
+                centeredSlides: true,
+                slideToClickedSlide: true
+            });
+            banner.params.control = bannerThumb;
+            bannerThumb.params.control = banner;
+        </script>
+    <!--<![endif]-->
     <script src="~/Scripts/build/app/vendors.js"></script>
     <script src="~/Scripts/build/app/w_usedcar_content.js"></script>
     <script>
-        var banner = new Swiper('#banner .swiper-container', {
-            autoplay: 2500,
-            speed: 1000,
-            spaceBetween: 10,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-        });
-        var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
-            spaceBetween: 10,
-            slidesPerView: 5,
-            speed: 1000,
-            centeredSlides: true,
-            slideToClickedSlide: true
-        });
-        banner.params.control = bannerThumb;
-        bannerThumb.params.control = banner;
-
         $(window).scroll(function () {
             var h = $('#header').height();
             if ($(this).scrollTop() > h) {

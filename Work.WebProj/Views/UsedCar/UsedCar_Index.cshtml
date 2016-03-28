@@ -5,19 +5,25 @@
 }
 
 @section css {
-    <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
-    <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <!--[if gte IE 9]><!-->
+        <link rel="stylesheet" href="~/Content/css/vendor/themify-icons.css">
+        <link href="~/Content/css/swiper.min.css" rel="stylesheet">
+    <!--<![endif]-->
 }
 
 @section Scripts {
-    <script src="~/Content/js/swiper/swiper.min.js"></script>
+    <!--[if gte IE 9]><!-->
+        <script src="~/Content/js/swiper/swiper.min.js"></script>
+        <script>
+            var swiper = new Swiper('#banner', {
+                autoplay: 4000,
+                autoplayDisableOnInteraction: false,
+                loop: true,
+                speed: 500
+            });
+        </script>
+    <!--<![endif]-->
     <script>
-        var swiper = new Swiper('#banner', {
-            autoplay: 4000,
-            autoplayDisableOnInteraction: false,
-            loop: true,
-            speed: 500
-        });
         $(window).scroll(function () {
             var h = $('#header').height();
             if ($(this).scrollTop() > h) {
