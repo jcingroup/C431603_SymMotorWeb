@@ -34,6 +34,7 @@ namespace DotWeb.Controllers
         }
         public ActionResult Form()
         {
+            checkBrowser();
             ajax_GetEditorSidebar((int)EditorState.Loan);
             return View("Loan_Form");
         }

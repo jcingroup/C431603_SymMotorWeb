@@ -901,6 +901,7 @@
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-news.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-loan_email_forie8.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-location_forie8.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-location_v2.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\w-testdrive_email_forie8.ts" />
