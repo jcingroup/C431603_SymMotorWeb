@@ -53,11 +53,15 @@
         });
         var gb_type = '@Request.QueryString["type"]';
     </script>
-    <script src="~/Scripts/build/app/vendorsforweb.js"></script>
-    <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="~/Scripts/build/app/w_location_v2.js?v=@CommWebSetup.CacheVer"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script src="~/Content/js/gmap-location.js"></script>
+    @if (!(bool)ViewBag.ie8)
+    {
+        <script src="~/Scripts/build/app/vendorsforweb.js"></script>
+        <script src="~/Scripts/build/app/vendors.js?v=@CommWebSetup.CacheVer"></script>
+            <script src="~/Scripts/build/app/w_location_v2.js?v=@CommWebSetup.CacheVer"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+            <script src="~/Content/js/gmap-location.js"></script>
+    }
+
 }
 
 <h1 class="sr-only">@ViewBag.Title</h1>
