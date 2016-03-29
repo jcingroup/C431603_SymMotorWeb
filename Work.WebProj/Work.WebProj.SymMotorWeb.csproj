@@ -807,6 +807,9 @@
     <Content Include="Content\sass\_web\_layout.scss" />
     <Content Include="Content\sass\_web\_module.scss" />
     <Content Include="Content\sass\_web\_var.scss" />
+    <Content Include="Content\sass\index-ie.scss" />
+    <Content Include="Content\sass\page-ie.scss" />
+    <Content Include="Content\sass\_web\_layout-ie.scss" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

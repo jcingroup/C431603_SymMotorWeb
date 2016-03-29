@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+
+// var
+// ------------------------------------------------------------
+$img-path2:             '../images/Index';
+$content-spacing:       0;
+$footer-height:         160px;
+
+
+// import
+// ------------------------------------------------------------
+
+// Core variables and mixins
+@import "helper/variables";
+@import "_web/var";
+@import "helper/mixins";
+@import "helper/function";
+
+// override variables / mixins for IE8
+$spacer:                16px;
+$grid-gutter-width:     30px;
+
+$font-size-base:        1em;
+$font-size-lg:          1.25em;
+$font-size-sm:          .875em;
+$font-size-xs:          .75em;
+
+$font-size-h1:          2.5em;
+$font-size-h2:          2em;
+$font-size-h3:          1.75em;
+$font-size-h4:          1.5em;
+$font-size-h5:          1.25em;
+$font-size-h6:          1em;
+
+$display1-size:         6em;
+$display2-size:         5.5em;
+$display3-size:         4.5em;
+$display4-size:         3.5em;
+
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Reset and dependencies
+@import "base/normalize";
+@import "base/print";
+@import "base/reboot";
+
+// Elements
+@import "element/type";
+
+// Layout
+@import "layout/grid";
+
+// Module
+@import "module/animation";
+@import "module/nav";
+@import "module/navbar";
+
+// Utility classes
+@import "helper/utilities-extends";
+@import "helper/extend";
+@import "helper/classes";
+@import "helper/utilities-responsive";
+
+@import "_web/layout-ie";
+
+
+// Elements
+// ----------------------------------------------------------------------
+.h2 {margin-bottom: 0.5em;}
+
+
+// Layout
+// ----------------------------------------------------------------------
+#wrapper {background: #1a1a1a url(#{$img-path}/bgDot_ie8.jpg) repeat-y center top;}
+
+#footer {
+	background: none;
+	&:before {display: none;}
+	.copyright {margin-top: 45px;}
+}
+
+
+// main
+// ----------------------------------------------------------------------
+#banner {
+	background: #2E2A27;
+}
+
+.grid-series {
+	background: #767D80 url(#{$img-path}/bg4_ie8.jpg) repeat-y center top;
+	text-align: center;
+
+	position: relative;
+	padding: 40px 0;
+
+	&:before {
+		content: " ";
+		display: block;
+		width: 100%;
+		height: 67px;
+		position: absolute;
+		left:0; top: 0;
+		background: url(#{$img-path}/bg4_ie8-2.png) no-repeat center top;
+	}
+
+	.h2 {
+		font-size: em(75px);
+		font-family: $font-family-en;
+		color: #B2B2B2;
+
+		position: relative;
+		margin-bottom: 0;
+	}
+
+	.h3 {font-size: $font-size-h5;}
+
+	#marquee {
+		position: relative;
+        overflow: hidden;
+
+        ol {
+        	width: 100%;
+        	margin: 0;
+        }
+
+        li {
+        	width: 25%;
+        	height: 200px;
+        	position: relative;
+        	margin-bottom: $spacer;
+        	float: left;
+
+        	a {
+        		display: block;
+        		width: 100%;
+        		height: 155px;
+
+        		position: relative;
+
+        		line-height: 155px;
+        	}
+            img {
+            	max-width: 100%;
+            	max-height: 100%;
+            }
+        }
+
+		.h4 {
+			width: 100%;
+			height: 1em;
+			font-size: em(19px);
+			text-align: center;
+			text-shadow: 1px 1px 0 #ddd;
+
+			position: absolute;
+			left: 0;
+			top: 160px;
+		}
+
+		.prev, .next {display: none;}
+	}
+}
+
+.grid-news {
+	@include clearfix;
+	position: relative;
+	padding: 65px 0;
+
+	&:before {
+        content:" ";
+        display: block;
+        width: 100%;
+        height: 197px;
+        background:url(#{$img-path}/bgLine.png) no-repeat center top;
+
+        position: absolute;
+        left: 0;
+        top: -113px;
+    }
+
+    .article-list {
+    	float: left;
+    	width: 66%;
+    	padding-right: $grid-gutter-width;
+
+    	color: #E1E3DF;
+
+    	.h2 {
+	    	color: #E6E6E6;
+	    	font-size: em(75px);
+	    	font-family: $font-family-en;
+	    }
+
+	    .h3 {
+	    	font-weight: bold;
+	    	font-size: $font-size-h4;
+
+	    	small {
+	    		display: block;
+	    		color: #999;
+	    		font-size: $font-size-sm;
+	    		font-weight: normal;
+
+	    		margin-bottom: $spacer*0.6;
+	    	}
+	    }
+
+	    .article {
+	    	margin-bottom: $spacer*1.5;
+	    }
+    }
+
+    .fb {
+    	width: 33%;
+    	float:right;
+    	padding-left: $grid-gutter-width;
+    }
+}
+
+.grid-count {
+
+	.h2 {
+		margin: 0;
+		font-size: 1em;
+		color: #BBBCB9;
+		text-align: center;
+
+		position: relative;
+
+		span {
+			strong {
+				color: $brand-primary;
+				font-size: em(21px);
+				letter-spacing: 0.1em;
+
+				margin: 0 $spacer*0.7;
+			}
+		}
+	}
+}
