@@ -380,6 +380,7 @@
     <Content Include="Content\css\bootstrap-datetimepicker-build.css" />
     <Content Include="Content\css\component\fontAwesome\font-awesome.css" />
     <Content Include="Content\css\editor.css" />
+    <Content Include="Content\css\index-ie.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\learn.css" />
     <Content Include="Content\css\magnific-popup.css" />

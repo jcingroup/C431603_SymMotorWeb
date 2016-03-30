@@ -4813,8 +4813,11 @@ a:focus {
 #header .showcase .menu {
   padding-left: 7.5rem;
 }
+#header .showcase .menu > li {
+  margin-bottom: 0.25em;
+}
 #header .showcase .menu > li:not(:last-child) {
-  margin-right: 2rem;
+  margin-right: 1.5rem;
 }
 #header .showcase .submenu li {
   display: inline-block;
@@ -4838,7 +4841,7 @@ a:focus {
   height: 0;
   margin-top: -0.3em;
   margin-right: .25rem;
-  margin-left: 0.8rem;
+  margin-left: 0.5rem;
   vertical-align: middle;
   content: "";
   border-top: 0.5em solid #ffedba;
@@ -4873,7 +4876,7 @@ a:focus {
     padding-left: 6rem;
   }
   #header .showcase .menu > li:not(:last-child) {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
   }
   #header .showcase .collapse-toggle::after {
     margin-left: 0.5rem;
