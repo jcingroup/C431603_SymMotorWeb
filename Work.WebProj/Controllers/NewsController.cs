@@ -14,7 +14,7 @@ namespace DotWeb.Controllers
             using (var db0 = getDB0())
             {
                 #region get content
-                items = db0.News.Where(x => !x.i_Hide).OrderByDescending(x => new { x.sort, x.day })
+                items = db0.News.Where(x => !x.i_Hide).OrderByDescending(x => new { x.sort, x.day, x.news_id })
                                          .Select(x => new m_News()
                                          {
                                              news_id = x.news_id,

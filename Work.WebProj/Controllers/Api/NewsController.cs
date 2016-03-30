@@ -32,7 +32,7 @@ namespace DotWeb.Api
             using (db0 = getDB0())
             {
                 var items = db0.News
-                    .OrderByDescending(x => x.sort)
+                    .OrderByDescending(x => new { x.sort, x.day, x.news_id })
                     .Select(x => new m_News()
                     {
                         news_id = x.news_id,

@@ -18,7 +18,7 @@ namespace DotWeb.Controllers
             using (var db0 = getDB0())
             {
                 #region get content
-                items = db0.Event.Where(x => !x.i_Hide & x.event_type == (int)EventType.NewActivity).OrderByDescending(x => x.sort)
+                items = db0.Event.Where(x => !x.i_Hide & x.event_type == (int)EventType.NewActivity).OrderByDescending(x => new { x.sort, x.event_id })
                                          .Select(x => new m_Event()
                                          {
                                              event_id = x.event_id,

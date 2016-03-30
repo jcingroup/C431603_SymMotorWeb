@@ -16,7 +16,7 @@ namespace DotWeb.Controllers
             using (var db0 = getDB0())
             {
                 #region banner
-                info.banners = db0.Banner.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                info.banners = db0.Banner.Where(x => !x.i_Hide).OrderByDescending(x => new { x.sort, x.banner_id })
                                          .Select(x => new m_Banner()
                                          {
                                              banner_id = x.banner_id,
@@ -29,17 +29,17 @@ namespace DotWeb.Controllers
                 }
                 #endregion
                 #region news
-                info.news = db0.News.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                info.news = db0.News.Where(x => !x.i_Hide).OrderByDescending(x => new { x.sort, x.day, x.news_id })
                                          .Select(x => new m_News()
                                          {
                                              news_id = x.news_id,
                                              day = x.day,
                                              news_title = x.news_title,
                                              news_info = x.news_info
-                                         }).Take(3).ToList();
+                                         }).Take(2).ToList();
                 #endregion
                 #region banner
-                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => new { x.sort, x.brand_id })
                                          .Select(x => new m_Brand()
                                          {
                                              brand_category_id = x.brand_category_id,

@@ -1159,7 +1159,7 @@ namespace DotWeb.Controller
                                 }).ToList();
                 foreach (var item in l1)
                 {
-                    item.l2_list = db.Brand.Where(x => !x.i_Hide & x.brand_category_id == item.l1_id).OrderByDescending(x => x.sort)
+                    item.l2_list = db.Brand.Where(x => !x.i_Hide & x.brand_category_id == item.l1_id).OrderByDescending(x => new { x.sort, x.brand_id })
                                         .Select(x => new L2()
                                         {
                                             l2_id = x.brand_id,

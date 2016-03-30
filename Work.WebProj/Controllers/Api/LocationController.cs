@@ -32,7 +32,7 @@ namespace DotWeb.Api
             using (db0 = getDB0())
             {
                 var items = db0.Location
-                    .OrderByDescending(x => x.sort)
+                    .OrderByDescending(x => new { x.sort, x.location_id })
                     .Select(x => new m_Location()
                     {
                         location_id = x.location_id,

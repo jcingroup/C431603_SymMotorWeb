@@ -32,7 +32,7 @@ namespace DotWeb.Controllers
                     ViewBag.category_name = get_category.category_name;
                 }
 
-                items = db0.Faq.Where(x => !x.i_Hide & x.faq_category_id == category_id).OrderByDescending(x => x.sort)
+                items = db0.Faq.Where(x => !x.i_Hide & x.faq_category_id == category_id).OrderByDescending(x => new { x.sort, x.faq_id })
                                .Select(x => new m_Faq()
                                {
                                    faq_id = x.faq_id,

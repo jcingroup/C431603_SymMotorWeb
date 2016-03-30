@@ -32,7 +32,7 @@ namespace DotWeb.Api
             using (db0 = getDB0())
             {
                 var items = db0.FaqCategory
-                    .OrderByDescending(x => x.sort)
+                    .OrderByDescending(x => new { x.sort, x.faq_category_id })
                     .Select(x => new m_FaqCategory()
                     {
                         faq_category_id = x.faq_category_id,

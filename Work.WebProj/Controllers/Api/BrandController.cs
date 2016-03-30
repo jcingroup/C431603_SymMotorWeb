@@ -32,7 +32,7 @@ namespace DotWeb.Api
             using (db0 = getDB0())
             {
                 var items = db0.Brand
-                    .OrderByDescending(x => x.sort)
+                    .OrderByDescending(x => new { x.sort, x.brand_id })
                     .Select(x => new m_Brand()
                     {
                         brand_id = x.brand_id,

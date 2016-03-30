@@ -33,7 +33,7 @@ namespace DotWeb.Api
             {
                 var items = db0.EditorDetail
                     .Where(x => x.editor_id == q.main_id)
-                    .OrderByDescending(x => new { main_sort = x.Editor.sort, x.sort })
+                    .OrderByDescending(x => new { main_sort = x.Editor.sort, x.sort, x.editor_detail_id })
                     .Select(x => new m_EditorDetail()
                     {
                         editor_id = x.editor_id,

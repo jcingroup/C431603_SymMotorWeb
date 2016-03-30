@@ -31,7 +31,7 @@ namespace DotWeb.Controllers
                                     l1_name = x.category_name,
                                     l2_list = x.Brand.Where(y => !y.i_Hide).OrderBy(y => y.sort).Select(y => new L2() { l2_id = y.brand_id, l2_name = y.brand_name }).ToList()
                                 });
-                var temp_l = db0.Location.Where(x => !x.i_Hide & x.is_sales).OrderByDescending(x => x.sort)
+                var temp_l = db0.Location.Where(x => !x.i_Hide & x.is_sales).OrderByDescending(x => new { x.sort, x.location_id })
                                         .GroupBy(x => x.city).Select(x => new GroupOption()
                                         {
                                             key = x.Key,
