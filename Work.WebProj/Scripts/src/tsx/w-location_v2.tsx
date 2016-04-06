@@ -164,16 +164,18 @@ namespace W_Location_v2 {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th style={styles.width_10}>縣市</th>
-                                <th style={styles.width_10}>區域</th>
-                                <th style={styles.width_25}>地址</th>
-                                <th style={styles.width_20}>電話</th>
-                                <th style={styles.width_35}>營業時間</th>
+                                <th style={{"width" : "10%"}}>據點名稱</th>
+                                <th style={{"width" : "10%"}}>縣市</th>
+                                <th style={{"width" : "10%"}}>區域</th>
+                                <th style={{"width" : "25%"}}>地址</th>
+                                <th style={{"width" : "15%"}}>電話</th>
+                                <th style={{"width" : "30%"}}>營業時間</th>
                                 </tr>
                             </thead>
                         <tbody>
                            {
                            sales.map((item, i) => <tr key={i}>
+                                            <td>XXX</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
@@ -196,16 +198,18 @@ namespace W_Location_v2 {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th style={styles.width_10}>縣市</th>
-                                <th style={styles.width_10}>區域</th>
-                                <th style={styles.width_25}>地址</th>
-                                <th style={styles.width_20}>電話</th>
-                                <th style={styles.width_35}>營業時間</th>
+                                <th style={{"width" : "10%"}}>據點名稱</th>
+                                <th style={{"width" : "10%"}}>縣市</th>
+                                <th style={{"width" : "10%"}}>區域</th>
+                                <th style={{"width" : "25%"}}>地址</th>
+                                <th style={{"width" : "15%"}}>電話</th>
+                                <th style={{"width" : "30%"}}>營業時間</th>
                                 </tr>
                             </thead>
                         <tbody>
                            {
                            repair.map((item, i) => <tr key={i}>
+                                            <td>XXX</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
@@ -229,16 +233,18 @@ namespace W_Location_v2 {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th style={styles.width_10}>縣市</th>
-                                <th style={styles.width_10}>區域</th>
-                                <th style={styles.width_25}>地址</th>
-                                <th style={styles.width_20}>電話</th>
-                                <th style={styles.width_35}>營業時間</th>
+                                <th style={{"width" : "10%"}}>據點名稱</th>
+                                <th style={{"width" : "10%"}}>縣市</th>
+                                <th style={{"width" : "10%"}}>區域</th>
+                                <th style={{"width" : "25%"}}>地址</th>
+                                <th style={{"width" : "15%"}}>電話</th>
+                                <th style={{"width" : "30%"}}>營業時間</th>
                                 </tr>
                             </thead>
                         <tbody>
                            {
                            sales.map((item, i) => <tr key={i}>
+                                            <td>XXX</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
@@ -256,16 +262,18 @@ namespace W_Location_v2 {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th style={styles.width_10}>縣市</th>
-                                <th style={styles.width_10}>區域</th>
-                                <th style={styles.width_25}>地址</th>
-                                <th style={styles.width_20}>電話</th>
-                                <th style={styles.width_35}>營業時間</th>
+                                <th style={{"width" : "10%"}}>據點名稱</th>
+                                <th style={{"width" : "10%"}}>縣市</th>
+                                <th style={{"width" : "10%"}}>區域</th>
+                                <th style={{"width" : "25%"}}>地址</th>
+                                <th style={{"width" : "15%"}}>電話</th>
+                                <th style={{"width" : "30%"}}>營業時間</th>
                                 </tr>
                             </thead>
                         <tbody>
                            {
                            repair.map((item, i) => <tr key={i}>
+                                            <td>XXX</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>

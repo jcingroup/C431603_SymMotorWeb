@@ -106,28 +106,8 @@ a {
         padding-bottom: 12px;
         background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
 
-        .h2 {
-            @include reset-text;
-            border: 0;
-            margin: 0;
-            padding: 0;
-            font-size: em(17px);
-            color: #ccc;
-            position: absolute;
-            left: $logo-width + $logo-spacing;
-            top: 60px;
-
-            &:after {
-                content: "/";
-                color:#999;
-                font-size: em(18px);
-                margin-left:$spacer*0.5;
-            }
-        }
-
         a {
             color: #fff;
-            font-size: em(18px);
             &:hover {color: $link-hover-color;}
         }
 
@@ -136,8 +116,6 @@ a {
         }
 
         .menu {
-            padding-left: $spacer*7.5;
-
             > li + li { margin-left:$spacer; }
         }
 
@@ -152,7 +130,7 @@ a {
 
                 margin-right: $spacer*0.5;
                 margin-top: $spacer*0.5;
-                padding:$spacer*0.3 $spacer;
+                padding:$spacer*0.2 $spacer*0.5;
             }
         }
 
@@ -165,7 +143,7 @@ a {
                 height: 0;
                 margin-top: -0.3em;
                 margin-right: .25rem;
-                margin-left: $spacer*0.8;
+                margin-left: $spacer*0.5;
                 vertical-align: middle;
                 content: "";
                 border-top: 0.5em solid lighten($link-hover-color, 35%);

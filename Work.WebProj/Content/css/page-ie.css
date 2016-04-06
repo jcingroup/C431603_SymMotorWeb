@@ -4568,49 +4568,14 @@ a:focus {
   padding-bottom: 12px;
   background: url(../images/Index/watermark.png) no-repeat 280px 10px;
 }
-#header .showcase .h2 {
-  font-family: "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  letter-spacing: normal;
-  line-break: auto;
-  line-height: 1.5;
-  text-align: left;
-  text-align: start;
-  text-decoration: none;
-  text-shadow: none;
-  text-transform: none;
-  white-space: normal;
-  word-break: normal;
-  word-spacing: normal;
-  word-wrap: normal;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 1.0625em;
-  color: #ccc;
-  position: absolute;
-  left: 280px;
-  top: 60px;
-}
-#header .showcase .h2:after {
-  content: "/";
-  color: #999;
-  font-size: 1.125em;
-  margin-left: 8px;
-}
 #header .showcase a {
   color: #fff;
-  font-size: 1.125em;
 }
 #header .showcase a:hover {
   color: #ffbf07;
 }
 #header .showcase .menu, #header .showcase .submenu {
   margin-bottom: 0;
-}
-#header .showcase .menu {
-  padding-left: 120px;
 }
 #header .showcase .menu > li + li {
   margin-left: 16px;
@@ -4626,7 +4591,7 @@ a:focus {
   letter-spacing: 0.05em;
   margin-right: 8px;
   margin-top: 8px;
-  padding: 4.8px 16px;
+  padding: 3.2px 8px;
 }
 #header .showcase .collapse-toggle {
   color: #ffbf07;
@@ -4637,7 +4602,7 @@ a:focus {
   height: 0;
   margin-top: -0.3em;
   margin-right: .25rem;
-  margin-left: 12.8px;
+  margin-left: 8px;
   vertical-align: middle;
   content: "";
   border-top: 0.5em solid #ffedba;
@@ -4915,7 +4880,7 @@ a:focus {
   padding-right: 0;
 }
 .grid-location .table {
-  min-width: 700px;
+  min-width: 755px;
 }
 
 .grid-search {
