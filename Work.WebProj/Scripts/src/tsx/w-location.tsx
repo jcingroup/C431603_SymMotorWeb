@@ -175,7 +175,7 @@ namespace W_Location {
                         <tbody>
                            {
                            sales.map((item, i) => <tr key={i}>
-                                            <td>XXX</td>
+                                            <td>{item.location_name}</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
@@ -209,7 +209,7 @@ namespace W_Location {
                         <tbody>
                            {
                            repair.map((item, i) => <tr key={i}>
-                                            <td>XXX</td>
+                                            <td>{item.location_name}</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
@@ -244,7 +244,7 @@ namespace W_Location {
                         <tbody>
                            {
                            sales.map((item, i) => <tr key={i}>
-                                            <td>XXX</td>
+                                            <td>{item.location_name}</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
@@ -273,7 +273,7 @@ namespace W_Location {
                         <tbody>
                            {
                            repair.map((item, i) => <tr key={i}>
-                                            <td>XXX</td>
+                                            <td>{item.location_name}</td>
                                             <td>{item.city}</td>
                                             <td>{item.country}</td>
                                             <td>{item.city + item.country + item.address}</td>
