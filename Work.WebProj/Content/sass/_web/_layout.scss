@@ -128,10 +128,11 @@ a {
 
         .menu {
             padding-left: $spacer*6.5;
+            font-size: em(18px);
 
             > li {
                 margin-bottom: 0.25em;
-                &:not(:last-child) { margin-right:$spacer; }
+                &:not(:last-child) { margin-right:$spacer*1.25; }
             }
         }
 
@@ -262,7 +263,7 @@ a {
             }
             .submenu {
                 padding-left: 0;
-                
+
                 &.collapse {display: block;}
 
                 li {

@@ -2716,12 +2716,13 @@ a:focus {
 }
 #header .showcase .menu {
   padding-left: 6.5rem;
+  font-size: 1.125em;
 }
 #header .showcase .menu > li {
   margin-bottom: 0.25em;
 }
 #header .showcase .menu > li:not(:last-child) {
-  margin-right: 1rem;
+  margin-right: 1.25rem;
 }
 #header .showcase .submenu {
   padding-left: 6.5rem;
