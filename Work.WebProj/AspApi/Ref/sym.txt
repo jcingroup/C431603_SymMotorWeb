@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta name="google-site-verification" content="RnGStTrga0vyufhe_X_DeZi9Fmt7qRHkF46Ja6LcAd0" />
+<meta http-equiv="Content-Type" content="SYM Online/html; charset=big5">
+<meta name="copyright" content="順益汽車">
+<META content="2003 SYM-MOTOR (順益汽車)" name=copyright>
+<META content="Johnc;johnc@sym-motor.com.tw" name=author>
+
+<title>順益汽車優質中古車網頁</title><link rel="SHORTCUT ICON" href="3.ico">
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<!--body -->
+
+<%
+   if session_key="" and request("pass")=76 then session("session_log")=request("session_log")
+   'response.write session("session_log")
+%>
+
+<frameset rows="*" border=0 frameborder="0">
+  <frame name="wmain" scrolling="auto" src="./start.asp" noresize target="wmain">
+  <noframes>
+  <body>
+  
+  <p>此網頁使用框架,但是您的瀏覽器並不支援.</p>
+
+  </body>
+  </noframes>
+</frameset>
+
+<!--/body-->
+
+</html>
+

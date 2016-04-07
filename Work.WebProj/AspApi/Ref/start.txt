@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta name="google-site-verification" content="RnGStTrga0vyufhe_X_DeZi9Fmt7qRHkF46Ja6LcAd0" />
+<meta http-equiv="Content-Type" content="SYM Online/html; charset=big5">
+<meta name="copyright" content="順益汽車系統網頁 eip 起始頁面0">
+<META content="2003 SYM-MOTOR (順益汽車優質中古車網頁)" name=copyright>
+<META content="Johnc;johnc@sym-motor.com.tw" name=author>
+
+<title>順益汽車系統網頁 eip 起始頁面0</title><link rel="SHORTCUT ICON" href="3.ico">
+<%
+  if request("login_passwd")<>"" or request("login_emp_no")<>"" then
+     response.write ("<script language='javascript'>alert('登入帳號或密碼錯誤, 請重新登入!');</script>") 
+  end if
+%>
+<script language="vbscript">
+  function start()
+     x=window.open("login.asp","st","status=no,dependent=yes,scrollbars=no,width=370,height=230,alwaysraised=1,left=230,top=200")
+  end function
+</script>
+<SCRIPT LANGUAGE="javascript" >
+<!--
+function load(page) { 
+  //alert(page);
+  window.open(page,'wmain');                                  //  reload 時, 重新載入 wmg_004_eip.asp
+  ////window.open('./wmg/wmg_001_eip.asp','wheader');             //  reload 時, 重新載入 wmg_001_eip.asp
+  window.close();
+}
+//-->
+</SCRIPT>
+<style type="text/css">
+<!--
+a:hover{position:relative;top:1px;left:1px;}
+-->
+</style>
+
+<% 
+   dim session_key
+
+   session_key=session("session_log")
+   
+   '-- create db connect 
+   Set conn1 = Server.CreateObject("ADODB.Connection") 
+   'conn1.open "driver={Microsoft ODBC for Oracle};server="+session("xdct_n")+";uid="+session("xdct_u")+";pwd="+session("xdct_p")  ' server=資料庫SID名稱
+   conn1.open "driver={Microsoft ODBC for Oracle};server=wau;uid=web;pwd=gjp4u4" 
+   '-- create a recordset for check login session_log 
+   sql_str2="select b.session_key,a.emp_no,a.passwd from wmg_001 a,wmg_006 b where a.emp_no=b.emp_no and b.session_key='"+session_key+"'"
+   Set rs_session = Server.CreateObject("ADODB.Recordset")
+   rs_session.open  sql_str2,conn1,3,3,1  
+   
+   if rs_session.recordcount=0 then
+
+      '--若未登入,則於onload時彈出輸入視窗
+      '''response.write ("<BODY bgColor='#FFffFF' onload='start()'>")  
+      response.write "<div id='123' style='position:absolute; left: 0px; top:0px'><table border=0><tr><td>"
+      response.write ("<iframe id='sys_data' name='data'  scrolling=no frameborder=0 width='1250' height='768' src='login.asp' style='z-index:1'></iframe>") 
+      response.write "</td></tr></table></div>"
+   else
+      '--若已登入,則於onload or reload時直接進入系統
+      response.write ("<BODY bgColor='#FFffFF' onload="+chr(34)+"load('./../wmg/wmg_004_eip.asp?has_logined=1')"+chr(34)+">")   
+   end if
+
+
+   
+%>
+
+<base target="wmain">
+
+</HEAD>
+
+<!--超連結"下壓"效果-->
+<body topmargin="0" leftmargin="0">
+
+</HTML>
+
+
+
+
+
+
+
+
+
+       
+
