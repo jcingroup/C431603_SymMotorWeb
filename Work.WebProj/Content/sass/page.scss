@@ -734,6 +734,10 @@ $content-spacing-xs:    40px !default;
     }
 }
 
+.meta {
+    .label {margin-right: 8px;}
+}
+
 .car-info {
     margin-bottom: 0;
 
@@ -889,14 +893,13 @@ $content-spacing-xs:    40px !default;
         }
 
         li {
-            margin: 4px 0;
-            color: #666;
+            margin: 4px;
+            color: #888;
 
             &.active {
                 padding: 0 5px;
-                color: #fff;
+                color: #000;
                 font-weight: bold;
-                background: $brand-primary;
                 border-radius: 3px;
             }
         }

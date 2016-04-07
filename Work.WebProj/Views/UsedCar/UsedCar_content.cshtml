@@ -22,24 +22,6 @@
 </script>
 <!--[if gte IE 9]><!-->
 <script src="~/Content/js/swiper/swiper.min.js"></script>
-<script>
-    var banner = new Swiper('#banner .swiper-container', {
-        autoplay: 2500,
-        speed: 1000,
-        spaceBetween: 10,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-    });
-    var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
-        spaceBetween: 10,
-        slidesPerView: 5,
-        speed: 1000,
-        centeredSlides: true,
-        slideToClickedSlide: true
-    });
-    banner.params.control = bannerThumb;
-    bannerThumb.params.control = banner;
-</script>
 <!--<![endif]-->
 
 <!--[if lt IE 9]>

@@ -26,23 +26,20 @@ var CarContent = React.createClass({
 
             var banner = new Swiper('#banner .swiper-container', {
                 autoplay: 2500,
-                autoplayDisableOnInteraction: 'false',
                 speed: 1000,
+                spaceBetween: 10,
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
             });
             var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
                 spaceBetween: 10,
                 slidesPerView: 5,
-                autoplay: 2500,
-                autoplayDisableOnInteraction: 'false',
                 speed: 1000,
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
+                centeredSlides: true,
+                slideToClickedSlide: true
             });
-            $("#banner-thumb").on('click', 'li', function () {
-                banner.slideTo($(this).index(), 1000);
-            });
+            banner.params.control = bannerThumb;
+            bannerThumb.params.control = banner;
 
         }.bind(this));
     },

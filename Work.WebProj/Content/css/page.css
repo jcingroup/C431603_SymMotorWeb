@@ -5898,6 +5898,10 @@ a:focus {
   }
 }
 
+.meta .label {
+  margin-right: 8px;
+}
+
 .car-info {
   margin-bottom: 0;
 }
@@ -6015,14 +6019,13 @@ a:focus {
   border: 1px solid #ccc;
 }
 .detail .accessory li {
-  margin: 4px 0;
-  color: #666;
+  margin: 4px;
+  color: #888;
 }
 .detail .accessory li.active {
   padding: 0 5px;
-  color: #fff;
+  color: #000;
   font-weight: bold;
-  background: #BA8A00;
   border-radius: 3px;
 }
 .detail .notice li {
