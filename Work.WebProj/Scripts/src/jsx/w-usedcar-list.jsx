@@ -10,8 +10,7 @@ var ListCars = React.createClass({
         for(var i=1; i <= 5; i++ ) {
             opt_year.push(now.getFullYear() - i);
         }
-
-        return {
+        var r ={
             lists:[],
             search:{
                 h_obj_brand:null,
@@ -26,7 +25,18 @@ var ListCars = React.createClass({
             options_modal:[],
             options_year:opt_year,
             options_place:[]
-        };
+        }
+
+        r.search.h_obj_brand = this.props.h_obj_brand == '' ? null : this.props.h_obj_brand;
+        r.search.h_obj_type = this.props.h_obj_type == '' ? null : this.props.h_obj_type;
+        r.search.h_obj_color = this.props.h_obj_color == '' ? null : this.props.h_obj_color;
+        r.search.h_obj_born_date = this.props.h_obj_born_date == '' ? null : this.props.h_obj_born_date;
+        r.search.h_place_dept_no = this.props.h_place_dept_no == '' ? null : this.props.h_place_dept_no;
+        r.search.h_list_price = this.props.h_list_price == '' ? null : this.props.h_list_price;
+        r.search.h_low_price = this.props.h_low_price == '' ? null : this.props.h_low_price;
+        console.log('search',r.search);
+
+        return r;
     },
     getDefaultProps: function () {
 
@@ -40,7 +50,7 @@ var ListCars = React.createClass({
     },
     componentDidMount: function () {
 
-        $.get(this.props.sym_web_api + 'api_list.asp',{},function(data){
+        $.get(this.props.sym_web_api + 'api_list.asp',this.state.search,function(data){
             this.setState({lists:data});
         }.bind(this))
 
@@ -261,4 +271,11 @@ var ListCars = React.createClass({
 })
 
 var dom = document.getElementById('carContent');
-ReactDOM.render(<ListCars caption={caption} />, dom);
+ReactDOM.render(<ListCars caption={caption}
+                          h_obj_brand={h_obj_brand}
+                          h_obj_type={h_obj_type}
+                          h_obj_color={h_obj_color}
+                          h_obj_born_date={h_obj_born_date}
+                          h_place_dept_no={h_place_dept_no}
+                          h_list_price={h_list_price}
+                          h_low_price={h_low_price} />, dom);

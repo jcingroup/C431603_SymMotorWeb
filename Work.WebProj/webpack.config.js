@@ -31,6 +31,7 @@ module.exports = {
         w_location_v2: path.resolve(__dirname, 'Scripts/src/tsx/w-location_v2.js'),
         w_usedcar_list: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-list.jsx'),
         w_usedcar_content: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-content.jsx'),
+        w_usedcar_index: path.resolve(__dirname, 'Scripts/src/jsx/w-usedcar-index.jsx'),
         vendors: ['jquery'],
         vendorsforweb: ['react', 'react-dom', 'react-bootstrap', 'moment']
     },

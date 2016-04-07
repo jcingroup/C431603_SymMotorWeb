@@ -4,28 +4,36 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 @section Scripts {
-<script>
-    var caption = '@ViewBag.Title';
-</script>
+    <script>
+        var caption = '@ViewBag.Title';
 
-<!--[if lt IE 9]>
-    <script src="/node_modules/es5-shim/es5-shim.js"></script>
-    <script src="/node_modules/es5-shim/es5-sham.js"></script>
-    <script src="/node_modules/console-polyfill/index.js"></script>
-<![endif]-->
+        var h_obj_brand = '@Request.QueryString["h_obj_brand"]';
+        var h_obj_type = '@Request.QueryString["h_obj_type"]';
+        var h_obj_color = '@Request.QueryString["h_obj_color"]';
+        var h_place_dept_no = '@Request.QueryString["h_place_dept_no"]';
+        var h_list_price = '@Request.QueryString["h_list_price"]';
+        var h_low_price = '@Request.QueryString["h_low_price"]';
+        var h_obj_born_date = '@Request.QueryString["h_obj_born_date"]';
+    </script>
 
-<script src="~/Scripts/build/app/vendorsforweb.js"></script>
-<script src="~/Scripts/build/app/w_usedcar_list.js"></script>
-<script>
-    $(window).scroll(function () {
-        var h = $('#header').height();
-        if ($(this).scrollTop() > h) {
-            $('#sidebar, #content').addClass('fixed');
-        } else {
-            $('#sidebar, #content').removeClass('fixed');
-        }
-    });
-</script>
+    <!--[if lt IE 9]>
+        <script src="/node_modules/es5-shim/es5-shim.js"></script>
+        <script src="/node_modules/es5-shim/es5-sham.js"></script>
+        <script src="/node_modules/console-polyfill/index.js"></script>
+    <![endif]-->
+
+    <script src="~/Scripts/build/app/vendorsforweb.js"></script>
+    <script src="~/Scripts/build/app/w_usedcar_list.js"></script>
+    <script>
+        $(window).scroll(function () {
+            var h = $('#header').height();
+            if ($(this).scrollTop() > h) {
+                $('#sidebar, #content').addClass('fixed');
+            } else {
+                $('#sidebar, #content').removeClass('fixed');
+            }
+        });
+    </script>
 }
 
 @Html.Partial("~/Views/UsedCar/UsedCar_sidebar.cshtml")

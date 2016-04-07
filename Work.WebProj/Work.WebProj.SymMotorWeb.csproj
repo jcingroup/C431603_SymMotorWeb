@@ -226,6 +226,7 @@
     <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.js" />
     <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.min.js" />
     <Content Include="AspApi\api_content.asp" />
+    <Content Include="AspApi\api_index.asp" />
     <Content Include="AspApi\api_place_dept_no.asp" />
     <Content Include="AspApi\api_modal.asp" />
     <Content Include="AspApi\api_brand.asp" />
@@ -260,6 +261,9 @@
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\UsersController.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
+    <Content Include="AspApi\Ref\login.asp" />
+    <Content Include="AspApi\Ref\start.txt" />
+    <Content Include="AspApi\Ref\sym.txt" />
     <Content Include="AspApi\Ref\wau_014.asp" />
     <Content Include="ckeditor\inlineConfig.js" />
     <Content Include="ckfinder\ckfinder.js" />
@@ -490,6 +494,7 @@
     <Content Include="Scripts\build\app\w_location.js" />
     <Content Include="Scripts\build\app\w_testdrive_email.js" />
     <Content Include="Scripts\build\app\w_usedcar_content.js" />
+    <Content Include="Scripts\build\app\w_usedcar_index.js" />
     <Content Include="Scripts\build\app\w_usedcar_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
@@ -811,6 +816,7 @@
     <Content Include="Content\sass\index-ie.scss" />
     <Content Include="Content\sass\page-ie.scss" />
     <Content Include="Content\sass\_web\_layout-ie.scss" />
+    <Content Include="Scripts\src\jsx\w-usedcar-index.jsx" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
