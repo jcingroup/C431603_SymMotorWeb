@@ -5544,7 +5544,6 @@ a:focus {
 }
 .grid-search .featured #banner .more {
   display: block;
-  text-align: right;
   color: #ffd354;
 }
 .grid-search .featured #banner .more:hover {
@@ -5564,6 +5563,9 @@ a:focus {
 .grid-search .form [class*="col-"] {
   padding-left: 0.4rem;
   padding-right: 0.4rem;
+}
+.grid-search .form .btn:not(:last-child) {
+  margin-right: 0.3rem;
 }
 @media (max-width: 1259px) {
   .grid-search .featured #banner {

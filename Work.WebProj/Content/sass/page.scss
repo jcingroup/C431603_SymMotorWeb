@@ -319,7 +319,6 @@ $content-spacing-xs:    40px !default;
 
             .more {
                 display: block;
-                text-align: right;
                 color: lighten($brand-primary, 30%);
 
                 &:hover {color: lighten($brand-secondary, 20%);}
@@ -344,6 +343,7 @@ $content-spacing-xs:    40px !default;
             padding-left:  $spacer*0.4;
             padding-right: $spacer*0.4;
         }
+        .btn:not(:last-child) {margin-right: $spacer*0.3;}
     }
 
     @include media-breakpoint-down(lg) {
