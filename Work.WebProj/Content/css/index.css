@@ -2674,6 +2674,37 @@ a:focus {
   padding-bottom: 12px;
   background: url(../images/Index/watermark.png) no-repeat 280px 10px;
 }
+#header .showcase .h2 {
+  font-family: "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-break: auto;
+  line-height: 1.5;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 1.0625em;
+  color: #ccc;
+  position: absolute;
+  left: 280px;
+  top: 58px;
+}
+#header .showcase .h2::after {
+  content: "/";
+  color: #999;
+  font-size: 1.125em;
+  margin-left: 0.5rem;
+}
 #header .showcase a {
   color: #fff;
 }
@@ -2683,11 +2714,17 @@ a:focus {
 #header .showcase .menu, #header .showcase .submenu {
   margin-bottom: 0;
 }
+#header .showcase .menu {
+  padding-left: 6.5rem;
+}
 #header .showcase .menu > li {
   margin-bottom: 0.25em;
 }
 #header .showcase .menu > li:not(:last-child) {
   margin-right: 1rem;
+}
+#header .showcase .submenu {
+  padding-left: 6.5rem;
 }
 #header .showcase .submenu li {
   display: inline-block;
@@ -2739,8 +2776,21 @@ a:focus {
     background-position: 255px 12px;
     background-size: auto 35px;
   }
+  #header .showcase .h2 {
+    left: 255px;
+    top: 60px;
+  }
+  #header .showcase .h2::after {
+    display: none;
+  }
+  #header .showcase .menu {
+    padding-left: 5rem;
+  }
   #header .showcase .menu > li:not(:last-child) {
     margin-right: 0.8rem;
+  }
+  #header .showcase .submenu {
+    padding-left: 5rem;
   }
   #header .showcase .collapse-toggle::after {
     margin-left: 0.3rem;
@@ -2781,6 +2831,9 @@ a:focus {
     padding: 0.6rem 1rem;
     order: 2;
   }
+  #header .showcase .menu {
+    padding-left: 0;
+  }
   #header .showcase .menu li {
     display: block;
     margin: 0;
@@ -2789,6 +2842,9 @@ a:focus {
     display: inline-block;
     font-size: 0.875rem;
     padding: 0.1rem 0;
+  }
+  #header .showcase .submenu {
+    padding-left: 0;
   }
   #header .showcase .submenu.collapse {
     display: block;

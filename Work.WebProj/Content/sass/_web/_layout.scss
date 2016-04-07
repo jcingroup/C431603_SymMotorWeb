@@ -98,6 +98,25 @@ a {
         padding-bottom: 12px;
         background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
 
+        .h2 {
+            @include reset-text;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            font-size: em(17px);
+            color: #ccc;
+            position: absolute;
+            left: $logo-width + $logo-spacing;
+            top: 58px;
+
+            &::after {
+                content: "/";
+                color:#999;
+                font-size: em(18px);
+                margin-left:$spacer*0.5;
+            }
+        }
+
         a {
             color: #fff;
             &:hover {color: $link-hover-color;}
@@ -108,6 +127,8 @@ a {
         }
 
         .menu {
+            padding-left: $spacer*6.5;
+
             > li {
                 margin-bottom: 0.25em;
                 &:not(:last-child) { margin-right:$spacer; }
@@ -115,6 +136,8 @@ a {
         }
 
         .submenu {
+            padding-left: $spacer*6.5;
+
             li {display: inline-block;}
             a {
                 display: inline-block;
@@ -165,9 +188,21 @@ a {
             background-position: $logo-width 12px;
             background-size: auto 35px;
 
+            .h2 {
+                left: $logo-width;
+                top: 60px;
+
+                &::after {display: none;}
+            }
+
             .menu {
+                padding-left: $spacer*5;
+
                 > li:not(:last-child) { margin-right:$spacer*0.8; }
             }
+
+            .submenu {padding-left: $spacer*5;}
+
             .collapse-toggle {
                 &::after {
                     margin-left: $spacer*0.3;
@@ -212,6 +247,7 @@ a {
             order: 2;
 
             .menu {
+                padding-left: 0;
 
                 li {
                     display: block;
@@ -225,6 +261,8 @@ a {
                 }
             }
             .submenu {
+                padding-left: 0;
+                
                 &.collapse {display: block;}
 
                 li {

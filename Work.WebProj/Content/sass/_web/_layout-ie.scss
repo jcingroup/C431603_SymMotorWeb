@@ -106,6 +106,8 @@ a {
         padding-bottom: 12px;
         background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
 
+        .h2 {display: none;}
+
         a {
             color: #fff;
             &:hover {color: $link-hover-color;}

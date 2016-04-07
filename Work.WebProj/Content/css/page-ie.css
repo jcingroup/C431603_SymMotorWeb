@@ -4568,6 +4568,9 @@ a:focus {
   padding-bottom: 12px;
   background: url(../images/Index/watermark.png) no-repeat 280px 10px;
 }
+#header .showcase .h2 {
+  display: none;
+}
 #header .showcase a {
   color: #fff;
 }
