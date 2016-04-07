@@ -247,7 +247,8 @@ var ListCars = React.createClass({
                                                             <ul className="info list-unstyled">
                                                                 <li><em>廠牌:</em> {item.obj_brand}</li>
                                                                 <li><em>車型:</em> {item.obj_type}</li>
-                                                                <li><em>車色:</em> {item.obj_color} <em>年份:</em> {item.ori_year} <em>地點:</em> {item.dept_cname}</li>
+                                                                <li><em>車色:</em> {item.obj_color} <em>年份:</em> {item.ori_year}</li>
+                                                                <li><em>地點:</em> {item.dept_cname}</li>
                                                             </ul>
                                                             <p className="price text-danger">直購價<strong>${item.d_price}萬</strong></p>
                                                         </div>

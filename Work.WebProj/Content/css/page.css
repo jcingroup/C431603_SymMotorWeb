@@ -5347,6 +5347,9 @@ a:focus {
   font-size: 0.8em;
   margin-bottom: 0;
 }
+.h1 .title > li {
+  margin-right: 0.8rem;
+}
 .h1 .price {
   margin-left: 1rem;
 }
@@ -5541,7 +5544,6 @@ a:focus {
 }
 .grid-search .featured #banner .more {
   display: block;
-  text-align: right;
   color: #ffd354;
 }
 .grid-search .featured #banner .more:hover {
@@ -5561,6 +5563,9 @@ a:focus {
 .grid-search .form [class*="col-"] {
   padding-left: 0.4rem;
   padding-right: 0.4rem;
+}
+.grid-search .form .btn:not(:last-child) {
+  margin-right: 0.3rem;
 }
 @media (max-width: 1259px) {
   .grid-search .featured #banner {
@@ -5688,20 +5693,28 @@ a:focus {
   opacity: 1;
   top: 50%;
 }
+.grid-products .card-block {
+  height: 180px;
+  overflow: hidden;
+}
 .grid-products .card-title {
   font-size: 1rem;
 }
 .grid-products .card-title a {
+  margin-left: 0.5rem;
   font-size: 1.25rem;
 }
 .grid-products .info {
   color: #666;
-  font-size: 0.9375em;
+  font-size: 0.875rem;
 }
 .grid-products .info em {
   font-style: normal;
   font-weight: bold;
   color: #555;
+}
+.grid-products .info em:not(:first-child) {
+  margin-left: 0.5rem;
 }
 .grid-products .price {
   margin: 0;

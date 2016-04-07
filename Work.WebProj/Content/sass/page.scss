@@ -82,6 +82,8 @@ $content-spacing-xs:    40px !default;
     .title {
         font-size: 0.8em;
         margin-bottom: 0;
+
+        > li {margin-right: $spacer*0.8;}
     }
     .price {margin-left: $spacer;}
 
@@ -317,7 +319,6 @@ $content-spacing-xs:    40px !default;
 
             .more {
                 display: block;
-                text-align: right;
                 color: lighten($brand-primary, 30%);
 
                 &:hover {color: lighten($brand-secondary, 20%);}
@@ -342,6 +343,7 @@ $content-spacing-xs:    40px !default;
             padding-left:  $spacer*0.4;
             padding-right: $spacer*0.4;
         }
+        .btn:not(:last-child) {margin-right: $spacer*0.3;}
     }
 
     @include media-breakpoint-down(lg) {
@@ -512,20 +514,30 @@ $content-spacing-xs:    40px !default;
         }
     }
 
+    .card-block {
+        height: 180px;
+        overflow: hidden;
+    }
+
     .card-title {
         font-size: $font-size-base;
 
-        a {font-size: $font-size-lg;}
+        a {
+            margin-left: $spacer*0.5;
+            font-size: $font-size-lg;
+        }
     }
 
     .info {
         color: #666;
-        font-size: em(15px);
+        font-size: $font-size-sm;
 
         em {
             font-style: normal;
             font-weight: bold;
             color:#555;
+
+            &:not(:first-child) {margin-left: $spacer*0.5;}
         }
     }
 
