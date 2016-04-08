@@ -292,18 +292,17 @@ $content-spacing-xs:    $content-spacing;
 	    	margin-bottom: $spacer*1.5;
 
 	    	p {margin-bottom: $spacer*0.7;}
+	    }
 
-	    	.more {
-	    		display: inline-block;
-	    		padding: $spacer*0.2 $spacer*0.5;
-	    		font-size: em(12px);
-	    		letter-spacing: 0.1em;
-	    		color: #fff;
-	    		text-transform: uppercase;
-	    		background: #544D48;
+	    .more {
+	    	display: inline-block;
+	    	padding: $spacer*0.2 $spacer*0.5;
+	    	font-size: $font-size-sm;
+	    	letter-spacing: 0.1em;
+	    	color: #fff;
+	    	background: #544D48;
 
-	    		&:hover {background: #806654;}
-	    	}
+	    	&:hover {background: #806654;}
 	    }
     }
 
