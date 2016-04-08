@@ -3490,6 +3490,21 @@ a:focus {
 .grid-news .article-list .article {
   margin-bottom: 1.5rem;
 }
+.grid-news .article-list .article p {
+  margin-bottom: 0.7rem;
+}
+.grid-news .article-list .article .more {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-transform: uppercase;
+  background: #544D48;
+}
+.grid-news .article-list .article .more:hover {
+  background: #806654;
+}
 .grid-news .fb {
   padding-right: 0;
   padding-left: 1.875rem;

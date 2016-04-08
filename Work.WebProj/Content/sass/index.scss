@@ -290,6 +290,20 @@ $content-spacing-xs:    $content-spacing;
 
 	    .article {
 	    	margin-bottom: $spacer*1.5;
+
+	    	p {margin-bottom: $spacer*0.7;}
+
+	    	.more {
+	    		display: inline-block;
+	    		padding: $spacer*0.2 $spacer*0.5;
+	    		font-size: em(12px);
+	    		letter-spacing: 0.1em;
+	    		color: #fff;
+	    		text-transform: uppercase;
+	    		background: #544D48;
+
+	    		&:hover {background: #806654;}
+	    	}
 	    }
     }
 

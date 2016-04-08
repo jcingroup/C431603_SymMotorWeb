@@ -36,7 +36,7 @@ namespace DotWeb.Controllers
                                              day = x.day,
                                              news_title = x.news_title,
                                              news_info = x.news_info
-                                         }).Take(2).ToList();
+                                         }).Take(3).ToList();
                 #endregion
                 #region banner
                 info.brands = db0.Brand.Where(x => !x.i_Hide).OrderByDescending(x => new { x.sort, x.brand_id })
