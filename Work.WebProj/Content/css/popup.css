@@ -1,3 +1,35 @@
+.popup {
+  max-width: 320px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+@media (min-width: 500px) {
+  .popup {
+    max-width: 500px;
+  }
+}
+@media (min-width: 720px) {
+  .popup {
+    max-width: 720px;
+  }
+}
+@media (min-width: 940px) {
+  .popup {
+    max-width: 940px;
+  }
+}
+@media (min-width: 1200px) {
+  .popup {
+    max-width: 1200px;
+  }
+}
+@media (min-width: 1400px) {
+  .popup {
+    max-width: 1400px;
+  }
+}
+
 button.mfp-close {
   background: #999;
 }

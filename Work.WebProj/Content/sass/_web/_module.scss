@@ -221,12 +221,24 @@
 .mfp-close {
     width: 60px !important;
     height: 60px !important;
+    padding: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
     line-height: 60px !important;
+    text-align: center !important;
     color: #fff !important;
     font-family: 'themify' !important;
     font-size: 40px !important;
     text-shadow: 0 0 3px #000;
 }
 .mfp-content {
+    max-width: 320px !important;
     height: 100%;
+
+    // for iOS
+    @media (min-width: 500px) {max-width: 500px !important;}
+    @media (min-width: 720px) {max-width: 720px !important;}
+    @media (min-width: 940px) {max-width: 940px !important;}
+    @media (min-width: 1200px) {max-width: 1200px !important;}
+    @media (min-width: 1400px) {max-width: 1400px !important;}
 }

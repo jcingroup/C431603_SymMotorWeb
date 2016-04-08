@@ -4385,7 +4385,11 @@ a.text-danger:focus, a.text-danger:hover {
 .mfp-close {
   width: 60px !important;
   height: 60px !important;
+  padding: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
   line-height: 60px !important;
+  text-align: center !important;
   color: #fff !important;
   font-family: 'themify' !important;
   font-size: 40px !important;
@@ -4393,7 +4397,33 @@ a.text-danger:focus, a.text-danger:hover {
 }
 
 .mfp-content {
+  max-width: 320px !important;
   height: 100%;
+}
+@media (min-width: 500px) {
+  .mfp-content {
+    max-width: 500px !important;
+  }
+}
+@media (min-width: 720px) {
+  .mfp-content {
+    max-width: 720px !important;
+  }
+}
+@media (min-width: 940px) {
+  .mfp-content {
+    max-width: 940px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .mfp-content {
+    max-width: 1200px !important;
+  }
+}
+@media (min-width: 1400px) {
+  .mfp-content {
+    max-width: 1400px !important;
+  }
 }
 
 .editor img {

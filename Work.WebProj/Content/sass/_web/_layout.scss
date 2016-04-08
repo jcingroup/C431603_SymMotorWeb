@@ -342,14 +342,14 @@ a {
 
         a {
             font-size: 1.05em;
-            padding-left: $spacer*0.8;
-            padding-right: $spacer*0.8;
+            padding-left: $spacer*0.65;
+            padding-right: $spacer*0.65;
         }
         #{$selector} {
             &::after {bottom: -27px;}
         }
 
-        li:nth-of-type(1) {margin-left: -$spacer*0.8;}
+        li:nth-of-type(1) {margin-left: -$spacer*0.65;}
     }
     @include media-breakpoint-down(md) {
         padding:0;

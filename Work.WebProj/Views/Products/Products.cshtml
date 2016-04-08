@@ -16,9 +16,20 @@
         <script src="~/Content/js/bootstrap/tab.js"></script>
         <script src="~/Content/js/magnific/jquery.magnific-popup.min.js"></script>
         <script>
+            // $('.popup').magnificPopup({
+            //     type: 'ajax',
+            //     closeOnBgClick: false,
+            // });
             $('.popup').magnificPopup({
-                type: 'ajax',
-                closeOnBgClick: false,
+                type: 'iframe',
+                iframe: {
+                    patterns: {
+                        album: {
+                            id: 'id=',
+                            src: 'Album%id%'
+                        }
+                    }
+                }
             });
         </script>
     <!--<![endif]-->
@@ -90,7 +101,6 @@
 
             <section id="tab2" class="tab-pane" role="tabpanel">
                 <h3 class="sr-only">內裝/外觀</h3>
-
                 <ol class="album row list-unstyled">
                     @foreach (var i in Model.albums)
                     {<li>

@@ -4543,7 +4543,11 @@ a.text-danger:focus, a.text-danger:hover {
 .mfp-close {
   width: 60px !important;
   height: 60px !important;
+  padding: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
   line-height: 60px !important;
+  text-align: center !important;
   color: #fff !important;
   font-family: 'themify' !important;
   font-size: 40px !important;
@@ -4551,7 +4555,33 @@ a.text-danger:focus, a.text-danger:hover {
 }
 
 .mfp-content {
+  max-width: 320px !important;
   height: 100%;
+}
+@media (min-width: 500px) {
+  .mfp-content {
+    max-width: 500px !important;
+  }
+}
+@media (min-width: 720px) {
+  .mfp-content {
+    max-width: 720px !important;
+  }
+}
+@media (min-width: 940px) {
+  .mfp-content {
+    max-width: 940px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .mfp-content {
+    max-width: 1200px !important;
+  }
+}
+@media (min-width: 1400px) {
+  .mfp-content {
+    max-width: 1400px !important;
+  }
 }
 
 .editor img {
@@ -5006,14 +5036,14 @@ a:focus {
   }
   #menu a {
     font-size: 1.05em;
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
   }
   .TestDrive #menu li:nth-of-type(1) a::after, .UsedCar #menu li:nth-of-type(2) a::after, .BuyCar #menu li:nth-of-type(3) a::after, .Repair #menu li:nth-of-type(4) a::after, .Loan #menu li:nth-of-type(5) a::after, .Insurance #menu li:nth-of-type(6) a::after, .Eco #menu li:nth-of-type(7) a::after {
     bottom: -27px;
   }
   #menu li:nth-of-type(1) {
-    margin-left: -0.8rem;
+    margin-left: -0.65rem;
   }
 }
 

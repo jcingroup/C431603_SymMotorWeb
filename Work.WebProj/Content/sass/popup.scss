@@ -9,6 +9,22 @@
 @import "helper/mixins/breakpoints";
 
 
+// layout
+// ------------------------------------------------------------
+.popup {
+    max-width: 320px;
+    height: 100%;
+    margin:0 auto;
+    padding:0;
+
+    // for iOS
+    @media (min-width: 500px) {max-width: 500px;}
+    @media (min-width: 720px) {max-width: 720px;}
+    @media (min-width: 940px) {max-width: 940px;}
+    @media (min-width: 1200px) {max-width: 1200px;}
+    @media (min-width: 1400px) {max-width: 1400px;}
+}
+
 button.mfp-close {
     background: #999;
 }
