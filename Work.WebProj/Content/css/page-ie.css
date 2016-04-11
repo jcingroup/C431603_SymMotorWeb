@@ -1635,14 +1635,14 @@ input[type="button"].btn-block {
   clear: both;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .grid-products .card-wrap, .album li, .col-xs-4, .grid-location .search, .grid-search .search, .grid-quality .detail li, .col-xs-5, .pro-intro .thumb, .col-xs-6, .car-info .gallery, .car-info .info, .col-xs-7, .pro-intro dd, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .detail .accessory, .detail .notice, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .grid-products .card-wrap, .album li, .col-xs-4, .grid-location .search, .grid-search .search, .grid-quality .detail li, .col-xs-5, .pro-intro .thumb, .col-xs-6, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice, .col-xs-7, .pro-intro dd, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xxl-1, .col-xxl-2, .col-xxl-3, .col-xxl-4, .col-xxl-5, .col-xxl-6, .col-xxl-7, .col-xxl-8, .col-xxl-9, .col-xxl-10, .col-xxl-11, .col-xxl-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .grid-products .card-wrap, .album li, .col-xs-4, .grid-location .search, .grid-search .search, .grid-quality .detail li, .col-xs-5, .pro-intro .thumb, .col-xs-6, .car-info .gallery, .car-info .info, .col-xs-7, .pro-intro dd, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .detail .accessory, .detail .notice {
+.col-xs-1, .col-xs-2, .col-xs-3, .grid-products .card-wrap, .album li, .col-xs-4, .grid-location .search, .grid-search .search, .grid-quality .detail li, .col-xs-5, .pro-intro .thumb, .col-xs-6, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice, .col-xs-7, .pro-intro dd, .col-xs-8, .grid-location .map, .grid-search .featured, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 
@@ -1666,7 +1666,7 @@ input[type="button"].btn-block {
   width: 41.66667%;
 }
 
-.col-xs-6, .car-info .gallery, .car-info .info {
+.col-xs-6, .car-info .gallery, .car-info .info, .detail .accessory, .detail .notice {
   width: 50%;
 }
 
@@ -1690,7 +1690,7 @@ input[type="button"].btn-block {
   width: 91.66667%;
 }
 
-.col-xs-12, .detail .accessory, .detail .notice {
+.col-xs-12 {
   width: 100%;
 }
 
@@ -2269,7 +2269,7 @@ input[type="button"].btn-block {
   }
 }
 @media (min-width: 992px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .detail .accessory, .detail .notice, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left;
   }
 
@@ -2293,7 +2293,7 @@ input[type="button"].btn-block {
     width: 41.66667%;
   }
 
-  .col-lg-6, .detail .accessory, .detail .notice {
+  .col-lg-6 {
     width: 50%;
   }
 
@@ -4845,6 +4845,14 @@ a:focus {
   padding-bottom: 16px;
 }
 
+.form-inline .form-group {
+  display: inline-block;
+}
+.form-inline .form-group .form-control {
+  display: inline-block;
+  width: auto;
+}
+
 .card-list .card-img-top img {
   left: 0;
 }
@@ -5011,6 +5019,10 @@ a:focus {
   display: block;
   height: 100%;
 }
+.grid-products .card-block {
+  height: 200px;
+  overflow: hidden;
+}
 .grid-products .card-title {
   font-size: 1em;
 }
@@ -5112,14 +5124,24 @@ a:focus {
   height: 350px;
   background: #F5F5F5;
 }
+.car-info .gallery #banner .swiper-container > ul {
+  width: 100%;
+  height: 100%;
+}
 .car-info .gallery #banner .swiper-container > ul > li {
-  width: 20%;
+  width: 100%;
+  height: 100%;
+  position: relative;
   overflow: hidden;
 }
+.car-info .gallery #banner .swiper-container > ul > li + li {
+  display: none;
+}
 .car-info .gallery #banner .swiper-container > ul > li img {
-  width: auto;
-  height: auto;
-  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 200%;
+  max-height: 200%;
   margin: 0;
   position: absolute;
   left: 0;
@@ -5148,24 +5170,7 @@ a:focus {
   background-position: right top;
 }
 .car-info .gallery #banner-thumb {
-  position: relative;
-}
-.car-info .gallery #banner-thumb ul {
-  margin-bottom: 0;
-}
-.car-info .gallery #banner-thumb li {
-  height: 72px;
-  overflow: hidden;
-  opacity: 0.5;
-  transition: opacity 0.3s;
-  cursor: pointer;
-}
-.car-info .gallery #banner-thumb li:hover, .car-info .gallery #banner-thumb li.swiper-slide-active {
-  opacity: 1;
-}
-.car-info .gallery #banner-thumb li img {
-  min-width: 100%;
-  height: 100%;
+  display: none;
 }
 .car-info .info li {
   margin-bottom: 3px;
@@ -5174,7 +5179,7 @@ a:focus {
 }
 .car-info .info li strong {
   display: inline-block;
-  width: 5em;
+  width: 6em;
   margin-right: 8px;
   text-align: right;
   color: #BA8A00;
@@ -5198,14 +5203,13 @@ a:focus {
   border: 1px solid #ccc;
 }
 .detail .accessory li {
-  margin: 4px 0;
-  color: #666;
+  margin: 4px;
+  color: #888;
 }
 .detail .accessory li.active {
   padding: 0 5px;
-  color: #fff;
+  color: #000;
   font-weight: bold;
-  background: #BA8A00;
   border-radius: 3px;
 }
 .detail .notice li {

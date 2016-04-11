@@ -117,13 +117,13 @@
                             <h2 class="sr-only">主選單</h2>
                             <ul class="nav navbar-nav">
                                 <li><a href="~/TestDrive">預約試乘</a></li>
-                                <li><a href="~/UsedCar">認證中古車</a></li>
+                                <!--[if lt IE 9]><li><a href="@Url.Content("~/UsedCar/List")">認證中古車</a></li><![endif]-->
+                                <!--[if gte IE 10]><!--><li><a href="~/UsedCar">認證中古車</a></li><!--<![endif]-->
                                 <li><a href="~/BuyCar?type=1">購車服務</a></li>
                                 <li><a href="~/Repair">維修服務</a></li>
                                 <li><a href="~/Loan">貸款專區</a></li>
                                 <li><a href="~/Insurance">保險專區</a></li>
-                                @*
-                                <li><a href="~/Accessory">配件專區</a></li> *@
+                                @* <li><a href="~/Accessory">配件專區</a></li> *@
                                 <li><a href="~/Eco">綠能專區</a></li>
                             </ul>
                         </nav>
