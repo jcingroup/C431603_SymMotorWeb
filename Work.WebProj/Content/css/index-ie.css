@@ -2981,6 +2981,17 @@ a:focus {
 .grid-news .article-list .article {
   margin-bottom: 24px;
 }
+.grid-news .article-list .more {
+  display: inline-block;
+  padding: 3.2px 8px;
+  font-size: 0.875em;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: #544D48;
+}
+.grid-news .article-list .more:hover {
+  background: #806654;
+}
 .grid-news .fb {
   width: 33%;
   float: right;

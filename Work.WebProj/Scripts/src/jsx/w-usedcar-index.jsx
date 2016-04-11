@@ -135,7 +135,7 @@ var ListCars = React.createClass({
                                 return (
                                 <li className="swiper-slide">
                                             <figure>
-                                                <a className="thumb" href="/UsedCar/Content"><img src={'http://symb2b.sym-motor.com.tw/wau/hot_pic/' + item.OBJ_PHOTO} alt="" /></a>
+                                                <span className="thumb"><img src={'http://symb2b.sym-motor.com.tw/wau/hot_pic/' + item.OBJ_PHOTO} alt="" /></span>
                                                 <figcaption>
                                                     <ul className="info list-unstyled">
                                                         <li><em>車型</em>{item.OBJ_TYPE}</li>
