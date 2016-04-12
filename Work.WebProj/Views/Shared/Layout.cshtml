@@ -161,10 +161,14 @@
 
     <!--[if gte IE 9]><!-->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="~/Content/js/jquery.lazyload.min.js"></script>
     <script src="~/Content/js/bootstrap/util.js"></script>
     <script src="~/Content/js/bootstrap/collapse.js"></script>
     <!--<![endif]-->
     <script type="text/javascript">
+        // lazyload
+        $("img.lazy").lazyload({effect : "fadeIn"});
+
         // 回頂端
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {

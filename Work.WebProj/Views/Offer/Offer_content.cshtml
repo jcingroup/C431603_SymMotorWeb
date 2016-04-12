@@ -35,7 +35,7 @@
         <ul class="list-unstyled">
             @if (Model.banner_imgsrc != null)
             {
-                <li><img src="@Model.banner_imgsrc" alt=""></li>
+                <li><img data-original="@Model.banner_imgsrc" alt="" class="lazy"></li>
             }
         </ul>
     </div>

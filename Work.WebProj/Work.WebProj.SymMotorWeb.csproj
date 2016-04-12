@@ -462,6 +462,7 @@
     <Content Include="Content\js\gmap-custom.js" />
     <Content Include="Content\js\gmap-location_forie8.js" />
     <Content Include="Content\js\gmap-location.js" />
+    <Content Include="Content\js\jquery.lazyload.min.js" />
     <Content Include="Content\js\magnific\jquery.magnific-popup.min.js" />
     <Content Include="Content\js\swiper\swiper.min.js" />
     <Content Include="index.html" />
