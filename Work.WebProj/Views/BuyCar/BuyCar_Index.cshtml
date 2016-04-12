@@ -17,7 +17,16 @@
             effect: 'fade',
             autoplay: 2500,
             autoplayDisableOnInteraction: 'true',
-            speed: 500
+            speed: 500,
+            preloadImages: false,
+            lazyLoading: true,
+
+            // Banner 依圖片調整高度
+            lazyLoadingInPrevNext: true, // for lazyload
+            onTransitionStart: function(swiper){
+                var h = $("#banner .swiper-slide-active .swiper-lazy-loaded").height();
+                $("#banner").height(h);
+            }
         });
         var bannerThumb = new Swiper('#banner-thumb', {
             spaceBetween: 10,
@@ -27,19 +36,28 @@
             touchRatio: 0.2,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
+            lazyLoading: true,
+            preloadImages: false,
+            lazyLoading: true
             // slideToClickedSlide: true
         });
         // banner.params.control = bannerThumb;
         // bannerThumb.params.control = banner;
 
-        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        // Banner 預設取第一個slide的高度
         $(window).load(function () {
-            var h = $("#banner .swiper-slide:first-child img").height();
-            $("#banner img").each(function () {
-                if ($(this).height() < h) { h = $(this).height(); }
-            });
+            var h = $("#banner .swiper-slide-active .swiper-lazy-loaded").height();
             $("#banner").height(h);
         });
+
+        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        // $(window).load(function () {
+        //     var h = $("#banner .swiper-slide:first-child img").height();
+        //     $("#banner img").each(function () {
+        //         if ($(this).height() < h) { h = $(this).height(); }
+        //     });
+        //     $("#banner").height(h);
+        // });
     </script>
     <!--<![endif]-->
     <script>
@@ -78,7 +96,10 @@
                 if (i.show_banner & i.banner_imgsrc != null)
                 {
                     <li class="swiper-slide">
-                        <a href="~/Offer/Content?id=@i.event_id"><img src="@i.banner_imgsrc" alt="@i.event_title"></a>
+                        <a href="~/Offer/Content?id=@i.event_id">
+                            <img data-src="@i.banner_imgsrc" alt="@i.event_title" class="swiper-lazy">
+                            <div class="swiper-lazy-preloader"></div>
+                        </a>
                     </li>
                 }
             }
@@ -94,7 +115,10 @@
                         {
 
                             <li class="swiper-slide">
-                                <a href="~/Offer/Content?id=@i.event_id"><img src="@i.list_imgsrc" alt="@i.event_title"></a>
+                                <a href="~/Offer/Content?id=@i.event_id">
+                                    <img data-src="@i.list_imgsrc" alt="@i.event_title" class="swiper-lazy">
+                                    <div class="swiper-lazy-preloader"></div>
+                                </a>
                             </li>
 
                         }

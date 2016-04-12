@@ -64,6 +64,16 @@ $content-spacing-xs:    $content-spacing;
 #banner {
 	background: #2E2A27;
 
+	.swiper-button-white {
+		width: 40px;
+		height: 40px;
+		margin-top: -20px;
+		background-color: hsla(0,0,0,0.5);
+		background-size: 50% 50%;
+	}
+
+	@include media-breakpoint-down(sm) {}
+
 	@include media-breakpoint-down(xs) {
 		> ul {
 			> li {
@@ -84,6 +94,13 @@ $content-spacing-xs:    $content-spacing;
 					z-index: $zindex-popover;
 				}
 			}
+		}
+
+		.swiper-button-white {
+			width: 28px;
+			height: 28px;
+			margin-top: -14px;
+			background-size: 40% 40%;
 		}
 	}
 }

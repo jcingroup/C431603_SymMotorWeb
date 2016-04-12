@@ -30,13 +30,17 @@ var CarContent = React.createClass({
                 spaceBetween: 10,
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
+                preloadImages: false,
+                lazyLoading: true
             });
             var bannerThumb = new Swiper('#banner-thumb .swiper-container', {
                 spaceBetween: 10,
                 slidesPerView: 5,
                 speed: 1000,
                 centeredSlides: true,
-                slideToClickedSlide: true
+                slideToClickedSlide: true,
+                preloadImages: false,
+                lazyLoading: true
             });
             banner.params.control = bannerThumb;
             bannerThumb.params.control = banner;
@@ -127,7 +131,8 @@ var CarContent = React.createClass({
                                         pic.map(function (item, i) {
                                             return (
                                             <li className="swiper-slide" key={base.obj_no + '_' + item}>
-                                                <img src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" />
+                                                <img data-src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" className="swiper-lazy" />
+                                                <div className="swiper-lazy-preloader"></div>
                                             </li>);
                                         }.bind(this))
                                         }
@@ -142,7 +147,10 @@ var CarContent = React.createClass({
                                         {
                                         pic.map(function (item, i) {
                                             return (
-                                        <li className="swiper-slide" key={base.obj_no + '_' + item}><img src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" /></li>);
+                                        <li className="swiper-slide" key={base.obj_no + '_' + item}>
+                                            <img data-src={this.props.sym_Web_pic + base.obj_no + '_' + item + '.jpg' } alt="" className="swiper-lazy" />
+                                            <div className="swiper-lazy-preloader"></div>
+                                        </li>);
                                         }.bind(this))
                                         }
                                     </ul>

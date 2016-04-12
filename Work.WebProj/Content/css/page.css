@@ -5143,6 +5143,7 @@ a:focus {
 
 #banner {
   background: #000;
+  transition: height 0.5s;
 }
 #banner > ul {
   margin-bottom: 0;

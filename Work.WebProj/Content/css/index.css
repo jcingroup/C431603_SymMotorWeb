@@ -3018,6 +3018,7 @@ a:focus {
 
 #banner {
   background: #000;
+  transition: height 0.5s;
 }
 #banner > ul {
   margin-bottom: 0;
@@ -3262,6 +3263,13 @@ a:focus {
 #banner {
   background: #2E2A27;
 }
+#banner .swiper-button-white {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: 50% 50%;
+}
 @media (max-width: 543px) {
   #banner > ul > li::before {
     margin-left: auto;
@@ -3308,6 +3316,14 @@ a:focus {
 @media (max-width: 543px) and (min-width: 1440px) {
   #banner > ul > li::before {
     max-width: 1400px;
+  }
+}
+@media (max-width: 543px) {
+  #banner .swiper-button-white {
+    width: 28px;
+    height: 28px;
+    margin-top: -14px;
+    background-size: 40% 40%;
   }
 }
 

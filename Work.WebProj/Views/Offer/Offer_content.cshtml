@@ -33,7 +33,10 @@
     @* 如果有 Banner *@
     <div id="banner">
         <ul class="list-unstyled">
-            <li><img src="@Model.banner_imgsrc" alt=""></a></li>
+            @if (Model.banner_imgsrc != null)
+            {
+                <li><img src="@Model.banner_imgsrc" alt=""></li>
+            }
         </ul>
     </div>
 

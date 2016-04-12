@@ -2870,6 +2870,9 @@ a:focus {
 #banner {
   background: #2E2A27;
 }
+#banner .swiper-button-white {
+  display: none;
+}
 
 .grid-series {
   background: #767D80 url(../images/bg4_ie8.jpg) repeat-y center top;

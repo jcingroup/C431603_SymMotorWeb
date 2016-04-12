@@ -48,7 +48,9 @@ var ListCars = React.createClass({
                 autoplay: 4000,
                 autoplayDisableOnInteraction: false,
                 loop: true,
-                speed: 500
+                speed: 500,
+                preloadImages: false,
+                lazyLoading: true
             });
 
         }.bind(this))
@@ -135,7 +137,10 @@ var ListCars = React.createClass({
                                 return (
                                 <li className="swiper-slide">
                                             <figure>
-                                                <span className="thumb"><img src={'http://symb2b.sym-motor.com.tw/wau/hot_pic/' + item.OBJ_PHOTO} alt="" /></span>
+                                                <span className="thumb">
+                                                    <img data-src={'http://symb2b.sym-motor.com.tw/wau/hot_pic/' + item.OBJ_PHOTO} alt="" className="swiper-lazy" />
+                                                    <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                                </span>
                                                 <figcaption>
                                                     <ul className="info list-unstyled">
                                                         <li><em>車型</em>{item.OBJ_TYPE}</li>

@@ -16,8 +16,20 @@
     <script>
         var swiper = new Swiper('#banner', {
             effect: 'fade',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
             autoplay: 2500,
-            speed: 500
+            autoplayDisableOnInteraction: false,
+            speed: 500,
+            preloadImages: false,
+            lazyLoading: true,
+
+            // Banner 依圖片調整高度
+            lazyLoadingInPrevNext: true, // for lazyload
+            onTransitionStart: function(swiper){
+                var h = $("#banner .swiper-slide-active .swiper-lazy-loaded").height();
+                $("#banner").height(h);
+            }
         });
         var swiper2 = new Swiper('#marquee .swiper-container', {
             nextButton: '.swiper-button-next',
@@ -26,16 +38,25 @@
             autoplay: 2000,
             speed: 2000,
             autoplayDisableOnInteraction: false,
-            loop: true
+            loop: true,
+            preloadImages: false,
+            lazyLoading: true
         });
-        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+
+        // Banner 預設取第一個slide的高度
         $(window).load(function () {
-            var h = $("#banner .swiper-slide:first-child img").height();
-            $("#banner img").each(function () {
-                if ($(this).height() < h) { h = $(this).height(); }
-            });
+            var h = $("#banner .swiper-slide-active .swiper-lazy-loaded").height();
             $("#banner").height(h);
         });
+
+        // 因為圖片設定為高度不固定，所以讓banner套用最矮slide的高度，以免跑版
+        // $(window).load(function () {
+        //     var h = $("#banner .swiper-slide:first-child .swiper-lazy-loaded").height();
+        //     $("#banner .swiper-lazy-loaded").each(function () {
+        //         if ($(this).height() < h) { h = $(this).height(); }
+        //     });
+        //     $("#banner").height(h);
+        // });
     </script>
     <!--<![endif]-->
 }
@@ -49,11 +70,16 @@
             if (i.imgsrc != null)
             {
                 <li class="swiper-slide">
-                    <a href="@i.banner_url" target="new"><img src="@i.imgsrc" alt="@i.banner_name"></a>
+                    <a href="@i.banner_url" target="new">
+                        <img data-src="@i.imgsrc" alt="@i.banner_name" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
                 </li>
             }
         }
     </ul>
+    <a class="prev swiper-button-prev swiper-button-white" href=""></a>
+    <a class="next swiper-button-next swiper-button-white" href=""></a>
 </div>
 
 <section class="grid-series">
@@ -71,7 +97,10 @@
                         {
                             <li class="swiper-slide">
                                 <h4 class="h4">@i.brand_name</h4>
-                                <a href="~/Products?id=@i.brand_id"><img src="@i.imgsrc" alt=""></a>
+                                <a href="~/Products?id=@i.brand_id">
+                                    <img data-src="@i.imgsrc" alt="" class="swiper-lazy">
+                                    <div class="swiper-lazy-preloader"></div>
+                                </a>
                             </li>
                         }
                     }
