@@ -7,3 +7,6 @@
 
 ga('create', 'UA-76293024-1', 'auto');
 ga('send', 'pageview');
+
+ga('create', 'UA-61909577-8', 'auto', { 'name': 'b' });
+ga('b.send', 'pageview');
