@@ -4,7 +4,7 @@ var moment = require('moment');
 
 var ListCars = React.createClass({
     getInitialState: function () {
-
+        
         var now = new Date();
         var opt_year = [];
         for(var i=1; i <= 5; i++ ) {
@@ -109,8 +109,8 @@ var ListCars = React.createClass({
         let outHtml = null;
         outHtml =
         <div>
-            <h1 className="h1">{this.props.caption}</h1>
             <section id="content">
+                    <h1 className="h1">{this.props.caption}</h1>
                     <h2 className="sr-only">全部中古車一覽表</h2>
                     <section className="grid-search">
                         <h3 className="sr-only">搜尋條件</h3>

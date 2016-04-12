@@ -5438,7 +5438,6 @@ a:focus {
 .grid-gallery #banner-thumb img {
   width: 100%;
   min-height: 100%;
-  cursor: pointer;
 }
 .grid-gallery #banner-thumb .prev, .grid-gallery #banner-thumb .next {
   width: 31px;
@@ -5453,6 +5452,32 @@ a:focus {
 .grid-gallery #banner-thumb .next {
   right: 0;
   background-position: right top;
+}
+@media (max-width: 1259px) {
+  .grid-gallery {
+    padding: 25px 0;
+  }
+  .grid-gallery #banner-thumb li {
+    height: 180px;
+  }
+}
+@media (max-width: 991px) {
+  .grid-gallery {
+    padding: 15px 0;
+  }
+  .grid-gallery #banner-thumb li {
+    height: 150px;
+  }
+}
+@media (max-width: 767px) {
+  .grid-gallery #banner-thumb li {
+    height: 120px;
+  }
+}
+@media (max-width: 543px) {
+  .grid-gallery #banner-thumb li {
+    height: 80px;
+  }
 }
 
 .BuyCar .grid-location {

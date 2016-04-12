@@ -144,6 +144,18 @@ $card-spacer-y:         .75em;
     }
 }
 
+.form-inline {
+
+    .form-group {
+        display: inline-block;
+
+        .form-control {
+            display: inline-block;
+            width: auto;
+        }
+    }
+}
+
 .card-list {
     .card-img-top {
         img {
@@ -342,6 +354,11 @@ $card-spacer-y:         .75em;
         height:100%;
     }
 
+    .card-block {
+        height: 200px;
+        overflow: hidden;
+    }
+
     .card-title {
         font-size: $font-size-base;
 
@@ -454,15 +471,22 @@ $card-spacer-y:         .75em;
                 background: #F5F5F5;
 
                 > ul {
+                    width: 100%;
+                    height: 100%;
 
                     > li {
-                        width: 20%;
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
                         overflow: hidden;
 
+                        & + li {display: none;}
+
                         img {
-                            width: auto;
-                            height: auto;
-                            max-height: 100%;
+                            min-width: 100%;
+                            min-height: 100%;
+                            max-width: 200%;
+                            max-height: 200%;
 
                             margin: 0;
 
@@ -496,28 +520,7 @@ $card-spacer-y:         .75em;
             }
         }
 
-        #banner-thumb {
-            position: relative;
-
-            ul {margin-bottom: 0;}
-
-            li {
-                height: 72px;
-                overflow: hidden;
-
-                opacity: 0.5;
-                transition: opacity 0.3s;
-                cursor: pointer;
-
-                &:hover,
-                &.swiper-slide-active {opacity: 1;}
-
-                img {
-                    min-width: 100%;
-                    height: 100%;
-                }
-            }
-        }
+        #banner-thumb {display: none;}
     }
 
     .info {
@@ -529,7 +532,7 @@ $card-spacer-y:         .75em;
 
             strong {
                 display: inline-block;
-                width: 5em;
+                width: 6em;
                 margin-right: $spacer*0.5;
                 text-align: right;
                 color: $brand-primary;
@@ -547,8 +550,7 @@ $card-spacer-y:         .75em;
     margin-bottom: 0;
 
     .accessory, .notice {
-        @extend .col-lg-6;
-        @extend .col-xs-12;
+        @extend .col-xs-6;
 
         ul {margin-bottom: 0;}
     }
@@ -562,14 +564,13 @@ $card-spacer-y:         .75em;
         }
 
         li {
-            margin: 4px 0;
-            color: #666;
+            margin: 4px;
+            color: #888;
 
             &.active {
                 padding: 0 5px;
-                color: #fff;
+                color: #000;
                 font-weight: bold;
-                background: $brand-primary;
                 border-radius: 3px;
             }
         }

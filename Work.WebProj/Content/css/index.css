@@ -3493,16 +3493,15 @@ a:focus {
 .grid-news .article-list .article p {
   margin-bottom: 0.7rem;
 }
-.grid-news .article-list .article .more {
+.grid-news .article-list .more {
   display: inline-block;
   padding: 0.2rem 0.5rem;
-  font-size: 0.75em;
+  font-size: 0.875rem;
   letter-spacing: 0.1em;
   color: #fff;
-  text-transform: uppercase;
   background: #544D48;
 }
-.grid-news .article-list .article .more:hover {
+.grid-news .article-list .more:hover {
   background: #806654;
 }
 .grid-news .fb {

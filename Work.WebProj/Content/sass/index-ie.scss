@@ -215,6 +215,17 @@ $display4-size:         3.5em;
 	    .article {
 	    	margin-bottom: $spacer*1.5;
 	    }
+
+	    .more {
+	    	display: inline-block;
+	    	padding: $spacer*0.2 $spacer*0.5;
+	    	font-size: $font-size-sm;
+	    	letter-spacing: 0.1em;
+	    	color: #fff;
+	    	background: #544D48;
+
+	    	&:hover {background: #806654;}
+	    }
     }
 
     .fb {

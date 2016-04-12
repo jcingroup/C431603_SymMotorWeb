@@ -48,8 +48,7 @@
 
         <!--[if lt IE 9]>
             <div class="warning-bar">
-                【注意】您使用的瀏覽器過於老舊，無法使用本網站的部分功能。建議您升級瀏覽器，或使用其他瀏覽器軟體如
-                <a href="https://www.google.com.tw/intl/zh-TW/chrome/" target="new">Google Chrome</a>，以獲得最佳瀏覽體驗。
+                【注意】您使用的瀏覽器版本較舊，無法使用本網站的部分功能。建議您使用其他瀏覽器軟體如 <a href="https://www.google.com.tw/intl/zh-TW/chrome/" target="new">Google Chrome</a> 或升級瀏覽器，以獲得最佳瀏覽體驗。
             </div>
         <![endif]-->
 
@@ -117,13 +116,13 @@
                             <h2 class="sr-only">主選單</h2>
                             <ul class="nav navbar-nav">
                                 <li><a href="~/TestDrive">預約試乘</a></li>
-                                <li><a href="~/UsedCar">認證中古車</a></li>
+                                <!--[if lt IE 9]><li><a href="@Url.Content("~/UsedCar/List")">認證中古車</a></li><![endif]-->
+                                <!--[if gte IE 10]><!--><li><a href="~/UsedCar">認證中古車</a></li><!--<![endif]-->
                                 <li><a href="~/BuyCar?type=1">購車服務</a></li>
                                 <li><a href="~/Repair">維修服務</a></li>
                                 <li><a href="~/Loan">貸款專區</a></li>
                                 <li><a href="~/Insurance">保險專區</a></li>
-                                @*
-                                <li><a href="~/Accessory">配件專區</a></li> *@
+                                @* <li><a href="~/Accessory">配件專區</a></li> *@
                                 <li><a href="~/Eco">綠能專區</a></li>
                             </ul>
                         </nav>
