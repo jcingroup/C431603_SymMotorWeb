@@ -7,12 +7,10 @@
     	<li><a href="#" id="goBack">回前頁</a></li>
     	}
 
-        <!--[if gte IE 10]><!-->
         @if (@ViewBag.BodyClass.IndexOf("p0") <= 0)
         {
         <li><a href="~/UsedCar">中古車首頁</a></li>
         }
-        <!--<![endif]-->
 
         <li><a href="~/UsedCar/List">全部中古車</a></li>
         <li><a href="~/UsedCar/Form">協助找車</a></li>

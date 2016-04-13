@@ -118,8 +118,7 @@
                             <h2 class="sr-only">主選單</h2>
                             <ul class="nav navbar-nav">
                                 <li><a href="~/TestDrive">預約試乘</a></li>
-                                <!--[if lt IE 9]><li><a href="@Url.Content("~/UsedCar/List")">認證中古車</a></li><![endif]-->
-                                <!--[if gte IE 10]><!--><li><a href="~/UsedCar">認證中古車</a></li><!--<![endif]-->
+                                <li><a href="~/UsedCar">認證中古車</a></li>
                                 <li><a href="~/BuyCar?type=1">購車服務</a></li>
                                 <li><a href="~/Repair">維修服務</a></li>
                                 <li><a href="~/Loan">貸款專區</a></li>
@@ -164,11 +163,13 @@
     <script src="~/Content/js/jquery.lazyload.min.js"></script>
     <script src="~/Content/js/bootstrap/util.js"></script>
     <script src="~/Content/js/bootstrap/collapse.js"></script>
-    <!--<![endif]-->
     <script type="text/javascript">
         // lazyload
         $("img.lazy").lazyload({effect : "fadeIn"});
+    </script>
+    <!--<![endif]-->
 
+    <script type="text/javascript">
         // 回頂端
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
@@ -193,12 +194,22 @@
         });
     </script>
 
-    @* Bootstrap collapse 特效 for ie8 *@
+    @* Bootstrap collapse 特效 / 取消 lazyload for ie8 *@
     <!--[if lt IE 9]>
         <script type="text/javascript">
             $('.collapse-toggle').click(function (event) {
                 $($.attr(this, 'href')).slideToggle();
                 event.preventDefault();
+            });
+            $("img.lazy").each(function() {
+                $(this).attr({
+                    src : $("img.lazy").attr('data-original'),
+                }).removeAttr('data-original');
+            });
+            $("img.swiper-lazy").each(function() {
+                $(this).attr({
+                    src : $("img.swiper-lazy").attr('data-src'),
+                }).removeAttr('data-src');
             });
         </script>
     <![endif]-->

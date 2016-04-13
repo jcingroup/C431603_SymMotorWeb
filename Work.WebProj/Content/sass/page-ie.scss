@@ -437,7 +437,7 @@ $card-spacer-y:         .75em;
 }
 
 .grid-info {
-    padding: $spacer*3 0;
+    padding: $spacer 0;
 
     &:nth-of-type(even) {background: #fff;}
     &:last-of-type {

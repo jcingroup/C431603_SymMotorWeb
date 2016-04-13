@@ -39,8 +39,6 @@
             speed: 2000,
             autoplayDisableOnInteraction: false,
             loop: true,
-            preloadImages: false,
-            lazyLoading: true
         });
 
         // Banner 預設取第一個slide的高度
@@ -98,8 +96,7 @@
                             <li class="swiper-slide">
                                 <h4 class="h4">@i.brand_name</h4>
                                 <a href="~/Products?id=@i.brand_id">
-                                    <img data-src="@i.imgsrc" alt="" class="swiper-lazy">
-                                    <div class="swiper-lazy-preloader"></div>
+                                    <img src="@i.imgsrc" alt="">
                                 </a>
                             </li>
                         }
