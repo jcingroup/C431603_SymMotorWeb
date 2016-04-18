@@ -411,8 +411,11 @@
     <Content Include="Content\images\bg2.jpg" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\bg4.jpg" />
+    <Content Include="Content\images\bg4_ie8-2.png" />
+    <Content Include="Content\images\bg4_ie8.jpg" />
     <Content Include="Content\images\bgCard.png" />
     <Content Include="Content\images\bgDot.png" />
+    <Content Include="Content\images\bgDot_ie8.jpg" />
     <Content Include="Content\images\bgFooter.jpg" />
     <Content Include="Content\images\bgHeader.gif" />
     <Content Include="Content\images\bgHeader2.jpg" />
@@ -449,6 +452,8 @@
     <Content Include="Content\images\noIE\line.gif" />
     <Content Include="Content\images\noIE\noIE.css" />
     <Content Include="Content\images\noIE\noIE.html" />
+    <Content Include="Content\images\qr-hint.png" />
+    <Content Include="Content\images\qr.jpg" />
     <Content Include="Content\images\UsedCar\featured.jpg" />
     <Content Include="Content\images\UsedCar\pro1-1.jpg" />
     <Content Include="Content\images\UsedCar\pro1-2.jpg" />

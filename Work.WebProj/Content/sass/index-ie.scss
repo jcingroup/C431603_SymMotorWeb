@@ -234,6 +234,11 @@ $display4-size:         3.5em;
     	width: 33%;
     	float:right;
     	padding-left: $grid-gutter-width;
+
+    	.qr {
+    		margin-top: $spacer;
+    		img + img {margin-left: 10px;}
+    	}
     }
 }
 

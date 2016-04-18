@@ -329,13 +329,21 @@ $content-spacing-xs:    $content-spacing;
     	@extend .col-xs-12;
     	padding-right: 0;
     	padding-left: $grid-gutter-width;
+
+    	.qr {
+    		margin-top: $spacer;
+    		img + img {margin-left: 10px;}
+    	}
     }
 
     @include media-breakpoint-down(sm) {
     	padding: 40px 0;
 
     	.article-list, .fb {padding:0 $grid-gutter-width/2;}
-    	.article-list .h2 {font-size: 3em;}
+    	.article-list {
+    		margin-bottom: $spacer*3;
+    		.h2 {font-size: 3em;}
+    	}
     }
 }
 
