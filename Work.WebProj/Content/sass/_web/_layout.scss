@@ -93,10 +93,10 @@ a {
 
     .showcase {
         position: relative;
-        padding-left: $logo-width + $logo-spacing;
+        padding-left: $logo-width + $logo-spacing + 130px;
         padding-top: 60px;
         padding-bottom: 12px;
-        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
+        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 18px;
 
         .h2 {
             @include reset-text;
@@ -106,7 +106,7 @@ a {
             font-size: em(17px);
             color: #ccc;
             position: absolute;
-            left: $logo-width + $logo-spacing;
+            left: $logo-width + $logo-spacing + 130px;
             top: 58px;
 
             &::after {
@@ -184,16 +184,17 @@ a {
             li:not(:last-child) { margin-right: $spacer*0.6; }
         }
         .showcase {
-            padding-left: $logo-width;
-
-            background-position: $logo-width 12px;
-            background-size: auto 35px;
+            padding-left: $logo-width + 50px;
+            background-position: $logo-width 15px;
+            // background-size: auto 50px;
 
             .h2 {
-                left: $logo-width;
-                top: 60px;
+                display: none;
 
-                &::after {display: none;}
+                // left: $logo-width;
+                // top: 60px;
+
+                // &::after {display: none;}
             }
 
             .menu {

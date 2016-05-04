@@ -72,9 +72,7 @@ $content-spacing-xs:    $content-spacing;
 		background-size: 50% 50%;
 	}
 
-	@include media-breakpoint-down(sm) {}
-
-	@include media-breakpoint-down(xs) {
+	@include media-breakpoint-down(md) {
 		> ul {
 			> li {
 				&::before {
@@ -84,7 +82,7 @@ $content-spacing-xs:    $content-spacing;
 					content:" ";
 					display: block;
 					width: 100%;
-					height: 40px;
+					height: 60px;
 					background: url(#{$img-path2}/watermark.png) no-repeat $grid-gutter-width 0 / contain;
 
 					position: absolute;
@@ -93,6 +91,22 @@ $content-spacing-xs:    $content-spacing;
 					transform: translateX(-50%);
 					z-index: $zindex-popover;
 				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		> ul {
+			> li {
+				&::before {height: 50px;}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+		> ul {
+			> li {
+				&::before {height: 40px;}
 			}
 		}
 

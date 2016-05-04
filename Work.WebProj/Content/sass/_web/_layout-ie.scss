@@ -101,10 +101,10 @@ a {
 
     .showcase {
         position: relative;
-        padding-left: $logo-width + $logo-spacing;
+        padding-left: $logo-width + $logo-spacing + 130px;
         padding-top: 60px;
         padding-bottom: 12px;
-        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 10px;
+        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 18px;
 
         .h2 {display: none;}
 
