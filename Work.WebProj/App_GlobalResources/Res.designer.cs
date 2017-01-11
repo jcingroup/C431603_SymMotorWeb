@@ -808,7 +808,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 順益汽車股份有限公司 SHUNG YE MOTORS CO. 的當地語系化字串。
+        ///   查詢類似 順益汽車股份有限公司  0800-030-530 的當地語系化字串。
         /// </summary>
         internal static string System_FrontName {
             get {
