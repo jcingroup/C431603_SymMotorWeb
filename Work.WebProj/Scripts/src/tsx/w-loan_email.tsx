@@ -215,7 +215,7 @@ namespace LoanEmail {
 
             outHtml = (
                 <div>
-                    <h5 className="h5">請填妥以下基本資料，我們將有專人為您處理。</h5>
+                    <h5 className="h5">請填妥以下基本資料，我們將於工作天1~2天內(不含假日) 儘速回覆。</h5>
                     <hr />
 
                     <form action="" className="form" onSubmit={this.handleSubmit} >
