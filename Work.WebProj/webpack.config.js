@@ -55,6 +55,6 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({ names: ['vendors', 'vendorsforweb'] }),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ]
 };
