@@ -234,13 +234,13 @@ var ListCars = React.createClass({
                                                 <dt className="card-img-top">
                                                     <a href={gb_approot+'UsedCar/Content?h_auc_no=' + item.auc_no + '&h_obj_no=' + item.obj_no} title="SEE MORE">
                                                         <img src={this.props.sym_Web_pic + item.obj_no + '_1.jpg'} alt="" />
-                                                        <span className="label label-danger">結束時間：{moment(item.end_date + ' ' + item.end_time).format('MM-DD HH:mm')}</span>
+                                                        
                                                     </a>
                                                 </dt>
                                                 <dd className="card-block">
                                                     <article>
                                                         <h3 className="card-title">
-                                                            拍賣編號
+                                                            編號
                                                             <a href={gb_approot+'UsedCar/Content?h_auc_no=' + item.auc_no + '&h_obj_no=' + item.obj_no}>{item.auc_no}</a>
                                                         </h3>
                                                         <div className="card-text">
@@ -250,7 +250,7 @@ var ListCars = React.createClass({
                                                                 <li><em>車色:</em> {item.obj_color} <em>年份:</em> {item.ori_year}</li>
                                                                 <li><em>地點:</em> {item.dept_cname}</li>
                                                             </ul>
-                                                            <p className="price text-danger">直購價<strong>${item.d_price}萬</strong></p>
+                                                            <p className="price text-danger">售價<strong>${item.d_price}萬</strong></p>
                                                         </div>
                                                     </article>
                                                 </dd>

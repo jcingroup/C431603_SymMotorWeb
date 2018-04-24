@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 // var
 // ------------------------------------------------------------
@@ -593,65 +593,81 @@ $content-spacing-xs:    40px !default;
 .grid-quality {
     font-weight: bold;
     background: #35302D url(#{$img-path}/bg3.jpg) center top repeat-y;
-
     padding: 3.5em 0;
 
     a {
         color: #e6e6e6;
-        &:hover {color: $link-hover-color;}
+
+        &:hover {
+            color: $link-hover-color;
+        }
     }
 
     .quality {
-        width: 30%;
+        width: 25%;
         float: left;
         padding: 0 $spacer 0 $spacer*2;
 
         li {
             background: url(#{$img-path}/iconCheck.gif) no-repeat left center;
             font-size: $font-size-h4;
-            
             padding: $spacer*0.5 0 $spacer*0.5 $spacer*2;
         }
     }
 
     .detail {
-        width: 70%;
+        width: 75%;
         float: right;
         padding-left: $spacer;
 
-        ul {margin: 0;}
+        ul {
+            margin: 0;
+        }
 
         li {
             @extend .col-sm-4;
             @extend .col-xs-12;
-
             text-align: center;
             font-size: $font-size-lg;
-            
+
             a {
                 display: block;
                 background: url(#{$img-path}/iconQuality.gif) no-repeat;
                 padding-top: $spacer*4;
             }
 
-            &:nth-of-type(1) a {background-position: center 0;}
-            &:nth-of-type(2) a {background-position: center -319px;}
-            &:nth-of-type(3) a {background-position: center -638px;}
+            &:nth-of-type(1) a {
+                background-position: center 0;
+            }
+
+            &:nth-of-type(2) a {
+                background-position: center -319px;
+            }
+
+            &:nth-of-type(3) a {
+                background-position: center -638px;
+            }
         }
     }
 
     @include media-breakpoint-down(md) {
+        padding: 2.5em 0 1.5em 0;
+
         .quality {
             width: 25%;
             padding-left: 0;
 
-            li {font-size: $font-size-h5;}
+            li {
+                font-size: $font-size-h5;
+            }
         }
 
         .detail {
             width: 75%;
 
-            li {font-size: 1.15em;}
+            li {
+                font-size: 1.15em;
+            }
         }
     }
 
@@ -673,11 +689,10 @@ $content-spacing-xs:    40px !default;
                 margin: 0 $spacer;
             }
         }
-
-        
     }
 
     @include media-breakpoint-down(xs) {
+        padding: 2em 0 1em 0;
 
         .quality {
             text-align: left;
@@ -696,9 +711,17 @@ $content-spacing-xs:    40px !default;
                     padding: 0 0 0 $spacer*4.5;
                 }
 
-                &:nth-of-type(1) a {background-position: left 0;}
-                &:nth-of-type(2) a {background-position: left -319px;}
-                &:nth-of-type(3) a {background-position: left -638px;}
+                &:nth-of-type(1) a {
+                    background-position: left 0;
+                }
+
+                &:nth-of-type(2) a {
+                    background-position: left -319px;
+                }
+
+                &:nth-of-type(3) a {
+                    background-position: left -638px;
+                }
             }
         }
     }
@@ -1226,3 +1249,51 @@ $content-spacing-xs:    40px !default;
 
     }
 }
+
+
+.sellPlace {
+    color: #e6e6e6;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: 3em;
+    float: left;
+
+    a {
+        background: none !important;
+        padding: 0 !important;
+        float: left !important;
+    }
+
+    @include media-breakpoint-down(lg) {
+        margin-left: 0;
+        font-size: 18px;
+    }
+
+
+
+    @include media-breakpoint-down(md) {
+        span {
+            float: left;
+            margin-top: 0.5em;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+    }
+
+    @include media-breakpoint-down(xs) {
+        white-space: initial;
+
+        span {
+            float: left;
+            margin-top: 0;
+        }
+
+        a {
+            height: auto !important;
+            line-height: initial !important;
+        }
+    }
+}
+
+

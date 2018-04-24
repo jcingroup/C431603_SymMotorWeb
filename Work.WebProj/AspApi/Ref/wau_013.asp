@@ -202,7 +202,7 @@
 
    if rs1.recordcount>0 then
       response.write("<table style='TABLE-LAYOUT: fixed' border=1 align=center width=90% cellspacing=1 bgcolor=#CCFFFF bordercolorlight=#FFFFFF bordercolordark=#FFFFFF>")
-      response.write("<tr bgcolor=#FF99BB><td width='6%' align=center ><b>拍賣編號</b></td><td width='8%' align=center ><b>廠牌</b></td><td width='6%' align=center ><b>車型</b></td><td width='6%' align=center ><b>細車型</b></td><td width='6%' align=center ><b>車色</b></td><td width='6%' align=center ><b>年份</b></td><td align='center' width='7%' ><b>存放地</b></td><td align='center' width='10%' ><b>結標時間</b></td><td align='center' width='7%' ><b>直購價</b></td><td align='center' width=13% ><b>照片</b></td>")
+      response.write("<tr bgcolor=#FF99BB><td width='6%' align=center ><b>編號</b></td><td width='8%' align=center ><b>廠牌</b></td><td width='6%' align=center ><b>車型</b></td><td width='6%' align=center ><b>細車型</b></td><td width='6%' align=center ><b>車色</b></td><td width='6%' align=center ><b>年份</b></td><td align='center' width='7%' ><b>存放地</b></td><td align='center' width='10%' ><b>結標時間</b></td><td align='center' width='7%' ><b>售價</b></td><td align='center' width=13% ><b>照片</b></td>")
       do while not rs1.eof 
 	     'if isnull(rs1("now_price")) then
 		 '     t_now_price = "-"

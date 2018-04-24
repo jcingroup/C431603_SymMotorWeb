@@ -106,14 +106,13 @@ var CarContent = React.createClass({
             <section id="content">
                     <h2 className="h1 text-xs-left">
                         <small className="meta">
-                            <span className="label label-danger">拍賣編號：{base.auc_no}</span>
-                            <span className="time text-muted">結束時間：{moment(base.end_date + ' ' + base.end_time).format('MM-DD HH:mm')}</span>
+                            <span className="label label-danger">編號：{base.auc_no}</span>
                         </small>
                         <ul className="title list-inline">
                             <li>{base.obj_brand}</li>
                             <li>{base.obj_type}</li>
                             <li>{base.ori_year} 年</li>
-                            <li className="price text-danger">直購價：${base.d_price / 10000}萬</li>
+                            <li className="price text-danger">售價：${base.d_price / 10000}萬</li>
                         </ul>
                     </h2>
 
@@ -153,7 +152,7 @@ var CarContent = React.createClass({
                         </dt>
                         <dd className="info">
                             <ul className="list-unstyled">
-                                <li><strong>拍賣編號：</strong>{base.auc_no}</li>
+                                <li><strong>編號：</strong>{base.auc_no}</li>
                                 <li><strong>廠牌：</strong>{base.obj_brand}</li>
                                 <li>
                                     <strong>車型：</strong>{base.obj_type}
@@ -165,13 +164,7 @@ var CarContent = React.createClass({
                                 <li><strong>里程數：</strong>約 {base.run_km} <small>(數據僅供參考)</small></li>
                                 <li><strong>排檔：</strong><RunType value={base.run_type}></RunType></li>
                                 <li><strong>存放地：</strong>{base.dept_cname}</li>
-                                <li><strong>胎深：</strong>{base.tire_deep}</li>
-                                <li><strong>原廠證件：</strong>{base.obj_dou_txt}</li>
-                                <li><strong>監理站：</strong>-</li>
-                                <li><strong>引擎號碼：</strong>-</li>
-                                <li><strong>領牌日：</strong>-</li>
-                                <li><strong>原車價：</strong>${this.formatNumber(base.list_ori_price)}</li>
-                                <li><strong>直購價：</strong><span className="text-danger">${this.formatNumber(base.d_price)}</span></li>
+                                <li><strong>售價：</strong><span className="text-danger">${this.formatNumber(base.d_price)}</span></li>
                             </ul>
                         </dd>
                     </dl>

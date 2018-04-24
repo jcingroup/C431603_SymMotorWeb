@@ -173,15 +173,11 @@ end function
      
       response.write "<table border=1 width='92%' align=center>"
       response.write "<tr>"
-      response.write "<td>拍賣編號：<b>" & rs1("auc_no") & "　</b></td><td>細車型：<b>"+rs1("obj_model")+"</b></td><td>直購價：<b>$"&rs1("d_price")&"</b></td>"
+      response.write "<td>編號：<b>" & rs1("auc_no") & "　</b></td><td>細車型：<b>"+rs1("obj_model")+"</b></td><td>售價：<b>$"&rs1("d_price")&"</b></td>"
       response.write "</tr><tr>"
       response.write "<td>顏色：<b>"+rs1("obj_color")+"</b></td><td>排氣量：<b>"+rs1("obj_cc")+"</b></td><td>年份：<b>"+left(rs1("obj_born_date"),4)+"</b></td>"
       response.write "</tr><tr>"
       response.write "<td>里程數(數據僅供參考)：<b>約 "&rs1("run_km")&"</b></td><td>排檔：<b>"+rs1("r_type")+"</b></td><td>存放地：<b>"+rs1("dept_cname")+"</b></td>"
-      response.write "</tr><tr>"
-      response.write "<td>胎深：<b>"+rs1("tire_deep")+"mm</b></td><td>原廠證件：<b>"+rs1("obj_dou_txt")+"</b></td><td>監理站：<b>-</b></td>" 
-      response.write "</tr><tr>"
-      response.write "<td>引擎號碼：<b>-</b></td><td>領牌日：<b>-</b></td><td>原車價：<b>$"+rs1("list_ori_price")+"</b></td>"
       response.write "</tr>"
 	  '------------------------------------------------------------------------------------ 
 
