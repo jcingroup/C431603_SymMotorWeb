@@ -101,7 +101,9 @@ export var twDistrict =
                 lat: 24.8138297, lng: 120.9674752
             },
             contain: [
-                { zip: '300', county: '新竹市' }
+                { zip: '300', county: '東區' },
+                { zip: '300', county: '北區' },
+                { zip: '300', county: '香山區' }
             ]
         },
         {
@@ -276,7 +278,8 @@ export var twDistrict =
                 lat: 23.4800751, lng: 120.4491113
             },
             contain: [
-                { zip: '600', county: '嘉義市' }
+                { zip: '600', county: '東區' },
+                { zip: '600', county: '西區' }
             ]
         },
         {
