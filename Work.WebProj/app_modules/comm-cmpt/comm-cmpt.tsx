@@ -28,7 +28,7 @@ export class GridButtonModify extends React.Component<{ modify(): void, ver?: nu
         this.props.modify();
     }
     render() {
-        return <button type="button" className="btn-link btn-lg" onClick={this.onClick}><i  className={this.state.className}></i></button>
+        return <button type="button" className="btn-link btn-lg" onClick={this.onClick}><i className={this.state.className}></i></button>
     }
 }
 export class GridCheckDel extends React.Component<
@@ -44,9 +44,9 @@ export class GridCheckDel extends React.Component<
     }
     render() {
         return <label className="cbox">
-                    <input type="checkbox" checked={this.props.chd} onChange={this.onChange} />
-                    <i className="fa-check"></i>
-            </label>
+            <input type="checkbox" checked={this.props.chd} onChange={this.onChange} />
+            <i className="fa-check"></i>
+        </label>
     }
 }
 export class GridNavPage extends React.Component<GridNavPageProps, any> {
@@ -86,14 +86,14 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
             setAddButton = <button className="btn-link text-success"
                 type="button"
                 onClick={this.props.InsertType}>
-                            <i className="fa-plus-circle"></i> 新增
+                <i className="fa-plus-circle"></i> 新增
                 </button>;
         }
 
         if (this.props.showDelete) {
             setDeleteButton = <button className="btn-link text-danger" type="button"
                 onClick={this.props.deleteSubmit}>
-                                    <i className="fa-trash-o"></i> 刪除
+                <i className="fa-trash-o"></i> 刪除
                 </button>;
 
         }
@@ -104,42 +104,42 @@ export class GridNavPage extends React.Component<GridNavPageProps, any> {
                 <div className="pull-left">
                     {setAddButton}
                     {setDeleteButton}
-                    </div>
+                </div>
                 <small className="pull-right">第{this.props.startCount}-{this.props.endCount}筆，共{this.props.recordCount}筆</small>
 
                 <ul className="pager">
                     <li>
                         <a href="#" title="移至第一頁" tabIndex={-1} onClick={this.firstPage}>
                             <i className="fa-angle-double-left"></i>
-                            </a>
-                        </li> { }
+                        </a>
+                    </li> {}
                     <li>
                         <a href="#" title="上一頁" tabIndex={-1} onClick={this.prvePage}>
                             <i className="fa-angle-left"></i>
-                            </a>
-                        </li> { }
+                        </a>
+                    </li> {}
                     <li className="form-inline">
                         <div className="form-group">
                             <label>第</label>
                             {' '}
-                            <input className="form-control text-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString() }
+                            <input className="form-control text-center" type="number" min="1" tabIndex={-1} value={this.props.nowPage.toString()}
                                 onChange={this.jumpPage} />
                             {' '}
                             <label>頁，共{this.props.totalPage}頁</label>
-                            </div>
-                        </li> { }
+                        </div>
+                    </li> {}
                     <li>
                         <a href="#" title="@Resources.Res.NextPage" tabIndex={-1} onClick={this.nextPage}>
                             <i className="fa-angle-right"></i>
-                            </a>
-                        </li> { }
+                        </a>
+                    </li> {}
                     <li>
                         <a href="#" title="移至最後一頁" tabIndex={-1} onClick={this.lastPage}>
                             <i className="fa-angle-double-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         );
 
         return oper;
@@ -211,7 +211,7 @@ export class InputDate extends React.Component<{
                         required={this.props.required}
                         disabled={this.props.disabled} />
                     <i className="fa-calendar form-control-feedback"></i>
-                    </div>
+                </div>
             );
         } else if (this.props.ver == 2) {
             out_html = (
@@ -225,8 +225,8 @@ export class InputDate extends React.Component<{
                         onChange={this.onChange}
                         required={this.props.required}
                         disabled={this.props.disabled} />
-                        <i className="fa-calendar form-control-feedback"></i>
-                    </div>
+                    <i className="fa-calendar form-control-feedback"></i>
+                </div>
             );
         } else if (this.props.ver == 3) {//前台歷史訂單查詢
             out_html = (
@@ -338,48 +338,48 @@ export class ModalSales extends React.Component<ModalSalesProps, ModalSalesState
         let Modal = ReactBootstrap.Modal;
         let out_html: JSX.Element = (
             <Modal onHide={this.close} show={this.props.isShow}>
-    <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-lg">
-            會員查詢</Modal.Title>
-        </Modal.Header>
-    <Modal.Body>
+                <Modal.Header closeButton>
+                    <Modal.Title className="contained-modal-title-lg">
+                        會員查詢</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
 
-                <div className="form-inline">
-                    <div className="form-group">
-                        <label>會員編號</label> { }
-                        <input type="text" className="form-control input-sm"
-                            value={this.state.keyword}
-                            onChange={this.onChange}
-                            /> { }
-                        <button className="btn-primary btn-sm" onClick={this.queryModal}><i className="fa-search"></i> 搜尋</button>
+                    <div className="form-inline">
+                        <div className="form-group">
+                            <label>會員編號</label> {}
+                            <input type="text" className="form-control input-sm"
+                                value={this.state.keyword}
+                                onChange={this.onChange}
+                            /> {}
+                            <button className="btn-primary btn-sm" onClick={this.queryModal}><i className="fa-search"></i> 搜尋</button>
                         </div>
                     </div>
 
-                <table className="table-condensed">
-                    <tbody>
-                        <tr>
-                            <th className="col-xs-3">會員編號</th>
-                            <th className="col-xs-3">會員姓名</th>
-                            <th className="col-xs-6">加入日期</th>
+                    <table className="table-condensed">
+                        <tbody>
+                            <tr>
+                                <th className="col-xs-3">會員編號</th>
+                                <th className="col-xs-3">會員姓名</th>
+                                <th className="col-xs-6">加入日期</th>
                             </tr>
-                        {
-                        this.state.modalData.map((itemData, i) => {
-                            var out_html =
-                                <tr key={itemData.sales_no}>
-                            <td>
-                                <button type="button" className="btn btn-link" onClick={this.selectModal.bind(this, itemData.sales_no) }>{itemData.sales_no}</button>
-                                </td>
-                            <td>{itemData.sales_name}</td>
-                            <td>{itemData.join_date}</td>
-                                    </tr>
-                                ;
-                            return out_html;
-                        })
-                        }
+                            {
+                                this.state.modalData.map((itemData, i) => {
+                                    var out_html =
+                                        <tr key={itemData.sales_no}>
+                                            <td>
+                                                <button type="button" className="btn btn-link" onClick={this.selectModal.bind(this, itemData.sales_no)}>{itemData.sales_no}</button>
+                                            </td>
+                                            <td>{itemData.sales_name}</td>
+                                            <td>{itemData.join_date}</td>
+                                        </tr>
+                                        ;
+                                    return out_html;
+                                })
+                            }
                         </tbody>
                     </table>
-        </Modal.Body>
-                </Modal>
+                </Modal.Body>
+            </Modal>
         );
 
         return out_html;
@@ -476,16 +476,16 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
             return;
 
         let btn = document.getElementById('upload-btn-' + this.props.MainId + '-' + this.props.FileKind);
-        let _this = this;
+        let rthis = this;
 
         var uploader = new upload.SimpleUpload({
             button: btn,
-            url: this.props.url_upload,
+            url: rthis.props.url_upload,
             data: {
-                id: this.props.MainId,
-                fileKind: this.props.FileKind
+                id: rthis.props.MainId,
+                fileKind: rthis.props.FileKind
             },
-            name: 'fileName',
+            name: 'file',
             multiple: true,
             maxSize: 5000,
             allowedExtensions: ['jpg', 'jpeg', 'png'],
@@ -493,7 +493,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
             responseType: 'json',
             encodeCustomHeaders: true,
             onSubmit: function (filename, ext) {
-                if (_this.props.MainId == 0) {
+                if (rthis.props.MainId == 0) {
                     alert('此筆資料未完成新增，無法上傳檔案!')
                     return false;
                 }
@@ -502,7 +502,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
                     bar = document.createElement('div'), // actual progress bar
                     fileSize = document.createElement('div'), // container for upload file size
                     wrapper = document.createElement('div'), // container for this progress bar
-                    progressBox = document.getElementById('progressBox-' + _this.props.MainId); // on page container for progress bars
+                    progressBox = document.getElementById('progressBox-' + rthis.props.MainId + "-" + rthis.props.FileKind); // on page container for progress bars
 
                 // Assign each element its corresponding class
                 progress.className = 'progress';
@@ -530,7 +530,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
             },
             onComplete: function (file, response) {
                 if (response.result) {
-                    _this.getFileList();
+                    rthis.getFileList();
                 } else {
                     alert(response.message);
                 }
@@ -560,36 +560,36 @@ export class MasterImageUpload extends React.Component<FileUpProps, any>{
         if (this.props.ParentEditType == 1) {
             imgButtonHtml = (
                 <div className="form-control">
-                <small className="col-xs-6 help-inline">請先按儲存後方可上傳圖片</small>
-                    </div>
+                    <small className="col-xs-6 help-inline">請先按儲存後方可上傳圖片</small>
+                </div>
             );
         } else if (this.props.ParentEditType == 2) {
             imgButtonHtml = (
                 <div className="form-control">
-                <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
-                    </div>
+                    <input type="file" id={'upload-btn-' + this.props.MainId + '-' + this.props.FileKind} accept="image/*" />
+                </div>
             );
         };
         outHtml = (
             <div>
-            {imgButtonHtml}
-            <p className="help-block list-group" ref="SortImage">
-            {
-            this.state.filelist.map(function (itemData, i) {
-                var subOutHtml =
-                    <span className="img-upload list-group-item" key={i}>
-                        <button type="button"
-                            className="close"
-                            onClick={this.deleteFile.bind(this, itemData.fileName) }
-                            title="刪除圖片"> &times; </button>
-                        <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size) } />
-                        </span>;
-                return subOutHtml;
-            }, this)
-            }
+                {imgButtonHtml}
+                <p className="help-block list-group" ref="SortImage">
+                    {
+                        this.state.filelist.map(function (itemData, i) {
+                            var subOutHtml =
+                                <span className="img-upload list-group-item" key={i}>
+                                    <button type="button"
+                                        className="close"
+                                        onClick={this.deleteFile.bind(this, itemData.fileName)}
+                                        title="刪除圖片"> &times; </button>
+                                    <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size)} />
+                                </span>;
+                            return subOutHtml;
+                        }, this)
+                    }
                 </p>
-            <div id={'progressBox-' + this.props.MainId} className="progress-wrap"></div>
-                </div>
+                <div id={'progressBox-' + this.props.MainId + "-" + this.props.FileKind} className="progress-wrap"></div>
+            </div>
         );
         return outHtml;
     }
@@ -699,52 +699,52 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
             out_html = (
                 <div>
                     <div className="col-xs-1">
-                        <input 	type="text"
+                        <input type="text"
                             className="form-control"
                             value={this.props.zip_value}
-                            onChange={this.valueChange.bind(this, this.props.zip_field) }
+                            onChange={this.valueChange.bind(this, this.props.zip_field)}
                             maxLength={5}
                             required disabled />
-                        </div>
+                    </div>
                     <div className="col-xs-2">
                         <select className="form-control"
                             value={this.props.city_value}
                             onChange={this.onCityChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                 <option value="" defaultValue="" disabled>請選擇縣市</option>
-                                {
+                            <option value="" defaultValue="" disabled>請選擇縣市</option>
+                            {
                                 DT.twDistrict.map(function (itemData, i) {
                                     return <option key={itemData.city} value={itemData.city}>{itemData.city}</option>;
                                 })
-                                }
-                            </select>
-                        </div>
+                            }
+                        </select>
+                    </div>
                     <div className="col-xs-2">
                         <select className="form-control"
                             value={this.props.country_value}
                             onChange={this.onCountryChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value="" defaultValue="" disabled>請選擇鄉鎮區</option>
-                                {
+                            <option value="" defaultValue="" disabled>請選擇鄉鎮區</option>
+                            {
                                 this.state.country_list.map(function (itemData, i) {
                                     return <option key={itemData.county} value={itemData.county}>{itemData.county}</option>;
                                 })
-                                }
-                            </select>
-                        </div>
+                            }
+                        </select>
+                    </div>
                     <div className="col-xs-3">
-                        <input 	type="text"
+                        <input type="text"
                             className="form-control"
                             value={this.props.address_value}
-                            onChange={this.valueChange.bind(this, this.props.address_field) }
+                            onChange={this.valueChange.bind(this, this.props.address_field)}
                             maxLength={128}
                             required={this.props.required}
                             disabled={this.props.disabled}
-                            placeholder="請輸入地址..."/>
-                        </div>
+                            placeholder="請輸入地址..." />
                     </div>
+                </div>
             );
         } else if (this.props.ver == 2) {
             out_html = (
@@ -752,7 +752,7 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
                     <div className="col-1">
                         <input type="text" className="form-element"
                             value={this.props.zip_value}
-                            onChange={this.valueChange.bind(this, this.props.zip_field) }
+                            onChange={this.valueChange.bind(this, this.props.zip_field)}
                             maxLength={5}
                             required disabled /></div>
                     <div className="col-2">
@@ -761,88 +761,88 @@ export class TwAddress extends React.Component<TwAddressProps, { country_list: A
                             onChange={this.onCityChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value=""></option>
-                                {
+                            <option value=""></option>
+                            {
                                 DT.twDistrict.map(function (itemData, i) {
                                     return <option key={itemData.city} value={itemData.city}>{itemData.city}</option>;
                                 })
-                                }
-                            </select>
-                        </div>
+                            }
+                        </select>
+                    </div>
                     <div className="col-2">
                         <select className="form-element"
                             value={this.props.country_value}
                             onChange={this.onCountryChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value=""></option>
-                                {
+                            <option value=""></option>
+                            {
                                 this.state.country_list.map(function (itemData, i) {
                                     return <option key={itemData.county} value={itemData.county}>{itemData.county}</option>;
                                 })
-                                }
-                            </select>
-                        </div>
+                            }
+                        </select>
+                    </div>
                     <div className="col-5">
-                        <input 	type="text"
+                        <input type="text"
                             className="form-element"
                             value={this.props.address_value}
-                            onChange={this.valueChange.bind(this, this.props.address_field) }
+                            onChange={this.valueChange.bind(this, this.props.address_field)}
                             maxLength={128}
                             required={this.props.required}
-                            disabled={this.props.disabled}/>
-                        </div>
+                            disabled={this.props.disabled} />
                     </div>
+                </div>
             );
         } else if (this.props.ver == 3) {
             out_html = (
                 <div>
                     <div className="col-xs-1">
-                        <input 	type="text"
+                        <input type="text"
                             className="form-control"
                             value={this.props.zip_value}
-                            onChange={this.valueChange.bind(this, this.props.zip_field) }
+                            onChange={this.valueChange.bind(this, this.props.zip_field)}
                             maxLength={5}
                             required disabled />
-                        </div>
+                    </div>
                     <div className="col-xs-2">
                         <select className="form-control"
                             value={this.props.city_value}
                             onChange={this.onCityChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value=""></option>
-                                {
+                            <option value=""></option>
+                            {
                                 DT.twDistrict.map(function (itemData, i) {
                                     return <option key={itemData.city} value={itemData.city}>{itemData.city}</option>;
                                 })
-                                }
-                            </select>
-                        </div>
+                            }
+                        </select>
+                    </div>
                     <div className="col-xs-2">
                         <select className="form-control"
                             value={this.props.country_value}
                             onChange={this.onCountryChange}
                             required={this.props.required}
                             disabled={this.props.disabled}>
-                                <option value=""></option>
-                                {
+                            <option value=""></option>
+                            {
                                 this.state.country_list.map(function (itemData, i) {
                                     return <option key={itemData.county} value={itemData.county}>{itemData.county}</option>;
                                 })
-                                }
-                            </select>
-                        </div>
+                            }
+                        </select>
+                    </div>
                     <div className="col-xs-6">
-                        <input 	type="text"
+                        <input type="text"
                             className="form-control"
                             value={this.props.address_value}
-                            onChange={this.valueChange.bind(this, this.props.address_field) }
+                            onChange={this.valueChange.bind(this, this.props.address_field)}
                             maxLength={128}
                             required={this.props.required}
-                            disabled={this.props.disabled}/>
-                        </div>
+                            disabled={this.props.disabled} />
                     </div>
+                </div>
             );
         }
 
@@ -890,8 +890,8 @@ export class StateForGird extends React.Component<{ stateData: Array<server.Stat
     render() {
         let outHtml: JSX.Element = null;
         outHtml = <span className={this.state.setClass}>
-                    {this.state.label}
-            </span>;
+            {this.state.label}
+        </span>;
         return outHtml;
     }
 } 

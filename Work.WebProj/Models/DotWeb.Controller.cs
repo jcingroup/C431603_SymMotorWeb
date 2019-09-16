@@ -335,9 +335,10 @@ namespace DotWeb.Controller
 
             #endregion
         }
-        protected void handleImageSave(string file_name, string id, ImageUpScope fp, string file_kind, string category1, string category2)
+        protected void handleImageSave(HttpPostedFileBase file, string id, ImageUpScope fp, string file_kind, string category1, string category2)
         {
             BinaryReader binary_read = null;
+            string file_name = file.FileName;
             string file_ext = Path.GetExtension(file_name); //取得副檔名
             string[] ie_older_ver = new string[] { "6.0", "7.0", "8.0", "9.0" };
 
@@ -350,9 +351,9 @@ namespace DotWeb.Controller
                 #endregion
             }
             else
-                binary_read = new BinaryReader(Request.InputStream);
+                binary_read = new BinaryReader(file.InputStream);
 
-            byte[] upload_file = binary_read.ReadBytes(System.Convert.ToInt32(binary_read.BaseStream.Length));
+            byte[] upload_file = binary_read.ReadBytes(file.ContentLength);
 
             string web_path_org = string.Format(upload_path_tpl_o, category1, category2, id, file_kind, "origin");
             string server_path_org = Server.MapPath(web_path_org);
@@ -432,7 +433,8 @@ namespace DotWeb.Controller
                         System.IO.File.WriteAllBytes(server_path_parm + "\\" + Path.GetFileName(file_name), sm.ToArray());
                         sm.Dispose();
                     }
-                    else {
+                    else
+                    {
                         FileStream file_stream_p = new FileStream(server_path_parm + "\\" + Path.GetFileName(file_name), FileMode.Create);
                         BinaryWriter binary_write_p = new BinaryWriter(file_stream_p);
                         binary_write_p.Write(upload_file);
@@ -1492,7 +1494,8 @@ namespace DotWeb.Controller
             {
                 ViewBag.ie8 = true;
             }
-            else {
+            else
+            {
                 ViewBag.ie8 = false;
             }
         }

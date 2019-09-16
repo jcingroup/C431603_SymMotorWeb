@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Web.Mvc;
 using System.Linq;
+using System.Web;
 
 namespace DotWeb.Areas.Active.Controllers
 {
@@ -44,7 +45,7 @@ namespace DotWeb.Areas.Active.Controllers
 
         #region ajax file section
         [HttpPost]
-        public string aj_FUpload(string id, string filekind, string fileName)
+        public string aj_FUpload(string id, string filekind, HttpPostedFileBase file)
         {
             UpFileInfo r = new UpFileInfo();
             #region
@@ -53,13 +54,13 @@ namespace DotWeb.Areas.Active.Controllers
             {
                 //banner
                 if (filekind == "Banner")
-                    handleImageSave(fileName, id, ImageFileUpParm.BannerRotator, filekind, "Active", "EventData");
+                    handleImageSave(file, id, ImageFileUpParm.BannerRotator, filekind, "Active", "EventData");
                 if (filekind == "List")
-                    handleImageSave(fileName, id, ImageFileUpParm.EventList, filekind, "Active", "EventData");
+                    handleImageSave(file, id, ImageFileUpParm.EventList, filekind, "Active", "EventData");
 
 
                 r.result = true;
-                r.file_name = fileName;
+                r.file_name = file.FileName;
             }
             catch (LogicError ex)
             {
