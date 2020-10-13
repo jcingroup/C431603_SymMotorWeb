@@ -116,6 +116,23 @@
           <Property Name="i_UpdateDateTime" Type="datetime" />
           <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
+        <EntityType Name="BrandUrl">
+          <Key>
+            <PropertyRef Name="brand_url_id" />
+          </Key>
+          <Property Name="brand_url_id" Type="int" Nullable="false" />
+          <Property Name="brand_url_title" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="url" Type="nvarchar" MaxLength="265" />
+          <Property Name="sort" Type="int" Nullable="false" />
+          <Property Name="i_Hide" Type="bit" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_InsertDeptID" Type="int" />
+          <Property Name="i_InsertDateTime" Type="datetime" />
+          <Property Name="i_UpdateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="i_UpdateDeptID" Type="int" />
+          <Property Name="i_UpdateDateTime" Type="datetime" />
+          <Property Name="i_Lang" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="department_id" />
@@ -509,6 +526,7 @@
           <EntitySet Name="BrandAlbum" EntityType="Self.BrandAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BrandAlbumDetail" EntityType="Self.BrandAlbumDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BrandCategory" EntityType="Self.BrandCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandUrl" EntityType="Self.BrandUrl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Editor" EntityType="Self.Editor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EditorDetail" EntityType="Self.EditorDetail" Schema="dbo" store:Type="Tables" />
@@ -754,6 +772,7 @@
             <End Role="TestDrive" EntitySet="TestDrive" />
           </AssociationSet>
           <EntitySet Name="Banner" EntityType="C34A1_SYM_MotorModel.Banner" />
+          <EntitySet Name="BrandUrl" EntityType="C34A1_SYM_MotorModel.BrandUrl" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -1069,6 +1088,23 @@
           <Property Name="banner_id" Type="Int32" Nullable="false" />
           <Property Name="banner_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="banner_url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BrandUrl">
+          <Key>
+            <PropertyRef Name="brand_url_id" />
+          </Key>
+          <Property Name="brand_url_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_url_title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="sort" Type="Int32" Nullable="false" />
           <Property Name="i_Hide" Type="Boolean" Nullable="false" />
           <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -1476,6 +1512,24 @@
                 <ScalarProperty Name="banner_url" ColumnName="banner_url" />
                 <ScalarProperty Name="banner_name" ColumnName="banner_name" />
                 <ScalarProperty Name="banner_id" ColumnName="banner_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandUrl">
+            <EntityTypeMapping TypeName="C34A1_SYM_MotorModel.BrandUrl">
+              <MappingFragment StoreEntitySet="BrandUrl">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="brand_url_title" ColumnName="brand_url_title" />
+                <ScalarProperty Name="brand_url_id" ColumnName="brand_url_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

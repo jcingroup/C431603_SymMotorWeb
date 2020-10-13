@@ -1147,27 +1147,20 @@ namespace DotWeb.Controller
         }
         /// <summary>
         /// 取得前台每頁車款展示內容
+        /// (2020/10/13 更新為讀取BrandUrl)
         /// </summary>
         public void ajax_GetBrandSidebar()
         {
-            List<L1> l1 = new List<L1>();
+            List<m_BrandUrl> l1 = new List<m_BrandUrl>();
             using (var db = getDB0())
             {
-                l1 = db.BrandCategory.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
-                                .Select(x => new L1()
+                l1 = db.BrandUrl.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                                .Select(x => new m_BrandUrl()
                                 {
-                                    l1_id = x.brand_category_id,
-                                    l1_name = x.category_name
+                                    brand_url_id = x.brand_url_id,
+                                    brand_url_title = x.brand_url_title,
+                                    url = x.url
                                 }).ToList();
-                foreach (var item in l1)
-                {
-                    item.l2_list = db.Brand.Where(x => !x.i_Hide & x.brand_category_id == item.l1_id).OrderByDescending(x => new { x.sort, x.brand_id })
-                                        .Select(x => new L2()
-                                        {
-                                            l2_id = x.brand_id,
-                                            l2_name = x.brand_name
-                                        }).ToList();
-                }
 
             }
             ViewBag.Brand = l1;

@@ -9,10 +9,10 @@
     <meta name="keywords" content="省油車, 買車, 汽車資訊, 順益汽車, 新車資訊, 房車, 轎車, 休旅車, 進口車, 商用車, COLT PLUS, X-Sport, Zinger, Pajero, Outlander, Lancer, Fortis, Sportback, PHEV">
     <meta name="description" content="順益汽車-提供全方位的汽車相關服務，新車銷售、中古車買賣、汽車貸款、汽車保險、維修保養的第一選擇。">
     <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
-    <link rel="shortcut icon" href="~/Content/images/favicon.ico"/>
-    <link rel="bookmark" href="~/Content/images/favicon.ico"/>
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" />
+    <link rel="bookmark" href="~/Content/images/favicon.ico" />
     @*
-    <script src="~/Scripts/cdn/BrowerInfo.js"></script> *@
+        <script src="~/Scripts/cdn/BrowerInfo.js"></script> *@
     <script>
         var gb_approot = '@Url.Content("~")';
         var gb_map_data = [];
@@ -34,15 +34,17 @@
     <![endif]-->
     @if (ViewBag.IsFirstPage)
     {
-    <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/index-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
-    <!--[if gte IE 9]><!-->
-    <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
+        <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/index-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
+        <!--[if gte IE 9]><!-->
+        <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+        <!--<![endif]-->
     }
     else
     {
-    <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/page-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
-    <!--[if gte IE 9]><!-->
-    <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet"> <!--<![endif]-->
+        <!--[if lt IE 9]><link href="@Url.Content("~/Content/css/page-ie.css?v=@CommWebSetup.CacheVer")" rel="stylesheet"><![endif]-->
+        <!--[if gte IE 9]><!-->
+        <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+        <!--<![endif]-->
     }
     @RenderSection("css", false)
 </head>
@@ -76,60 +78,32 @@
                         <li><a href="~/Careers">菁英招募</a></li>
                     </ul>
                     @{
-                    var Brand = (List<ProcCore.Business.DB0.L1>
-                        )ViewBag.Brand;
-                        }
-                        <div id="series" class="showcase panel">
-                            <h2 class="h2">車款展示</h2>
-                            <ul class="menu list-inline">
-                                @foreach (var i in Brand)
-                                {
-                                if (i.l2_list.Count() == 1)
-                                {
-                                <li><a href="~/Products?id=@i.l2_list[0].l2_id">@i.l1_name</a></li>
-                                }
-                                else if (i.l2_list.Count() > 1)
-                                {
-                                <li class="collapse-nav">
-                                    @* 有子項目的車款，<a>
-                                        要加class, 參數 *@
-                                        <a class="collapse-toggle panel-title collapsed hidden-md-down" data-toggle="collapse" data-parent="#series" href="#l1-@i.l1_id" aria-expanded="false">@i.l1_name</a>
-                                </li>
-                                }
-                                else {
-                                <li><a href="~/Products">@i.l1_name</a></li>
-                                }
-                                }
-                            </ul>
-
-                            @foreach (var i in Brand)
+                        var BrandUrl = (List<ProcCore.Business.DB0.m_BrandUrl>
+                            )ViewBag.Brand;
+                    }
+                    <div id="series" class="showcase panel">
+                        <h2 class="h2">車款展示</h2>
+                        <ul class="menu list-inline">
+                            @foreach (var i in BrandUrl)
                             {
-                            if (i.l2_list.Count() > 1)
-                            {
-                            @* 子項目 *@
-                            <ul id="l1-@i.l1_id" class="submenu list-inline collapse">
-                                @foreach (var j in i.l2_list)
-                                {
-                                <li><a href="~/Products?id=@j.l2_id">@j.l2_name</a></li>
-                                }
-                            </ul>
+                                <li><a href="@i.url" target="_blank">@i.brand_url_title</a></li>
                             }
-                            }
-                        </div>
+                        </ul>
+                    </div>
 
-                        <nav id="menu" class="navbar">
-                            <h2 class="sr-only">主選單</h2>
-                            <ul class="nav navbar-nav">
-                                <li><a href="~/TestDrive">預約試乘</a></li>
-                                <li><a href="~/UsedCar">認證中古車</a></li>
-                                <li><a href="~/BuyCar?type=1">購車服務</a></li>
-                                <li><a href="~/Repair">維修服務</a></li>
-                                <li><a href="~/Loan">貸款專區</a></li>
-                                <li><a href="~/Insurance">保險專區</a></li>
-                                @* <li><a href="~/Accessory">配件專區</a></li> *@
-                                <li><a href="~/Eco">綠能專區</a></li>
-                            </ul>
-                        </nav>
+                    <nav id="menu" class="navbar">
+                        <h2 class="sr-only">主選單</h2>
+                        <ul class="nav navbar-nav">
+                            <li><a href="~/TestDrive">預約試乘</a></li>
+                            <li><a href="~/UsedCar">認證中古車</a></li>
+                            <li><a href="~/BuyCar?type=1">購車服務</a></li>
+                            <li><a href="~/Repair">維修服務</a></li>
+                            <li><a href="~/Loan">貸款專區</a></li>
+                            <li><a href="~/Insurance">保險專區</a></li>
+                            @* <li><a href="~/Accessory">配件專區</a></li> *@
+                            <li><a href="~/Eco">綠能專區</a></li>
+                        </ul>
+                    </nav>
 
                 </div>
 
@@ -139,11 +113,11 @@
         <main id="main">
             @if (ViewBag.IsFirstPage)
             {
-            @RenderBody()
+                @RenderBody()
             }
             else
             {
-            @RenderBody()
+                @RenderBody()
             }
         </main>
 
@@ -160,7 +134,6 @@
             <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
             <script src="/Scripts/cdn/jQuery.XDomainRequest.js"></script>
     <![endif]-->
-
     <!--[if gte IE 9]><!-->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="~/Content/js/jquery.lazyload.min.js"></script>
@@ -168,7 +141,7 @@
     <script src="~/Content/js/bootstrap/collapse.js"></script>
     <script type="text/javascript">
         // lazyload
-        $("img.lazy").lazyload({effect : "fadeIn"});
+        $("img.lazy").lazyload({ effect: "fadeIn" });
     </script>
     <!--<![endif]-->
 

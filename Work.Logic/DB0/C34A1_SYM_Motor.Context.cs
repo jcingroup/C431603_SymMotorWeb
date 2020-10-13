@@ -48,5 +48,6 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<TestDrive> TestDrive { get; set; }
         public virtual DbSet<Banner> Banner { get; set; }
+        public virtual DbSet<BrandUrl> BrandUrl { get; set; }
     }
 }

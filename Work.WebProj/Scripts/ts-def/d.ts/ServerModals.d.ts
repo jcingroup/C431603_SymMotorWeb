@@ -251,6 +251,13 @@
         location_address?: string;
         Location?: server.Location;
     }
+    interface BrandUrl extends BaseEntityTable {
+        brand_url_id?: number;
+        brand_url_title?: string;
+        url?: string;
+        sort?: number;
+        i_Hide?: boolean;
+    }
     interface MapData {
         title: string;
         north: number;

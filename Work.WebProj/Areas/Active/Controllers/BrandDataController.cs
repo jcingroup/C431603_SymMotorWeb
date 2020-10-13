@@ -18,6 +18,11 @@ namespace DotWeb.Areas.Active.Controllers
             ActionRun();
             return View();
         }
+        public ActionResult Url()
+        {
+            ActionRun();
+            return View();
+        }
         public ActionResult Category()
         {
             ActionRun();

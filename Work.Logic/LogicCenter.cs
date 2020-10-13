@@ -18,7 +18,7 @@ namespace ProcCore.Business
         News, Banner, Event,
         FaqCategory, Faq,
         Editor, EditorDetail,
-        Brand, BrandCategory, BrandAlbum, BrandAlbumDetail,
+        Brand, BrandCategory, BrandAlbum, BrandAlbumDetail, BrandUrl,
         Location,
         TestDrive
     }

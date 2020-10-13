@@ -64,6 +64,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder, Version=2.3.1.2492, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
@@ -229,6 +242,7 @@
     <Content Include="app_modules\Pikaday\package.json" />
     <Content Include="app_modules\simple-ajax-uploader\bower.json" />
     <Content Include="app_modules\simple-ajax-uploader\package.json" />
+    <Content Include="Areas\Active\Views\BrandData\Url.cshtml" />
     <None Include="AspApi\api_list.asp" />
     <Content Include="app_modules\comm-cmpt\package.js" />
     <Content Include="app_modules\comm-func\package.js" />
@@ -328,6 +342,7 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccessoryController.cs" />
+    <Compile Include="Controllers\Api\BrandUrlController.cs" />
     <Compile Include="Controllers\Api\TestDriveController.cs" />
     <Compile Include="Controllers\Api\BrandAlbumDetailController.cs" />
     <Compile Include="Controllers\Api\BrandAlbumController.cs" />
@@ -915,6 +930,7 @@
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="AspApi\sym_webapi.d.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand_category.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-brand_url.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-test_drive.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-location.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-brand.tsx" />

@@ -18,7 +18,8 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-bootstrap": "^0.28.1",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "babel-polyfill": "^6.26.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.0",

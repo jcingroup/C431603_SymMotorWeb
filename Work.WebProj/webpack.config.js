@@ -21,6 +21,7 @@ module.exports = {
         m_editor: path.resolve(__dirname, 'Scripts/src/tsx/m-editor.js'),
         m_editor_detail: path.resolve(__dirname, 'Scripts/src/tsx/m-editor_detail.js'),
         m_brand: path.resolve(__dirname, 'Scripts/src/tsx/m-brand.js'),
+        m_brand_url: path.resolve(__dirname, 'Scripts/src/tsx/m-brand_url.js'),
         m_brand_category: path.resolve(__dirname, 'Scripts/src/tsx/m-brand_category.js'),
         m_location: path.resolve(__dirname, 'Scripts/src/tsx/m-location.js'),
         m_test_drive: path.resolve(__dirname, 'Scripts/src/tsx/m-test_drive.js'),

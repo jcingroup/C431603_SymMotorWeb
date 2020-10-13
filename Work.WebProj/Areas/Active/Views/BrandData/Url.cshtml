@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/Manage/RLayout.cshtml";
 }
 @section breadCrumb {
-    <li><a href="~/Active/FaqData/Category"><i class="fa-list-alt"></i> @ViewBag.MenuName</a></li>
+    <li><a href="~/Active/BrandData/Url"><i class="fa-list-alt"></i> @ViewBag.MenuName</a></li>
     <li>@ViewBag.Caption</li>
 }
 @section IncludeCSS{
@@ -15,7 +15,8 @@
         var gb_caption = '@ViewBag.Caption';
         var gb_roles = '@ViewBag.RoleName';//Admins
     </script>
-    <script src="~/Scripts/build/app/m_faq_category.js?v=@CommWebSetup.CacheVer"></script>
+    @*<script src="~/ckeditor/ckeditor.js?v=@CommWebSetup.CacheVer"></script>*@
+    <script src="~/Scripts/build/app/m_brand_url.js?v=@CommWebSetup.CacheVer"></script>
 }
 @section sidebar{
     @Html.Partial("Manage/vucMenu")

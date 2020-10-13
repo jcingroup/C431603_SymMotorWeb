@@ -36,6 +36,7 @@
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.TestDrive" Width="1.5" PointX="14.625" PointY="18.125" />
         <AssociationConnector Association="C34A1_SYM_MotorModel.FK_TestDrive_Location" />
         <EntityTypeShape EntityType="C34A1_SYM_MotorModel.Banner" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="C34A1_SYM_MotorModel.BrandUrl" Width="1.5" PointX="0.75" PointY="15.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
