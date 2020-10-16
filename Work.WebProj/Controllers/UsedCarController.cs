@@ -58,7 +58,7 @@ namespace DotWeb.Controllers
                     #region 信件發送
                     string Body = getMailBody("UsedCarEmail", md);//套用信件版面
                     Boolean mail;
-                    string mailfrom = md.name + ":" + md.email;
+                    string mailfrom = md.name + ":" + "system@sym.com";
 
                     mail = Mail_Send(mailfrom, //寄信人
                                     openLogic().getReceiveMails(), //收信人

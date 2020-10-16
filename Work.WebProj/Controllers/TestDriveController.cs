@@ -24,12 +24,11 @@ namespace DotWeb.Controllers
             List<GroupOption> locations = new List<GroupOption>();
             using (var db0 = getDB0())
             {
-                var temp_b = db0.BrandCategory.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
+                var temp_b = db0.BrandUrl.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
                                 .Select(x => new L1()
                                 {
-                                    l1_id = x.brand_category_id,
-                                    l1_name = x.category_name,
-                                    l2_list = x.Brand.Where(y => !y.i_Hide).OrderBy(y => y.sort).Select(y => new L2() { l2_id = y.brand_id, l2_name = y.brand_name }).ToList()
+                                    l1_id = x.brand_url_id,
+                                    l1_name = x.brand_url_title
                                 });
                 var temp_l = db0.Location.Where(x => !x.i_Hide & x.is_sales).OrderByDescending(x => new { x.sort, x.location_id })
                                         .GroupBy(x => x.city).Select(x => new GroupOption()
@@ -60,12 +59,12 @@ namespace DotWeb.Controllers
             ResultInfo r = new ResultInfo();
             #region 驗證碼
             ValidateResponse Validate = ValidateCaptcha(md.response);
-            if (!Validate.Success)
-            {
-                r.result = false;
-                r.message = Resources.Res.Log_Err_googleValideNotEquel;
-                return defJSON(r);
-            }
+            //if (!Validate.Success)
+            //{
+            //    r.result = false;
+            //    r.message = Resources.Res.Log_Err_googleValideNotEquel;
+            //    return defJSON(r);
+            //}
             #endregion
             try
             {
@@ -91,7 +90,7 @@ namespace DotWeb.Controllers
                     #region 信件發送
                     string Body = getMailBody("TestDriveEmail", md);//套用信件版面
                     Boolean mail;
-                    string mailfrom = md.name + ":" + md.email;
+                    string mailfrom = md.name + ":" + "system@sym.com";
                     string title = string.Empty;
                     if (md.type == 2) { title = CommWebSetup.MailTitle_TestDrive; } else { title = CommWebSetup.MailTitle_BuyCar; }
                     mail = Mail_Send(mailfrom, //寄信人
