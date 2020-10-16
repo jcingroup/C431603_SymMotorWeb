@@ -81,15 +81,15 @@
                         var BrandUrl = (List<ProcCore.Business.DB0.m_BrandUrl>
                             )ViewBag.Brand;
                     }
-                    <div id="series" class="showcase panel">
+                    <aside id="series" class="showcase panel">
                         <h2 class="h2">車款展示</h2>
-                        <ul class="menu list-inline">
+                        <nav class="menu">
                             @foreach (var i in BrandUrl)
                             {
-                                <li><a href="@i.url" target="_blank">@i.brand_url_title</a></li>
+                                <a href="@i.url" target="_blank">@i.brand_url_title</a>
                             }
-                        </ul>
-                    </div>
+                        </nav>
+                    </aside>
 
                     <nav id="menu" class="navbar">
                         <h2 class="sr-only">主選單</h2>

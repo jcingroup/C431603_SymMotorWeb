@@ -5,7 +5,7 @@
 -----------------------------------------------------------------------*/
 
 // var
-// 
+//
 
 $header-height:         146px !default;
 $logo-width:            255px !default;
@@ -93,21 +93,22 @@ a {
 
     .showcase {
         position: relative;
-        padding-left: $logo-width + $logo-spacing + 130px;
+        padding-left: $logo-width + $logo-spacing;
         padding-top: 60px;
         padding-bottom: 12px;
-        background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 18px;
+        // background: url(#{$img-path}/Index/watermark.png) no-repeat $logo-width + $logo-spacing 18px;
 
         .h2 {
-            @include reset-text;
-            border: 0;
+            // @include reset-text;
+            // border: 0;
             margin: 0;
-            padding: 0;
+            // padding: 0;
             font-size: em(17px);
             color: #ccc;
-            position: absolute;
-            left: $logo-width + $logo-spacing + 130px;
-            top: 58px;
+            // position: absolute;
+            // left: $logo-width + $logo-spacing + 130px;
+            // top: 58px;
+            display: inline;
 
             &::after {
                 content: "/";
@@ -130,87 +131,86 @@ a {
             padding-left: $spacer*6.5;
             font-size: em(18px);
 
-            > li {
+            margin-top: -25px;
+
+            > a {
                 margin-bottom: 0.25em;
                 &:not(:last-child) { margin-right:$spacer*1.25; }
             }
         }
 
-        .submenu {
-            padding-left: $spacer*6.5;
+        // .submenu {
+        //     padding-left: $spacer*6.5;
 
-            li {display: inline-block;}
-            a {
-                display: inline-block;
-                background: #866F5F;
-                border-radius: $border-radius*2;
-                font-size: $font-size-sm;
-                letter-spacing: 0.05em;
+        //     li {display: inline-block;}
+        //     a {
+        //         display: inline-block;
+        //         background: #866F5F;
+        //         border-radius: $border-radius*2;
+        //         font-size: $font-size-sm;
+        //         letter-spacing: 0.05em;
 
-                margin-right: $spacer*0.5;
-                margin-top: $spacer*0.5;
-                padding:$spacer*0.2 $spacer*0.5;
-            }
-        }
+        //         margin-right: $spacer*0.5;
+        //         margin-top: $spacer*0.5;
+        //         padding:$spacer*0.2 $spacer*0.5;
+        //     }
+        // }
 
-        .collapse-toggle {
-            color: $link-hover-color;
+        // .collapse-toggle {
+        //     color: $link-hover-color;
 
-            &::after {
-                display: inline-block;
-                width: 0;
-                height: 0;
-                margin-top: -0.3em;
-                margin-right: .25rem;
-                margin-left: $spacer*0.4;
-                vertical-align: middle;
-                content: "";
-                border-top: 0.5em solid lighten($link-hover-color, 35%);
-                border-right: 0.35em solid transparent;
-                border-left: 0.35em solid transparent;
-            }
+        //     &::after {
+        //         display: inline-block;
+        //         width: 0;
+        //         height: 0;
+        //         margin-top: -0.3em;
+        //         margin-right: .25rem;
+        //         margin-left: $spacer*0.4;
+        //         vertical-align: middle;
+        //         content: "";
+        //         border-top: 0.5em solid lighten($link-hover-color, 35%);
+        //         border-right: 0.35em solid transparent;
+        //         border-left: 0.35em solid transparent;
+        //     }
 
-            &.collapsed {
-                color: #fff;
+        //     &.collapsed {
+        //         color: #fff;
 
-                &:hover {color: $link-hover-color;}
-                &::after {border-top-color: #82744B;}
-                &:hover::after {border-top-color: lighten($link-hover-color, 35%);}
-            }
-        }
+        //         &:hover {color: $link-hover-color;}
+        //         &::after {border-top-color: #82744B;}
+        //         &:hover::after {border-top-color: lighten($link-hover-color, 35%);}
+        //     }
+        // }
     }
     @include media-breakpoint-only(lg) {
         .topNav {
             li:not(:last-child) { margin-right: $spacer*0.6; }
         }
         .showcase {
-            padding-left: $logo-width + 50px;
-            background-position: $logo-width 15px;
+            // padding-left: $logo-width + 50px;
+            // background-position: $logo-width 15px;
             // background-size: auto 50px;
 
             .h2 {
                 display: none;
-
-                // left: $logo-width;
-                // top: 60px;
-
-                // &::after {display: none;}
             }
 
             .menu {
                 padding-left: $spacer*5;
 
-                > li:not(:last-child) { margin-right:$spacer*0.8; }
-            }
-
-            .submenu {padding-left: $spacer*5;}
-
-            .collapse-toggle {
-                &::after {
-                    margin-left: $spacer*0.3;
-                    margin-right: 0;
+                > a {
+                    &:not(:last-child) { margin-right:$spacer*0.8; }
                 }
             }
+
+            // .submenu {padding-left: $spacer*5;}
+
+            // .collapse-toggle {
+            //     &::after {
+            //         margin-left: $spacer*0.3;
+            //         margin-right: 0;
+            //     }
+            // }
         }
     }
     @include media-breakpoint-down(md) {
@@ -243,7 +243,7 @@ a {
             }
         }
         .showcase {
-            background: none;
+            // background: none;
             border-bottom: 1px solid #6E6661;
             padding: $spacer*0.6 $spacer;
             order: 2;
@@ -252,33 +252,33 @@ a {
 
             .menu {
                 padding-left: 0;
+                margin-top: 0;
 
                 li {
                     display: block;
                     margin: 0;
-                    
-                    a {
-                        display: inline-block;
-                        font-size: $font-size-sm;
-                        padding: $spacer*0.1 0;
-                    }
                 }
-            }
-            .submenu {
-                padding-left: 0;
-
-                &.collapse {display: block;}
-
-                li {
+                a {
                     display: block;
-
-                    a {
-                        background: none;
-                        margin: 0;
-                        padding: $spacer*0.1 0;
-                    }
+                    font-size: $font-size-sm;
+                    padding: $spacer*0.1 0;
                 }
             }
+            // .submenu {
+            //     padding-left: 0;
+
+            //     &.collapse {display: block;}
+
+            //     li {
+            //         display: block;
+
+            //         a {
+            //             background: none;
+            //             margin: 0;
+            //             padding: $spacer*0.1 0;
+            //         }
+            //     }
+            // }
             a {
                 letter-spacing: 0.1em;
 
@@ -539,7 +539,7 @@ a {
             }
 
             @for $i from 1 through $submenu-pages {
-                
+
                 .p#{$i} &:nth-of-type(#{$i}) a {
                     color: #fff;
                     &::after {width: 100%;}
@@ -563,7 +563,7 @@ a {
         padding-top: 0;
 
         &.fixed {position: static;}
-        
+
         .submenu {
             padding-left: $grid-gutter-width/2;
 
@@ -576,7 +576,7 @@ a {
 }
 
 #content {
-    
+
     &.fixed {padding-top: 47px;}
 
     @include media-breakpoint-only(lg) {
@@ -596,7 +596,7 @@ a {
 #footer {
     margin-top: -($footer-height);
     height: $footer-height;
-    background: 
+    background:
         url(#{$img-path}/bgDot.png),
         #1a1a1a url(#{$img-path}/bgFooter.jpg) repeat-y center top;
 
@@ -667,7 +667,7 @@ a {
 
 .goTop {
     @include size(54px);
-    
+
     color: hsla(0, 0%, 100%, 0.5);
     line-height: em(54px);
     background: hsla(45, 100%, 36%, 0.5);
@@ -676,7 +676,7 @@ a {
     position: fixed;
     right: $spacer;
     bottom: $spacer;
-    
+
     display: none;
 
     &:focus, &:hover {color: hsla(0, 0%, 100%, 1);}

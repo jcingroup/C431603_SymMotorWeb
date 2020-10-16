@@ -375,7 +375,7 @@ $content-spacing-xs:    $content-spacing;
 				content:" ";
 				width: 30%;
 				height: 1px;
-				border-top: 1px solid; 
+				border-top: 1px solid;
 
 				position: absolute;
 				top: 12px;
@@ -407,7 +407,7 @@ $content-spacing-xs:    $content-spacing;
 			span {
 				font-size: $font-size-sm;
 				&::before, &::after {display: none;}
-				
+
 				strong {
 					font-size: 1em;
 					letter-spacing: 0.05em;
