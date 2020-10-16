@@ -17,7 +17,7 @@ namespace ProcCore.Business.DB0
     public bool sex { get; set; }
     public string email { get; set; }
     public string tel { get; set; }
-    public int car_models { get; set; }
+    public Nullable<int> car_models { get; set; }
     public string car_models_name { get; set; }
     public string contact_time { get; set; }
     public int view_year { get; set; }

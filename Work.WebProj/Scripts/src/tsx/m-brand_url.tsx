@@ -301,8 +301,8 @@ namespace BrandUrl {
                                                     </label>
                                                 </th>
                                                 <th className="col-xs-1 text-center">修改</th>
-                                                <th className="col-xs-3">標題</th>
-                                                <th className="col-xs-1">超連結</th>
+                                                <th className="col-xs-1">標題</th>
+                                                <th className="col-xs-4">超連結</th>
                                                 <th className="col-xs-1">排序</th>
                                                 <th className="col-xs-1">狀態</th>
                                             </tr>

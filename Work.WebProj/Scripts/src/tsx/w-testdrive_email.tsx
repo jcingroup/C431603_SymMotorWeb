@@ -75,7 +75,7 @@ namespace TestDriveEmail {
                 all_location: [],
                 view_location: [],
                 year_rang: [{ val: (new Date()).getFullYear(), Lname: (new Date()).getFullYear() + '年' },
-                    { val: (new Date()).getFullYear() + 1, Lname: ((new Date()).getFullYear() + 1) + '年' }],
+                { val: (new Date()).getFullYear() + 1, Lname: ((new Date()).getFullYear() + 1) + '年' }],
                 days_rang: [],
                 pos: null
             }
@@ -248,17 +248,16 @@ namespace TestDriveEmail {
                 view_days_html = <label className="control-label">希望試乘日期 <small className="text-danger">*</small></label>;
                 view_location_html = <label className="control-label">試乘據點 <small className="text-danger">*</small></label>;
                 is_argee_html = (<label className="c-input c-checkbox">
-                                    <input id="checkbox1" name="checkbox" type="checkbox"
-                                        value={fieldData.is_agree} onChange={this.changeCheckBoxVal.bind(this, 'is_agree') }/>
-                                    <span className="c-indicator"><i className="ti-check"></i></span>
+                    <input id="checkbox1" name="checkbox" type="checkbox"
+                        value={fieldData.is_agree} onChange={this.changeCheckBoxVal.bind(this, 'is_agree')} />
+                    <span className="c-indicator"><i className="ti-check"></i></span>
                                     我已閱讀並同意 <a href="">試乘條款</a>
-                    </label>);
+                </label>);
             } else if (gb_type == EmailState.BuyCar) {
                 car_models_html = <label className="control-label">賞車車款 <small className="text-danger">*</small></label>;
                 view_days_html = <label className="control-label">希望賞車日期 <small className="text-danger">*</small></label>;
                 view_location_html = <label className="control-label">賞車據點 <small className="text-danger">*</small></label>;
             }
-
 
             outHtml = (
                 <div>
@@ -266,186 +265,182 @@ namespace TestDriveEmail {
                     <hr />
 
                     <form action="" className="form" onSubmit={this.handleSubmit} >
-                         <div className="row">
+                        <div className="row">
                             <div className="col-sm-6 col-xs-12">
                                 <div className="form-group">
-                                    <label  className="control-label">姓名 <small className="text-danger">*</small></label>
+                                    <label className="control-label">姓名 <small className="text-danger">*</small></label>
                                     <input type="text" id="m_name" className="form-control c-input" required
-                                        value={fieldData.name} onChange={this.changeInputVal.bind(this, 'name') }/>
+                                        value={fieldData.name} onChange={this.changeInputVal.bind(this, 'name')} />
+                                </div>
+                            </div>
+
+                            <div className="col-sm-6 col-xs-12">
+                                <div className="form-group">
+                                    <label className="control-label">性別 <small className="text-danger">*</small></label>
+                                    <div className="c-radio-group">
+                                        <label className="c-input c-radio">
+                                            <input id="radio1" name="sex" type="radio"
+                                                value={true}
+                                                checked={fieldData.sex === true}
+                                                onChange={this.changeInputVal.bind(this, 'sex')}
+                                                required />
+                                            <span className="c-indicator">男</span>
+                                        </label>
+                                        <label className="c-input c-radio">
+                                            <input id="radio2" name="sex" type="radio"
+                                                value={false}
+                                                checked={fieldData.sex === false}
+                                                onChange={this.changeInputVal.bind(this, 'sex')}
+                                                required />
+                                            <span className="c-indicator">女</span>
+                                        </label>
                                     </div>
                                 </div>
+                            </div>
 
-                        <div className="col-sm-6 col-xs-12">
-                            <div className="form-group">
-                                <label  className="control-label">性別 <small className="text-danger">*</small></label>
-                                <div className="c-radio-group">
-                                    <label className="c-input c-radio">
-                                        <input id="radio1" name="sex" type="radio"
-                                            value={true}
-                                            checked={fieldData.sex === true}
-                                            onChange={this.changeInputVal.bind(this, 'sex') }
-                                            required />
-                                        <span className="c-indicator">男</span>
-                                        </label>
-                                    <label className="c-input c-radio">
-                                        <input id="radio2" name="sex" type="radio"
-                                            value={false}
-                                            checked={fieldData.sex === false}
-                                            onChange={this.changeInputVal.bind(this, 'sex') }
-                                            required />
-                                        <span className="c-indicator">女</span>
-                                        </label>
-                                    </div>
+                            <div className="col-sm-6 col-xs-12">
+                                <div className="form-group">
+                                    <label className="control-label">E-mail <small className="text-danger">*</small></label>
+                                    <input type="email" id="m_email" className="form-control c-input" required
+                                        value={fieldData.email} onChange={this.changeInputVal.bind(this, 'email')} />
                                 </div>
                             </div>
 
-                        <div className="col-sm-6 col-xs-12">
-                            <div className="form-group">
-                                <label  className="control-label">E-mail <small className="text-danger">*</small></label>
-                                <input type="email" id="m_email" className="form-control c-input" required
-                                    value={fieldData.email} onChange={this.changeInputVal.bind(this, 'email') }   />
-                                </div>
-                            </div>
-
-                        <div className="col-sm-6 col-xs-12">
-                            <div className="form-group">
-                                <label className="control-label">連絡電話 <small className="text-danger">*</small></label>
-                                <input type="tel" id="m_tel" className="form-control c-input" required
-                                    value={fieldData.tel} onChange={this.changeInputVal.bind(this, 'tel') } />
+                            <div className="col-sm-6 col-xs-12">
+                                <div className="form-group">
+                                    <label className="control-label">連絡電話 <small className="text-danger">*</small></label>
+                                    <input type="tel" id="m_tel" className="form-control c-input" required
+                                        value={fieldData.tel} onChange={this.changeInputVal.bind(this, 'tel')} />
                                 </div>
                             </div>
 
 
 
-                        <div className="col-sm-6 col-xs-12">
-                            <div className="form-group">
-                                {car_models_html}
-                                <select name="car_models" id="car_models" className="form-control c-select"
-                                    value={fieldData.car_models} onChange={this.changeInputVal.bind(this, 'car_models') } required>
-                                    <option value="" defaultValue="" disabled>請選擇</option>
+                            <div className="col-sm-6 col-xs-12">
+                                <div className="form-group">
+                                    {car_models_html}
+                                    <select name="car_models" id="car_models" className="form-control c-select"
+                                        value={fieldData.car_models} onChange={this.changeInputVal.bind(this, 'car_models')} required>
+                                        <option value="" defaultValue="" defaultChecked>請選擇</option>
                                         {
-                                        car_models.map((l1, i) => <optgroup key={'l1-' + i} className="text-muted" label={l1.l1_name}>
-                                            {
-                                            l1.l2_list.map((l2, j) => <option key={'l2-' + j} className="text-info" value={l2.l2_id}>{l2.l2_name}</option>)
-                                            }
-                                            </optgroup>)
+                                            car_models.map((l1, i) => <option key={'l1-' + i} className="text-muted" value={l1.l1_id}>{l1.l1_name}</option>)
                                         }
                                     </select>
                                 </div>
                             </div>
 
-                        <div className="col-sm-6 col-xs-12">
-                            <div className="form-group">
-                                <label  className="control-label">客服人員聯繫時間</label>
-                                <select name="" id="" className="form-control c-select"
-                                    value={fieldData.contact_time} onChange={this.changeInputVal.bind(this, 'contact_time') }>
-                                    <option value="上午 8: 00~12: 00">上午 8: 00~12: 00</option>
-                                    <option value="下午 12: 00~16: 00">下午 12: 00~16: 00</option>
-                                    <option value="下午 16: 00 以後">下午 16: 00 以後</option>
+                            <div className="col-sm-6 col-xs-12">
+                                <div className="form-group">
+                                    <label className="control-label">客服人員聯繫時間</label>
+                                    <select name="" id="" className="form-control c-select"
+                                        value={fieldData.contact_time} onChange={this.changeInputVal.bind(this, 'contact_time')}>
+                                        <option value="上午 8: 00~12: 00">上午 8: 00~12: 00</option>
+                                        <option value="下午 12: 00~16: 00">下午 12: 00~16: 00</option>
+                                        <option value="下午 16: 00 以後">下午 16: 00 以後</option>
                                     </select>
                                 </div>
                             </div>
 
-                        <div className="col-xs-12">
-                            <div className="form-group">
-                            {view_days_html}
+                            <div className="col-xs-12">
+                                <div className="form-group">
+                                    {view_days_html}
 
-                            <div className="row">
-                                <div className="col-md-3 col-sm-4 col-xs-12">
-                                    <select name="" id="" className="form-control c-select gutter-xs-down"
-                                        value={fieldData.view_year} onChange={this.changeInputVal.bind(this, 'view_year') } required>
-                                        <option value="" defaultValue="">請選擇年份</option>
-                                        {
-                                        this.state.year_rang.map((item, i) => <option key={i} value={item.val}>{item.Lname}</option>)
-                                        }
-                                        </select>
+                                    <div className="row">
+                                        <div className="col-md-3 col-sm-4 col-xs-12">
+                                            <select name="" id="" className="form-control c-select gutter-xs-down"
+                                                value={fieldData.view_year} onChange={this.changeInputVal.bind(this, 'view_year')} required>
+                                                <option value="" defaultValue="">請選擇年份</option>
+                                                {
+                                                    this.state.year_rang.map((item, i) => <option key={i} value={item.val}>{item.Lname}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className="col-md-3 col-sm-4 col-xs-6">
+                                            <select name="" id="" className="form-control c-select"
+                                                value={fieldData.view_month} onChange={this.onMonthChange.bind(this, 'view_month')} required>
+                                                <option value="" defaultValue="">請選擇月份</option>
+                                                {
+                                                    this.props.months.map((item, i) => <option key={i} value={item.val}>{item.Lname}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className="col-md-3 col-sm-4 col-xs-6">
+                                            <select name="" id="" className="form-control c-select"
+                                                value={fieldData.view_day} onChange={this.changeInputVal.bind(this, 'view_day')} required>
+                                                <option value="" defaultValue="">請選擇日期</option>
+                                                {
+                                                    this.state.days_rang.map((item, i) => <option key={i} value={item.val}>{item.Lname}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className="col-md-3 col-xs-12  gutter-sm-down">
+                                            <select name="" id="" className="form-control c-select"
+                                                value={fieldData.view_time} onChange={this.changeInputVal.bind(this, 'view_time')} required>
+                                                {
+                                                    DT.TestDriveTime.map((item, i) => <option key={i} value={item.id}>{item.label}</option>)
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
-                                <div className="col-md-3 col-sm-4 col-xs-6">
-                                    <select name="" id="" className="form-control c-select"
-                                        value={fieldData.view_month} onChange={this.onMonthChange.bind(this, 'view_month') } required>
-                                        <option value="" defaultValue="">請選擇月份</option>
-                                        {
-                                        this.props.months.map((item, i) => <option key={i} value={item.val}>{item.Lname}</option>)
-                                        }
-                                        </select>
-                                    </div>
-                                <div className="col-md-3 col-sm-4 col-xs-6">
-                                    <select name="" id="" className="form-control c-select"
-                                        value={fieldData.view_day} onChange={this.changeInputVal.bind(this, 'view_day') } required>
-                                        <option value="" defaultValue="">請選擇日期</option>
-                                        {
-                                        this.state.days_rang.map((item, i) => <option key={i} value={item.val}>{item.Lname}</option>)
-                                        }
-                                        </select>
-                                    </div>
-                                <div className="col-md-3 col-xs-12  gutter-sm-down">
-                                    <select name="" id="" className="form-control c-select"
-                                        value={fieldData.view_time} onChange={this.changeInputVal.bind(this, 'view_time') } required>
-                                        {
-                                        DT.TestDriveTime.map((item, i) => <option key={i} value={item.id}>{item.label}</option>)
-                                        }
-                                        </select>
-                                    </div>
-                                </div>
                                 </div>
                             </div>
 
-                        <div className="col-lg-6 col-xs-12">
-                            <div className="form-group">
-                            {view_location_html}
+                            <div className="col-lg-6 col-xs-12">
+                                <div className="form-group">
+                                    {view_location_html}
 
-                            <div className="row">
-                                <div className="col-sm-6 col-xs-12">
-                                    <select name="" id="" className="form-control c-select"
-                                        value={fieldData.view_city} onChange={this.onCityChange.bind(this, 'view_city') } required>
-                                        <option value="" defaultValue="" disabled>選擇縣市</option>
-                                        {
-                                        DT.twDistrict.map((item, i) => <option key={i} value={item.city}>{item.city}</option>)
-                                        }
-                                        </select>
+                                    <div className="row">
+                                        <div className="col-sm-6 col-xs-12">
+                                            <select name="" id="" className="form-control c-select"
+                                                value={fieldData.view_city} onChange={this.onCityChange.bind(this, 'view_city')} required>
+                                                <option value="" defaultValue="" disabled>選擇縣市</option>
+                                                {
+                                                    DT.twDistrict.map((item, i) => <option key={i} value={item.city}>{item.city}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div className="col-sm-6 col-xs-12 gutter-xs-down">
+                                            <select name="" id="view_location" className="form-control c-select"
+                                                value={fieldData.view_location} onChange={this.changeInputVal.bind(this, 'view_location')} required>
+                                                <option value="" defaultValue="" disabled>選擇營業所</option>
+                                                {
+                                                    view_location.map((item, i) => <option key={i} value={item.location_id}>{item.location_name}</option>)
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
-                                <div className="col-sm-6 col-xs-12 gutter-xs-down">
-                                    <select name="" id="view_location" className="form-control c-select"
-                                        value={fieldData.view_location} onChange={this.changeInputVal.bind(this, 'view_location') } required>
-                                        <option value="" defaultValue="" disabled>選擇營業所</option>
-                                        {
-                                        view_location.map((item, i) => <option key={i} value={item.location_id}>{item.location_name}</option>)
-                                        }
-                                        </select>
-                                    </div>
-                                </div>
                                 </div>
                             </div>
 
-                        <div className="col-xs-12">
-                            <div id="map"></div>
+                            <div className="col-xs-12">
+                                <div id="map"></div>
                             </div>
 
-                         <div className="col-xs-12">
-                            <div className="form-group c-inputs-stacked">
+                            <div className="col-xs-12">
+                                <div className="form-group c-inputs-stacked">
 
-                                  {/*is_argee_html*/}
+                                    {/*is_argee_html*/}
 
-                                  <label className="c-input c-checkbox">
-                                    <input id="checkbox2" name="checkbox" type="checkbox"
-                                        value={fieldData.is_edm} onChange={this.changeCheckBoxVal.bind(this, 'is_edm') }/>
-                                    <span className="c-indicator"><i className="ti-check"></i></span>
+                                    <label className="c-input c-checkbox">
+                                        <input id="checkbox2" name="checkbox" type="checkbox"
+                                            value={fieldData.is_edm} onChange={this.changeCheckBoxVal.bind(this, 'is_edm')} />
+                                        <span className="c-indicator"><i className="ti-check"></i></span>
                                     我願意收到EDM
                                       </label>
 
                                 </div>
                                 <div className="form-group">
-                                <label className="sr-only">驗證</label>
-                                <div id="Validate"></div>
-                                    </div>
-                            <div className="form-group">
-                                <button type="submit" className="btn btn-primary btn-lg">填寫完成，送出資料</button>
+                                    <label className="sr-only">驗證</label>
+                                    <div id="Validate"></div>
                                 </div>
-                             </div>
+                                <div className="form-group">
+                                    <button type="submit" className="btn btn-primary btn-lg">填寫完成，送出資料</button>
+                                </div>
+                            </div>
 
-                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+                </div>
             );
             return outHtml;
         }

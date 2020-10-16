@@ -77,16 +77,11 @@
             all_location = result.locations;
             if (car_models.length > 0) {
                 for (var i = 0; i < car_models.length; i++) {
-                    var $group = $('<optgroup />', { label: car_models[i].l1_name, 'class': 'text-muted' }).appendTo('#m_car_models');
-                    for (var j = 0; j < car_models[i].l2_list.length; j++) {
-                        var option = $('<option />', {
-                            text: car_models[i].l2_list[j].l2_name,
-                            value: car_models[i].l2_list[j].l2_id,
-                            'class': 'text-info'
-                        });
-                        option.data('l1', car_models[i].l1_id);
-                        $group.append(option);
-                    }
+                    var $group = $('<option />', {
+                        text: car_models[i].l1_name,
+                        value: car_models[i].l1_id,
+                        'class': 'text-muted'
+                    }).appendTo('#m_car_models');
                 }
             }
             if (all_location.length > 0) {
