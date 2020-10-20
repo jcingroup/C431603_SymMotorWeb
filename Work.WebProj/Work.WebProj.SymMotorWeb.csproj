@@ -514,6 +514,7 @@
     <Content Include="Scripts\build\app\m_banner.js" />
     <Content Include="Scripts\build\app\m_brand.js" />
     <Content Include="Scripts\build\app\m_brand_category.js" />
+    <Content Include="Scripts\build\app\m_brand_url.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
     <Content Include="Scripts\build\app\m_editor.js" />
     <Content Include="Scripts\build\app\m_editor_detail.js" />
